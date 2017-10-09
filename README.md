@@ -29,6 +29,7 @@ frontend -
 - [] The challenge content should visually reflect the status like started, in progress or completed. It should show the photo/video associated with it.
 - [] Users should be able to encourage participants of challenges by "like" feature.
 - [] Settings page where user can control what type of challenges they can see, configure their notifications and to their categories of interest.
+- [] USers can add location to their challenge.
 
 
 The following **optional** features are implemented:
