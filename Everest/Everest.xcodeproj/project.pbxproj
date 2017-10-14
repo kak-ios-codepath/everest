@@ -1,0 +1,499 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA211F91D589003D0ADF /* AppDelegate.swift */; };
+		06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C2EA251F91D589003D0ADF /* Main.storyboard */; };
+		06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06C2EA281F91D589003D0ADF /* Assets.xcassets */; };
+		06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */; };
+		06C2EA391F91D751003D0ADF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA381F91D751003D0ADF /* LoginViewController.swift */; };
+		06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */; };
+		06C2EA3D1F91D776003D0ADF /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3C1F91D776003D0ADF /* TimelineViewController.swift */; };
+		06C2EA3F1F91D7A2003D0ADF /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */; };
+		06C2EA411F91D7C8003D0ADF /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */; };
+		06C2EA431F91D7F1003D0ADF /* MomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */; };
+		06C2EA451F91D806003D0ADF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA441F91D806003D0ADF /* SettingsViewController.swift */; };
+		06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */; };
+		06C2EA491F91D83A003D0ADF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */; };
+		06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */; };
+		06C2EA4D1F91D881003D0ADF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA4C1F91D881003D0ADF /* User.swift */; };
+		06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA4E1F91D8DF003D0ADF /* Moment.swift */; };
+		06C2EA511F91D8EF003D0ADF /* Act.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA501F91D8EF003D0ADF /* Act.swift */; };
+		06C2EA531F91D921003D0ADF /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA521F91D921003D0ADF /* UserProfileView.swift */; };
+		06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA541F91D936003D0ADF /* ActionView.swift */; };
+		06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA561F91D944003D0ADF /* MomentView.swift */; };
+		53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06C2EA1E1F91D589003D0ADF /* Everest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06C2EA211F91D589003D0ADF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		06C2EA261F91D589003D0ADF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		06C2EA281F91D589003D0ADF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06C2EA2B1F91D589003D0ADF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		06C2EA2D1F91D589003D0ADF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06C2EA381F91D751003D0ADF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		06C2EA3C1F91D776003D0ADF /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
+		06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsViewController.swift; sourceTree = "<group>"; };
+		06C2EA441F91D806003D0ADF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
+		06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		06C2EA4C1F91D881003D0ADF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		06C2EA4E1F91D8DF003D0ADF /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
+		06C2EA501F91D8EF003D0ADF /* Act.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Act.swift; sourceTree = "<group>"; };
+		06C2EA521F91D921003D0ADF /* UserProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		06C2EA541F91D936003D0ADF /* ActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
+		06C2EA561F91D944003D0ADF /* MomentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentView.swift; sourceTree = "<group>"; };
+		1A7D127026D048F03DEE5A44 /* Pods-Everest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.debug.xcconfig"; sourceTree = "<group>"; };
+		28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06C2EA1B1F91D589003D0ADF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06C2EA151F91D589003D0ADF = {
+			isa = PBXGroup;
+			children = (
+				06C2EA201F91D589003D0ADF /* Everest */,
+				06C2EA1F1F91D589003D0ADF /* Products */,
+				715BD4E2B085D489B0E4D109 /* Pods */,
+				F1F54D22BC47D5DD4FEE93F4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		06C2EA1F1F91D589003D0ADF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06C2EA1E1F91D589003D0ADF /* Everest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06C2EA201F91D589003D0ADF /* Everest */ = {
+			isa = PBXGroup;
+			children = (
+				06C2EA331F91D6AB003D0ADF /* Controllers */,
+				06C2EA351F91D6D5003D0ADF /* Models */,
+				06C2EA361F91D6DE003D0ADF /* Network */,
+				06C2EA371F91D6EA003D0ADF /* Views */,
+				06C2EA211F91D589003D0ADF /* AppDelegate.swift */,
+				06C2EA251F91D589003D0ADF /* Main.storyboard */,
+				06C2EA281F91D589003D0ADF /* Assets.xcassets */,
+				06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */,
+				06C2EA2D1F91D589003D0ADF /* Info.plist */,
+			);
+			path = Everest;
+			sourceTree = "<group>";
+		};
+		06C2EA331F91D6AB003D0ADF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */,
+				06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */,
+				06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */,
+				06C2EA381F91D751003D0ADF /* LoginViewController.swift */,
+				06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */,
+				06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */,
+				06C2EA441F91D806003D0ADF /* SettingsViewController.swift */,
+				06C2EA3C1F91D776003D0ADF /* TimelineViewController.swift */,
+				06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */,
+				06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		06C2EA351F91D6D5003D0ADF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				06C2EA4C1F91D881003D0ADF /* User.swift */,
+				06C2EA4E1F91D8DF003D0ADF /* Moment.swift */,
+				06C2EA501F91D8EF003D0ADF /* Act.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		06C2EA361F91D6DE003D0ADF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		06C2EA371F91D6EA003D0ADF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				06C2EA521F91D921003D0ADF /* UserProfileView.swift */,
+				06C2EA541F91D936003D0ADF /* ActionView.swift */,
+				06C2EA561F91D944003D0ADF /* MomentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		715BD4E2B085D489B0E4D109 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A7D127026D048F03DEE5A44 /* Pods-Everest.debug.xcconfig */,
+				96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F1F54D22BC47D5DD4FEE93F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06C2EA1D1F91D589003D0ADF /* Everest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06C2EA301F91D589003D0ADF /* Build configuration list for PBXNativeTarget "Everest" */;
+			buildPhases = (
+				05EE4B9EF89B76D127CAC7B9 /* [CP] Check Pods Manifest.lock */,
+				06C2EA1A1F91D589003D0ADF /* Sources */,
+				06C2EA1B1F91D589003D0ADF /* Frameworks */,
+				06C2EA1C1F91D589003D0ADF /* Resources */,
+				73FAC8FB38117DF623BCC14D /* [CP] Embed Pods Frameworks */,
+				18B02BF8B41C4717C0AFF576 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Everest;
+			productName = Everest;
+			productReference = 06C2EA1E1F91D589003D0ADF /* Everest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06C2EA161F91D589003D0ADF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Kavita Gaitonde";
+				TargetAttributes = {
+					06C2EA1D1F91D589003D0ADF = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 06C2EA191F91D589003D0ADF /* Build configuration list for PBXProject "Everest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 06C2EA151F91D589003D0ADF;
+			productRefGroup = 06C2EA1F1F91D589003D0ADF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06C2EA1D1F91D589003D0ADF /* Everest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06C2EA1C1F91D589003D0ADF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
+				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
+				06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05EE4B9EF89B76D127CAC7B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Everest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		18B02BF8B41C4717C0AFF576 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Everest/Pods-Everest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73FAC8FB38117DF623BCC14D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Everest/Pods-Everest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Everest/Pods-Everest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06C2EA1A1F91D589003D0ADF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06C2EA411F91D7C8003D0ADF /* AddActionViewController.swift in Sources */,
+				06C2EA491F91D83A003D0ADF /* UserProfileViewController.swift in Sources */,
+				06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */,
+				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
+				06C2EA3F1F91D7A2003D0ADF /* ActionViewController.swift in Sources */,
+				06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */,
+				06C2EA431F91D7F1003D0ADF /* MomentsViewController.swift in Sources */,
+				06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */,
+				06C2EA3D1F91D776003D0ADF /* TimelineViewController.swift in Sources */,
+				06C2EA391F91D751003D0ADF /* LoginViewController.swift in Sources */,
+				06C2EA511F91D8EF003D0ADF /* Act.swift in Sources */,
+				06C2EA4D1F91D881003D0ADF /* User.swift in Sources */,
+				06C2EA531F91D921003D0ADF /* UserProfileView.swift in Sources */,
+				06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */,
+				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
+				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
+				06C2EA451F91D806003D0ADF /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		06C2EA251F91D589003D0ADF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06C2EA261F91D589003D0ADF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06C2EA2B1F91D589003D0ADF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		06C2EA2E1F91D589003D0ADF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		06C2EA2F1F91D589003D0ADF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		06C2EA311F91D589003D0ADF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A7D127026D048F03DEE5A44 /* Pods-Everest.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Everest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kak-ios-codepath.Everest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		06C2EA321F91D589003D0ADF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Everest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kak-ios-codepath.Everest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06C2EA191F91D589003D0ADF /* Build configuration list for PBXProject "Everest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06C2EA2E1F91D589003D0ADF /* Debug */,
+				06C2EA2F1F91D589003D0ADF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06C2EA301F91D589003D0ADF /* Build configuration list for PBXNativeTarget "Everest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06C2EA311F91D589003D0ADF /* Debug */,
+				06C2EA321F91D589003D0ADF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06C2EA161F91D589003D0ADF /* Project object */;
+}

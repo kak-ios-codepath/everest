@@ -2,6 +2,11 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+Everest/.DS_Store
+Everest/Everest/.DS_Store
+Everest/Everest.xcodeproj/xcuserdata
+Everest/Everest.xcworkspace/xcuserdata
+
 ## Build generated
 build/
 DerivedData/
@@ -45,9 +50,9 @@ playground.xcworkspace
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-Pods/
-Pods/Pods.xcodeproj/xcuserdata
-Podfile.lock
+Everest/Pods/
+Everest/Pods/Pods.xcodeproj/xcuserdata
+Everest/Podfile.lock
 
 # Carthage
 #
