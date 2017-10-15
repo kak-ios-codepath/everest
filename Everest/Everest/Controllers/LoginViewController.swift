@@ -7,13 +7,31 @@
 //
 
 import UIKit
+import FacebookCore
+import FacebookLogin
+import FacebookShare
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, LoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //adding FB login button programmatically
+        let loginButton = LoginButton(readPermissions: [ .publicProfile,  .email, .userFriends  ])
+        loginButton.center = view.center
+        loginButton.delegate = self
+        view.addSubview(loginButton)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let accessToken = AccessToken.current {
+            // User is logged in, use 'accessToken' here.
+            print("User is logged in -- \(accessToken.userId!)")
+        } else {
+            print("User is NOT logged in ")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +39,28 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Facebook Login delegates
+    
+    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+        switch result {
+        case .failed(let error):
+            print(error)
+        case .cancelled:
+            print("Cancelled")
+        case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            //TODO: Create a new user on Firebase based on thise token
+            print("Logged In")
+            print (grantedPermissions)
+            print (declinedPermissions)
+            print (accessToken)
+        }
+    }
+    
+    
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {
+        //TODO: Logout current user from the app.
+        print("Logout complete.....")
+    }
 
     /*
     // MARK: - Navigation
