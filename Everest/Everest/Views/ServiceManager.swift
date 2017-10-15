@@ -17,5 +17,18 @@
 import UIKit
 
 class ServiceManager: NSObject {
+    
+    class var sharedInstance : ServiceManager {
+        struct Static {
+            static let instance = ServiceManager.init()
+        }
+        
+        return Static.instance
+    }
+    
 
+    func get(request:URLRequest?,completion: @escaping (_ response: Any?, _ error : Error?)->()) -> Void{
+        
+    }
+    
 }

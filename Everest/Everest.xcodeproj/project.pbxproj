@@ -31,6 +31,8 @@
 		D7C15E0A1F930924004F38D4 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E091F930924004F38D4 /* ServiceManager.swift */; };
 		D7C15E0D1F9309CA004F38D4 /* TimeLineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */; };
 		D7C15E0F1F9309E5004F38D4 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */; };
+		D7C15E121F9336BA004F38D4 /* MomentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E101F9336BA004F38D4 /* MomentsCell.swift */; };
+		D7C15E131F9336BA004F38D4 /* MomentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E111F9336BA004F38D4 /* MomentsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		D7C15E091F930924004F38D4 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = Everest/Views/ServiceManager.swift; sourceTree = SOURCE_ROOT; };
 		D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLineManager.swift; path = TimeLine/TimeLineManager.swift; sourceTree = "<group>"; };
 		D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineViewController.swift; path = TimeLine/TimelineViewController.swift; sourceTree = "<group>"; };
+		D7C15E101F9336BA004F38D4 /* MomentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentsCell.swift; path = Everest/Views/MomentsCell.swift; sourceTree = SOURCE_ROOT; };
+		D7C15E111F9336BA004F38D4 /* MomentsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentsCell.xib; path = Everest/Views/MomentsCell.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,8 @@
 			children = (
 				D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */,
 				D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */,
+				D7C15E101F9336BA004F38D4 /* MomentsCell.swift */,
+				D7C15E111F9336BA004F38D4 /* MomentsCell.xib */,
 			);
 			name = TimeLine;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
+				D7C15E131F9336BA004F38D4 /* MomentsCell.xib in Resources */,
 				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
 				D7C15E081F92F9AD004F38D4 /* HomeTimeLine.storyboard in Resources */,
 				06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */,
@@ -351,6 +358,7 @@
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
 				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
 				06C2EA451F91D806003D0ADF /* SettingsViewController.swift in Sources */,
+				D7C15E121F9336BA004F38D4 /* MomentsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
