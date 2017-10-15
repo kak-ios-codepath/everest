@@ -13,7 +13,6 @@
 		06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */; };
 		06C2EA391F91D751003D0ADF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA381F91D751003D0ADF /* LoginViewController.swift */; };
 		06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */; };
-		06C2EA3D1F91D776003D0ADF /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3C1F91D776003D0ADF /* TimelineViewController.swift */; };
 		06C2EA3F1F91D7A2003D0ADF /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */; };
 		06C2EA411F91D7C8003D0ADF /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */; };
 		06C2EA431F91D7F1003D0ADF /* MomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */; };
@@ -28,6 +27,10 @@
 		06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA541F91D936003D0ADF /* ActionView.swift */; };
 		06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA561F91D944003D0ADF /* MomentView.swift */; };
 		53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */; };
+		D7C15E081F92F9AD004F38D4 /* HomeTimeLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E071F92F9AD004F38D4 /* HomeTimeLine.storyboard */; };
+		D7C15E0A1F930924004F38D4 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E091F930924004F38D4 /* ServiceManager.swift */; };
+		D7C15E0D1F9309CA004F38D4 /* TimeLineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */; };
+		D7C15E0F1F9309E5004F38D4 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +42,6 @@
 		06C2EA2D1F91D589003D0ADF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06C2EA381F91D751003D0ADF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		06C2EA3C1F91D776003D0ADF /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,10 @@
 		1A7D127026D048F03DEE5A44 /* Pods-Everest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.debug.xcconfig"; sourceTree = "<group>"; };
 		28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.release.xcconfig"; sourceTree = "<group>"; };
+		D7C15E071F92F9AD004F38D4 /* HomeTimeLine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HomeTimeLine.storyboard; path = Views/HomeTimeLine.storyboard; sourceTree = "<group>"; };
+		D7C15E091F930924004F38D4 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = Everest/Views/ServiceManager.swift; sourceTree = SOURCE_ROOT; };
+		D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLineManager.swift; path = TimeLine/TimeLineManager.swift; sourceTree = "<group>"; };
+		D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineViewController.swift; path = TimeLine/TimelineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 				06C2EA361F91D6DE003D0ADF /* Network */,
 				06C2EA371F91D6EA003D0ADF /* Views */,
 				06C2EA211F91D589003D0ADF /* AppDelegate.swift */,
+				D7C15E071F92F9AD004F38D4 /* HomeTimeLine.storyboard */,
 				06C2EA251F91D589003D0ADF /* Main.storyboard */,
 				06C2EA281F91D589003D0ADF /* Assets.xcassets */,
 				06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */,
@@ -107,6 +114,7 @@
 		06C2EA331F91D6AB003D0ADF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7C15E0B1F930995004F38D4 /* TimeLine */,
 				06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */,
 				06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */,
 				06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */,
@@ -114,7 +122,6 @@
 				06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */,
 				06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */,
 				06C2EA441F91D806003D0ADF /* SettingsViewController.swift */,
-				06C2EA3C1F91D776003D0ADF /* TimelineViewController.swift */,
 				06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */,
 				06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */,
 			);
@@ -134,6 +141,7 @@
 		06C2EA361F91D6DE003D0ADF /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D7C15E091F930924004F38D4 /* ServiceManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -155,6 +163,15 @@
 				96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D7C15E0B1F930995004F38D4 /* TimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */,
+				D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */,
+			);
+			name = TimeLine;
 			sourceTree = "<group>";
 		};
 		F1F54D22BC47D5DD4FEE93F4 /* Frameworks */ = {
@@ -229,6 +246,7 @@
 			files = (
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
 				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
+				D7C15E081F92F9AD004F38D4 /* HomeTimeLine.storyboard in Resources */,
 				06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,7 +269,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		18B02BF8B41C4717C0AFF576 /* [CP] Copy Pods Resources */ = {
@@ -319,15 +337,17 @@
 				06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
 				06C2EA3F1F91D7A2003D0ADF /* ActionViewController.swift in Sources */,
+				D7C15E0A1F930924004F38D4 /* ServiceManager.swift in Sources */,
 				06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */,
+				D7C15E0F1F9309E5004F38D4 /* TimelineViewController.swift in Sources */,
 				06C2EA431F91D7F1003D0ADF /* MomentsViewController.swift in Sources */,
 				06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */,
-				06C2EA3D1F91D776003D0ADF /* TimelineViewController.swift in Sources */,
 				06C2EA391F91D751003D0ADF /* LoginViewController.swift in Sources */,
 				06C2EA511F91D8EF003D0ADF /* Act.swift in Sources */,
 				06C2EA4D1F91D881003D0ADF /* User.swift in Sources */,
 				06C2EA531F91D921003D0ADF /* UserProfileView.swift in Sources */,
 				06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */,
+				D7C15E0D1F9309CA004F38D4 /* TimeLineManager.swift in Sources */,
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
 				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
 				06C2EA451F91D806003D0ADF /* SettingsViewController.swift in Sources */,
@@ -492,6 +512,7 @@
 				06C2EA321F91D589003D0ADF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
