@@ -58,6 +58,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     
     
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
+        //TODO: Logout current user from the app.
         print("Logout complete.....")
     }
 
