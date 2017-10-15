@@ -6,12 +6,17 @@ target 'Everest' do
   use_frameworks!
 
   # Pods for Everest
-pod 'AFNetworking', '~> 3.0'
-pod 'FacebookCore'
-pod 'FacebookLogin'
-# https://github.com/facebook/facebook-sdk-swift/issues/157
-pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
-pod 'MBProgressHUD'
-pod 'SwiftyJSON'
-pod 'TTTAttributedLabel'
+  pod 'AFNetworking', '~> 3.0'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  # https://github.com/facebook/facebook-sdk-swift/issues/157
+  pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
+  pod 'MBProgressHUD'
+  pod 'SwiftyJSON'
+  pod 'TTTAttributedLabel'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'GoogleSignIn'
+
 end

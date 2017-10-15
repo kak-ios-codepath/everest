@@ -28,6 +28,9 @@
 		06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA541F91D936003D0ADF /* ActionView.swift */; };
 		06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA561F91D944003D0ADF /* MomentView.swift */; };
 		53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */; };
+		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
+		CE55E6D71F92D88600EE6855 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55E6D61F92D88600EE6855 /* FireBaseManager.swift */; };
+		CE55E6D91F92DAA400EE6855 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE55E6D81F92DAA400EE6855 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		1A7D127026D048F03DEE5A44 /* Pods-Everest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.debug.xcconfig"; sourceTree = "<group>"; };
 		28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.release.xcconfig"; sourceTree = "<group>"; };
+		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		CE55E6D61F92D88600EE6855 /* FireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireBaseManager.swift; path = Everest/Controllers/FireBaseManager.swift; sourceTree = SOURCE_ROOT; };
+		CE55E6D81F92DAA400EE6855 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../codepath_ios/karma/Karma/Karma/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 				06C2EA251F91D589003D0ADF /* Main.storyboard */,
 				06C2EA281F91D589003D0ADF /* Assets.xcassets */,
 				06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */,
+				CE55E6D81F92DAA400EE6855 /* GoogleService-Info.plist */,
 				06C2EA2D1F91D589003D0ADF /* Info.plist */,
 			);
 			path = Everest;
@@ -127,6 +134,7 @@
 				06C2EA4C1F91D881003D0ADF /* User.swift */,
 				06C2EA4E1F91D8DF003D0ADF /* Moment.swift */,
 				06C2EA501F91D8EF003D0ADF /* Act.swift */,
+				CE2F56071F92DE54004D2CF9 /* Action.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -134,6 +142,7 @@
 		06C2EA361F91D6DE003D0ADF /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				CE55E6D61F92D88600EE6855 /* FireBaseManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -228,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
+				CE55E6D91F92DAA400EE6855 /* GoogleService-Info.plist in Resources */,
 				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
 				06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */,
 			);
@@ -251,7 +261,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		18B02BF8B41C4717C0AFF576 /* [CP] Copy Pods Resources */ = {
@@ -315,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06C2EA411F91D7C8003D0ADF /* AddActionViewController.swift in Sources */,
+				CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */,
 				06C2EA491F91D83A003D0ADF /* UserProfileViewController.swift in Sources */,
 				06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
@@ -328,6 +339,7 @@
 				06C2EA4D1F91D881003D0ADF /* User.swift in Sources */,
 				06C2EA531F91D921003D0ADF /* UserProfileView.swift in Sources */,
 				06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */,
+				CE55E6D71F92D88600EE6855 /* FireBaseManager.swift in Sources */,
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
 				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
 				06C2EA451F91D806003D0ADF /* SettingsViewController.swift in Sources */,
@@ -492,6 +504,7 @@
 				06C2EA321F91D589003D0ADF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
