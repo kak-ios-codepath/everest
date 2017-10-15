@@ -42,7 +42,18 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     // MARK: - Facebook Login delegates
     
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
-        print("Login complete.....")
+        switch result {
+        case .failed(let error):
+            print(error)
+        case .cancelled:
+            print("Cancelled")
+        case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            //TODO: Create a new user on Firebase based on thise token
+            print("Logged In")
+            print (grantedPermissions)
+            print (declinedPermissions)
+            print (accessToken)
+        }
     }
     
     
