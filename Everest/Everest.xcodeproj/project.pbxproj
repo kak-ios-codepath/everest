@@ -13,12 +13,7 @@
 		06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */; };
 		06C2EA391F91D751003D0ADF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA381F91D751003D0ADF /* LoginViewController.swift */; };
 		06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */; };
-		06C2EA3F1F91D7A2003D0ADF /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */; };
-		06C2EA411F91D7C8003D0ADF /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */; };
-		06C2EA431F91D7F1003D0ADF /* MomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */; };
-		06C2EA451F91D806003D0ADF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA441F91D806003D0ADF /* SettingsViewController.swift */; };
 		06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */; };
-		06C2EA491F91D83A003D0ADF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */; };
 		06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */; };
 		06C2EA4D1F91D881003D0ADF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA4C1F91D881003D0ADF /* User.swift */; };
 		06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA4E1F91D8DF003D0ADF /* Moment.swift */; };
@@ -27,12 +22,20 @@
 		06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA541F91D936003D0ADF /* ActionView.swift */; };
 		06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA561F91D944003D0ADF /* MomentView.swift */; };
 		53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */; };
-		D7C15E081F92F9AD004F38D4 /* HomeTimeLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E071F92F9AD004F38D4 /* HomeTimeLine.storyboard */; };
 		D7C15E0A1F930924004F38D4 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E091F930924004F38D4 /* ServiceManager.swift */; };
 		D7C15E0D1F9309CA004F38D4 /* TimeLineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */; };
 		D7C15E0F1F9309E5004F38D4 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */; };
 		D7C15E121F9336BA004F38D4 /* MomentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E101F9336BA004F38D4 /* MomentsCell.swift */; };
 		D7C15E131F9336BA004F38D4 /* MomentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E111F9336BA004F38D4 /* MomentsCell.xib */; };
+		D7C15E161F93E22E004F38D4 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E151F93E22E004F38D4 /* UserProfileViewController.swift */; };
+		D7C15E1C1F93E43B004F38D4 /* UserProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E1B1F93E43B004F38D4 /* UserProfileManager.swift */; };
+		D7C15E1F1F93FCBA004F38D4 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E1E1F93FCBA004F38D4 /* UserProfile.storyboard */; };
+		D7C15E211F93FCCC004F38D4 /* MomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E201F93FCCC004F38D4 /* MomentsViewController.swift */; };
+		D7C15E261F93FD14004F38D4 /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E251F93FD14004F38D4 /* AddActionViewController.swift */; };
+		D7C15E281F93FD21004F38D4 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E271F93FD21004F38D4 /* ActionViewController.swift */; };
+		D7C15E2A1F93FD2B004F38D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E291F93FD2B004F38D4 /* SettingsViewController.swift */; };
+		D7C15E2E1F93FE29004F38D4 /* MomentDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E2D1F93FE29004F38D4 /* MomentDetailManager.swift */; };
+		D7C15E301F93FF01004F38D4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E2F1F93FF01004F38D4 /* Settings.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,12 +47,7 @@
 		06C2EA2D1F91D589003D0ADF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06C2EA381F91D751003D0ADF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
-		06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
-		06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsViewController.swift; sourceTree = "<group>"; };
-		06C2EA441F91D806003D0ADF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
-		06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		06C2EA4C1F91D881003D0ADF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		06C2EA4E1F91D8DF003D0ADF /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
@@ -60,12 +58,20 @@
 		1A7D127026D048F03DEE5A44 /* Pods-Everest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.debug.xcconfig"; sourceTree = "<group>"; };
 		28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.release.xcconfig"; sourceTree = "<group>"; };
-		D7C15E071F92F9AD004F38D4 /* HomeTimeLine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HomeTimeLine.storyboard; path = Views/HomeTimeLine.storyboard; sourceTree = "<group>"; };
 		D7C15E091F930924004F38D4 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = Everest/Views/ServiceManager.swift; sourceTree = SOURCE_ROOT; };
 		D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLineManager.swift; path = TimeLine/TimeLineManager.swift; sourceTree = "<group>"; };
 		D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineViewController.swift; path = TimeLine/TimelineViewController.swift; sourceTree = "<group>"; };
 		D7C15E101F9336BA004F38D4 /* MomentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentsCell.swift; path = Everest/Views/MomentsCell.swift; sourceTree = SOURCE_ROOT; };
 		D7C15E111F9336BA004F38D4 /* MomentsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentsCell.xib; path = Everest/Views/MomentsCell.xib; sourceTree = SOURCE_ROOT; };
+		D7C15E151F93E22E004F38D4 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = UserProfile/UserProfileViewController.swift; sourceTree = "<group>"; };
+		D7C15E1B1F93E43B004F38D4 /* UserProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileManager.swift; path = UserProfile/UserProfileManager.swift; sourceTree = "<group>"; };
+		D7C15E1E1F93FCBA004F38D4 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UserProfile.storyboard; path = UserProfile/UserProfile.storyboard; sourceTree = "<group>"; };
+		D7C15E201F93FCCC004F38D4 /* MomentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentsViewController.swift; path = MomentDetail/MomentsViewController.swift; sourceTree = "<group>"; };
+		D7C15E251F93FD14004F38D4 /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddActionViewController.swift; path = AddAction/AddActionViewController.swift; sourceTree = "<group>"; };
+		D7C15E271F93FD21004F38D4 /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionViewController.swift; path = ActionDetail/ActionViewController.swift; sourceTree = "<group>"; };
+		D7C15E291F93FD2B004F38D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Settings/SettingsViewController.swift; sourceTree = "<group>"; };
+		D7C15E2D1F93FE29004F38D4 /* MomentDetailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentDetailManager.swift; path = MomentDetail/MomentDetailManager.swift; sourceTree = "<group>"; };
+		D7C15E2F1F93FF01004F38D4 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = Settings/Settings.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +112,6 @@
 				06C2EA361F91D6DE003D0ADF /* Network */,
 				06C2EA371F91D6EA003D0ADF /* Views */,
 				06C2EA211F91D589003D0ADF /* AppDelegate.swift */,
-				D7C15E071F92F9AD004F38D4 /* HomeTimeLine.storyboard */,
 				06C2EA251F91D589003D0ADF /* Main.storyboard */,
 				06C2EA281F91D589003D0ADF /* Assets.xcassets */,
 				06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */,
@@ -119,14 +124,14 @@
 			isa = PBXGroup;
 			children = (
 				D7C15E0B1F930995004F38D4 /* TimeLine */,
-				06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */,
-				06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */,
+				D7C15E1D1F93FC36004F38D4 /* MomentDetail */,
+				D7C15E141F93E1F2004F38D4 /* UserProfile */,
+				D7C15E221F93FCD8004F38D4 /* AddAction */,
+				D7C15E231F93FCE2004F38D4 /* ActionDetail */,
+				D7C15E241F93FCEC004F38D4 /* Settings */,
 				06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */,
 				06C2EA381F91D751003D0ADF /* LoginViewController.swift */,
-				06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */,
 				06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */,
-				06C2EA441F91D806003D0ADF /* SettingsViewController.swift */,
-				06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */,
 				06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */,
 			);
 			path = Controllers;
@@ -153,6 +158,8 @@
 		06C2EA371F91D6EA003D0ADF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D7C15E101F9336BA004F38D4 /* MomentsCell.swift */,
+				D7C15E111F9336BA004F38D4 /* MomentsCell.xib */,
 				06C2EA521F91D921003D0ADF /* UserProfileView.swift */,
 				06C2EA541F91D936003D0ADF /* ActionView.swift */,
 				06C2EA561F91D944003D0ADF /* MomentView.swift */,
@@ -174,10 +181,52 @@
 			children = (
 				D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */,
 				D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */,
-				D7C15E101F9336BA004F38D4 /* MomentsCell.swift */,
-				D7C15E111F9336BA004F38D4 /* MomentsCell.xib */,
 			);
 			name = TimeLine;
+			sourceTree = "<group>";
+		};
+		D7C15E141F93E1F2004F38D4 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D7C15E151F93E22E004F38D4 /* UserProfileViewController.swift */,
+				D7C15E1B1F93E43B004F38D4 /* UserProfileManager.swift */,
+				D7C15E1E1F93FCBA004F38D4 /* UserProfile.storyboard */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		D7C15E1D1F93FC36004F38D4 /* MomentDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D7C15E2D1F93FE29004F38D4 /* MomentDetailManager.swift */,
+				D7C15E201F93FCCC004F38D4 /* MomentsViewController.swift */,
+			);
+			name = MomentDetail;
+			sourceTree = "<group>";
+		};
+		D7C15E221F93FCD8004F38D4 /* AddAction */ = {
+			isa = PBXGroup;
+			children = (
+				D7C15E251F93FD14004F38D4 /* AddActionViewController.swift */,
+			);
+			name = AddAction;
+			sourceTree = "<group>";
+		};
+		D7C15E231F93FCE2004F38D4 /* ActionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D7C15E271F93FD21004F38D4 /* ActionViewController.swift */,
+			);
+			name = ActionDetail;
+			sourceTree = "<group>";
+		};
+		D7C15E241F93FCEC004F38D4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D7C15E291F93FD2B004F38D4 /* SettingsViewController.swift */,
+				D7C15E2F1F93FF01004F38D4 /* Settings.storyboard */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		F1F54D22BC47D5DD4FEE93F4 /* Frameworks */ = {
@@ -253,8 +302,9 @@
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
 				D7C15E131F9336BA004F38D4 /* MomentsCell.xib in Resources */,
 				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
-				D7C15E081F92F9AD004F38D4 /* HomeTimeLine.storyboard in Resources */,
+				D7C15E301F93FF01004F38D4 /* Settings.storyboard in Resources */,
 				06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */,
+				D7C15E1F1F93FCBA004F38D4 /* UserProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,17 +389,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06C2EA411F91D7C8003D0ADF /* AddActionViewController.swift in Sources */,
-				06C2EA491F91D83A003D0ADF /* UserProfileViewController.swift in Sources */,
+				D7C15E161F93E22E004F38D4 /* UserProfileViewController.swift in Sources */,
 				06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */,
+				D7C15E2A1F93FD2B004F38D4 /* SettingsViewController.swift in Sources */,
+				D7C15E261F93FD14004F38D4 /* AddActionViewController.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
-				06C2EA3F1F91D7A2003D0ADF /* ActionViewController.swift in Sources */,
 				D7C15E0A1F930924004F38D4 /* ServiceManager.swift in Sources */,
 				06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */,
+				D7C15E281F93FD21004F38D4 /* ActionViewController.swift in Sources */,
 				D7C15E0F1F9309E5004F38D4 /* TimelineViewController.swift in Sources */,
-				06C2EA431F91D7F1003D0ADF /* MomentsViewController.swift in Sources */,
 				06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */,
 				06C2EA391F91D751003D0ADF /* LoginViewController.swift in Sources */,
+				D7C15E211F93FCCC004F38D4 /* MomentsViewController.swift in Sources */,
 				06C2EA511F91D8EF003D0ADF /* Act.swift in Sources */,
 				06C2EA4D1F91D881003D0ADF /* User.swift in Sources */,
 				06C2EA531F91D921003D0ADF /* UserProfileView.swift in Sources */,
@@ -357,7 +408,8 @@
 				D7C15E0D1F9309CA004F38D4 /* TimeLineManager.swift in Sources */,
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
 				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
-				06C2EA451F91D806003D0ADF /* SettingsViewController.swift in Sources */,
+				D7C15E1C1F93E43B004F38D4 /* UserProfileManager.swift in Sources */,
+				D7C15E2E1F93FE29004F38D4 /* MomentDetailManager.swift in Sources */,
 				D7C15E121F9336BA004F38D4 /* MomentsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

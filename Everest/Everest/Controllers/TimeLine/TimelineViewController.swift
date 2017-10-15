@@ -44,6 +44,14 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //show login view
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let loginController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        self.present(loginController, animated: true) { 
+            
+        }
+        
         let nib = UINib(nibName: "MomentsCell", bundle: nil)
         self.timelineTableView.register(nib, forCellReuseIdentifier: "MomentsCell")
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
@@ -94,7 +102,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MomentsCell", for: indexPath) as! MomentsCell
         if (self.moments?.count)!>0  {
-            
+            cell.moment = self.moments?[indexPath.row]
         }
         return cell
     }
@@ -104,6 +112,9 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         return 10
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
     
     
 

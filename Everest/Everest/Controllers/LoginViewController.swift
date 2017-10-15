@@ -28,6 +28,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         if let accessToken = AccessToken.current {
             // User is logged in, use 'accessToken' here.
             print("User is logged in -- \(accessToken.userId!)")
+
         } else {
             print("User is NOT logged in ")
         }
@@ -54,6 +55,11 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             print (declinedPermissions)
             print (accessToken)
         }
+        
+        self.dismiss(animated: true) { 
+            
+        }
+        
     }
     
     
