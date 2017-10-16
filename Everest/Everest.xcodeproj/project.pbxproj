@@ -25,6 +25,7 @@
 		D7079BC51F945D8A00383999 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7079BC41F945D2700383999 /* ServiceManager.swift */; };
 		D7079BC71F945DD100383999 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7079BC61F945DD100383999 /* FireBaseManager.swift */; };
 		D7079BC91F945DF900383999 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7079BC81F945DF400383999 /* Action.swift */; };
+		D7079BCB1F9467CC00383999 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7079BCA1F9467C600383999 /* GoogleService-Info.plist */; };
 		D7C15E0D1F9309CA004F38D4 /* TimeLineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */; };
 		D7C15E0F1F9309E5004F38D4 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */; };
 		D7C15E121F9336BA004F38D4 /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E101F9336BA004F38D4 /* MomentCell.swift */; };
@@ -66,6 +67,7 @@
 		D7079BC41F945D2700383999 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		D7079BC61F945DD100383999 /* FireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireBaseManager.swift; path = "../../../../../../Downloads/everest-master/Everest/Everest/Controllers/FireBaseManager.swift"; sourceTree = "<group>"; };
 		D7079BC81F945DF400383999 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		D7079BCA1F9467C600383999 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLineManager.swift; path = TimeLine/TimeLineManager.swift; sourceTree = "<group>"; };
 		D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineViewController.swift; path = TimeLine/TimelineViewController.swift; sourceTree = "<group>"; };
 		D7C15E101F9336BA004F38D4 /* MomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentCell.swift; path = Everest/Views/MomentCell.swift; sourceTree = SOURCE_ROOT; };
@@ -125,6 +127,7 @@
 				06C2EA251F91D589003D0ADF /* Main.storyboard */,
 				06C2EA281F91D589003D0ADF /* Assets.xcassets */,
 				06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */,
+				D7079BCA1F9467C600383999 /* GoogleService-Info.plist */,
 				06C2EA2D1F91D589003D0ADF /* Info.plist */,
 			);
 			path = Everest;
@@ -316,6 +319,7 @@
 			files = (
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
 				D7C15E131F9336BA004F38D4 /* MomentCell.xib in Resources */,
+				D7079BCB1F9467CC00383999 /* GoogleService-Info.plist in Resources */,
 				D7C15E341F9418DD004F38D4 /* ActionCell.xib in Resources */,
 				D7E854CF1F943BD200918B13 /* Settings.storyboard in Resources */,
 				D7C15E3A1F943B0A004F38D4 /* UserProfile.storyboard in Resources */,
