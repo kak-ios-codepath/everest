@@ -22,7 +22,9 @@
 		06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA541F91D936003D0ADF /* ActionView.swift */; };
 		06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA561F91D944003D0ADF /* MomentView.swift */; };
 		53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */; };
-		D7C15E0A1F930924004F38D4 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E091F930924004F38D4 /* ServiceManager.swift */; };
+		D7079BC51F945D8A00383999 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7079BC41F945D2700383999 /* ServiceManager.swift */; };
+		D7079BC71F945DD100383999 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7079BC61F945DD100383999 /* FireBaseManager.swift */; };
+		D7079BC91F945DF900383999 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7079BC81F945DF400383999 /* Action.swift */; };
 		D7C15E0D1F9309CA004F38D4 /* TimeLineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */; };
 		D7C15E0F1F9309E5004F38D4 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */; };
 		D7C15E121F9336BA004F38D4 /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E101F9336BA004F38D4 /* MomentCell.swift */; };
@@ -61,7 +63,9 @@
 		1A7D127026D048F03DEE5A44 /* Pods-Everest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.debug.xcconfig"; sourceTree = "<group>"; };
 		28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.release.xcconfig"; sourceTree = "<group>"; };
-		D7C15E091F930924004F38D4 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = Everest/Views/ServiceManager.swift; sourceTree = SOURCE_ROOT; };
+		D7079BC41F945D2700383999 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		D7079BC61F945DD100383999 /* FireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireBaseManager.swift; path = "../../../../../../Downloads/everest-master/Everest/Everest/Controllers/FireBaseManager.swift"; sourceTree = "<group>"; };
+		D7079BC81F945DF400383999 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLineManager.swift; path = TimeLine/TimeLineManager.swift; sourceTree = "<group>"; };
 		D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineViewController.swift; path = TimeLine/TimelineViewController.swift; sourceTree = "<group>"; };
 		D7C15E101F9336BA004F38D4 /* MomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentCell.swift; path = Everest/Views/MomentCell.swift; sourceTree = SOURCE_ROOT; };
@@ -115,8 +119,8 @@
 			children = (
 				06C2EA331F91D6AB003D0ADF /* Controllers */,
 				06C2EA351F91D6D5003D0ADF /* Models */,
-				06C2EA361F91D6DE003D0ADF /* Network */,
 				06C2EA371F91D6EA003D0ADF /* Views */,
+				D7079BC31F945D2700383999 /* Services */,
 				06C2EA211F91D589003D0ADF /* AppDelegate.swift */,
 				06C2EA251F91D589003D0ADF /* Main.storyboard */,
 				06C2EA281F91D589003D0ADF /* Assets.xcassets */,
@@ -146,19 +150,12 @@
 		06C2EA351F91D6D5003D0ADF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D7079BC81F945DF400383999 /* Action.swift */,
 				06C2EA4C1F91D881003D0ADF /* User.swift */,
 				06C2EA4E1F91D8DF003D0ADF /* Moment.swift */,
 				06C2EA501F91D8EF003D0ADF /* Act.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		06C2EA361F91D6DE003D0ADF /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				D7C15E091F930924004F38D4 /* ServiceManager.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		06C2EA371F91D6EA003D0ADF /* Views */ = {
@@ -182,6 +179,15 @@
 				96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D7079BC31F945D2700383999 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D7079BC61F945DD100383999 /* FireBaseManager.swift */,
+				D7079BC41F945D2700383999 /* ServiceManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		D7C15E0B1F930995004F38D4 /* TimeLine */ = {
@@ -403,9 +409,9 @@
 				D7C15E161F93E22E004F38D4 /* UserProfileViewController.swift in Sources */,
 				06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */,
 				D7C15E2A1F93FD2B004F38D4 /* SettingsViewController.swift in Sources */,
+				D7079BC51F945D8A00383999 /* ServiceManager.swift in Sources */,
 				D7C15E261F93FD14004F38D4 /* AddActionViewController.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
-				D7C15E0A1F930924004F38D4 /* ServiceManager.swift in Sources */,
 				06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */,
 				D7C15E281F93FD21004F38D4 /* ActionViewController.swift in Sources */,
 				D7C15E0F1F9309E5004F38D4 /* TimelineViewController.swift in Sources */,
@@ -418,8 +424,10 @@
 				06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */,
 				D7C15E0D1F9309CA004F38D4 /* TimeLineManager.swift in Sources */,
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
+				D7079BC91F945DF900383999 /* Action.swift in Sources */,
 				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
 				D7C15E1C1F93E43B004F38D4 /* UserProfileManager.swift in Sources */,
+				D7079BC71F945DD100383999 /* FireBaseManager.swift in Sources */,
 				D7C15E2E1F93FE29004F38D4 /* MomentDetailManager.swift in Sources */,
 				D7C15E121F9336BA004F38D4 /* MomentCell.swift in Sources */,
 				D7C15E331F9418DD004F38D4 /* ActionCell.swift in Sources */,
