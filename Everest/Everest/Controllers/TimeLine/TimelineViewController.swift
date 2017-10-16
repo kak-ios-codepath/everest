@@ -19,7 +19,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //  MARK: -- Initialization codes
     required init?(coder aDecoder: NSCoder) {
-        super .init(coder: aDecoder)
+        super.init(coder: aDecoder)
         initialize()
         
     }
@@ -27,7 +27,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super .init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         initialize()
     }
     
