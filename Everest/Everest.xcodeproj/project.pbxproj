@@ -27,10 +27,10 @@
 		06C2EA531F91D921003D0ADF /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA521F91D921003D0ADF /* UserProfileView.swift */; };
 		06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA541F91D936003D0ADF /* ActionView.swift */; };
 		06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA561F91D944003D0ADF /* MomentView.swift */; };
+		06C2EA591F946335003D0ADF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06C2EA581F946335003D0ADF /* GoogleService-Info.plist */; };
 		53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
 		CE55E6D71F92D88600EE6855 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55E6D61F92D88600EE6855 /* FireBaseManager.swift */; };
-		CE55E6D91F92DAA400EE6855 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE55E6D81F92DAA400EE6855 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,12 +56,12 @@
 		06C2EA521F91D921003D0ADF /* UserProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		06C2EA541F91D936003D0ADF /* ActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		06C2EA561F91D944003D0ADF /* MomentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentView.swift; sourceTree = "<group>"; };
+		06C2EA581F946335003D0ADF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1A7D127026D048F03DEE5A44 /* Pods-Everest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.debug.xcconfig"; sourceTree = "<group>"; };
 		28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.release.xcconfig"; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		CE55E6D61F92D88600EE6855 /* FireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireBaseManager.swift; path = Everest/Controllers/FireBaseManager.swift; sourceTree = SOURCE_ROOT; };
-		CE55E6D81F92DAA400EE6855 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../codepath_ios/karma/Karma/Karma/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,7 @@
 				06C2EA251F91D589003D0ADF /* Main.storyboard */,
 				06C2EA281F91D589003D0ADF /* Assets.xcassets */,
 				06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */,
-				CE55E6D81F92DAA400EE6855 /* GoogleService-Info.plist */,
+				06C2EA581F946335003D0ADF /* GoogleService-Info.plist */,
 				06C2EA2D1F91D589003D0ADF /* Info.plist */,
 			);
 			path = Everest;
@@ -237,7 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
-				CE55E6D91F92DAA400EE6855 /* GoogleService-Info.plist in Resources */,
+				06C2EA591F946335003D0ADF /* GoogleService-Info.plist in Resources */,
 				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
 				06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */,
 			);
@@ -261,7 +261,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		18B02BF8B41C4717C0AFF576 /* [CP] Copy Pods Resources */ = {
@@ -270,9 +270,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Everest/Pods-Everest-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -294,9 +297,14 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -308,9 +316,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

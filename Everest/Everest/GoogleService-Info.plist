@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>918479187059-6lob2lkp8ohhh316q8nnb14o9v4vm902.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.918479187059-6lob2lkp8ohhh316q8nnb14o9v4vm902</string>
+	<key>API_KEY</key>
+	<string>AIzaSyANoY40oNNfw7bMPtmnCqIz86ZIRMnYZq8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>918479187059</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.karma</string>
+	<key>PROJECT_ID</key>
+	<string>karma-2e7bc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>karma-2e7bc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:918479187059:ios:a49dac79c69fd37f</string>
+	<key>DATABASE_URL</key>
+	<string>https://karma-2e7bc.firebaseio.com</string>
+</dict>
+</plist>
