@@ -13,13 +13,7 @@
 		06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C2EA2A1F91D589003D0ADF /* LaunchScreen.storyboard */; };
 		06C2EA391F91D751003D0ADF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA381F91D751003D0ADF /* LoginViewController.swift */; };
 		06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */; };
-		06C2EA3D1F91D776003D0ADF /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3C1F91D776003D0ADF /* TimelineViewController.swift */; };
-		06C2EA3F1F91D7A2003D0ADF /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */; };
-		06C2EA411F91D7C8003D0ADF /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */; };
-		06C2EA431F91D7F1003D0ADF /* MomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */; };
-		06C2EA451F91D806003D0ADF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA441F91D806003D0ADF /* SettingsViewController.swift */; };
 		06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */; };
-		06C2EA491F91D83A003D0ADF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */; };
 		06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */; };
 		06C2EA4D1F91D881003D0ADF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA4C1F91D881003D0ADF /* User.swift */; };
 		06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA4E1F91D8DF003D0ADF /* Moment.swift */; };
@@ -30,7 +24,24 @@
 		06C2EA591F946335003D0ADF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06C2EA581F946335003D0ADF /* GoogleService-Info.plist */; };
 		53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
-		CE55E6D71F92D88600EE6855 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55E6D61F92D88600EE6855 /* FireBaseManager.swift */; };
+		D724D0751F947FF900D25A5A /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0611F947FF900D25A5A /* ActionViewController.swift */; };
+		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
+		D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0641F947FF900D25A5A /* AddActionViewController.swift */; };
+		D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0661F947FF900D25A5A /* MomentDetailManager.swift */; };
+		D724D0791F947FF900D25A5A /* MomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0671F947FF900D25A5A /* MomentsViewController.swift */; };
+		D724D07C1F947FF900D25A5A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D06C1F947FF900D25A5A /* Settings.storyboard */; };
+		D724D07D1F947FF900D25A5A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D06D1F947FF900D25A5A /* SettingsViewController.swift */; };
+		D724D07E1F947FF900D25A5A /* TimeLineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D06F1F947FF900D25A5A /* TimeLineManager.swift */; };
+		D724D07F1F947FF900D25A5A /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0701F947FF900D25A5A /* TimelineViewController.swift */; };
+		D724D0801F947FF900D25A5A /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0721F947FF900D25A5A /* UserProfile.storyboard */; };
+		D724D0811F947FF900D25A5A /* UserProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0731F947FF900D25A5A /* UserProfileManager.swift */; };
+		D724D0821F947FF900D25A5A /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0741F947FF900D25A5A /* UserProfileViewController.swift */; };
+		D724D0861F94804500D25A5A /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0841F94804500D25A5A /* FireBaseManager.swift */; };
+		D724D0871F94804500D25A5A /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0851F94804500D25A5A /* ServiceManager.swift */; };
+		D724D08C1F94806B00D25A5A /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0881F94806B00D25A5A /* ActionCell.swift */; };
+		D724D08D1F94806B00D25A5A /* ActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724D0891F94806B00D25A5A /* ActionCell.xib */; };
+		D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D08A1F94806B00D25A5A /* MomentCell.swift */; };
+		D724D08F1F94806B00D25A5A /* MomentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724D08B1F94806B00D25A5A /* MomentCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,13 +53,7 @@
 		06C2EA2D1F91D589003D0ADF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06C2EA381F91D751003D0ADF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		06C2EA3C1F91D776003D0ADF /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
-		06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
-		06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
-		06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsViewController.swift; sourceTree = "<group>"; };
-		06C2EA441F91D806003D0ADF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
-		06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		06C2EA4C1F91D881003D0ADF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		06C2EA4E1F91D8DF003D0ADF /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
@@ -61,7 +66,24 @@
 		28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.release.xcconfig"; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		CE55E6D61F92D88600EE6855 /* FireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireBaseManager.swift; path = Everest/Controllers/FireBaseManager.swift; sourceTree = SOURCE_ROOT; };
+		D724D0611F947FF900D25A5A /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
+		D724D0641F947FF900D25A5A /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
+		D724D0661F947FF900D25A5A /* MomentDetailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailManager.swift; sourceTree = "<group>"; };
+		D724D0671F947FF900D25A5A /* MomentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsViewController.swift; sourceTree = "<group>"; };
+		D724D06C1F947FF900D25A5A /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		D724D06D1F947FF900D25A5A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D724D06F1F947FF900D25A5A /* TimeLineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineManager.swift; sourceTree = "<group>"; };
+		D724D0701F947FF900D25A5A /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		D724D0721F947FF900D25A5A /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		D724D0731F947FF900D25A5A /* UserProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileManager.swift; sourceTree = "<group>"; };
+		D724D0741F947FF900D25A5A /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		D724D0841F94804500D25A5A /* FireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
+		D724D0851F94804500D25A5A /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		D724D0881F94806B00D25A5A /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
+		D724D0891F94806B00D25A5A /* ActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCell.xib; sourceTree = "<group>"; };
+		D724D08A1F94806B00D25A5A /* MomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentCell.swift; sourceTree = "<group>"; };
+		D724D08B1F94806B00D25A5A /* MomentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MomentCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +121,7 @@
 			children = (
 				06C2EA331F91D6AB003D0ADF /* Controllers */,
 				06C2EA351F91D6D5003D0ADF /* Models */,
-				06C2EA361F91D6DE003D0ADF /* Network */,
+				D724D0831F94804500D25A5A /* Network */,
 				06C2EA371F91D6EA003D0ADF /* Views */,
 				06C2EA211F91D589003D0ADF /* AppDelegate.swift */,
 				06C2EA251F91D589003D0ADF /* Main.storyboard */,
@@ -114,15 +136,15 @@
 		06C2EA331F91D6AB003D0ADF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				06C2EA3E1F91D7A2003D0ADF /* ActionViewController.swift */,
-				06C2EA401F91D7C8003D0ADF /* AddActionViewController.swift */,
+				D724D0601F947FF900D25A5A /* ActionDetail */,
+				D724D0621F947FF900D25A5A /* AddAction */,
+				D724D0651F947FF900D25A5A /* MomentDetail */,
+				D724D06B1F947FF900D25A5A /* Settings */,
+				D724D06E1F947FF900D25A5A /* TimeLine */,
+				D724D0711F947FF900D25A5A /* UserProfile */,
 				06C2EA461F91D81A003D0ADF /* InviteFriendsViewController.swift */,
 				06C2EA381F91D751003D0ADF /* LoginViewController.swift */,
-				06C2EA421F91D7F1003D0ADF /* MomentsViewController.swift */,
 				06C2EA4A1F91D861003D0ADF /* NotificationsViewController.swift */,
-				06C2EA441F91D806003D0ADF /* SettingsViewController.swift */,
-				06C2EA3C1F91D776003D0ADF /* TimelineViewController.swift */,
-				06C2EA481F91D83A003D0ADF /* UserProfileViewController.swift */,
 				06C2EA3A1F91D764003D0ADF /* WelcomeViewController.swift */,
 			);
 			path = Controllers;
@@ -139,17 +161,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		06C2EA361F91D6DE003D0ADF /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				CE55E6D61F92D88600EE6855 /* FireBaseManager.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		06C2EA371F91D6EA003D0ADF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D724D0881F94806B00D25A5A /* ActionCell.swift */,
+				D724D0891F94806B00D25A5A /* ActionCell.xib */,
+				D724D08A1F94806B00D25A5A /* MomentCell.swift */,
+				D724D08B1F94806B00D25A5A /* MomentCell.xib */,
 				06C2EA521F91D921003D0ADF /* UserProfileView.swift */,
 				06C2EA541F91D936003D0ADF /* ActionView.swift */,
 				06C2EA561F91D944003D0ADF /* MomentView.swift */,
@@ -164,6 +182,69 @@
 				96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D724D0601F947FF900D25A5A /* ActionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D724D0611F947FF900D25A5A /* ActionViewController.swift */,
+			);
+			path = ActionDetail;
+			sourceTree = "<group>";
+		};
+		D724D0621F947FF900D25A5A /* AddAction */ = {
+			isa = PBXGroup;
+			children = (
+				D724D0631F947FF900D25A5A /* AddAction.storyboard */,
+				D724D0641F947FF900D25A5A /* AddActionViewController.swift */,
+			);
+			path = AddAction;
+			sourceTree = "<group>";
+		};
+		D724D0651F947FF900D25A5A /* MomentDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D724D0661F947FF900D25A5A /* MomentDetailManager.swift */,
+				D724D0671F947FF900D25A5A /* MomentsViewController.swift */,
+			);
+			path = MomentDetail;
+			sourceTree = "<group>";
+		};
+		D724D06B1F947FF900D25A5A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D724D06C1F947FF900D25A5A /* Settings.storyboard */,
+				D724D06D1F947FF900D25A5A /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D724D06E1F947FF900D25A5A /* TimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				D724D06F1F947FF900D25A5A /* TimeLineManager.swift */,
+				D724D0701F947FF900D25A5A /* TimelineViewController.swift */,
+			);
+			path = TimeLine;
+			sourceTree = "<group>";
+		};
+		D724D0711F947FF900D25A5A /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D724D0721F947FF900D25A5A /* UserProfile.storyboard */,
+				D724D0731F947FF900D25A5A /* UserProfileManager.swift */,
+				D724D0741F947FF900D25A5A /* UserProfileViewController.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		D724D0831F94804500D25A5A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D724D0841F94804500D25A5A /* FireBaseManager.swift */,
+				D724D0851F94804500D25A5A /* ServiceManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F1F54D22BC47D5DD4FEE93F4 /* Frameworks */ = {
@@ -236,9 +317,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D724D0801F947FF900D25A5A /* UserProfile.storyboard in Resources */,
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
 				06C2EA591F946335003D0ADF /* GoogleService-Info.plist in Resources */,
 				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
+				D724D07C1F947FF900D25A5A /* Settings.storyboard in Resources */,
+				D724D08F1F94806B00D25A5A /* MomentCell.xib in Resources */,
+				D724D08D1F94806B00D25A5A /* ActionCell.xib in Resources */,
+				D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */,
 				06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,7 +347,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		18B02BF8B41C4717C0AFF576 /* [CP] Copy Pods Resources */ = {
@@ -337,25 +423,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06C2EA411F91D7C8003D0ADF /* AddActionViewController.swift in Sources */,
 				CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */,
-				06C2EA491F91D83A003D0ADF /* UserProfileViewController.swift in Sources */,
 				06C2EA3B1F91D764003D0ADF /* WelcomeViewController.swift in Sources */,
+				D724D0861F94804500D25A5A /* FireBaseManager.swift in Sources */,
+				D724D0871F94804500D25A5A /* ServiceManager.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
-				06C2EA3F1F91D7A2003D0ADF /* ActionViewController.swift in Sources */,
+				D724D0821F947FF900D25A5A /* UserProfileViewController.swift in Sources */,
+				D724D0751F947FF900D25A5A /* ActionViewController.swift in Sources */,
+				D724D07D1F947FF900D25A5A /* SettingsViewController.swift in Sources */,
+				D724D07E1F947FF900D25A5A /* TimeLineManager.swift in Sources */,
+				D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */,
+				D724D08C1F94806B00D25A5A /* ActionCell.swift in Sources */,
 				06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */,
-				06C2EA431F91D7F1003D0ADF /* MomentsViewController.swift in Sources */,
+				D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */,
 				06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */,
-				06C2EA3D1F91D776003D0ADF /* TimelineViewController.swift in Sources */,
+				D724D07F1F947FF900D25A5A /* TimelineViewController.swift in Sources */,
 				06C2EA391F91D751003D0ADF /* LoginViewController.swift in Sources */,
+				D724D0791F947FF900D25A5A /* MomentsViewController.swift in Sources */,
 				06C2EA511F91D8EF003D0ADF /* Act.swift in Sources */,
 				06C2EA4D1F91D881003D0ADF /* User.swift in Sources */,
+				D724D0811F947FF900D25A5A /* UserProfileManager.swift in Sources */,
 				06C2EA531F91D921003D0ADF /* UserProfileView.swift in Sources */,
+				D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */,
 				06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */,
-				CE55E6D71F92D88600EE6855 /* FireBaseManager.swift in Sources */,
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
 				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
-				06C2EA451F91D806003D0ADF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

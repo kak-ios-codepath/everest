@@ -54,6 +54,10 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             print (declinedPermissions)
             print (accessToken)
         }
+        
+        self.dismiss(animated: true) {
+            
+        }
     }
     
     
