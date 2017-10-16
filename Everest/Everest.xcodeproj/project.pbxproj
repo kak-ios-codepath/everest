@@ -25,17 +25,20 @@
 		D7C15E0A1F930924004F38D4 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E091F930924004F38D4 /* ServiceManager.swift */; };
 		D7C15E0D1F9309CA004F38D4 /* TimeLineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */; };
 		D7C15E0F1F9309E5004F38D4 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */; };
-		D7C15E121F9336BA004F38D4 /* MomentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E101F9336BA004F38D4 /* MomentsCell.swift */; };
-		D7C15E131F9336BA004F38D4 /* MomentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E111F9336BA004F38D4 /* MomentsCell.xib */; };
+		D7C15E121F9336BA004F38D4 /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E101F9336BA004F38D4 /* MomentCell.swift */; };
+		D7C15E131F9336BA004F38D4 /* MomentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E111F9336BA004F38D4 /* MomentCell.xib */; };
 		D7C15E161F93E22E004F38D4 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E151F93E22E004F38D4 /* UserProfileViewController.swift */; };
 		D7C15E1C1F93E43B004F38D4 /* UserProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E1B1F93E43B004F38D4 /* UserProfileManager.swift */; };
-		D7C15E1F1F93FCBA004F38D4 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E1E1F93FCBA004F38D4 /* UserProfile.storyboard */; };
 		D7C15E211F93FCCC004F38D4 /* MomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E201F93FCCC004F38D4 /* MomentsViewController.swift */; };
 		D7C15E261F93FD14004F38D4 /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E251F93FD14004F38D4 /* AddActionViewController.swift */; };
 		D7C15E281F93FD21004F38D4 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E271F93FD21004F38D4 /* ActionViewController.swift */; };
 		D7C15E2A1F93FD2B004F38D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E291F93FD2B004F38D4 /* SettingsViewController.swift */; };
 		D7C15E2E1F93FE29004F38D4 /* MomentDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E2D1F93FE29004F38D4 /* MomentDetailManager.swift */; };
-		D7C15E301F93FF01004F38D4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E2F1F93FF01004F38D4 /* Settings.storyboard */; };
+		D7C15E331F9418DD004F38D4 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C15E311F9418DD004F38D4 /* ActionCell.swift */; };
+		D7C15E341F9418DD004F38D4 /* ActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E321F9418DD004F38D4 /* ActionCell.xib */; };
+		D7C15E3A1F943B0A004F38D4 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C15E391F943B0A004F38D4 /* UserProfile.storyboard */; };
+		D7E854CD1F943B8600918B13 /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7E854CC1F943B8600918B13 /* AddAction.storyboard */; };
+		D7E854CF1F943BD200918B13 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7E854CE1F943BD200918B13 /* Settings.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,17 +64,20 @@
 		D7C15E091F930924004F38D4 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = Everest/Views/ServiceManager.swift; sourceTree = SOURCE_ROOT; };
 		D7C15E0C1F9309CA004F38D4 /* TimeLineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLineManager.swift; path = TimeLine/TimeLineManager.swift; sourceTree = "<group>"; };
 		D7C15E0E1F9309E5004F38D4 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineViewController.swift; path = TimeLine/TimelineViewController.swift; sourceTree = "<group>"; };
-		D7C15E101F9336BA004F38D4 /* MomentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentsCell.swift; path = Everest/Views/MomentsCell.swift; sourceTree = SOURCE_ROOT; };
-		D7C15E111F9336BA004F38D4 /* MomentsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentsCell.xib; path = Everest/Views/MomentsCell.xib; sourceTree = SOURCE_ROOT; };
+		D7C15E101F9336BA004F38D4 /* MomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentCell.swift; path = Everest/Views/MomentCell.swift; sourceTree = SOURCE_ROOT; };
+		D7C15E111F9336BA004F38D4 /* MomentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MomentCell.xib; path = Everest/Views/MomentCell.xib; sourceTree = SOURCE_ROOT; };
 		D7C15E151F93E22E004F38D4 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = UserProfile/UserProfileViewController.swift; sourceTree = "<group>"; };
 		D7C15E1B1F93E43B004F38D4 /* UserProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileManager.swift; path = UserProfile/UserProfileManager.swift; sourceTree = "<group>"; };
-		D7C15E1E1F93FCBA004F38D4 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UserProfile.storyboard; path = UserProfile/UserProfile.storyboard; sourceTree = "<group>"; };
 		D7C15E201F93FCCC004F38D4 /* MomentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentsViewController.swift; path = MomentDetail/MomentsViewController.swift; sourceTree = "<group>"; };
 		D7C15E251F93FD14004F38D4 /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddActionViewController.swift; path = AddAction/AddActionViewController.swift; sourceTree = "<group>"; };
 		D7C15E271F93FD21004F38D4 /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionViewController.swift; path = ActionDetail/ActionViewController.swift; sourceTree = "<group>"; };
 		D7C15E291F93FD2B004F38D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Settings/SettingsViewController.swift; sourceTree = "<group>"; };
 		D7C15E2D1F93FE29004F38D4 /* MomentDetailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentDetailManager.swift; path = MomentDetail/MomentDetailManager.swift; sourceTree = "<group>"; };
-		D7C15E2F1F93FF01004F38D4 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = Settings/Settings.storyboard; sourceTree = "<group>"; };
+		D7C15E311F9418DD004F38D4 /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
+		D7C15E321F9418DD004F38D4 /* ActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCell.xib; sourceTree = "<group>"; };
+		D7C15E391F943B0A004F38D4 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UserProfile.storyboard; path = UserProfile/UserProfile.storyboard; sourceTree = "<group>"; };
+		D7E854CC1F943B8600918B13 /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddAction.storyboard; path = AddAction/AddAction.storyboard; sourceTree = "<group>"; };
+		D7E854CE1F943BD200918B13 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = Settings/Settings.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,8 +164,10 @@
 		06C2EA371F91D6EA003D0ADF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D7C15E101F9336BA004F38D4 /* MomentsCell.swift */,
-				D7C15E111F9336BA004F38D4 /* MomentsCell.xib */,
+				D7C15E101F9336BA004F38D4 /* MomentCell.swift */,
+				D7C15E111F9336BA004F38D4 /* MomentCell.xib */,
+				D7C15E311F9418DD004F38D4 /* ActionCell.swift */,
+				D7C15E321F9418DD004F38D4 /* ActionCell.xib */,
 				06C2EA521F91D921003D0ADF /* UserProfileView.swift */,
 				06C2EA541F91D936003D0ADF /* ActionView.swift */,
 				06C2EA561F91D944003D0ADF /* MomentView.swift */,
@@ -190,7 +198,7 @@
 			children = (
 				D7C15E151F93E22E004F38D4 /* UserProfileViewController.swift */,
 				D7C15E1B1F93E43B004F38D4 /* UserProfileManager.swift */,
-				D7C15E1E1F93FCBA004F38D4 /* UserProfile.storyboard */,
+				D7C15E391F943B0A004F38D4 /* UserProfile.storyboard */,
 			);
 			name = UserProfile;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 		D7C15E221F93FCD8004F38D4 /* AddAction */ = {
 			isa = PBXGroup;
 			children = (
+				D7E854CC1F943B8600918B13 /* AddAction.storyboard */,
 				D7C15E251F93FD14004F38D4 /* AddActionViewController.swift */,
 			);
 			name = AddAction;
@@ -223,8 +232,8 @@
 		D7C15E241F93FCEC004F38D4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D7E854CE1F943BD200918B13 /* Settings.storyboard */,
 				D7C15E291F93FD2B004F38D4 /* SettingsViewController.swift */,
-				D7C15E2F1F93FF01004F38D4 /* Settings.storyboard */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -300,11 +309,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
-				D7C15E131F9336BA004F38D4 /* MomentsCell.xib in Resources */,
+				D7C15E131F9336BA004F38D4 /* MomentCell.xib in Resources */,
+				D7C15E341F9418DD004F38D4 /* ActionCell.xib in Resources */,
+				D7E854CF1F943BD200918B13 /* Settings.storyboard in Resources */,
+				D7C15E3A1F943B0A004F38D4 /* UserProfile.storyboard in Resources */,
 				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
-				D7C15E301F93FF01004F38D4 /* Settings.storyboard in Resources */,
+				D7E854CD1F943B8600918B13 /* AddAction.storyboard in Resources */,
 				06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */,
-				D7C15E1F1F93FCBA004F38D4 /* UserProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +421,8 @@
 				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
 				D7C15E1C1F93E43B004F38D4 /* UserProfileManager.swift in Sources */,
 				D7C15E2E1F93FE29004F38D4 /* MomentDetailManager.swift in Sources */,
-				D7C15E121F9336BA004F38D4 /* MomentsCell.swift in Sources */,
+				D7C15E121F9336BA004F38D4 /* MomentCell.swift in Sources */,
+				D7C15E331F9418DD004F38D4 /* ActionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

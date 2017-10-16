@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MomentCellDelegate {
 
     //  MARK: -- outlets and properties
     @IBOutlet weak var timelineTableView: UITableView!
@@ -52,8 +52,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             
         }
         
-        let nib = UINib(nibName: "MomentsCell", bundle: nil)
-        self.timelineTableView.register(nib, forCellReuseIdentifier: "MomentsCell")
+        let nib = UINib(nibName: "MomentCell", bundle: nil)
+        self.timelineTableView.register(nib, forCellReuseIdentifier: "MomentCell")
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
         self.timelineTableView.rowHeight = UITableViewAutomaticDimension
 
@@ -96,12 +96,14 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     */
     
+    
     // MARK: -- Tableview data source and delegate methods
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MomentsCell", for: indexPath) as! MomentsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
         if (self.moments?.count)!>0  {
+            cell.momentCellDelegate = self
             cell.moment = self.moments?[indexPath.row]
         }
         return cell
@@ -114,8 +116,20 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController")
+        self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+        
     }
     
+    // MARK: -- MomentCell delegate methods
     
+    func momentCell(cell: MomentCell, didTapOnUserIconForMoment: Moment) {
+        let userProfileStoryboard = UIStoryboard(name: "UserProfile", bundle: nil)
+        let userProfileVC = userProfileStoryboard.instantiateViewController(withIdentifier: "UserProfileViewController")
+        //TODO: Add the user object property to the userprofile viewcontroller
+        self.navigationController?.pushViewController(userProfileVC, animated: true)
+        
+    }
 
 }

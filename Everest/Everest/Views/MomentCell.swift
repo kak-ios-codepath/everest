@@ -7,13 +7,19 @@
 //
 
 import UIKit
+@objc protocol MomentCellDelegate {
+    @objc optional func momentCell(cell: MomentCell, didTapOnUserIconForMoment: Moment)
+}
 
-class MomentsCell: UITableViewCell {
+class MomentCell: UITableViewCell {
 
     @IBOutlet weak var momentDescription: UILabel!
     @IBOutlet weak var momentTitleLabel: UILabel!
     @IBOutlet weak var momentImageVIew: UIImageView!
     @IBOutlet weak var userProfileImageView: UIImageView!
+    
+    weak var momentCellDelegate : MomentCellDelegate?
+
     
     var moment: Moment? {
         didSet {
@@ -42,6 +48,10 @@ class MomentsCell: UITableViewCell {
     @objc private func userIconTapped(_ sender: UITapGestureRecognizer) -> Void {
         
         // add moment cell delegate
+        
+        if self.momentCellDelegate != nil {
+            self.momentCellDelegate?.momentCell!(cell: self, didTapOnUserIconForMoment: self.moment!)
+        }
         
     }
 }
