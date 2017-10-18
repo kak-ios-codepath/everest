@@ -15,6 +15,7 @@ target 'Everest' do
   pod 'SwiftyJSON'
   pod 'TTTAttributedLabel'
   pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'GoogleSignIn'
