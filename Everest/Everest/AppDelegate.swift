@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FacebookCore
 import UserNotifications
+import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     FirebaseApp.configure()
     SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-    registerForPushNotifications()
+//    registerForPushNotifications()
     return true
   }
   
@@ -80,6 +81,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFailToRegisterForRemoteNotificationsWithError error: Error) {
     print("Failed to register: \(error)")
+  }
+  
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    
+    let dict = userInfo["aps"] as! NSDictionary
+    let message = dict["alert"] as! String
+    print(message)
   }
   
 }
