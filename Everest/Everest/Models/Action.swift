@@ -13,15 +13,13 @@ import SwiftyJSON
 class Action: NSObject {
   
   var id: String          //same id from acts
-  var categoryId: String //same categoryId Id from acts
   var createdAt: String
   var status: String
   var momentId: String?
   var likes: Int
   
-  init(id: String, categoryId: String, createdAt: String, status: String, likes: Int = 0) {
+  init(id: String, createdAt: String, status: String, likes: Int = 0) {
     self.id = id
-    self.categoryId = categoryId
     self.createdAt = createdAt
     self.status = status
     self.likes = likes
@@ -29,7 +27,6 @@ class Action: NSObject {
   
   init(action: JSON) {
     self.id = action["id"].string!
-    self.categoryId = action["categoryId"].string!
     self.createdAt = action["createdAt"].string!
     self.status = action["status"].string!
     self.momentId = action["momentId"].string
