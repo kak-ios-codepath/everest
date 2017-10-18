@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01B2AA251F971F6F00138959 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2AA241F971F6F00138959 /* EmailLoginViewController.swift */; };
+		01B2AA271F980B7C00138959 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2AA261F980B7C00138959 /* LoginManager.swift */; };
 		06A931711F95C60B00DFD1AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A9316F1F95C60B00DFD1AA /* LoginViewController.swift */; };
 		06A931721F95C60B00DFD1AA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A931701F95C60B00DFD1AA /* WelcomeViewController.swift */; };
 		06A931741F95C64100DFD1AA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06A931731F95C64100DFD1AA /* Login.storyboard */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01B2AA241F971F6F00138959 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
+		01B2AA261F980B7C00138959 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		06A9316F1F95C60B00DFD1AA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		06A931701F95C60B00DFD1AA /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		06A931731F95C64100DFD1AA /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -103,9 +107,11 @@
 		06A9316E1F95C60B00DFD1AA /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				01B2AA241F971F6F00138959 /* EmailLoginViewController.swift */,
 				06A9316F1F95C60B00DFD1AA /* LoginViewController.swift */,
-				06A931701F95C60B00DFD1AA /* WelcomeViewController.swift */,
+				01B2AA261F980B7C00138959 /* LoginManager.swift */,
 				06A931731F95C64100DFD1AA /* Login.storyboard */,
+				06A931701F95C60B00DFD1AA /* WelcomeViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				D724D0751F947FF900D25A5A /* ActionViewController.swift in Sources */,
 				D724D07D1F947FF900D25A5A /* SettingsViewController.swift in Sources */,
 				D724D07E1F947FF900D25A5A /* TimeLineManager.swift in Sources */,
+				01B2AA271F980B7C00138959 /* LoginManager.swift in Sources */,
 				D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */,
 				D724D08C1F94806B00D25A5A /* ActionCell.swift in Sources */,
 				06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */,
@@ -459,6 +466,7 @@
 				06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */,
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
 				06A931711F95C60B00DFD1AA /* LoginViewController.swift in Sources */,
+				01B2AA251F971F6F00138959 /* EmailLoginViewController.swift in Sources */,
 				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
