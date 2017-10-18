@@ -145,27 +145,31 @@ class FireBaseManager {
     }
   }
   
-  func updateMoment(moment: Moment) {
-    let newMoment = ref.child("moments").childByAutoId()
+  func updateMoment(moment: Moment, newMoment: Bool) {
+    var MomentID = ""
+    if newMoment {
+      MomentID = ref.child("moments").childByAutoId().key
+      ref.child("users/\(FireBaseManager.UID)/moments/\(MomentID)").setValue(true)
+      ref.child("moments/\(MomentID)/id").setValue(MomentID)
+    } else {
+      MomentID = moment.id
+    }
     
-    ref.child("users/\(FireBaseManager.UID)/moments/\(newMoment.key)").setValue(true)
-    
-    ref.child("moments/\(newMoment.key)/id").setValue(newMoment.key)
-    ref.child("moments/\(newMoment.key)/title").setValue(moment.title)
-    ref.child("moments/\(newMoment.key)/details").setValue(moment.details)
-    ref.child("moments/\(newMoment.key)/timestamp").setValue(moment.timestamp)
-    ref.child("moments/\(newMoment.key)/actId").setValue(moment.actId)
-    ref.child("moments/\(newMoment.key)/userId").setValue(moment.userId)
+    ref.child("moments/\(MomentID)/title").setValue(moment.title)
+    ref.child("moments/\(MomentID)/details").setValue(moment.details)
+    ref.child("moments/\(MomentID)/timestamp").setValue(moment.timestamp)
+    ref.child("moments/\(MomentID)/actId").setValue(moment.actId)
+    ref.child("moments/\(MomentID)/userId").setValue(moment.userId)
     if let picUrls = moment.picUrls {
-      ref.child("moments/\(newMoment.key)/picUrls").setValue(picUrls)
+      ref.child("moments/\(MomentID)/picUrls").setValue(picUrls)
     }
     if let geoLocation = moment.geoLocation {
-      ref.child("moments/\(newMoment.key)/geoLocation").setValue(geoLocation)
+      ref.child("moments/\(MomentID)/geoLocation").setValue(geoLocation)
     }
     if let location = moment.location {
-      ref.child("moments/\(newMoment.key)/location").setValue(location)
+      ref.child("moments/\(MomentID)/location").setValue(location)
     }
-    self.ref.child("moments/\(newMoment.key)/likes").setValue(0)
+    self.ref.child("moments/\(MomentID)/likes").setValue(0)
   }
   
   func getMoment(momentId: String, completion: @escaping (Moment?, Error?) -> ()) {
@@ -181,8 +185,20 @@ class FireBaseManager {
   }
   
 // MARK: - Action Data Model related functions
+  func fetchAvailableActs(category: String) {
+    ref.child("actPicker/\(category)")
+      .observe(.value, with: { (snapshotVec) -> Void in
+        if let actsDictionary = snapshotVec.value as? NSDictionary {
+          let actArray = actsDictionary.flatMap { Act(id: $0 as! String, title: $1 as! String) }
+          print (actArray)
+        } else {
+//          completion(nil, "failed to get available Acts" as? Error)
+        }
+      })
+  }
+  
   func updateAction(action: Action) {
-    ref.child("acts/\(action.categoryId)/\(action.id)/members/\(FireBaseManager.UID)").setValue(true)
+    ref.child("acts/\(action.id)/members/\(FireBaseManager.UID)").setValue(true)
 
     ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/createdAt").setValue(action.createdAt)
     ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/status").setValue(action.status)

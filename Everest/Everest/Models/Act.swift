@@ -13,22 +13,16 @@ import SwiftyJSON
 class Act: NSObject {
 
   var id: String
-  var category: String
-  var name: String
-  var details: String
+  var title: String
   
-  init(act: JSON) {
-    self.id = act["id"].string!
-    self.category = act["category"].string!
-    self.name = act["name"].string!
-    self.details = act["details"].string!
+  init(id: String, title: String) {
+    self.id = id
+    self.title = title
   }
   
   // This code will allow the user to create new acts
-  //  init(id: String, category: String, name: String, details: String) {
+  //  init(id: String, title: String) {
   //    self.id = id
-  //    self.category = category
-  //    self.name = name
-  //    self.details = details
+  //    self.title = title
   //  }
 }

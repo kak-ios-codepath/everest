@@ -10,8 +10,8 @@ import UIKit
 import SwiftyJSON
 
 enum ActionStatus: String {
-    case inProgress = "in progress"
-    case completed = "completed"
+  case inProgress = "in progress"
+  case completed = "completed"
 }
 
 class SettingsViewController: UIViewController {
@@ -21,7 +21,8 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        FireBaseManager.shared.fetchAvailableActs(category: "Empathy")
+    
         
 //// TEST CODE
         //login using email + creating a user in our data base
@@ -53,15 +54,4 @@ class SettingsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

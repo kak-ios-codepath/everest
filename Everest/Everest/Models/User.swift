@@ -45,9 +45,9 @@ class User: NSObject {
     if let momentIds = user["momentIds"].dictionary {
       self.momentIds = momentIds.map { $1.string! }
     }
-    if let ideas = user["ideas"].array {
-      self.ideas = ideas.map { Act(act: $0) }
-    }
+//    if let ideas = user["ideas"].array {
+//      self.ideas = ideas.map { Act(id: String, title: <#String#>) }
+//    }
     self.score = user["score"].int!
   }
 }
