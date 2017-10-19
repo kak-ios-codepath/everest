@@ -19,16 +19,16 @@ class FireBaseManager {
   let LENGTH_OF_FETCHED_LIST: UInt = 20
   
 // MARK: - Authentication related functions
-    func registerNewUserWithEmail(name: String, email: String, password: String, completion: @escaping (User?, Error?) -> ()) {
+    func registerNewUserWithEmail(name: String, email: String, password: String, completion: @escaping (User?, NSError?) -> ()) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-              if error == nil {
+            if error == nil {
                     completion(nil, nil)
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.displayName = name
                     changeRequest?.commitChanges { (error) in
                     }
               } else {
-                    completion(nil, error)
+                    completion(nil, error as? NSError)
               }
         })
     }
@@ -79,7 +79,7 @@ class FireBaseManager {
     if let phone = user.phone {
       ref.child("users/\(FireBaseManager.UID)/phone").setValue(phone)
     }
-    ref.child("users/\(FireBaseManager.UID)/anonymous").setValue(user.anonymous)
+    ref.child("users/\(FireBaseManager.UID)/isAnonymous").setValue(user.isAnonymous)
     ref.child("users/\(FireBaseManager.UID)/createdDate").setValue(user.createdDate)
     ref.child("users/\(FireBaseManager.UID)/score").setValue(user.score)
   }
