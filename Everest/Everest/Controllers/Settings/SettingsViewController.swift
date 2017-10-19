@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FireBaseManager.shared.fetchAvailableActs(category: "Empathy")
+//        FireBaseManager.shared.fetchAvailableActs(category: "Empathy")
     
         
 //// TEST CODE

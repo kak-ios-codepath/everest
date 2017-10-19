@@ -43,7 +43,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     //  MARK: -- View controller lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+
         let nib = UINib(nibName: "MomentCell", bundle: nil)
         self.timelineTableView.register(nib, forCellReuseIdentifier: "MomentCell")
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight

@@ -26,6 +26,8 @@
 		06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2EA561F91D944003D0ADF /* MomentView.swift */; };
 		06C2EA591F946335003D0ADF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06C2EA581F946335003D0ADF /* GoogleService-Info.plist */; };
 		53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */; };
+		CE0908DA1F982664004D1974 /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */; };
+		CE0908E01F986F74004D1974 /* ActsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0908DF1F986F73004D1974 /* ActsCell.swift */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
 		D724D0751F947FF900D25A5A /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0611F947FF900D25A5A /* ActionViewController.swift */; };
 		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
@@ -72,6 +74,8 @@
 		28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everest/Pods-Everest.release.xcconfig"; sourceTree = "<group>"; };
 		CE02ED651F96A114000B43C7 /* Everest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Everest.entitlements; sourceTree = "<group>"; };
+		CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
+		CE0908DF1F986F73004D1974 /* ActsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActsCell.swift; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D724D0611F947FF900D25A5A /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 				06C2EA521F91D921003D0ADF /* UserProfileView.swift */,
 				06C2EA541F91D936003D0ADF /* ActionView.swift */,
 				06C2EA561F91D944003D0ADF /* MomentView.swift */,
+				CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */,
+				CE0908DF1F986F73004D1974 /* ActsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 				06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */,
 				D724D07F1F947FF900D25A5A /* TimelineViewController.swift in Sources */,
 				D724D0791F947FF900D25A5A /* MomentsViewController.swift in Sources */,
+				CE0908DA1F982664004D1974 /* CategoryCollectionCell.swift in Sources */,
 				06C2EA511F91D8EF003D0ADF /* Act.swift in Sources */,
 				06C2EA4D1F91D881003D0ADF /* User.swift in Sources */,
 				D724D0811F947FF900D25A5A /* UserProfileManager.swift in Sources */,
@@ -475,6 +482,7 @@
 				D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */,
 				06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */,
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
+				CE0908E01F986F74004D1974 /* ActsCell.swift in Sources */,
 				06A931711F95C60B00DFD1AA /* LoginViewController.swift in Sources */,
 				01B2AA251F971F6F00138959 /* EmailLoginViewController.swift in Sources */,
 				06C2EA4F1F91D8DF003D0ADF /* Moment.swift in Sources */,
