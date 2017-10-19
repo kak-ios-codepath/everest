@@ -43,19 +43,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     //  MARK: -- View controller lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
-        
-        //show login view
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-        let loginController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-        self.present(loginController, animated: true) { 
-            
-        }
-      
-=======
-                
->>>>>>> master
         let nib = UINib(nibName: "MomentCell", bundle: nil)
         self.timelineTableView.register(nib, forCellReuseIdentifier: "MomentCell")
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
