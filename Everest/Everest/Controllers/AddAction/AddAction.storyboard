@@ -16,7 +16,7 @@
                     <tabBarItem key="tabBarItem" title="Add Action" id="cTo-aS-ouC"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pZl-UB-4K7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pZl-UB-4K7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -27,7 +27,9 @@ class SettingsViewController: UIViewController {
 //// TEST CODE
         //login using email + creating a user in our data base
 
-         self.user = User(id: FireBaseManager.UID, name: "Akrm Almsaodi", email: "r@b.com", phone: "22332112", anonymous: false, createdDate: "\(Date())")
+         self.user = User(id: FireBaseManager.UID, name: "Akrm Almsaodi", email: "r@b.com", phone: "22332112", profileUrl: "", isAnonymous: false, createdDate: "\(Date())", score: 10)
+            
+            //User(id: FireBaseManager.UID, name: "Akrm Almsaodi", email: "r@b.com", phone: "22332112", anonymous: false, createdDate: "\(Date())")
         FireBaseManager.shared.updateUser(user: self.user)
         
         //self.action = Action();
