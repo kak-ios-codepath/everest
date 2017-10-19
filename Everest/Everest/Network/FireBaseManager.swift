@@ -19,35 +19,45 @@ class FireBaseManager {
   let LENGTH_OF_FETCHED_LIST: UInt = 20
   
 // MARK: - Authentication related functions
-  func registerNewUserWithEmail(name: String, email: String, password: String, completion: @escaping (User?, Error?) -> ()) {
-    Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-      if error == nil {
-        completion(nil, nil)
-        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = name
-        changeRequest?.commitChanges { (error) in
-        }
-      }
-    })
-  }
-  
-  func loginUserWithEmail(email: String, password: String, completion: @escaping (User?, Error?) -> ()) {
-    Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-      if error == nil {
-        if let uid = Auth.auth().currentUser?.uid {
-          FireBaseManager.UID = uid
-        }
-        completion(nil, nil)
-      }
+    func registerNewUserWithEmail(name: String, email: String, password: String, completion: @escaping (User?, Error?) -> ()) {
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+              if error == nil {
+                    completion(nil, nil)
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.displayName = name
+                    changeRequest?.commitChanges { (error) in
+                    }
+              } else {
+                    completion(nil, error)
+              }
+        })
     }
-  }
+  
+    func loginUserWithEmail(email: String, password: String, completion: @escaping (User?, Error?) -> ()) {
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+              if error == nil {
+                    if let uid = Auth.auth().currentUser?.uid {
+                        FireBaseManager.UID = uid
+                    }
+                    completion(nil, nil)
+              } else {
+                    completion(nil, error)
+              }
+        }
+    }
   
   // TODO:- We need to add logic here for the case of having an existing account with email. We need to merge the two accounts under one account
   func loginUserWithFacebook (accessToken:String, completion: @escaping (User?, Error?) -> ()) {
     let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
     Auth.auth().signIn(with: credential) { (user, error) in
-    
-      completion(nil, nil)
+        if error == nil {
+            if let uid = Auth.auth().currentUser?.uid {
+                FireBaseManager.UID = uid
+            }
+            completion(nil, nil)
+        } else {
+            completion(nil, error)
+        }
     }
   }
   

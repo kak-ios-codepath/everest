@@ -63,4 +63,10 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
     }
 
+    @IBAction func logoutClicked(_ sender: Any) {
+        LoginManager.shared.logoutUser { (error) in
+            //TODO: Handle error
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
 }
