@@ -49,7 +49,9 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
         self.timelineTableView.rowHeight = UITableViewAutomaticDimension
 
-        
+        self.timelineManager?.fetchUserDetails(completion: { (user:User?, error: Error?) in
+            
+        })
         
         self.timelineManager?.fetchPublicMomments(completion: { (moments:[Moment]?, error: Error?) in
             if((error) != nil) {
@@ -103,7 +105,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return (self.moments?.count)!
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

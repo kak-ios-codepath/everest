@@ -8,18 +8,8 @@
 
 import UIKit
 
-public enum EmailLoginResult {
-    /// User succesfully logged in. Contains access token.
-    case success
-    /// Login attempt was cancelled by the user.
-    case cancelled
-    /// Login attempt failed.
-    case failed
-}
-
 public protocol EmailLoginDelegate {
-    func didCompleteEmailLogin(result: EmailLoginResult)
-    func didCompleteEmailLogOut()
+    func didCompleteEmailLogin()
 }
 
 class EmailLoginViewController: UIViewController {
@@ -34,13 +24,13 @@ class EmailLoginViewController: UIViewController {
     
     func loginUser() {
         LoginManager.shared.loginUser(email: self.emailTextField.text!, password: self.passwordTextField.text!) { (error) in
-            var result: EmailLoginResult = .success
             if error != nil {
-                result = .failed
-            }
-            self.dismiss(animated: true, completion: nil)
-            if self.delegate != nil {
-                self.delegate?.didCompleteEmailLogin(result: result)
+                self.showAlert(message: error!.localizedDescription)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+                if self.delegate != nil {
+                    self.delegate?.didCompleteEmailLogin()
+                }
             }
         }
     }
@@ -54,13 +44,8 @@ class EmailLoginViewController: UIViewController {
         //register new user by email
         //TODO: replace the name 
         LoginManager.shared.registerUser(name: emailTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { (error) in
-            var result: EmailLoginResult = .success
             if error != nil {
-                result = .failed
-                self.dismiss(animated: true, completion: nil)
-                if self.delegate != nil {
-                    self.delegate?.didCompleteEmailLogin(result: result)
-                }
+                self.showAlert(message: error!.localizedDescription)
             }else {
                 self.loginUser()
             }
@@ -69,8 +54,15 @@ class EmailLoginViewController: UIViewController {
     
     @IBAction func cancelClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        if self.delegate != nil {
-            self.delegate?.didCompleteEmailLogin(result: .cancelled)
-        }
+    }
+    
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message,  preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
+        })
+        alertController.addAction(okAction)
+        // Present Alert
+        self.present(alertController, animated: true, completion:nil)
+
     }
 }

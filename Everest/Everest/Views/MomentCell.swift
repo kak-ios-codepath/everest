@@ -23,7 +23,9 @@ class MomentCell: UITableViewCell {
     
     var moment: Moment? {
         didSet {
-            self.momentDescription.text = moment?.description
+            self.momentTitleLabel.text = moment?.title
+            self.momentDescription.text = moment?.details
+            
         }
     }
     
