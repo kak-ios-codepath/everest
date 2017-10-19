@@ -16,10 +16,20 @@ class TimeLineManager: NSObject {
         moments = [Moment]()
     }
     
+    func fetchUserDetails(completion: @escaping (_ user: User?, _ error : Error?)->()){
+        FireBaseManager.shared.getUser(userID: "uQxn19H3VdgLPV16NxHqUn6zy7B3") { (user:User?, error:Error?) in
+            print("%@",user)
+        }
+    }
+    
+
     
     func fetchPublicMomments(completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) -> Void{
-        ServiceManager.sharedInstance.get(request: nil) { (response: Any?, error: Error?) in
-                completion(nil,nil);
+        
+        FireBaseManager.shared.getMomentsTimeLine(startAtMomentId: nil) { (moments:[Moment]?, error:Error?) in
+            print("%@",moments)
+            print("error %@",error)
+            completion(moments, error)
         }
     }
     
