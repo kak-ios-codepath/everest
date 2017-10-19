@@ -175,14 +175,14 @@ class FireBaseManager {
   }
   
 // MARK: - Action Data Model related functions
-  func fetchAvailableActs(category: String) {
-    ref.child("actPicker/\(category)")
+  func fetchAvailableActs(category: String, completion: @escaping ([Act]?, Error?) -> ()) {
+    ref.child("actsPicker/\(category)")
       .observe(.value, with: { (snapshotVec) -> Void in
         if let actsDictionary = snapshotVec.value as? NSDictionary {
           let actArray = actsDictionary.flatMap { Act(id: $0 as! String, title: $1 as! String) }
-          print (actArray)
+          completion(actArray, nil)
         } else {
-//          completion(nil, "failed to get available Acts" as? Error)
+          completion(nil, "failed to get available Acts" as? Error)
         }
       })
   }

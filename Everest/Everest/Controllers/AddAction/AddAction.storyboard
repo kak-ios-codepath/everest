@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +17,7 @@
                     <tabBarItem key="tabBarItem" title="Add Action" id="cTo-aS-ouC"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pZl-UB-4K7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pZl-UB-4K7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -40,13 +41,85 @@
                     <view key="view" contentMode="scaleToFill" id="aQh-MQ-yu0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.82745098039999998" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fm5-kp-aNd">
+                                <rect key="frame" x="0.0" y="69" width="375" height="528"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VBO-5x-ZiR" customClass="LNICoverFlowLayout" customModule="LNICoverFlowLayout">
+                                    <size key="itemSize" width="280" height="450"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCollectionCell" id="5T4-zg-z86" customClass="CategoryCollectionCell" customModule="Everest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-17.5" width="280" height="450"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="450"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tf8-6j-DIf" userLabel="View - [Container View]">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="450"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bor-3E-65v">
+                                                            <rect key="frame" x="0.0" y="0.0" width="280" height="400"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIG-Pv-33I">
+                                                            <rect key="frame" x="8" y="413" width="264" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="ZDA-47-dn4"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="centerX" secondItem="EIG-Pv-33I" secondAttribute="centerX" id="384-QN-4w7"/>
+                                                        <constraint firstItem="Bor-3E-65v" firstAttribute="height" secondItem="tf8-6j-DIf" secondAttribute="height" multiplier="400:450" id="GrM-lc-zZf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Bor-3E-65v" secondAttribute="trailing" id="Ifc-7L-WMC"/>
+                                                        <constraint firstItem="Bor-3E-65v" firstAttribute="top" secondItem="tf8-6j-DIf" secondAttribute="top" id="Lxa-rB-WxG"/>
+                                                        <constraint firstAttribute="trailing" secondItem="EIG-Pv-33I" secondAttribute="trailing" constant="8" id="TEk-KO-zbC"/>
+                                                        <constraint firstItem="EIG-Pv-33I" firstAttribute="centerY" secondItem="tf8-6j-DIf" secondAttribute="centerY" multiplier="423:225" id="Wve-Th-nae"/>
+                                                        <constraint firstItem="EIG-Pv-33I" firstAttribute="leading" secondItem="tf8-6j-DIf" secondAttribute="leading" constant="8" id="dbe-oq-PGT"/>
+                                                        <constraint firstItem="Bor-3E-65v" firstAttribute="leading" secondItem="tf8-6j-DIf" secondAttribute="leading" id="wkB-ol-Y2u"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="tf8-6j-DIf" secondAttribute="trailing" id="3L1-SZ-iUc"/>
+                                            <constraint firstAttribute="bottom" secondItem="tf8-6j-DIf" secondAttribute="bottom" id="IJg-au-YMv"/>
+                                            <constraint firstItem="tf8-6j-DIf" firstAttribute="top" secondItem="5T4-zg-z86" secondAttribute="top" id="Wlp-AQ-Rgo"/>
+                                            <constraint firstItem="tf8-6j-DIf" firstAttribute="leading" secondItem="5T4-zg-z86" secondAttribute="leading" id="Xu5-ah-6d7"/>
+                                        </constraints>
+                                        <size key="customSize" width="280" height="450"/>
+                                        <connections>
+                                            <outlet property="categoryImageView" destination="Bor-3E-65v" id="x2e-aO-Vwn"/>
+                                            <outlet property="categoryTitleLable" destination="EIG-Pv-33I" id="8RY-dl-lr2"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="b2t-1u-2Wo" id="Zip-su-jLx"/>
+                                    <outlet property="delegate" destination="b2t-1u-2Wo" id="1rF-92-9gS"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                     </view>
                     <navigationItem key="navigationItem" title="Add Action" id="7JT-NS-1BA"/>
+                    <connections>
+                        <outlet property="categoriesCollectionView" destination="Fm5-kp-aNd" id="JqO-yo-Kc1"/>
+                        <outlet property="coverFlowLayout" destination="VBO-5x-ZiR" id="Ydn-aF-fJ9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2W-ov-UqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5070" y="73"/>
+            <point key="canvasLocation" x="5069.6000000000004" y="53.523238380809602"/>
         </scene>
     </scenes>
 </document>

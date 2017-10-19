@@ -51,7 +51,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         self.present(loginController, animated: true) { 
             
         }
-        
+      
         let nib = UINib(nibName: "MomentCell", bundle: nil)
         self.timelineTableView.register(nib, forCellReuseIdentifier: "MomentCell")
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
