@@ -14,34 +14,34 @@ class LoginManager {
     
     static let shared = LoginManager()
     
-    func registerUser(name: String, email: String, password: String, completion: @escaping (Error?) -> ()) {
+    func registerUser(name: String, email: String, password: String, completion: @escaping (NSError?) -> ()) {
         FireBaseManager.shared.registerNewUserWithEmail(name: name, email: email, password: password) { (user, error) in
-            if error != nil {
+            if error != nil {                
                 print ("ERROR: \(error.debugDescription)")
             }
             completion(error)
         }
     }
     
-    func loginUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
+    func loginUser(email: String, password: String, completion: @escaping (NSError?) -> ()) {
         FireBaseManager.shared.loginUserWithEmail(email: email, password: password) { (user, error) in
             if error != nil {
                 print ("ERROR: \(error.debugDescription)")
             }
-            completion(error)
+            completion(error as NSError?)
         }
     }
 
-    func loginUserWithFacebook(token: AccessToken, completion: @escaping (Error?) -> ()) {
+    func loginUserWithFacebook(token: AccessToken, completion: @escaping (NSError?) -> ()) {
         FireBaseManager.shared.loginUserWithFacebook(accessToken: token.authenticationToken, completion: { (user, error) in
             if error != nil {
                 print ("ERROR: \(error.debugDescription)")
             }
-            completion(error)
+            completion(error as NSError?)
         })
     }
 
-    func logoutUser(completion: @escaping (Error?) -> () ) {
+    func logoutUser(completion: @escaping (NSError?) -> () ) {
         FireBaseManager.shared.logoutUser() { (error) in
             if error != nil {
                 print ("ERROR: \(error.debugDescription)")
@@ -50,7 +50,7 @@ class LoginManager {
             AccessToken.current = nil
             UserProfile.current = nil
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserLoggedOut"), object: nil)
-            completion(error)
+            completion(error as NSError?)
         }
     }
 }

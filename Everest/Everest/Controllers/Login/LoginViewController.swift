@@ -81,30 +81,12 @@ class LoginViewController: UIViewController, LoginButtonDelegate, EmailLoginDele
 
     // MARK: - Email Login delegates
     
-    func didCompleteEmailLogin(result: EmailLoginResult) {
-        switch result {
-        case .failed(let error):
-            print(error)
-            break
-        case .cancelled:
-            print("Cancelled")
-            break
-        case .success(let accessToken):
-            print("Logged In via Email")
-            print (accessToken)
-            self.userLoggedIn()
-            return
-        }
-        
+    func didCompleteEmailLogin() {
+        print("Logged In via Email")
+        self.userLoggedIn()
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    func didCompleteEmailLogOut() {
-        print("Email logout complete.....")
-        self.userLoggedOut()
-    }
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
