@@ -288,6 +288,13 @@ class FireBaseManager {
     
     // MARK: - File storage functions
 
+    func uploadImage(image: UIImage, completion: @escaping (String, String?, Error?) -> ()) {
+        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
+        uploadImage(data: imageData) { (path, url, error) in
+            completion(path, url, error)
+        }
+    }
+    
     func uploadImage(data: Data, completion: @escaping (String, String?, Error?) -> ()) {
         let imagePath = Auth.auth().currentUser!.uid +
         "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"

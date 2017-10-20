@@ -66,9 +66,9 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         
 //// -- TODO: Remove code after TESTING image uploads
 //        guard let image = UIImage(named: "password") else { return }
-//        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
+//        //guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
 //
-//        FireBaseManager.shared.uploadImage(data: imageData) { (path, url, error) in
+//        FireBaseManager.shared.uploadImage(image: image) { (path, url, error) in
 //            if url != nil {
 //                print("Image path: \(path)")
 //                print("Uploaded image to: \(url!)")
