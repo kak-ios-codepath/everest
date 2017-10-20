@@ -10,26 +10,29 @@ import Foundation
 import Firebase
 import SwiftyJSON
 
+enum ActionStatus: String {
+    case created = "created"
+    case inProgress = "inprogress"
+    case completed = "completed"
+    case deleted = "deleted"
+    case expired = "expired"
+}
+
 class Action: NSObject {
   
   var id: String          //same id from acts
   var createdAt: String
   var status: String
-  var momentId: String?
-  var likes: Int
   
-  init(id: String, createdAt: String, status: String, likes: Int = 0) {
+  init(id: String, createdAt: String, status: String) {
     self.id = id
     self.createdAt = createdAt
     self.status = status
-    self.likes = likes
   }
   
   init(action: JSON) {
     self.id = action["id"].string!
     self.createdAt = action["createdAt"].string!
     self.status = action["status"].string!
-    self.momentId = action["momentId"].string
-    self.likes = action["likes"].int!
   }
 }

@@ -19,26 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
+        //setup notification observers
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserLoggedOut"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+            //TODO: perform any needed cleanup here
+            self.switchToLoginController()
+        })
+
         //Firebase setup
         FirebaseApp.configure()
         
         //Facebook setup
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        //Logged-in user exists
-        if let uid = Auth.auth().currentUser?.uid {
-            print("User is logged in = \(uid)")
-        } else {
-            self.switchToLoginController()
-        }
-        
-        //setup notification observers
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserLoggedOut"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
-            //TODO: perform any needed cleanup here
-            self.switchToLoginController()
-        })
-        
+        //Login setup
+        LoginManager.shared.initialize()
+
         return true
     }
 

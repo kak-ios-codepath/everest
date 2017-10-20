@@ -28,7 +28,7 @@ class FireBaseManager {
                     changeRequest?.commitChanges { (error) in
                     }
               } else {
-                    completion(nil, error as? NSError)
+                    completion(nil, error as NSError?)
               }
         })
     }
@@ -38,14 +38,31 @@ class FireBaseManager {
               if error == nil {
                     if let uid = Auth.auth().currentUser?.uid {
                         FireBaseManager.UID = uid
+                        self.createUserFromFirebase(user: user!, completion: { (user1, error) in
+                            completion(user1, error)
+                        })
+                        //check if user exists on Firebase
+                        /*self.getUser(userID: uid, completion: { (user1, error) in
+                            if user1 != nil {
+                                //TODO: check if existing user record needs update
+                                completion(user1, nil)
+                            } else {//user doesn't exist
+                                let providerData = user!.providerData[0]
+                                let currentUser = self.createUserFromFirebase(providerData, isAnonymous: (user?.isAnonymous)!)
+                                self.updateUser(user: currentUser)
+                                completion(currentUser, nil)
+                            }
+                        })*/
+                    } else {
+                        completion(nil, "Unable to login user" as? Error)
                     }
-                    completion(nil, nil)
+                
               } else {
                     completion(nil, error)
               }
         }
     }
-  
+
   // TODO:- We need to add logic here for the case of having an existing account with email. We need to merge the two accounts under one account
   func loginUserWithFacebook (accessToken:String, completion: @escaping (User?, Error?) -> ()) {
     let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
@@ -53,8 +70,25 @@ class FireBaseManager {
         if error == nil {
             if let uid = Auth.auth().currentUser?.uid {
                 FireBaseManager.UID = uid
+                
+                //check if user exists on Firebase
+                self.createUserFromFirebase(user: user!, completion: { (user1, error) in
+                    completion(user1, error)
+                })
+                /*self.getUser(userID: uid, completion: { (user1, error) in
+                    if user1 != nil {
+                        //TODO: check if existing user record needs update
+                        completion(user1, nil)
+                    } else {//user doesn't exist
+                        let providerData = user!.providerData[0]
+                        let currentUser = self.createUserFromFirebase(providerData, isAnonymous: (user?.isAnonymous)!)
+                        self.updateUser(user: currentUser)
+                        completion(currentUser, nil)
+                    }
+                })*/
+            } else {
+                completion(nil, "Unable to login user" as? Error)
             }
-            completion(nil, nil)
         } else {
             completion(nil, error)
         }
@@ -79,9 +113,20 @@ class FireBaseManager {
     if let phone = user.phone {
       ref.child("users/\(FireBaseManager.UID)/phone").setValue(phone)
     }
+    ref.child("users/\(FireBaseManager.UID)/providerId").setValue(user.providerId)
+    if let photoUrl = user.profilePhotoUrl {
+        ref.child("users/\(FireBaseManager.UID)/profilePhotoUrl").setValue(photoUrl)
+    }
     ref.child("users/\(FireBaseManager.UID)/isAnonymous").setValue(user.isAnonymous)
     ref.child("users/\(FireBaseManager.UID)/createdDate").setValue(user.createdDate)
     ref.child("users/\(FireBaseManager.UID)/score").setValue(user.score)
+    if let momentIds = user.momentIds {
+        ref.child("users/\(FireBaseManager.UID)/momentIds").setValue(momentIds)
+    }
+    if let actions = user.actions {
+        ref.child("users/\(FireBaseManager.UID)/actions").setValue(actions)
+    }
+
   }
   
   func getUser(userID: String, completion: @escaping (User?, Error?) -> ()) {
@@ -149,7 +194,7 @@ class FireBaseManager {
     var MomentID = ""
     if newMoment {
       MomentID = ref.child("moments").childByAutoId().key
-      ref.child("users/\(FireBaseManager.UID)/moments/\(MomentID)").setValue(true)
+      ref.child("users/\(FireBaseManager.UID)/momentIds/\(MomentID)").setValue(true)
       ref.child("moments/\(MomentID)/id").setValue(MomentID)
     } else {
       MomentID = moment.id
@@ -189,7 +234,7 @@ class FireBaseManager {
     ref.child("actsPicker/\(category)")
       .observe(.value, with: { (snapshotVec) -> Void in
         if let actsDictionary = snapshotVec.value as? NSDictionary {
-          let actArray = actsDictionary.flatMap { Act(id: $0 as! String, title: $1 as! String) }
+          let actArray = actsDictionary.flatMap { Act(id: $0 as! String, category: category, title: $1 as! String, score: ACT_DEFAULT_SCORE) }
           completion(actArray, nil)
         } else {
           completion(nil, "failed to get available Acts" as? Error)
@@ -202,6 +247,40 @@ class FireBaseManager {
 
     ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/createdAt").setValue(action.createdAt)
     ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/status").setValue(action.status)
-    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/momentId").setValue(action.momentId)
+//    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/momentId").setValue(action.momentId)
   }
+    
+    // MARK: - Utility functions
+    func createUserFromFirebase(user: Firebase.User, completion: @escaping (User?, Error?) -> ()){
+        //check if user exists on Firebase
+        self.getUser(userID: user.uid, completion: { (user1, error) in
+            if user1 != nil {
+                //TODO: check if existing user record needs update
+                completion(user1, nil)
+            } else {//user doesn't exist
+                let userInfo = user.providerData[0]
+                var name: String = ""
+                var email: String = ""
+                var phone: String?
+                var photoUrl: String?
+                
+                if userInfo.displayName != nil {
+                    name = userInfo.displayName!
+                }
+                if userInfo.email != nil {
+                    email = userInfo.email!
+                }
+                if userInfo.phoneNumber != nil {
+                    phone = userInfo.phoneNumber!
+                }
+                if userInfo.photoURL != nil {
+                    photoUrl = userInfo.photoURL!.absoluteString
+                }
+                let currentUser = User(id: userInfo.uid, providerId: userInfo.providerID, name: name, email: email, phone: phone, profilePhotoUrl: photoUrl, isAnonymous: user.isAnonymous, createdDate: "\(Date())", actions: nil, momentIds: nil, score: 0)
+
+                self.updateUser(user: currentUser)
+                completion(currentUser, nil)
+            }
+        })
+    }
 }
