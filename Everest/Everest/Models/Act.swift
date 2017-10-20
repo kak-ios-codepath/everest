@@ -10,14 +10,21 @@ import UIKit
 import Firebase
 import SwiftyJSON
 
+
+let ACT_DEFAULT_SCORE = 4;
+
 class Act: NSObject {
 
   var id: String
+  var category: String
   var title: String
-  
-  init(id: String, title: String) {
+  var score: Int
+    
+    init(id: String, category: String, title: String, score: Int) {
     self.id = id
+    self.category = category
     self.title = title
+    self.score = score
   }
   
   // This code will allow the user to create new acts
@@ -26,3 +33,5 @@ class Act: NSObject {
   //    self.title = title
   //  }
 }
+
+

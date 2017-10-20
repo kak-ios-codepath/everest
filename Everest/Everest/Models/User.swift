@@ -12,25 +12,31 @@ import SwiftyJSON
 class User: NSObject {
   
   var id: String
+  var providerId: String = "password"
   var name: String
   var email: String
   var phone: String?
-  var profileUrl: String?
+  var profilePhotoUrl: String?
   var isAnonymous: Bool
   var createdDate: String
-  var actions: [Action]? //it will contain an array of acts' ids and any needed info
+  var actions: [Action]? //it will contain an array of acts' ids
   var momentIds: [String]?
-  var suggestedActs: [Act]?
+  var suggestedActs: [String]?
   var score: Int
-  
-    init(id: String, name: String, email: String, phone: String?, profileUrl: String?, isAnonymous: Bool, createdDate: String, score: Int = 0) {
+    
+  static var currentUser: User?
+    
+    init(id: String, providerId: String, name: String, email: String, phone: String?, profilePhotoUrl: String?, isAnonymous: Bool, createdDate: String, actions: [Action]?, momentIds: [String]?, score: Int = 0) {
     self.id = id
-    self.name = id
+    self.providerId = providerId
+    self.name = name
     self.email = email
     self.phone = phone
-    self.profileUrl = profileUrl
+    self.profilePhotoUrl = profilePhotoUrl
     self.isAnonymous = isAnonymous
     self.createdDate = createdDate
+    self.momentIds = momentIds
+    self.actions = actions
     self.score = score
   }
   
@@ -39,9 +45,12 @@ class User: NSObject {
     self.name = user["name"].string!
     self.email = user["email"].string!
     self.phone = user["phone"].string
-    self.profileUrl = user["profileUrl"].string
+    self.profilePhotoUrl = user["profilePhotoUrl"].string
     self.isAnonymous = user["isAnonymous"].bool!
     self.createdDate = user["createdDate"].string!
+    if let providerId = user["providerId"].string {
+        self.providerId = providerId
+    }
     if let actions = user["actions"].array {
       self.actions = actions.map { Action(action: $0) }
     }
