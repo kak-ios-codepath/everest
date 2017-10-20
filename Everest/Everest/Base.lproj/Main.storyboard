@@ -98,11 +98,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="356" id="YvE-6o-i0d" customClass="MomentDetailCell" customModule="Everest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MomentDetailCell" rowHeight="356" id="YvE-6o-i0d" customClass="MomentDetailCell" customModule="Everest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="356"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YvE-6o-i0d" id="DnO-dB-MMF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="356"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="355.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdk-iq-S0K">
@@ -199,6 +199,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="oR4-bi-mt3" id="mkN-tR-w1a"/>
+                                    <outlet property="delegate" destination="oR4-bi-mt3" id="hAl-tf-HK7"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -209,6 +213,9 @@
                             <constraint firstItem="41S-0d-X1o" firstAttribute="leading" secondItem="70d-Kf-SRX" secondAttribute="leading" id="whO-Ad-Zdy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="momentDetailTableView" destination="41S-0d-X1o" id="4ZY-my-Xv8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3YW-es-4Yw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -220,7 +227,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dpa-SN-Vjh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="MpF-jD-2Y8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="STg-fk-HO6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="STg-fk-HO6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

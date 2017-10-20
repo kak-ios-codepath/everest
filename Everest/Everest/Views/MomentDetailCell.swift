@@ -10,6 +10,13 @@ import UIKit
 
 class MomentDetailCell: UITableViewCell {
 
+    var moment : Moment? {
+        didSet {
+            self.momentTitleLabel.text = moment?.title
+            self.momentDescriptionLabel.text = moment?.details
+            self.momentCreatedDateLabel.text = moment?.timestamp
+        }
+    }
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileImaeView: UIImageView!
     @IBOutlet weak var momentCreatedDateLabel: UILabel!
