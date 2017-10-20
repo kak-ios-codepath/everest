@@ -111,7 +111,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController")
+        let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
+        momentsDetailVC.momentId = self.moments?[indexPath.row].id
         self.navigationController?.pushViewController(momentsDetailVC, animated: true)
         
     }

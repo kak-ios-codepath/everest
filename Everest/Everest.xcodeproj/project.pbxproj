@@ -47,6 +47,7 @@
 		D724D08D1F94806B00D25A5A /* ActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724D0891F94806B00D25A5A /* ActionCell.xib */; };
 		D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D08A1F94806B00D25A5A /* MomentCell.swift */; };
 		D724D08F1F94806B00D25A5A /* MomentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724D08B1F94806B00D25A5A /* MomentCell.xib */; };
+		D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		D724D0891F94806B00D25A5A /* ActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCell.xib; sourceTree = "<group>"; };
 		D724D08A1F94806B00D25A5A /* MomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentCell.swift; sourceTree = "<group>"; };
 		D724D08B1F94806B00D25A5A /* MomentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MomentCell.xib; sourceTree = "<group>"; };
+		D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				06C2EA561F91D944003D0ADF /* MomentView.swift */,
 				CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */,
 				CE0908DF1F986F73004D1974 /* ActsCell.swift */,
+				D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				D724D0821F947FF900D25A5A /* UserProfileViewController.swift in Sources */,
 				D724D0751F947FF900D25A5A /* ActionViewController.swift in Sources */,
 				D724D07D1F947FF900D25A5A /* SettingsViewController.swift in Sources */,
+				D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */,
 				D724D07E1F947FF900D25A5A /* TimeLineManager.swift in Sources */,
 				01B2AA271F980B7C00138959 /* LoginManager.swift in Sources */,
 				D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */,
