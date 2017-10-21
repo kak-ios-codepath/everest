@@ -21,11 +21,12 @@ class LoginManager {
             FireBaseManager.shared.getUser(userID: uid) { (user, error) in
                 if user != nil {
                     User.currentUser = user
+                    FireBaseManager.UID = uid
                 } else {//user doesn't exist
-                    //This should NEVER happen. Force logout
-                    self.logoutUser { (error) in
+                        //This should NEVER happen. Force logout
+                        self.logoutUser { (error) in
                         //TODO: Handle error
-                    }
+                        }
                 }
             }
         } else {

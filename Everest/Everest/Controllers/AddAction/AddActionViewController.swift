@@ -116,8 +116,11 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actsTableView.deselectRow(at: indexPath, animated: true)
-        let cell = actsTableView.cellForRow(at: indexPath) as! ActsCell
+        //let cell = actsTableView.cellForRow(at: indexPath) as! ActsCell
         //TODO: take the user to the right place after chosing an act
+        let action = Action(id: (categories[titles[categoryIndex]]?[indexPath.row].id)!, createdAt: "\(Date())", status: ActionStatus.created.rawValue)
+        FireBaseManager.shared.updateAction(action: action)
+        
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

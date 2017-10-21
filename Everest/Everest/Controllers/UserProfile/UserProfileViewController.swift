@@ -10,9 +10,15 @@ import UIKit
 
 class UserProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var user: User?
 
-
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var actionsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,8 +27,19 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         self.actionsTableView.estimatedRowHeight = self.actionsTableView.rowHeight
         self.actionsTableView.rowHeight = UITableViewAutomaticDimension
 
+        //setup User related properties
+        if user == nil {
+            user = User.currentUser!
+        }
+        nameLabel.text = user?.name
+        dateLabel.text = "Joined on "+(user?.createdDate)!
+        scoreLabel.text = "\(user?.score ?? 0)"
+        if (user?.profilePhotoUrl != nil) {
+            profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
+        } else {
+            profileImageView.image = nil
+        }
         
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

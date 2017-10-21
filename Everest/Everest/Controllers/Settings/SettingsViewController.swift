@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController {
         //get the moment timeline
         FireBaseManager.shared.getMomentsTimeLine(startAtMomentId: nil) { (moments, error) in
             if error == nil {
-                var timelineMoments = moments
+                //var timelineMoments = moments
             }
         }
     }
