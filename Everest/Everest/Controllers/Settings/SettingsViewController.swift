@@ -22,10 +22,10 @@ class SettingsViewController: UIViewController {
         
 //// TEST CODE
         //login using email + creating a user in our data base
-        self.user = User(id: FireBaseManager.UID, providerId: "password", name: "Akrm Almsaodi", email: "r@b.com", phone: "22332112", profilePhotoUrl: "", isAnonymous: false, createdDate: "\(Date())", actions: nil, momentIds: nil, score: 10)
+        //self.user = User(id: FireBaseManager.UID, providerId: "password", name: "Akrm Almsaodi", email: "r@b.com", phone: "22332112", profilePhotoUrl: "", isAnonymous: false, createdDate: "\(Date())", actions: nil, momentIds: nil, score: 10)
             
             //User(id: FireBaseManager.UID, name: "Akrm Almsaodi", email: "r@b.com", phone: "22332112", anonymous: false, createdDate: "\(Date())")
-        FireBaseManager.shared.updateUser(user: self.user)
+        //FireBaseManager.shared.updateUser(user: self.user)
         
         //self.action = Action();
         //creating an action property within the User data model
