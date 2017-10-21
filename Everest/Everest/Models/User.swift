@@ -55,7 +55,7 @@ class User: NSObject {
       self.actions = actions.map { Action(action: $0) }
     }
     if let momentIds = user["momentIds"].dictionary {
- //     self.momentIds = momentIds.map { $1.string! }
+      self.momentIds = Array(momentIds.keys)
     }
 //    if let suggestedActs = user["suggestedActs"].array {
 //      suggestedActs = ideas.map { Act(id: String, title: <#String#>) }
