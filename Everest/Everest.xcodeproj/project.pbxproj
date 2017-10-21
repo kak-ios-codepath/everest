@@ -30,7 +30,6 @@
 		CE0908DA1F982664004D1974 /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */; };
 		CE0908E01F986F74004D1974 /* ActsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0908DF1F986F73004D1974 /* ActsCell.swift */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
-		D724D0751F947FF900D25A5A /* CreateMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0611F947FF900D25A5A /* CreateMomentViewController.swift */; };
 		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
 		D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0641F947FF900D25A5A /* AddActionViewController.swift */; };
 		D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0661F947FF900D25A5A /* MomentDetailManager.swift */; };
@@ -47,6 +46,7 @@
 		D724D08D1F94806B00D25A5A /* ActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724D0891F94806B00D25A5A /* ActionCell.xib */; };
 		D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D08A1F94806B00D25A5A /* MomentCell.swift */; };
 		D724D08F1F94806B00D25A5A /* MomentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724D08B1F94806B00D25A5A /* MomentCell.xib */; };
+		D797E6731F9AED7A0097B4CA /* CreateMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */; };
 		D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +79,6 @@
 		CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		CE0908DF1F986F73004D1974 /* ActsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActsCell.swift; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		D724D0611F947FF900D25A5A /* CreateMomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMomentViewController.swift; sourceTree = "<group>"; };
 		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
 		D724D0641F947FF900D25A5A /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		D724D0661F947FF900D25A5A /* MomentDetailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailManager.swift; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		D724D0891F94806B00D25A5A /* ActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCell.xib; sourceTree = "<group>"; };
 		D724D08A1F94806B00D25A5A /* MomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentCell.swift; sourceTree = "<group>"; };
 		D724D08B1F94806B00D25A5A /* MomentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MomentCell.xib; sourceTree = "<group>"; };
+		D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMomentViewController.swift; sourceTree = "<group>"; };
 		D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,7 +215,7 @@
 		D724D0601F947FF900D25A5A /* CreateMoment */ = {
 			isa = PBXGroup;
 			children = (
-				D724D0611F947FF900D25A5A /* CreateMomentViewController.swift */,
+				D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */,
 			);
 			name = CreateMoment;
 			path = ActionDetail;
@@ -467,9 +467,7 @@
 				D724D0861F94804500D25A5A /* FireBaseManager.swift in Sources */,
 				D724D0871F94804500D25A5A /* ServiceManager.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
-				D724D0751F947FF900D25A5A /* ActionViewController.swift in Sources */,
-				D724D0821F947FF900D25A5A /* UserProfileViewController.swift in Sources */,
-				D724D0751F947FF900D25A5A /* CreateMomentViewController.swift in Sources */,
+				D797E6731F9AED7A0097B4CA /* CreateMomentViewController.swift in Sources */,
 				D724D07D1F947FF900D25A5A /* SettingsViewController.swift in Sources */,
 				D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */,
 				D724D07E1F947FF900D25A5A /* TimeLineManager.swift in Sources */,
