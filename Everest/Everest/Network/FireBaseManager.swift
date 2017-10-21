@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 import SwiftyJSON
 import GoogleSignIn
 
@@ -16,6 +17,7 @@ class FireBaseManager {
   static let shared = FireBaseManager()
   static var UID:String = ""
   let ref = Database.database().reference()
+  let storageRef = Storage.storage().reference()
   let LENGTH_OF_FETCHED_LIST: UInt = 20
   
 // MARK: - Authentication related functions
@@ -284,4 +286,45 @@ class FireBaseManager {
             }
         })
     }
+    
+    // MARK: - File storage functions
+
+    func uploadImage(image: UIImage, completion: @escaping (String, String?, Error?) -> ()) {
+        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
+        uploadImage(data: imageData) { (path, url, error) in
+            completion(path, url, error)
+        }
+    }
+    
+    func uploadImage(data: Data, completion: @escaping (String, String?, Error?) -> ()) {
+        let imagePath = Auth.auth().currentUser!.uid +
+        "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        self.storageRef.child(imagePath).putData(data, metadata: metadata) { (metadata, error) in
+            if let error = error {
+                print("Error uploading: \(error)")
+                completion(imagePath, nil, error)
+            } else {
+                completion(imagePath, metadata?.downloadURL()?.absoluteString, nil)
+            }
+        }
+    }
+    
+    func downloadImage(path: String, completion: @escaping (String?, Error?) -> ()) {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        let filePath = "file:\(documentsDirectory)/"+path
+        guard let fileURL = URL.init(string: filePath) else { return }
+        storageRef.child(path).write(toFile: fileURL, completion: { (url, error) in
+            if let error = error {
+                print("Error downloading:\(error)")
+                completion(nil, error)
+            } else if let imagePath = url?.path {
+                //self.imageView.image = UIImage.init(contentsOfFile: imagePath)
+                completion(imagePath, nil)
+            }
+        })
+    }
+    
 }
