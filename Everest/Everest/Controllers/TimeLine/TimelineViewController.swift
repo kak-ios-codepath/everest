@@ -126,7 +126,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.moments?.count)!
+        return self.moments?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

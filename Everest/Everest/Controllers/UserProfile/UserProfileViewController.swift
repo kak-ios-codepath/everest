@@ -58,7 +58,11 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard.init(name: "UserProfile", bundle: nil)
-        let actionDetailVC = storyBoard.instantiateViewController(withIdentifier: "ActionViewController") as! ActionViewController
+        let actionDetailVC = storyBoard.instantiateViewController(withIdentifier: "ActionViewController") as! CreateMomentViewController
+        
+        let cell = actionsTableView.cellForRow(at: indexPath) as! ActionCell
+        actionDetailVC.actId = "AA7" //cell.action.id
+        
         self.navigationController?.pushViewController(actionDetailVC, animated: true)
         
     }
