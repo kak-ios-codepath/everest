@@ -63,7 +63,28 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             // Reload the timelineView
             self.reloadView()
         })
-        // Do any additional setup after loading the view.
+        
+//// -- TODO: Remove code after TESTING image uploads
+//        guard let image = UIImage(named: "password") else { return }
+//        //guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
+//
+//        FireBaseManager.shared.uploadImage(image: image) { (path, url, error) in
+//            if url != nil {
+//                print("Image path: \(path)")
+//                print("Uploaded image to: \(url!)")
+//                FireBaseManager.shared.downloadImage(path: path, completion: { (url, error) in
+//                    if url != nil {
+//                        print("Downloaded image to: \(url!)")
+//                    } else {
+//                        print("Error Uploading image ")
+//                    }
+//                })
+//            } else {
+//                print("Error Uploadding image ")
+//            }
+//        }
+        
+        
     }
     
     
@@ -105,7 +126,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.moments?.count)!
+        return self.moments?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
