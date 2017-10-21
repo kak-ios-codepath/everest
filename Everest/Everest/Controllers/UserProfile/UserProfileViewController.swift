@@ -8,9 +8,16 @@
 
 import UIKit
 
+enum ListType {
+    case listTypeAccount
+    case listTypeMoment
+}
+
 class UserProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var user: User?
+    
+    var currentListType : ListType = .listTypeAccount
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -18,6 +25,31 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var actionsTableView: UITableView!
+    
+    private var userProfileManager: UserProfileManager?
+    var actions : [Action]?
+    var moments : [Moment]?
+
+    //  MARK: -- Initialization codes
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initialize()
+        
+    }
+    
+    
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        initialize()
+    }
+    
+    
+    func initialize() -> Void {
+        userProfileManager     = UserProfileManager.init()
+        actions = [Action]()
+        moments = [Moment]()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +79,45 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         // Dispose of any resources that can be recreated.
     }
     
+   
+    @IBAction func segmentControlChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            self.currentListType = ListType.listTypeAccount
+        }
+        else{
+            self.currentListType = ListType.listTypeMoment
+        }
+    }
+    
+    func loadViewForSelectedMode(){
+        
+        if self.currentListType == .listTypeAccount {
+            self.userProfileManager?.fetchUserActions(userId: (self.user?.id)!, completion: { (actions: [Action]?, error:Error?) in
+                if error != nil {
+                    // show alert
+                    return
+                }
+                self.actions = actions
+                DispatchQueue.main.async {
+                    self.actionsTableView.reloadData()
+                }
+            })
+            
+        }else {
+            self.userProfileManager?.fetchUserMomments(userId: (self.user?.id)!, completion: { (moments: [Moment]?, error: Error?) in
+                
+                if error != nil {
+                    // show alert
+                    return
+                }
+                self.moments = moments
+                DispatchQueue.main.async {
+                    self.actionsTableView.reloadData()
+                }
+            })
+        }
+    
+    }
 
     /*
     // MARK: - Navigation
@@ -65,12 +136,23 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCell", for: indexPath) as! ActionCell
         
+        if self.currentListType == ListType.listTypeAccount {
+            
+            cell.title.text = self.actions?[indexPath.row].id
+            return cell
+        }
+        
+        
+        
         return cell
     }
     
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if self.currentListType == ListType.listTypeAccount {
+            return (self.actions?.count)!
+        }
+        return (self.moments?.count)!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

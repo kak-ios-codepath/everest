@@ -11,6 +11,7 @@ import UIKit
 class ActionCell: UITableViewCell {
 
     var action: Action!
+    @IBOutlet weak var title: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
