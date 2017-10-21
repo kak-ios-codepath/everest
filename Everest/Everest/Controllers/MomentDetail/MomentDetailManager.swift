@@ -26,8 +26,8 @@ class MomentDetailManager: NSObject {
     }
     
     
-    func fetchSuggestedMoments(momentId: String,completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) {
-        //FireBaseManager.shared.
+    func fetchSuggestedMoments(actId: String,completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) {
+        //
     }
     
 }

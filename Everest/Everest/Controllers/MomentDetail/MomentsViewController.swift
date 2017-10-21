@@ -14,7 +14,7 @@ class MomentsViewController: UIViewController {
     @IBOutlet weak var momentDetailTableView: UITableView!
     
     fileprivate var momentDetailManager: MomentDetailManager?
-    private var similarMomentsList : [Moment]?
+    fileprivate var suggestedMomentList : [Moment]?
     var momentId : String?
     
     fileprivate var currentSelectedMoment : Moment?
@@ -38,7 +38,7 @@ class MomentsViewController: UIViewController {
     func initialize() -> Void {
         
         momentDetailManager             = MomentDetailManager.init()
-        similarMomentsList              = [Moment]()
+        suggestedMomentList              = [Moment]()
     }
 
     
@@ -48,6 +48,8 @@ class MomentsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.momentDetailTableView.estimatedRowHeight = 100
+        self.momentDetailTableView.rowHeight = UITableViewAutomaticDimension
         
         self.momentDetailManager?.fetchDetailsOfTheMoment(momentId: self.momentId!, completion: { (moment: Moment?, error: Error?) in
             
@@ -56,10 +58,23 @@ class MomentsViewController: UIViewController {
                 return
             }
             self.currentSelectedMoment = moment
-            self.momentDetailTableView.reloadData()
+            DispatchQueue.main.async {
+                self.momentDetailTableView.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
+            }
+            if let actId = moment?.actId {
+                self.momentDetailManager?.fetchSuggestedMoments(actId: actId, completion: { (moments:[Moment]?, error: Error?) in
+                    if (error != nil) {
+                        //show alert
+                        return
+                    }
+                    
+                    self.suggestedMomentList = moments
+                    DispatchQueue.main.async {
+                        self.momentDetailTableView.reloadSections(IndexSet(integer: 1), with: UITableViewRowAnimation.automatic)
+                    }
+                })
+            }
         })
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,13 +104,30 @@ extension MomentsViewController: UITableViewDelegate, UITableViewDataSource {
         if (indexPath.section == 0) {
             cell.moment = self.currentSelectedMoment
         }
+        else
+        {
+            if (self.suggestedMomentList?.count)!>0 {
+                cell.moment = self.suggestedMomentList?[indexPath.row]
+            }
+        }
         
         return cell
     }
 
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return 1
+        }
+        
+        return (self.suggestedMomentList?.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return "Similar Moments"
+        }
+        return ""
     }
 
     
