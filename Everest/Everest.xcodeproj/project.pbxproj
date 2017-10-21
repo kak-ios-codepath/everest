@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011C4B731F9AB1FD0070EDF3 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C4B721F9AB1FD0070EDF3 /* UserProfileViewController.swift */; };
 		01B2AA251F971F6F00138959 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2AA241F971F6F00138959 /* EmailLoginViewController.swift */; };
 		01B2AA271F980B7C00138959 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2AA261F980B7C00138959 /* LoginManager.swift */; };
 		06A931711F95C60B00DFD1AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A9316F1F95C60B00DFD1AA /* LoginViewController.swift */; };
@@ -40,7 +41,6 @@
 		D724D07F1F947FF900D25A5A /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0701F947FF900D25A5A /* TimelineViewController.swift */; };
 		D724D0801F947FF900D25A5A /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0721F947FF900D25A5A /* UserProfile.storyboard */; };
 		D724D0811F947FF900D25A5A /* UserProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0731F947FF900D25A5A /* UserProfileManager.swift */; };
-		D724D0821F947FF900D25A5A /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0741F947FF900D25A5A /* UserProfileViewController.swift */; };
 		D724D0861F94804500D25A5A /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0841F94804500D25A5A /* FireBaseManager.swift */; };
 		D724D0871F94804500D25A5A /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0851F94804500D25A5A /* ServiceManager.swift */; };
 		D724D08C1F94806B00D25A5A /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0881F94806B00D25A5A /* ActionCell.swift */; };
@@ -51,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		011C4B721F9AB1FD0070EDF3 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		01B2AA241F971F6F00138959 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		01B2AA261F980B7C00138959 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		06A9316F1F95C60B00DFD1AA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		D724D0701F947FF900D25A5A /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		D724D0721F947FF900D25A5A /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		D724D0731F947FF900D25A5A /* UserProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileManager.swift; sourceTree = "<group>"; };
-		D724D0741F947FF900D25A5A /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		D724D0841F94804500D25A5A /* FireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 		D724D0851F94804500D25A5A /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		D724D0881F94806B00D25A5A /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
@@ -260,9 +260,9 @@
 		D724D0711F947FF900D25A5A /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				011C4B721F9AB1FD0070EDF3 /* UserProfileViewController.swift */,
 				D724D0721F947FF900D25A5A /* UserProfile.storyboard */,
 				D724D0731F947FF900D25A5A /* UserProfileManager.swift */,
-				D724D0741F947FF900D25A5A /* UserProfileViewController.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -462,10 +462,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				06A931721F95C60B00DFD1AA /* WelcomeViewController.swift in Sources */,
+				011C4B731F9AB1FD0070EDF3 /* UserProfileViewController.swift in Sources */,
 				CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */,
 				D724D0861F94804500D25A5A /* FireBaseManager.swift in Sources */,
 				D724D0871F94804500D25A5A /* ServiceManager.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
+				D724D0751F947FF900D25A5A /* ActionViewController.swift in Sources */,
 				D724D0821F947FF900D25A5A /* UserProfileViewController.swift in Sources */,
 				D724D0751F947FF900D25A5A /* CreateMomentViewController.swift in Sources */,
 				D724D07D1F947FF900D25A5A /* SettingsViewController.swift in Sources */,

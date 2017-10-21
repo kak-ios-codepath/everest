@@ -247,6 +247,7 @@ class FireBaseManager {
   func updateAction(action: Action) {
     ref.child("acts/\(action.id)/members/\(FireBaseManager.UID)").setValue(true)
 
+    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/id").setValue(action.id)
     ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/createdAt").setValue(action.createdAt)
     ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/status").setValue(action.status)
 //    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/momentId").setValue(action.momentId)
