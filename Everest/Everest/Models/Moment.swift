@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import SwiftyJSON
 
 class Moment: NSObject {

@@ -30,6 +30,8 @@
 		53BFE0BD07A643099FBD10B5 /* Pods_Everest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F2AFBEA79BCE95B21EA7B7 /* Pods_Everest.framework */; };
 		CE0908DA1F982664004D1974 /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */; };
 		CE0908E01F986F74004D1974 /* ActsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0908DF1F986F73004D1974 /* ActsCell.swift */; };
+		CE1335261F9C21DB000D54C4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1335251F9C21DB000D54C4 /* Category.swift */; };
+		CE1335291F9C37AD000D54C4 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1335281F9C37AD000D54C4 /* UIImage+Resize.swift */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
 		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
 		D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0641F947FF900D25A5A /* AddActionViewController.swift */; };
@@ -80,6 +82,8 @@
 		CE02ED651F96A114000B43C7 /* Everest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Everest.entitlements; sourceTree = "<group>"; };
 		CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		CE0908DF1F986F73004D1974 /* ActsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActsCell.swift; sourceTree = "<group>"; };
+		CE1335251F9C21DB000D54C4 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		CE1335281F9C37AD000D54C4 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
 		D724D0641F947FF900D25A5A /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 		06C2EA331F91D6AB003D0ADF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE1335271F9C378E000D54C4 /* extensions */,
 				D724D0601F947FF900D25A5A /* CreateMoment */,
 				D724D0621F947FF900D25A5A /* AddAction */,
 				06A9316E1F95C60B00DFD1AA /* Login */,
@@ -185,6 +190,7 @@
 				06C2EA4E1F91D8DF003D0ADF /* Moment.swift */,
 				06C2EA501F91D8EF003D0ADF /* Act.swift */,
 				CE2F56071F92DE54004D2CF9 /* Action.swift */,
+				CE1335251F9C21DB000D54C4 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +219,14 @@
 				96AB2C17FBBD33E88DD8EC9E /* Pods-Everest.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CE1335271F9C378E000D54C4 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE1335281F9C37AD000D54C4 /* UIImage+Resize.swift */,
+			);
+			name = extensions;
 			sourceTree = "<group>";
 		};
 		D724D0601F947FF900D25A5A /* CreateMoment */ = {
@@ -467,6 +481,7 @@
 				06A931721F95C60B00DFD1AA /* WelcomeViewController.swift in Sources */,
 				011C4B731F9AB1FD0070EDF3 /* UserProfileViewController.swift in Sources */,
 				CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */,
+				CE1335261F9C21DB000D54C4 /* Category.swift in Sources */,
 				D724D0861F94804500D25A5A /* FireBaseManager.swift in Sources */,
 				D724D0871F94804500D25A5A /* ServiceManager.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
@@ -489,6 +504,7 @@
 				D724D0811F947FF900D25A5A /* UserProfileManager.swift in Sources */,
 				06C2EA531F91D921003D0ADF /* UserProfileView.swift in Sources */,
 				D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */,
+				CE1335291F9C37AD000D54C4 /* UIImage+Resize.swift in Sources */,
 				06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */,
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
 				CE0908E01F986F74004D1974 /* ActsCell.swift in Sources */,
