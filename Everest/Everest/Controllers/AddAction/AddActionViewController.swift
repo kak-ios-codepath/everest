@@ -108,12 +108,8 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actsTableView.deselectRow(at: indexPath, animated: true)
-        //let cell = actsTableView.cellForRow(at: indexPath) as! ActsCell
-        //TODO: take the user to the right place after chosing an act
-        let action = Action(id: AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].id, createdAt: "\(Date())", status: ActionStatus.created.rawValue)
-        FireBaseManager.shared.updateAction(action: action)
         
-        MainManager.shared.createNewAction(id: (categories[titles[categoryIndex]]?[indexPath.row].id)!, completion:{(error) in
+        MainManager.shared.createNewAction(id: AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].id, completion:{(error) in
             let alertController = UIAlertController(title: "Added", message: "You can view this newly added action in your Profile view.",  preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
             })

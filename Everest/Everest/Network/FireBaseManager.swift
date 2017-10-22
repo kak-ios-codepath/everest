@@ -182,6 +182,37 @@ class FireBaseManager {
         }
     }
     
+    func fetchMomentsForAnAct (startAtMomentId: String?, actId: String, completion: @escaping ([Moment]?, Error?) -> ()) {
+        if let startAtMomentId = startAtMomentId {
+            ref.child("moments")
+                .queryStarting(atValue: startAtMomentId)
+                .queryOrdered(byChild: "actId")
+                .queryEqual(toValue: actId)
+                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })
+        } else {
+            ref.child("moments")
+                .queryOrdered(byChild: "actId")
+                .queryEqual(toValue: actId)
+                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })
+        }
+    }
+    
     func updateMomentLikes(momentId: String, incrementBy: Int) {
         ref.child("moments/\(momentId)/likes").observeSingleEvent(of: .value, with: { (snapshot) in
             if let value = snapshot.value as? Int {
@@ -244,18 +275,18 @@ class FireBaseManager {
             })
     }
     
-// fetchAvailableActs in now Deprecated function
-//    func fetchAvailableActs(category: String, completion: @escaping ([Act]?, Error?) -> ()) {
-//        ref.child("actsPicker/\(category)")
-//            .observe(.value, with: { (snapshotVec) -> Void in
-//                if let actsDictionary = snapshotVec.value as? NSDictionary {
-//                    let actArray = actsDictionary.flatMap { Act(id: $0 as! String, category: category, title: $1 as! String, score: ACT_DEFAULT_SCORE) }
-//                    completion(actArray, nil)
-//                } else {
-//                    completion(nil, "failed to get available Acts" as? Error)
-//                }
-//            })
-//    }
+    // fetchAvailableActs in now Deprecated function
+    func fetchAvailableActs(category: String, completion: @escaping ([Act]?, Error?) -> ()) {
+        ref.child("actsPicker/\(category)")
+            .observe(.value, with: { (snapshotVec) -> Void in
+                if let actsDictionary = snapshotVec.value as? NSDictionary {
+                    let actArray = actsDictionary.flatMap { Act(id: $0 as! String, category: category, title: $1 as! String, score: ACT_DEFAULT_SCORE) }
+                    completion(actArray, nil)
+                } else {
+                    completion(nil, "failed to get available Acts" as? Error)
+                }
+            })
+    }
     
     func updateAction(action: Action) {
         ref.child("acts/\(action.id)/members/\(FireBaseManager.UID)").setValue(true)
@@ -301,7 +332,7 @@ class FireBaseManager {
     }
     
     // MARK: - File storage functions
-
+    
     func uploadImage(image: UIImage, completion: @escaping (String, String?, Error?) -> ()) {
         guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
         uploadImage(data: imageData) { (path, url, error) in

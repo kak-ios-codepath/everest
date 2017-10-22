@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class CreateMomentViewController: UIViewController {
-
+    
     @IBOutlet weak var momentTitle: UITextField!
     @IBOutlet weak var momentDetails: UITextView!
     @IBOutlet weak var addPhotoLabel: UILabel!
@@ -25,8 +25,9 @@ class CreateMomentViewController: UIViewController {
     var momentCoordinate: CLLocationCoordinate2D!
     var geoLocation: [String : String]?
     var location: String?
+    var isTakingPic = false
     
-    var picsUrl: [String]? = ["https://www.lipstiq.com/wp-content/uploads/2014/06/62.jpg"]
+    var picsUrl: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +37,9 @@ class CreateMomentViewController: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-
+        
     }
-
+    
     @IBAction func onPhotoBtn(_ sender: UIButton) {
         let vc = UIImagePickerController()
         vc.delegate = self
@@ -54,13 +55,13 @@ class CreateMomentViewController: UIViewController {
         geoLocation = ["lat": String(momentCoordinate.latitude), "lon": String(momentCoordinate.longitude)]
         
         addAnnotationAtCoordinate(coordinates: ["lat": momentCoordinate.latitude, "lon": momentCoordinate.longitude], title: "")
-         fetchCountryAndCity(location: coordinate) { (country, city) in
+        fetchCountryAndCity(location: coordinate) { (country, city) in
             self.location = "\(city), \(country)"
         }
     }
     
     @IBAction func onFacebookBtn(_ sender: UIButton) {
-    
+        
     }
     
     @IBAction func onTwitterBtn(_ sender: UIButton) {
@@ -75,10 +76,15 @@ class CreateMomentViewController: UIViewController {
         guard let details = momentDetails.text else { return
             //TODO: message to fill details
         }
-
-        moment = Moment(title: title, details: details, actId: actId, userId: FireBaseManager.UID, timestamp: "\(Date())", picUrls: picsUrl!, geoLocation: geoLocation, location: location)
         
-        FireBaseManager.shared.updateMoment(moment: moment, newMoment: true)
+        DispatchQueue.global().async {
+            while (self.isTakingPic && (self.picsUrl == nil)) {
+                if (self.picsUrl != nil) {break}
+            }
+            self.moment = Moment(title: title, details: details, actId: self.actId, userId: FireBaseManager.UID, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
+            
+            FireBaseManager.shared.updateMoment(moment: self.moment, newMoment: true)
+        }
         
         navigationController?.popViewController(animated: true)
     }
@@ -91,15 +97,15 @@ extension CreateMomentViewController: UIImagePickerControllerDelegate, UINavigat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        if let imageData = UIImagePNGRepresentation(originalImage) as Data? {
-            FireBaseManager.shared.uploadImage(data: imageData) { (imageURL, downloadURL, error) in
-                print (imageURL)
-                print (downloadURL ?? "test")
-//                moment.picUrls = [""]
+        isTakingPic = true
+        let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        guard let reducedSizeImage = originalImage?.resized(withPercentage: 0.3) else {return}
+        
+        if let imageData = UIImagePNGRepresentation(reducedSizeImage) as Data? {
+            FireBaseManager.shared.uploadImage(data: imageData) { (folderAndFileName, imageUrl, error) in
+                self.picsUrl = [imageUrl!]
             }
         }
-        
         
         dismiss(animated: true, completion: nil)
     }
@@ -108,7 +114,7 @@ extension CreateMomentViewController: UIImagePickerControllerDelegate, UINavigat
 
 //MARK:- Map delegate
 extension CreateMomentViewController: CLLocationManagerDelegate, MKMapViewDelegate {
-   
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.authorizedWhenInUse {
             locationManager.startUpdatingLocation()
