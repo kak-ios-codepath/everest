@@ -27,7 +27,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var actionsTableView: UITableView!
     
     private var userProfileManager: UserProfileManager?
-    var actions : [Action]?
+    var actions : [Act]?
     var moments : [Moment]?
 
     //  MARK: -- Initialization codes
@@ -47,13 +47,13 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     func initialize() -> Void {
         userProfileManager     = UserProfileManager.init()
-        actions = [Action]()
+        actions = [Act]()
         moments = [Moment]()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.userProfileManager?.fetchAllActs()
         let nib = UINib(nibName: "ActionCell", bundle: nil)
         self.actionsTableView.register(nib, forCellReuseIdentifier: "ActionCell")
         self.actionsTableView.estimatedRowHeight = self.actionsTableView.rowHeight
@@ -72,6 +72,8 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             profileImageView.image = nil
         }
         
+        loadViewForSelectedMode()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,12 +89,13 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         else{
             self.currentListType = ListType.listTypeMoment
         }
+        
     }
     
     func loadViewForSelectedMode(){
         
         if self.currentListType == .listTypeAccount {
-            self.userProfileManager?.fetchUserActions(userId: (self.user?.id)!, completion: { (actions: [Action]?, error:Error?) in
+            self.userProfileManager?.fetchUserActions(userId: (self.user?.id)!, completion: { (actions: [Act]?, error:Error?) in
                 if error != nil {
                     // show alert
                     return
@@ -138,7 +141,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         if self.currentListType == ListType.listTypeAccount {
             
-            cell.title.text = self.actions?[indexPath.row].id
+            cell.title.text = self.actions?[indexPath.row].title
             return cell
         }
         
@@ -156,13 +159,13 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard.init(name: "UserProfile", bundle: nil)
-        let actionDetailVC = storyBoard.instantiateViewController(withIdentifier: "ActionViewController") as! CreateMomentViewController
         
-        let cell = actionsTableView.cellForRow(at: indexPath) as! ActionCell
-        actionDetailVC.actId = "AA7" //cell.action.id
-        
-        self.navigationController?.pushViewController(actionDetailVC, animated: true)
+        if self.currentListType == ListType.listTypeAccount {
+            let storyBoard = UIStoryboard.init(name: "UserProfile", bundle: nil)
+            let actionDetailVC = storyBoard.instantiateViewController(withIdentifier: "ActionViewController") as! CreateMomentViewController
+            actionDetailVC.actId = self.actions?[indexPath.row].id
+            self.navigationController?.pushViewController(actionDetailVC, animated: true)
+        }
         
     }
 
