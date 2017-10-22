@@ -23,7 +23,7 @@ class AddActionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
         categoriesCollectionView.delegate = self
         actsTableView.delegate = self
         actsTableView.estimatedRowHeight = 30

@@ -140,10 +140,11 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: -- MomentCell delegate methods
     
-    func momentCell(cell: MomentCell, didTapOnUserIconForMoment: Moment) {
+    func momentCell(cell: MomentCell, didTapOnUserIconForMoment moment: Moment) {
         let userProfileStoryboard = UIStoryboard(name: "UserProfile", bundle: nil)
-        let userProfileVC = userProfileStoryboard.instantiateViewController(withIdentifier: "UserProfileViewController")
+        let userProfileVC = userProfileStoryboard.instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
         //TODO: Add the user object property to the userprofile viewcontroller
+        userProfileVC.userId = moment.userId
         self.navigationController?.pushViewController(userProfileVC, animated: true)
         
     }
