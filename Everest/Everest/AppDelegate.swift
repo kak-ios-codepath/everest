@@ -16,7 +16,7 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+    static var availableCategories:[Category]!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -34,6 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Login setup
         LoginManager.shared.initialize()
+        
+        FireBaseManager.shared.fetchAvailableCategories { (categories, error) in
+            if error == nil {
+                AppDelegate.availableCategories = categories
+            }
+        }
 
         return true
     }

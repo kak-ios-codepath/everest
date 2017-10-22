@@ -18,9 +18,7 @@ class AddActionViewController: UIViewController {
     private var originalItemSize = CGSize.zero
     private var originalCollectionViewSize = CGSize.zero
     
-    fileprivate let titles = ["Empathy", "Surprise"]
     fileprivate let photoUrls = ["https://www.lipstiq.com/wp-content/uploads/2014/06/62.jpg", "https://www.lipstiq.com/wp-content/uploads/2014/06/62.jpg"]
-    fileprivate var categories = [String: [Act]]()
     fileprivate var categoryIndex = 0
     
     override func viewDidLoad() {
@@ -31,7 +29,8 @@ class AddActionViewController: UIViewController {
         actsTableView.estimatedRowHeight = 30
         actsTableView.rowHeight = UITableViewAutomaticDimension
         
-        fetchCategoriesAndActs()
+        categoriesCollectionView.reloadData()
+        actsTableView.reloadData()
         
         originalItemSize = coverFlowLayout.itemSize
         originalCollectionViewSize = categoriesCollectionView.bounds.size
@@ -69,18 +68,6 @@ class AddActionViewController: UIViewController {
         coverFlowLayout.minCoverScale = 0.80
         coverFlowLayout.minCoverOpacity = 0.50
     }
-    
-    func fetchCategoriesAndActs() {
-        for title in titles {
-            FireBaseManager.shared.fetchAvailableActs(category: title) {(actArray, error) in
-                if error == nil {
-                    self.categories[title] = actArray
-                    self.categoriesCollectionView.reloadData()
-                    self.actsTableView.reloadData()
-                }
-            }
-        }
-    }
 }
 
 
@@ -88,13 +75,13 @@ class AddActionViewController: UIViewController {
 extension AddActionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return AppDelegate.availableCategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCollectionCell", for: indexPath) as? CategoryCollectionCell else {return UICollectionViewCell()}
         cell.categoryPhotoURL = photoUrls[indexPath.row]
-        cell.categoryTitle = titles[indexPath.row]
+        cell.categoryTitle = AppDelegate.availableCategories[indexPath.row].title
         return cell
     }
 }
@@ -104,13 +91,13 @@ extension AddActionViewController: UICollectionViewDelegate, UICollectionViewDat
 extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let acts = categories[titles[categoryIndex]] else {return 0}
+        guard let acts = AppDelegate.availableCategories[categoryIndex].acts else {return 0}
         return acts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "actsCell", for: indexPath) as? ActsCell else {return UITableViewCell()}
-        cell.actText = categories[titles[categoryIndex]]?[indexPath.row].title
+        cell.actText = AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].title
         return cell
     }
     
@@ -118,7 +105,7 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
         actsTableView.deselectRow(at: indexPath, animated: true)
         //let cell = actsTableView.cellForRow(at: indexPath) as! ActsCell
         //TODO: take the user to the right place after chosing an act
-        let action = Action(id: (categories[titles[categoryIndex]]?[indexPath.row].id)!, createdAt: "\(Date())", status: ActionStatus.created.rawValue)
+        let action = Action(id: AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].id, createdAt: "\(Date())", status: ActionStatus.created.rawValue)
         FireBaseManager.shared.updateAction(action: action)
         
     }
@@ -130,7 +117,7 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
 
             if velocity.x > 0 && categoryIndex > 0 {
                 categoryIndex -= 1
-            } else if velocity.x < 0 && categoryIndex < categories.count-1 {
+            } else if velocity.x < 0 && categoryIndex < AppDelegate.availableCategories.count-1 {
                 categoryIndex += 1
             }
             actsTableView.reloadData()

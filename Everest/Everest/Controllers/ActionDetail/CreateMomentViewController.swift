@@ -90,10 +90,16 @@ class CreateMomentViewController: UIViewController {
 extension CreateMomentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        //TODO: store the image online and get the url
-        //moment.picUrls = [""]
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        if let imageData = UIImagePNGRepresentation(originalImage) as Data? {
+            FireBaseManager.shared.uploadImage(data: imageData) { (imageURL, downloadURL, error) in
+                print (imageURL)
+                print (downloadURL ?? "test")
+//                moment.picUrls = [""]
+            }
+        }
+        
         
         dismiss(animated: true, completion: nil)
     }
