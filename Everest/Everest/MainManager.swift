@@ -13,8 +13,8 @@ class MainManager {
     
     static let shared = MainManager()
     
-    func createNewAction(id: String, completion: @escaping (NSError?) -> ()) {
-        let action = Action(id: id, createdAt: "\(Date())", status: ActionStatus.created.rawValue)
+    func createNewAction(id: String,actTitle: String, completion: @escaping (NSError?) -> ()) {
+        let action = Action(id: id, actTitle:actTitle, createdAt: "\(Date())", status: ActionStatus.created.rawValue)
         FireBaseManager.shared.updateAction(action: action)
         FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!) { (user, error) in
             User.currentUser = user

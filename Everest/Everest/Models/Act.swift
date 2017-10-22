@@ -25,6 +25,13 @@ class Act: NSObject {
     self.title = title
     self.score = score
   }
+    
+    init(act: JSON) {
+        self.id = act["id"].string!
+        self.category = act["category"].string!
+        self.title = act["title"].string!
+        self.score = act["score"].int!
+    }
   
   // This code will allow the user to create new acts
   //  init(id: String, title: String) {

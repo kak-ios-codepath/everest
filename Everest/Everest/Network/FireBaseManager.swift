@@ -276,26 +276,53 @@ class FireBaseManager {
     }
     
     // fetchAvailableActs in now Deprecated function
-    func fetchAvailableActs(category: String, completion: @escaping ([Act]?, Error?) -> ()) {
-        ref.child("actsPicker/\(category)")
-            .observe(.value, with: { (snapshotVec) -> Void in
-                if let actsDictionary = snapshotVec.value as? NSDictionary {
-                    let actArray = actsDictionary.flatMap { Act(id: $0 as! String, category: category, title: $1 as! String, score: ACT_DEFAULT_SCORE) }
-                    completion(actArray, nil)
-                } else {
-                    completion(nil, "failed to get available Acts" as? Error)
-                }
-            })
-    }
+//    func fetchAvailableActs(category: String, completion: @escaping ([Act]?, Error?) -> ()) {
+//        ref.child("actsPicker/\(category)")
+//            .observe(.value, with: { (snapshotVec) -> Void in
+//                if let actsDictionary = snapshotVec.value as? NSDictionary {
+//                    let actArray = actsDictionary.flatMap { Act(id: $0 as! String, category: category, title: $1 as! String, score: ACT_DEFAULT_SCORE) }
+//                    completion(actArray, nil)
+//                } else {
+//                    completion(nil, "failed to get available Acts" as? Error)
+//                }
+//            })
+//    }
+//    
+//    func updateAction(action: Action) {
+//        ref.child("acts/\(action.id)/members/\(FireBaseManager.UID)").setValue(true)
+//        
+//        ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/id").setValue(action.id)
+//        ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/createdAt").setValue(action.createdAt)
+//        ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/status").setValue(action.status)
+//        //    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/momentId").setValue(action.momentId)
+//    }
+//
+//  }
+  
+// MARK: - Action Data Model related functions
+  func fetchAvailableActs(category: String, completion: @escaping ([Act]?, Error?) -> ()) {
+    ref.child("actsPicker/\(category)")
+      .observe(.value, with: { (snapshotVec) -> Void in
+        if let actsDictionary = snapshotVec.value as? NSDictionary {
+          let actArray = actsDictionary.flatMap { Act(id: $0 as! String, category: category, title: $1 as! String, score: ACT_DEFAULT_SCORE) }
+          completion(actArray, nil)
+        } else {
+          completion(nil, "failed to get available Acts" as? Error)
+        }
+      })
+  }
+  
+  func updateAction(action: Action) {
+    ref.child("acts/\(action.id)/members/\(FireBaseManager.UID)").setValue(true)
+
+    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/id").setValue(action.id)
+    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/createdAt").setValue(action.createdAt)
+    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/status").setValue(action.status)
+    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/actTitle").setValue(action.actTitle)
     
-    func updateAction(action: Action) {
-        ref.child("acts/\(action.id)/members/\(FireBaseManager.UID)").setValue(true)
-        
-        ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/id").setValue(action.id)
-        ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/createdAt").setValue(action.createdAt)
-        ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/status").setValue(action.status)
-        //    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/momentId").setValue(action.momentId)
-    }
+//    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/momentId").setValue(action.momentId)
+  }
+
     
     // MARK: - Utility functions
     func createUserFromFirebase(user: Firebase.User, completion: @escaping (User?, Error?) -> ()){

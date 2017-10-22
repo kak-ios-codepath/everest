@@ -25,9 +25,7 @@ class AddActionViewController: UIViewController {
         super.viewDidLoad()
         
         //setup notification observers
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
-            //TODO: go to user profile screen to show newly added actions.
-        })
+
         
         categoriesCollectionView.delegate = self
         actsTableView.delegate = self
@@ -108,8 +106,7 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actsTableView.deselectRow(at: indexPath, animated: true)
-        
-        MainManager.shared.createNewAction(id: AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].id, completion:{(error) in
+        MainManager.shared.createNewAction(id: (AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].id), actTitle: (AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].title), completion:{(error) in
             let alertController = UIAlertController(title: "Added", message: "You can view this newly added action in your Profile view.",  preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
             })
