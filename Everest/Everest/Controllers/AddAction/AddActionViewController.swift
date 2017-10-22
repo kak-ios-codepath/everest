@@ -24,10 +24,6 @@ class AddActionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //setup notification observers
-        availableCategories = MainManager.shared.availableCategories
-
-        
         categoriesCollectionView.delegate = self
         actsTableView.delegate = self
         actsTableView.estimatedRowHeight = 30
