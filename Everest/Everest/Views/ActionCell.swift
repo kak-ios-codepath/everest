@@ -10,6 +10,7 @@ import UIKit
 
 class ActionCell: UITableViewCell {
 
+    @IBOutlet weak var actionStatus: UILabel!
     var action: Action!
     @IBOutlet weak var title: UILabel!
     

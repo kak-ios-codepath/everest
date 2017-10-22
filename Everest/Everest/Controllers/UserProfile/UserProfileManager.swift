@@ -45,24 +45,24 @@ class UserProfileManager: NSObject {
     }
     
     
-    func fetchUserActions(userId: String, completion: @escaping (_ actions: [Act]?, _ error : Error?)->()){
+    func fetchUserActions(userId: String, completion: @escaping (_ actions: [Action]?, _ error : Error?)->()){
         FireBaseManager.shared.getUser(userID: userId) { (user:User?, error:Error?) in
             if user != nil {
                 print(user!)
             }
-            var actionsList : [Act]? = [Act]()
-
-            if let userActions = user?.actions {
-                for action in userActions {
-                    for origAction in self.allActs! {
-                        if origAction.id == action.id {
-                            actionsList?.append(origAction)
-                        }
-                    }
-                }
-            }
-            
-            completion(actionsList, error)
+//            var actionsList : [Act]? = [Act]()
+//
+//            if let userActions = user?.actions {
+//                for action in userActions {
+//                    for origAction in self.allActs! {
+//                        if origAction.id == action.id {
+//                            actionsList?.append(origAction)
+//                        }
+//                    }
+//                }
+//            }
+//            
+            completion(user?.actions, error)
         }
     }
     

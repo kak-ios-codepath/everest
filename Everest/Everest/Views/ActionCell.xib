@@ -55,6 +55,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="actionStatus" destination="yE8-VA-Qe9" id="Ss9-E1-XAM"/>
                 <outlet property="title" destination="tsc-AE-akt" id="DC3-sw-yJB"/>
             </connections>
             <point key="canvasLocation" x="34" y="70"/>

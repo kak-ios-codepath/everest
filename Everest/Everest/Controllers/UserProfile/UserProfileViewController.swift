@@ -27,7 +27,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var actionsTableView: UITableView!
     
     private var userProfileManager: UserProfileManager?
-    var actions : [Act]?
+    var actions : [Action]?
     var moments : [Moment]?
 
     //  MARK: -- Initialization codes
@@ -47,13 +47,20 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     func initialize() -> Void {
         userProfileManager     = UserProfileManager.init()
-        actions = [Act]()
+        actions = [Action]()
         moments = [Moment]()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userProfileManager?.fetchAllActs()
+//        self.userProfileManager?.fetchAllActs()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+            //TODO: go to user profile screen to show newly added actions.
+            
+            self.loadViewForSelectedMode()
+        })
+        
+        
         let nib = UINib(nibName: "ActionCell", bundle: nil)
         self.actionsTableView.register(nib, forCellReuseIdentifier: "ActionCell")
         self.actionsTableView.estimatedRowHeight = self.actionsTableView.rowHeight
@@ -66,11 +73,11 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         nameLabel.text = user?.name
         dateLabel.text = "Joined on "+(user?.createdDate)!
         scoreLabel.text = "\(user?.score ?? 0)"
-        if (user?.profilePhotoUrl != nil) {
-            profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
-        } else {
-            profileImageView.image = nil
-        }
+//        if (user?.profilePhotoUrl != nil) {
+//            profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
+//        } else {
+//            profileImageView.image = nil
+//        }
         
         loadViewForSelectedMode()
 
@@ -95,7 +102,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     func loadViewForSelectedMode(){
         
         if self.currentListType == .listTypeAccount {
-            self.userProfileManager?.fetchUserActions(userId: (self.user?.id)!, completion: { (actions: [Act]?, error:Error?) in
+            self.userProfileManager?.fetchUserActions(userId: (self.user?.id)!, completion: { (actions: [Action]?, error:Error?) in
                 if error != nil {
                     // show alert
                     return
@@ -141,7 +148,8 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         if self.currentListType == ListType.listTypeAccount {
             
-            cell.title.text = self.actions?[indexPath.row].title
+            cell.title.text = self.actions?[indexPath.row].actTitle
+            cell.actionStatus.text = self.actions?[indexPath.row].status
             return cell
         }
         
