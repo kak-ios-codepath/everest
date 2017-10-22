@@ -13,16 +13,56 @@ class UserProfileManager: NSObject {
     
     var moments : [Moment]?
     var actions : [Action]?
+    var allActs : [Act]?
+    var allCategoryTitles : [String]?
+    
+    
     
     override init() {
         moments = [Moment]()
+        allActs = [Act]()
+        allCategoryTitles = ["Empathy", "Surprise"]
+        
     }
     
-    func fetchUserActions(userId: String, completion: @escaping (_ actions: [Action]?, _ error : Error?)->()){
-        FireBaseManager.shared.getUser(userID: "uQxn19H3VdgLPV16NxHqUn6zy7B3") { (user:User?, error:Error?) in
+    
+    func fetchAllActs() {
+        for title in allCategoryTitles! {
+            FireBaseManager.shared.fetchAvailableActs(category: title, completion: { (acts: [Act]?, error :Error?) in
+                if error != nil {
+                    
+                }
+                else {
+                    if let acts = acts {
+                        for act in acts {
+                            self.allActs?.append(act)
+                        }
+                    }
+                }
+            })
+        }
+        
+    }
+    
+    
+    func fetchUserActions(userId: String, completion: @escaping (_ actions: [Act]?, _ error : Error?)->()){
+        FireBaseManager.shared.getUser(userID: userId) { (user:User?, error:Error?) in
             if user != nil {
                 print(user!)
             }
+            var actionsList : [Act]? = [Act]()
+
+            if let userActions = user?.actions {
+                for action in userActions {
+                    for origAction in self.allActs! {
+                        if origAction.id == action.id {
+                            actionsList?.append(origAction)
+                        }
+                    }
+                }
+            }
+            
+            completion(actionsList, error)
         }
     }
     
