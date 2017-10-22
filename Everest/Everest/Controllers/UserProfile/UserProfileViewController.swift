@@ -163,6 +163,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         if self.currentListType == ListType.listTypeAccount {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCell", for: indexPath) as! ActionCell
+            let id = self.actions?[indexPath.row].id
             cell.title.text = MainManager.shared.availableActs[id!]?.title
             cell.actionStatus.text = self.actions?[indexPath.row].status
             return cell

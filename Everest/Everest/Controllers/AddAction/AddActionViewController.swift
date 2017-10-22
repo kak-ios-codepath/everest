@@ -25,7 +25,7 @@ class AddActionViewController: UIViewController {
         super.viewDidLoad()
         
         //setup notification observers
-        availableCategories = MainManager.shared.availableCategories
+        //availableCategories = MainManager.shared.availableCategories
 
         
         categoriesCollectionView.delegate = self
