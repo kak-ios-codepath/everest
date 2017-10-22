@@ -69,14 +69,28 @@ class UserProfileManager: NSObject {
     
     
     func fetchUserMomments(userId: String, completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) -> Void{
-        
-        FireBaseManager.shared.getMomentsTimeLine(startAtMomentId: nil) { (moments:[Moment]?, error:Error?) in
-            if moments != nil {
-                print(moments!)
-            }else if error != nil {
-                print(error!)
+        var userMoments = [Moment]()
+        FireBaseManager.shared.getUser(userID: userId) { (user:User?, error:Error?) in
+            if user != nil {
+                print(user!)
             }
-            completion(moments, error)
+            var momentsCount = user?.momentIds?.count
+            for momentId in (user?.momentIds)! {
+                FireBaseManager.shared.getMoment(momentId: momentId, completion: { (moment : Moment?, error: Error?) in
+                    if (error == nil ){
+                        if let moment = moment {
+                            userMoments.append(moment)
+                        }
+                    }
+                    
+                    momentsCount = momentsCount! - 1
+                    if momentsCount == 0 {
+                        completion(userMoments, nil)
+                    }
+                })
+                
+
+            }
         }
     }
 
