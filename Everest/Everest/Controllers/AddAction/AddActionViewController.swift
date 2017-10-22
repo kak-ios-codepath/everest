@@ -25,6 +25,7 @@ class AddActionViewController: UIViewController {
         super.viewDidLoad()
         
         //setup notification observers
+        availableCategories = MainManager.shared.availableCategories
 
         
         categoriesCollectionView.delegate = self
@@ -78,13 +79,13 @@ class AddActionViewController: UIViewController {
 extension AddActionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AppDelegate.availableCategories.count
+        return MainManager.shared.availableCategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCollectionCell", for: indexPath) as? CategoryCollectionCell else {return UICollectionViewCell()}
         cell.categoryPhotoURL = photoUrls[indexPath.row]
-        cell.categoryTitle = AppDelegate.availableCategories[indexPath.row].title
+        cell.categoryTitle = MainManager.shared.availableCategories[indexPath.row].title
         return cell
     }
 }
@@ -94,19 +95,19 @@ extension AddActionViewController: UICollectionViewDelegate, UICollectionViewDat
 extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let acts = AppDelegate.availableCategories[categoryIndex].acts else {return 0}
+        guard let acts = MainManager.shared.availableCategories[categoryIndex].acts else {return 0}
         return acts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "actsCell", for: indexPath) as? ActsCell else {return UITableViewCell()}
-        cell.actText = AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].title
+        cell.actText = MainManager.shared.availableCategories[categoryIndex].acts[indexPath.row].title
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actsTableView.deselectRow(at: indexPath, animated: true)
-        MainManager.shared.createNewAction(id: (AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].id), actTitle: (AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].title), completion:{(error) in
+        MainManager.shared.createNewAction(id: (MainManager.shared.availableCategories[categoryIndex].acts[indexPath.row].id), completion:{(error) in
             let alertController = UIAlertController(title: "Added", message: "You can view this newly added action in your Profile view.",  preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
             })
@@ -123,7 +124,7 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
 
             if velocity.x > 0 && categoryIndex > 0 {
                 categoryIndex -= 1
-            } else if velocity.x < 0 && categoryIndex < AppDelegate.availableCategories.count-1 {
+            } else if velocity.x < 0 && categoryIndex < MainManager.shared.availableCategories.count-1 {
                 categoryIndex += 1
             }
             actsTableView.reloadData()
