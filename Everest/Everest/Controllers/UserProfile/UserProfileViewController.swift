@@ -148,7 +148,8 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         if self.currentListType == ListType.listTypeAccount {
             
-            cell.title.text = self.actions?[indexPath.row].actTitle
+            let id = self.actions?[indexPath.row].id
+            cell.title.text = MainManager.shared.availableActs[id!]?.title
             cell.actionStatus.text = self.actions?[indexPath.row].status
             return cell
         }

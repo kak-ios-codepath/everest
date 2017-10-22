@@ -16,8 +16,7 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    static var availableCategories:[Category]!
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         //setup notification observers
@@ -32,15 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Facebook setup
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        //Login setup
-        LoginManager.shared.initialize()
         
-        FireBaseManager.shared.fetchAvailableCategories { (categories, error) in
-            if error == nil {
-                AppDelegate.availableCategories = categories
-            }
-        }
-
+        //App setup
+        MainManager.shared.initialize()
+                
         return true
     }
 
