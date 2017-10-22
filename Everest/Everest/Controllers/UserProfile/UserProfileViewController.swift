@@ -192,6 +192,15 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             self.navigationController?.pushViewController(actionDetailVC, animated: true)
         }
         
+        if self.currentListType == ListType.listTypeMoment {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
+            momentsDetailVC.momentId = self.moments?[indexPath.row].id
+            momentsDetailVC.isUserMomentDetail = true
+            self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+        }
+        
+        
     }
 
     @IBAction func logoutClicked(_ sender: Any) {
