@@ -51,8 +51,8 @@ class User: NSObject {
     if let providerId = user["providerId"].string {
         self.providerId = providerId
     }
-    if let actions = user["actions"].array {
-      self.actions = actions.map { Action(action: $0) }
+    if let actions = user["actions"].dictionary {
+      self.actions = actions.map { Action(action: $0.value) }
     }
     if let momentIds = user["momentIds"].dictionary {
       self.momentIds = Array(momentIds.keys)

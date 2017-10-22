@@ -24,6 +24,11 @@ class AddActionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //setup notification observers
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+            //TODO: go to user profile screen to show newly added actions.
+        })
+        
         categoriesCollectionView.delegate = self
         actsTableView.delegate = self
         actsTableView.estimatedRowHeight = 30
@@ -108,6 +113,14 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
         let action = Action(id: AppDelegate.availableCategories[categoryIndex].acts[indexPath.row].id, createdAt: "\(Date())", status: ActionStatus.created.rawValue)
         FireBaseManager.shared.updateAction(action: action)
         
+        MainManager.shared.createNewAction(id: (categories[titles[categoryIndex]]?[indexPath.row].id)!, completion:{(error) in
+            let alertController = UIAlertController(title: "Added", message: "You can view this newly added action in your Profile view.",  preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
+            })
+            alertController.addAction(okAction)
+            // Present Alert
+            self.present(alertController, animated: true, completion:nil)
+        })
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

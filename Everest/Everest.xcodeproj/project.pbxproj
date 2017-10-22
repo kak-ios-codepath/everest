@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010539B21F9BE8C700E2D413 /* MainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010539B11F9BE8C700E2D413 /* MainManager.swift */; };
 		011C4B731F9AB1FD0070EDF3 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C4B721F9AB1FD0070EDF3 /* UserProfileViewController.swift */; };
 		01B2AA251F971F6F00138959 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2AA241F971F6F00138959 /* EmailLoginViewController.swift */; };
 		01B2AA271F980B7C00138959 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2AA261F980B7C00138959 /* LoginManager.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010539B11F9BE8C700E2D413 /* MainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainManager.swift; sourceTree = "<group>"; };
 		011C4B721F9AB1FD0070EDF3 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		01B2AA241F971F6F00138959 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		01B2AA261F980B7C00138959 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				CE02ED651F96A114000B43C7 /* Everest.entitlements */,
 				06C2EA581F946335003D0ADF /* GoogleService-Info.plist */,
 				06C2EA2D1F91D589003D0ADF /* Info.plist */,
+				010539B11F9BE8C700E2D413 /* MainManager.swift */,
 			);
 			path = Everest;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */,
 				D724D07F1F947FF900D25A5A /* TimelineViewController.swift in Sources */,
 				D724D0791F947FF900D25A5A /* MomentsViewController.swift in Sources */,
+				010539B21F9BE8C700E2D413 /* MainManager.swift in Sources */,
 				CE0908DA1F982664004D1974 /* CategoryCollectionCell.swift in Sources */,
 				06C2EA511F91D8EF003D0ADF /* Act.swift in Sources */,
 				06C2EA4D1F91D881003D0ADF /* User.swift in Sources */,
