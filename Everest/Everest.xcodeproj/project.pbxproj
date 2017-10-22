@@ -32,8 +32,6 @@
 		CE0908DA1F982664004D1974 /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */; };
 		CE0908E01F986F74004D1974 /* ActsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0908DF1F986F73004D1974 /* ActsCell.swift */; };
 		CE1335261F9C21DB000D54C4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1335251F9C21DB000D54C4 /* Category.swift */; };
-		CE1335291F9C37AD000D54C4 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1335281F9C37AD000D54C4 /* UIImage+Resize.swift */; };
-		CE13352B1F9D2B84000D54C4 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13352A1F9D2B84000D54C4 /* Array+Extension.swift */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
 		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
 		D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0641F947FF900D25A5A /* AddActionViewController.swift */; };
@@ -52,6 +50,8 @@
 		D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D08A1F94806B00D25A5A /* MomentCell.swift */; };
 		D724D08F1F94806B00D25A5A /* MomentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724D08B1F94806B00D25A5A /* MomentCell.xib */; };
 		D797E6731F9AED7A0097B4CA /* CreateMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */; };
+		D797E6751F9D3A310097B4CA /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6741F9D3A310097B4CA /* Array+Extension.swift */; };
+		D797E6771F9D3AAA0097B4CA /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */; };
 		D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,8 +86,6 @@
 		CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		CE0908DF1F986F73004D1974 /* ActsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActsCell.swift; sourceTree = "<group>"; };
 		CE1335251F9C21DB000D54C4 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		CE1335281F9C37AD000D54C4 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Resize.swift"; path = "../Controllers/UIImage+Resize.swift"; sourceTree = "<group>"; };
-		CE13352A1F9D2B84000D54C4 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Extension.swift"; path = "../../../../../../.Trash/Array+Extension.swift"; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
 		D724D0641F947FF900D25A5A /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +104,8 @@
 		D724D08A1F94806B00D25A5A /* MomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentCell.swift; sourceTree = "<group>"; };
 		D724D08B1F94806B00D25A5A /* MomentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MomentCell.xib; sourceTree = "<group>"; };
 		D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMomentViewController.swift; sourceTree = "<group>"; };
+		D797E6741F9D3A310097B4CA /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,9 +124,9 @@
 		010539B31F9C819200E2D413 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CE13352A1F9D2B84000D54C4 /* Array+Extension.swift */,
-				CE1335281F9C37AD000D54C4 /* UIImage+Resize.swift */,
+				D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */,
 				010539B61F9C838100E2D413 /* Dictionary+Extension.swift */,
+				D797E6741F9D3A310097B4CA /* Array+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -342,7 +342,6 @@
 				TargetAttributes = {
 					06C2EA1D1F91D589003D0ADF = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = EGLENF5Q49;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -406,7 +405,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		18B02BF8B41C4717C0AFF576 /* [CP] Copy Pods Resources */ = {
@@ -497,7 +496,7 @@
 				D797E6731F9AED7A0097B4CA /* CreateMomentViewController.swift in Sources */,
 				D724D07D1F947FF900D25A5A /* SettingsViewController.swift in Sources */,
 				D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */,
-				CE13352B1F9D2B84000D54C4 /* Array+Extension.swift in Sources */,
+				D797E6751F9D3A310097B4CA /* Array+Extension.swift in Sources */,
 				D724D07E1F947FF900D25A5A /* TimeLineManager.swift in Sources */,
 				01B2AA271F980B7C00138959 /* LoginManager.swift in Sources */,
 				D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */,
@@ -514,7 +513,7 @@
 				D724D0811F947FF900D25A5A /* UserProfileManager.swift in Sources */,
 				06C2EA531F91D921003D0ADF /* UserProfileView.swift in Sources */,
 				D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */,
-				CE1335291F9C37AD000D54C4 /* UIImage+Resize.swift in Sources */,
+				D797E6771F9D3AAA0097B4CA /* UIImage+Resize.swift in Sources */,
 				06C2EA4B1F91D861003D0ADF /* NotificationsViewController.swift in Sources */,
 				06C2EA221F91D589003D0ADF /* AppDelegate.swift in Sources */,
 				CE0908E01F986F74004D1974 /* ActsCell.swift in Sources */,
@@ -643,7 +642,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Everest/Everest.entitlements;
-				DEVELOPMENT_TEAM = EGLENF5Q49;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Everest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kak-ios-codepath.Everest";
@@ -658,7 +657,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Everest/Everest.entitlements;
-				DEVELOPMENT_TEAM = EGLENF5Q49;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Everest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kak-ios-codepath.Everest";
