@@ -134,6 +134,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
         momentsDetailVC.momentId = self.moments?[indexPath.row].id
+        momentsDetailVC.isUserMomentDetail = false
         self.navigationController?.pushViewController(momentsDetailVC, animated: true)
         
     }

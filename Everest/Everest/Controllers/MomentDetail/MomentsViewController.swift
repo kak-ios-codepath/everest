@@ -10,6 +10,8 @@ import UIKit
 
 class MomentsViewController: UIViewController {
     
+    
+    var isUserMomentDetail : Bool = true
     //  MARK: -- outlets and properties
     @IBOutlet weak var momentDetailTableView: UITableView!
     
@@ -61,19 +63,23 @@ class MomentsViewController: UIViewController {
             DispatchQueue.main.async {
                 self.momentDetailTableView.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
             }
-            if let actId = moment?.actId {
-                self.momentDetailManager?.fetchSuggestedMoments(actId: actId, completion: { (moments:[Moment]?, error: Error?) in
-                    if (error != nil) {
-                        //show alert
-                        return
-                    }
-                    
-                    self.suggestedMomentList = moments
-                    DispatchQueue.main.async {
-                        self.momentDetailTableView.reloadSections(IndexSet(integer: 1), with: UITableViewRowAnimation.automatic)
-                    }
-                })
+            
+            if self.isUserMomentDetail == false {
+                if let actId = moment?.actId {
+                    self.momentDetailManager?.fetchSuggestedMoments(actId: actId, completion: { (moments:[Moment]?, error: Error?) in
+                        if (error != nil) {
+                            //show alert
+                            return
+                        }
+                        
+                        self.suggestedMomentList = moments
+                        DispatchQueue.main.async {
+                            self.momentDetailTableView.reloadSections(IndexSet(integer: 1), with: UITableViewRowAnimation.automatic)
+                        }
+                    })
+                }
             }
+
         })
     }
 
@@ -131,7 +137,10 @@ extension MomentsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if self.isUserMomentDetail == false {
+            return 2
+        }
+        return 1
     }
     
 }
