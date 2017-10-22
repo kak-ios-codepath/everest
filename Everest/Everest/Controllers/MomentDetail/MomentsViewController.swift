@@ -129,6 +129,9 @@ extension MomentsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return ""
     }
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     
 }
