@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 
+let FINISHING_MOMENT_REWARD = 10
+
 class CreateMomentViewController: UIViewController {
     
     @IBOutlet weak var momentTitle: UITextField!
@@ -84,6 +86,8 @@ class CreateMomentViewController: UIViewController {
             self.moment = Moment(title: title, details: details, actId: self.actId, userId: FireBaseManager.UID, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
             
             FireBaseManager.shared.updateMoment(moment: self.moment, newMoment: true)
+            FireBaseManager.shared.updateActionStatus(id: self.actId, status: ActionStatus.completed.rawValue)
+            FireBaseManager.shared.updateScore(incrementBy: FINISHING_MOMENT_REWARD)
         }
         
         navigationController?.popViewController(animated: true)
