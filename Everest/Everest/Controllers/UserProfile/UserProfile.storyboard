@@ -97,6 +97,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="184" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xZb-1c-1fn">
+                                <rect key="frame" x="8" y="236" width="351" height="431"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MomentCell" rowHeight="184" id="cjN-P0-4YR" customClass="MomentCell" customModule="Everest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="351" height="184"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cjN-P0-4YR" id="eQ0-up-HYK">
+                                            <rect key="frame" x="0.0" y="0.0" width="351" height="183.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="x1b-PU-itZ" id="r7N-fj-ZNK"/>
+                                    <outlet property="delegate" destination="x1b-PU-itZ" id="9d0-SI-YI0"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.50939924670000003" green="0.77993966449999996" blue="0.93180302579999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -110,6 +129,7 @@
                     <connections>
                         <outlet property="actionsTableView" destination="2bL-Wv-hYK" id="nia-in-2Wu"/>
                         <outlet property="dateLabel" destination="j5d-n3-mzR" id="gqd-hA-esQ"/>
+                        <outlet property="momentsTableView" destination="xZb-1c-1fn" id="nEc-fS-YFp"/>
                         <outlet property="nameLabel" destination="K7u-31-aCR" id="bwf-iq-ue9"/>
                         <outlet property="profileImageView" destination="xcc-4W-YVB" id="Ya6-5D-YDn"/>
                         <outlet property="scoreLabel" destination="9XT-pP-5Kn" id="vw2-nd-VTB"/>

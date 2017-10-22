@@ -25,6 +25,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var actionsTableView: UITableView!
+    @IBOutlet weak var momentsTableView: UITableView!
     
     private var userProfileManager: UserProfileManager?
     var actions : [Action]?
@@ -60,11 +61,16 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             self.loadViewForSelectedMode()
         })
         
-        
         let nib = UINib(nibName: "ActionCell", bundle: nil)
         self.actionsTableView.register(nib, forCellReuseIdentifier: "ActionCell")
         self.actionsTableView.estimatedRowHeight = self.actionsTableView.rowHeight
         self.actionsTableView.rowHeight = UITableViewAutomaticDimension
+        
+        let momentsNib = UINib(nibName: "MomentCell", bundle: nil)
+        self.momentsTableView.register(momentsNib, forCellReuseIdentifier: "MomentCell")
+        self.momentsTableView.estimatedRowHeight = self.momentsTableView.rowHeight
+        self.momentsTableView.rowHeight = UITableViewAutomaticDimension
+
 
         //setup User related properties
         if user == nil {
@@ -96,12 +102,17 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         else{
             self.currentListType = ListType.listTypeMoment
         }
-        
+        loadViewForSelectedMode()
     }
     
     func loadViewForSelectedMode(){
         
         if self.currentListType == .listTypeAccount {
+            
+
+            self.momentsTableView.isHidden = true
+            self.actionsTableView.isHidden = false
+            
             self.userProfileManager?.fetchUserActions(userId: (self.user?.id)!, completion: { (actions: [Action]?, error:Error?) in
                 if error != nil {
                     // show alert
@@ -114,6 +125,13 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             })
             
         }else {
+            
+            self.momentsTableView.isHidden = false
+            self.actionsTableView.isHidden = true
+//            let nib = UINib(nibName: "MomentCell", bundle: nil)
+//            self.actionsTableView.register(nib, forCellReuseIdentifier: "MomentCell")
+//            self.actionsTableView.estimatedRowHeight = self.actionsTableView.rowHeight
+//            self.actionsTableView.rowHeight = UITableViewAutomaticDimension
             self.userProfileManager?.fetchUserMomments(userId: (self.user?.id)!, completion: { (moments: [Moment]?, error: Error?) in
                 
                 if error != nil {
@@ -122,7 +140,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 }
                 self.moments = moments
                 DispatchQueue.main.async {
-                    self.actionsTableView.reloadData()
+                    self.momentsTableView.reloadData()
                 }
             })
         }
@@ -144,18 +162,17 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCell", for: indexPath) as! ActionCell
-        
         if self.currentListType == ListType.listTypeAccount {
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCell", for: indexPath) as! ActionCell
             cell.title.text = self.actions?[indexPath.row].actTitle
             cell.actionStatus.text = self.actions?[indexPath.row].status
             return cell
         }
         
+        let momentCell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
+        momentCell.moment = self.moments?[indexPath.row]
         
-        
-        return cell
+        return momentCell
     }
     
     @available(iOS 2.0, *)
