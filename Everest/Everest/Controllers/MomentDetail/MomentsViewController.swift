@@ -39,8 +39,8 @@ class MomentsViewController: UIViewController {
     
     func initialize() -> Void {
         
-        momentDetailManager             = MomentDetailManager.init()
-        suggestedMomentList              = [Moment]()
+        momentDetailManager = MomentDetailManager.init()
+        suggestedMomentList = [Moment]()
     }
 
     

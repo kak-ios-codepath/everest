@@ -60,7 +60,7 @@ class UserProfileManager: NSObject {
         }
     }
     
-    func fetUserDetails(userId: String, completion: @escaping (_ user: User?, _ error : Error?)->()) -> Void {
+    func fetchUserDetails(userId: String, completion: @escaping (_ user: User?, _ error : Error?)->()) -> Void {
         FireBaseManager.shared.getUser(userID: userId) { (user:User?, error:Error?) in
             completion(user, error)
         }
