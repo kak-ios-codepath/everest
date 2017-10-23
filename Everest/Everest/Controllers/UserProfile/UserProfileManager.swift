@@ -50,23 +50,15 @@ class UserProfileManager: NSObject {
             if user != nil {
                 print(user!)
             }
-//            var actionsList : [Act]? = [Act]()
-//
-//            if let userActions = user?.actions {
-//                for action in userActions {
-//                    for origAction in self.allActs! {
-//                        if origAction.id == action.id {
-//                            actionsList?.append(origAction)
-//                        }
-//                    }
-//                }
-//            }
-//            
             completion(user?.actions, error)
         }
     }
     
-    
+    func fetUserDetails(userId: String, completion: @escaping (_ user: User?, _ error : Error?)->()) -> Void {
+        FireBaseManager.shared.getUser(userID: userId) { (user:User?, error:Error?) in
+            completion(user, error)
+        }
+    }
     
     func fetchUserMomments(userId: String, completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) -> Void{
         var userMoments = [Moment]()

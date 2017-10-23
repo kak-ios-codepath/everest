@@ -13,6 +13,9 @@ import MBProgressHUD
 
 class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
 {
+
+let FINISHING_MOMENT_REWARD = 10
+
     
     @IBOutlet weak var momentTitle: UITextField!
     @IBOutlet weak var momentDetails: UITextView!

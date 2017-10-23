@@ -16,7 +16,7 @@ enum ListType {
 class UserProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var user: User?
-    
+    var userId : String?
     var currentListType : ListType = .listTypeAccount
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -73,8 +73,8 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
 
 
         //setup User related properties
-        if user == nil {
-            user = User.currentUser!
+        if userId == "" || userId == nil {
+            userId = User.currentUser?.id
         }
         nameLabel.text = user?.name
         dateLabel.text = "Joined on "+(user?.createdDate)!
@@ -85,7 +85,14 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             profileImageView.image = nil
         }
         
-        loadViewForSelectedMode()
+        self.userProfileManager?.fetUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
+            self.user = user
+            self.nameLabel.text = self.user?.name
+            self.dateLabel.text = "Joined on "+(self.user?.createdDate)!
+            self.scoreLabel.text = "\(self.user?.score ?? 0)"
+
+            self.loadViewForSelectedMode()
+        })
 
     }
 
@@ -200,6 +207,15 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             let cell = tableView.cellForRow(at: indexPath)
             self.performSegue(withIdentifier: "createMomentViewController", sender: cell)
         }
+        
+        if self.currentListType == ListType.listTypeMoment {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
+            momentsDetailVC.momentId = self.moments?[indexPath.row].id
+            momentsDetailVC.isUserMomentDetail = true
+            self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+        }
+        
         
     }
 

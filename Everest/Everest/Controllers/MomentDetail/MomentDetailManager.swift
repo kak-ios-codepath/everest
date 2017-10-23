@@ -28,6 +28,10 @@ class MomentDetailManager: NSObject {
     
     func fetchSuggestedMoments(actId: String,completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) {
         //
+        
+        FireBaseManager.shared.fetchMomentsForAnAct(startAtMomentId: nil, actId: actId) { (moments: [Moment]?, error: Error?) in
+            completion(moments, error)
+        }
     }
     
 }

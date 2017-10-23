@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.switchToLoginController()
         })
 
+        registerForPushNotifications()
+        getNotificationSettings()
+        
         //Firebase setup
         FirebaseApp.configure()
         
