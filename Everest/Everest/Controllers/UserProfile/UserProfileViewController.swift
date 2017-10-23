@@ -87,7 +87,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         if userId != User.currentUser?.id {
-            self.userProfileManager?.fetUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
+            self.userProfileManager?.fetchUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
                 self.user = user
                 self.loadViewForSelectedMode()
 
