@@ -10,7 +10,8 @@ target 'Everest' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   # https://github.com/facebook/facebook-sdk-swift/issues/157
-  pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
+  #pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
+  pod 'FacebookShare'
   pod 'Firebase/Storage'
   pod 'MBProgressHUD'
   pod 'SwiftyJSON'

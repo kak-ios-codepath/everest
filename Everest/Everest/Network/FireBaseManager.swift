@@ -43,18 +43,6 @@ class FireBaseManager {
                     self.createUserFromFirebase(user: user!, completion: { (user1, error) in
                         completion(user1, error)
                     })
-                    //check if user exists on Firebase
-                    /*self.getUser(userID: uid, completion: { (user1, error) in
-                     if user1 != nil {
-                     //TODO: check if existing user record needs update
-                     completion(user1, nil)
-                     } else {//user doesn't exist
-                     let providerData = user!.providerData[0]
-                     let currentUser = self.createUserFromFirebase(providerData, isAnonymous: (user?.isAnonymous)!)
-                     self.updateUser(user: currentUser)
-                     completion(currentUser, nil)
-                     }
-                     })*/
                 } else {
                     completion(nil, "Unable to login user" as? Error)
                 }
@@ -77,17 +65,6 @@ class FireBaseManager {
                     self.createUserFromFirebase(user: user!, completion: { (user1, error) in
                         completion(user1, error)
                     })
-                    /*self.getUser(userID: uid, completion: { (user1, error) in
-                     if user1 != nil {
-                     //TODO: check if existing user record needs update
-                     completion(user1, nil)
-                     } else {//user doesn't exist
-                     let providerData = user!.providerData[0]
-                     let currentUser = self.createUserFromFirebase(providerData, isAnonymous: (user?.isAnonymous)!)
-                     self.updateUser(user: currentUser)
-                     completion(currentUser, nil)
-                     }
-                     })*/
                 } else {
                     completion(nil, "Unable to login user" as? Error)
                 }
