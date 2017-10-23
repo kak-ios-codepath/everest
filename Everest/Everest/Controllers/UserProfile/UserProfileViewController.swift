@@ -77,6 +77,14 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         if userId == "" || userId == nil {
             userId = User.currentUser?.id
         }
+        nameLabel.text = user?.name
+        dateLabel.text = "Joined on "+(user?.createdDate)!
+        scoreLabel.text = "\(user?.score ?? 0)"
+        if (user?.profilePhotoUrl != nil) {
+            profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
+        } else {
+            profileImageView.image = nil
+        }
         
         if userId != User.currentUser?.id {
             self.userProfileManager?.fetUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
@@ -176,15 +184,21 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "createMomentViewController") {
+            let cell = sender as! ActionCell
+            if let indexPath = self.actionsTableView.indexPath(for: cell) {
+                let vc = segue.destination as! CreateMomentViewController
+                vc.action = self.actions?[indexPath.row]
+                self.actionsTableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
     }
-    */
+    
     
     // MARK: - Actions tableview delegate and datasource methods
     
@@ -216,10 +230,12 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if self.currentListType == ListType.listTypeAccount {
-            let storyBoard = UIStoryboard.init(name: "UserProfile", bundle: nil)
+            /*let storyBoard = UIStoryboard.init(name: "UserProfile", bundle: nil)
             let actionDetailVC = storyBoard.instantiateViewController(withIdentifier: "ActionViewController") as! CreateMomentViewController
             actionDetailVC.actId = self.actions?[indexPath.row].id
-            self.navigationController?.pushViewController(actionDetailVC, animated: true)
+            self.navigationController?.pushViewController(actionDetailVC, animated: true)*/
+            let cell = tableView.cellForRow(at: indexPath)
+            self.performSegue(withIdentifier: "createMomentViewController", sender: cell)
         }
         
         if self.currentListType == ListType.listTypeMoment {
