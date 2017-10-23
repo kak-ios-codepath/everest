@@ -55,16 +55,6 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if user == nil {
-            user = User.currentUser
-        }
-        userId = user?.id
-        
-//        self.userProfileManager?.fetchAllActs()
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
-            //TODO: go to user profile screen to show newly added actions.
-            self.loadViewForSelectedMode()
-        })
         
         let nib = UINib(nibName: "ActionCell", bundle: nil)
         self.actionsTableView.register(nib, forCellReuseIdentifier: "ActionCell")
@@ -76,16 +66,24 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         self.momentsTableView.estimatedRowHeight = self.momentsTableView.rowHeight
         self.momentsTableView.rowHeight = UITableViewAutomaticDimension
 
-
-        nameLabel.text = user?.name
-        dateLabel.text = "Joined on "+(user?.createdDate)!
-        scoreLabel.text = "\(user?.score ?? 0)"
-        if (user?.profilePhotoUrl != nil) {
-            profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
-        } else {
-            profileImageView.image = nil
+        
+//        if user == nil {
+//            user = User.currentUser
+//        }
+//        
+        if userId == nil || userId == "" {
+            userId = User.currentUser?.id
         }
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+            //TODO: go to user profile screen to show newly added actions.
+            
+            self.user = User.currentUser
+            self.loadViewForSelectedMode()
+            
+        })
+        
+
         if userId != User.currentUser?.id {
             self.userProfileManager?.fetchUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
                 self.user = user
@@ -119,10 +117,20 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     func loadViewForSelectedMode(){
         
         
-        self.nameLabel.text     = self.user?.name
-        self.dateLabel.text     = "Joined on "+(self.user?.createdDate)!
-        self.scoreLabel.text    = "\(self.user?.score ?? 0)"
-        self.profileImageView.setImageWith(URL(string: (self.user?.profilePhotoUrl)!)!)
+        nameLabel.text = user?.name
+        dateLabel.text = "Joined on "+(user?.createdDate)!
+        scoreLabel.text = "\(user?.score ?? 0)"
+        if (user?.profilePhotoUrl != nil) {
+            profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
+        } else {
+            profileImageView.image = nil
+        }
+        
+        
+//        self.nameLabel.text     = self.user?.name
+//        self.dateLabel.text     = "Joined on "+(self.user?.createdDate)!
+//        self.scoreLabel.text    = "\(self.user?.score ?? 0)"
+//        self.profileImageView.setImageWith(URL(string: (self.user?.profilePhotoUrl)!)!)
         
         if ((self.user?.actions == nil || self.user?.actions?.count == 0) && (self.user?.momentIds == nil || self.user?.momentIds?.count == 0)) {
             print("No Actions or Moments yet ");
@@ -142,6 +150,12 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
 
             self.momentsTableView.isHidden = true
             self.actionsTableView.isHidden = false
+            
+            self.actionsTableView.dataSource = self
+            self.actionsTableView.delegate = self
+            
+            self.momentsTableView.dataSource = nil
+            self.momentsTableView.delegate = nil
             
             if (self.user?.actions?.count)! > 0  {
                 self.actions = user?.actions
@@ -165,6 +179,13 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             
             self.momentsTableView.isHidden = false
             self.actionsTableView.isHidden = true
+            
+            self.actionsTableView.dataSource = nil
+            self.actionsTableView.delegate = nil
+            
+            self.momentsTableView.dataSource = self
+            self.momentsTableView.delegate = self
+            
 //            let nib = UINib(nibName: "MomentCell", bundle: nil)
 //            self.actionsTableView.register(nib, forCellReuseIdentifier: "MomentCell")
 //            self.actionsTableView.estimatedRowHeight = self.actionsTableView.rowHeight
@@ -212,7 +233,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             cell.actionStatus.text = self.actions?[indexPath.row].status
             return cell
         }
-        
+    
         let momentCell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
         momentCell.moment = self.moments?[indexPath.row]
         
