@@ -342,7 +342,6 @@
 				TargetAttributes = {
 					06C2EA1D1F91D589003D0ADF = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = EGLENF5Q49;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -644,7 +643,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Everest/Everest.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EGLENF5Q49;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Everest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kak-ios-codepath.Everest";
@@ -660,7 +659,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Everest/Everest.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EGLENF5Q49;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Everest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kak-ios-codepath.Everest";
