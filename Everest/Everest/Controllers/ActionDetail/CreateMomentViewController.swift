@@ -13,9 +13,9 @@ import MBProgressHUD
 
 class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
 {
-
-let FINISHING_MOMENT_REWARD = 10
-
+    
+    let FINISHING_MOMENT_REWARD = 10
+    
     
     @IBOutlet weak var momentTitle: UITextField!
     @IBOutlet weak var momentDetails: UITextView!
@@ -53,11 +53,15 @@ let FINISHING_MOMENT_REWARD = 10
         self.momentDetails.delegate = self
         self.momentTitle.delegate = self
     }
-   
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("test")
+    }
+    
     @IBAction func onPhotoBtn(_ sender: UIButton) {
         self.momentImageView.isHidden = false
         self.mapView.isHidden = true
-
+        
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
@@ -92,11 +96,11 @@ let FINISHING_MOMENT_REWARD = 10
         self.momentDetails.resignFirstResponder()
         self.momentTitle.resignFirstResponder()
     }
-
+    
     @IBAction func handleCancel(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     
     @IBAction func onMomentFinished(_ sender: UIButton) {
         let title: String!
@@ -115,48 +119,45 @@ let FINISHING_MOMENT_REWARD = 10
         title = momentTitle.text!
         details = momentDetails.text!
         
-        DispatchQueue.global().async {
-            /*while (self.isTakingPic && (self.picsUrl == nil)) {
-                if (self.picsUrl != nil) {break}
-            }*/
-            self.moment = Moment(title: title, details: details, actId: self.action.id, userId: FireBaseManager.UID, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
-            
-            FireBaseManager.shared.updateMoment(moment: self.moment, newMoment: true)
-            FireBaseManager.shared.updateAction(action: self.action)
-            let act = MainManager.shared.availableActs[self.action.id]
-            FireBaseManager.shared.updateScore(incrementBy: (act?.score)!)
-            
-            DispatchQueue.main.async {
-                if self.shareOnFB {
-                    //if moment != nil {
-                    var url:URL!
-                    if self.picsUrl != nil {
-                        url = URL(string: (self.picsUrl?[0])!)
-                    } else {
-                        url = URL(string: "https://firebasestorage.googleapis.com/v0/b/everest-f98ba.appspot.com/o/5IuIsoIeRhexy8BKHzzpfMyCy2K2%2F530229533534.jpg?alt=media&token=755f391f-3489-42b0-87a3-c93e061af76c")
-                    }
-                    var content = LinkShareContent(url: url!)
-                    content.quote = "I did it!"
-                    let shareDialog = ShareDialog(content: content)
-                    shareDialog.mode = .native
-                    shareDialog.failsOnInvalidData = true
-                    shareDialog.completion = { result in
-                        // Handle share results
-                        print (result)
-                    }
-                    try! shareDialog.show()
-                    //}*
-                }
-            }
-            self.dismiss(animated: true, completion: nil)
-        }
         
-
+        self.moment = Moment(title: title, details: details, actId: self.action.id, userId: FireBaseManager.UID, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
+        
+        FireBaseManager.shared.updateMoment(actId: self.action.id, moment: self.moment, newMoment: true)
+        //            FireBaseManager.shared.updateAction(action: self.action)
+        FireBaseManager.shared.updateActionStatus(id: self.action.id, status: ActionStatus.completed.rawValue)
+        let act = MainManager.shared.availableActs[self.action.id]
+        FireBaseManager.shared.updateScore(incrementBy: (act?.score)!)
+        
+        DispatchQueue.main.async {
+            if self.shareOnFB {
+                //if moment != nil {
+                var url:URL!
+                if self.picsUrl != nil {
+                    url = URL(string: (self.picsUrl?[0])!)
+                } else {
+                    url = URL(string: "https://firebasestorage.googleapis.com/v0/b/everest-f98ba.appspot.com/o/5IuIsoIeRhexy8BKHzzpfMyCy2K2%2F530229533534.jpg?alt=media&token=755f391f-3489-42b0-87a3-c93e061af76c")
+                }
+                var content = LinkShareContent(url: url!)
+                content.quote = "I did it!"
+                let shareDialog = ShareDialog(content: content)
+                shareDialog.mode = .native
+                shareDialog.failsOnInvalidData = true
+                shareDialog.completion = { result in
+                    // Handle share results
+                    print (result)
+                }
+                try! shareDialog.show()
+                //}*
+            }
+        }
+        self.dismiss(animated: true, completion: nil)
+        
+        
         //navigationController?.popViewController(animated: true)
     }
     
     // MARK: - TextField Delegate
-
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.isFirstResponder == true {
             textField.placeholder = nil

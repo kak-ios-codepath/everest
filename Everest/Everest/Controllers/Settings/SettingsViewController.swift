@@ -36,7 +36,7 @@ class SettingsViewController: UIViewController {
         let picUrls = ["www.test.com\\pic1", "www.test.com\\pic2"]
         let geoLocation = ["lat": "12.33333", "lon": "233.333332"]
         self.moment = Moment(title: "what a great feeling", details: "When I started the act ...", actId: "123456", userId: FireBaseManager.UID, timestamp: "\(Date())", picUrls: picUrls, geoLocation: geoLocation, location: "some address")
-        FireBaseManager.shared.updateMoment(moment: self.moment, newMoment: true)
+        FireBaseManager.shared.updateMoment(actId: "123456", moment: self.moment, newMoment: true)
  
 //// END OF TEST CODE
         

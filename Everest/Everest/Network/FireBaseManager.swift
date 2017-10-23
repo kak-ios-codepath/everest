@@ -99,9 +99,9 @@ class FireBaseManager {
         ref.child("users/\(FireBaseManager.UID)/isAnonymous").setValue(user.isAnonymous)
         ref.child("users/\(FireBaseManager.UID)/createdDate").setValue(user.createdDate)
         ref.child("users/\(FireBaseManager.UID)/score").setValue(user.score)
-        if let momentIds = user.momentIds {
-            ref.child("users/\(FireBaseManager.UID)/momentIds").setValue(momentIds)
-        }
+//        if let momentIds = user.momentIds {
+//            ref.child("users/\(FireBaseManager.UID)/momentIds").setValue(momentIds)
+//        }
         if let actions = user.actions {
             ref.child("users/\(FireBaseManager.UID)/actions").setValue(actions)
         }
@@ -190,6 +190,37 @@ class FireBaseManager {
         }
     }
     
+    func fetchMomentsForUser (startAtMomentId: String?, userId: String, completion: @escaping ([Moment]?, Error?) -> ()) {
+        if let startAtMomentId = startAtMomentId {
+            ref.child("moments")
+                .queryStarting(atValue: startAtMomentId)
+                .queryOrdered(byChild: "actId")
+                .queryEqual(toValue: userId)
+                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })
+        } else {
+            ref.child("moments")
+                .queryOrdered(byChild: "actId")
+                .queryEqual(toValue: userId)
+                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })
+        }
+    }
+    
     func updateMomentLikes(momentId: String, incrementBy: Int) {
         ref.child("moments/\(momentId)/likes").observeSingleEvent(of: .value, with: { (snapshot) in
             if let value = snapshot.value as? Int {
@@ -200,31 +231,31 @@ class FireBaseManager {
         }
     }
     
-    func updateMoment(moment: Moment, newMoment: Bool) {
-        var MomentID = ""
+    func updateMoment(actId: String, moment: Moment, newMoment: Bool) {
+        var MomentId = ""
         if newMoment {
-            MomentID = ref.child("moments").childByAutoId().key
-            ref.child("users/\(FireBaseManager.UID)/momentIds/\(MomentID)").setValue(true)
-            ref.child("moments/\(MomentID)/id").setValue(MomentID)
+            MomentId = ref.child("moments").childByAutoId().key
+            ref.child("users/\(FireBaseManager.UID)/actions/\(actId)/momentIds/\(MomentId)").setValue(true)
+            ref.child("moments/\(MomentId)/id").setValue(MomentId)
         } else {
-            MomentID = moment.id
+            MomentId = moment.id
         }
         
-        ref.child("moments/\(MomentID)/title").setValue(moment.title)
-        ref.child("moments/\(MomentID)/details").setValue(moment.details)
-        ref.child("moments/\(MomentID)/timestamp").setValue(moment.timestamp)
-        ref.child("moments/\(MomentID)/actId").setValue(moment.actId)
-        ref.child("moments/\(MomentID)/userId").setValue(moment.userId)
+        ref.child("moments/\(MomentId)/title").setValue(moment.title)
+        ref.child("moments/\(MomentId)/details").setValue(moment.details)
+        ref.child("moments/\(MomentId)/timestamp").setValue(moment.timestamp)
+        ref.child("moments/\(MomentId)/actId").setValue(moment.actId)
+        ref.child("moments/\(MomentId)/userId").setValue(moment.userId)
         if let picUrls = moment.picUrls {
-            ref.child("moments/\(MomentID)/picUrls").setValue(picUrls)
+            ref.child("moments/\(MomentId)/picUrls").setValue(picUrls)
         }
         if let geoLocation = moment.geoLocation {
-            ref.child("moments/\(MomentID)/geoLocation").setValue(geoLocation)
+            ref.child("moments/\(MomentId)/geoLocation").setValue(geoLocation)
         }
         if let location = moment.location {
-            ref.child("moments/\(MomentID)/location").setValue(location)
+            ref.child("moments/\(MomentId)/location").setValue(location)
         }
-        self.ref.child("moments/\(MomentID)/likes").setValue(0)
+        self.ref.child("moments/\(MomentId)/likes").setValue(0)
     }
     
     func getMoment(momentId: String, completion: @escaping (Moment?, Error?) -> ()) {
@@ -252,30 +283,6 @@ class FireBaseManager {
             })
     }
     
-    // fetchAvailableActs in now Deprecated function
-    //    func fetchAvailableActs(category: String, completion: @escaping ([Act]?, Error?) -> ()) {
-    //        ref.child("actsPicker/\(category)")
-    //            .observe(.value, with: { (snapshotVec) -> Void in
-    //                if let actsDictionary = snapshotVec.value as? NSDictionary {
-    //                    let actArray = actsDictionary.flatMap { Act(id: $0 as! String, category: category, title: $1 as! String, score: ACT_DEFAULT_SCORE) }
-    //                    completion(actArray, nil)
-    //                } else {
-    //                    completion(nil, "failed to get available Acts" as? Error)
-    //                }
-    //            })
-    //    }
-    //
-    //    func updateAction(action: Action) {
-    //        ref.child("acts/\(action.id)/members/\(FireBaseManager.UID)").setValue(true)
-    //
-    //        ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/id").setValue(action.id)
-    //        ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/createdAt").setValue(action.createdAt)
-    //        ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/status").setValue(action.status)
-    //        //    ref.child("users/\(FireBaseManager.UID)/actions/\(action.id)/momentId").setValue(action.momentId)
-    //    }
-    //
-    //  }
-    
     // MARK: - Action Data Model related functions
     func fetchAvailableActs(category: String, completion: @escaping ([Act]?, Error?) -> ()) {
         ref.child("actsPicker/\(category)")
@@ -301,82 +308,82 @@ class FireBaseManager {
     }
     
     func updateActionStatus(id: String, status: String) {
-        ref.child("users/\(FireBaseManager.UID)/actions/\(id)/id").setValue(id)
+//        ref.child("users/\(FireBaseManager.UID)/actions/\(id)/id").setValue(id)
         ref.child("users/\(FireBaseManager.UID)/actions/\(id)/status").setValue(status)
     }
     
-        // MARK: - Utility functions
-        func createUserFromFirebase(user: Firebase.User, completion: @escaping (User?, Error?) -> ()){
-            //check if user exists on Firebase
-            self.getUser(userID: user.uid, completion: { (user1, error) in
-                if user1 != nil {
-                    //TODO: check if existing user record needs update
-                    completion(user1, nil)
-                } else {//user doesn't exist
-                    let userInfo = user.providerData[0]
-                    var name: String = ""
-                    var email: String = ""
-                    var phone: String?
-                    var photoUrl: String?
-                    
-                    if userInfo.displayName != nil {
-                        name = userInfo.displayName!
-                    }
-                    if userInfo.email != nil {
-                        email = userInfo.email!
-                    }
-                    if userInfo.phoneNumber != nil {
-                        phone = userInfo.phoneNumber!
-                    }
-                    if userInfo.photoURL != nil {
-                        photoUrl = userInfo.photoURL!.absoluteString
-                    }
-                    let currentUser = User(id: userInfo.uid, providerId: userInfo.providerID, name: name, email: email, phone: phone, profilePhotoUrl: photoUrl, isAnonymous: user.isAnonymous, createdDate: "\(Date())", actions: nil, momentIds: nil, score: 0)
-                    
-                    self.updateUser(user: currentUser)
-                    completion(currentUser, nil)
+    // MARK: - Utility functions
+    func createUserFromFirebase(user: Firebase.User, completion: @escaping (User?, Error?) -> ()){
+        //check if user exists on Firebase
+        self.getUser(userID: user.uid, completion: { (user1, error) in
+            if user1 != nil {
+                //TODO: check if existing user record needs update
+                completion(user1, nil)
+            } else {//user doesn't exist
+                let userInfo = user.providerData[0]
+                var name: String = ""
+                var email: String = ""
+                var phone: String?
+                var photoUrl: String?
+                
+                if userInfo.displayName != nil {
+                    name = userInfo.displayName!
                 }
-            })
+                if userInfo.email != nil {
+                    email = userInfo.email!
+                }
+                if userInfo.phoneNumber != nil {
+                    phone = userInfo.phoneNumber!
+                }
+                if userInfo.photoURL != nil {
+                    photoUrl = userInfo.photoURL!.absoluteString
+                }
+                let currentUser = User(id: userInfo.uid, providerId: userInfo.providerID, name: name, email: email, phone: phone, profilePhotoUrl: photoUrl, isAnonymous: user.isAnonymous, createdDate: "\(Date())", actions: nil, score: 0)
+                
+                self.updateUser(user: currentUser)
+                completion(currentUser, nil)
+            }
+        })
+    }
+    
+    // MARK: - File storage functions
+    
+    func uploadImage(image: UIImage, completion: @escaping (String, String?, Error?) -> ()) {
+        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
+        uploadImage(data: imageData) { (path, url, error) in
+            completion(path, url, error)
         }
-        
-        // MARK: - File storage functions
-        
-        func uploadImage(image: UIImage, completion: @escaping (String, String?, Error?) -> ()) {
-            guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
-            uploadImage(data: imageData) { (path, url, error) in
-                completion(path, url, error)
+    }
+    
+    func uploadImage(data: Data, completion: @escaping (String, String?, Error?) -> ()) {
+        let imagePath = Auth.auth().currentUser!.uid +
+        "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        self.storageRef.child(imagePath).putData(data, metadata: metadata) { (metadata, error) in
+            if let error = error {
+                print("Error uploading: \(error)")
+                completion(imagePath, nil, error)
+            } else {
+                completion(imagePath, metadata?.downloadURL()?.absoluteString, nil)
             }
         }
-        
-        func uploadImage(data: Data, completion: @escaping (String, String?, Error?) -> ()) {
-            let imagePath = Auth.auth().currentUser!.uid +
-            "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpeg"
-            self.storageRef.child(imagePath).putData(data, metadata: metadata) { (metadata, error) in
-                if let error = error {
-                    print("Error uploading: \(error)")
-                    completion(imagePath, nil, error)
-                } else {
-                    completion(imagePath, metadata?.downloadURL()?.absoluteString, nil)
-                }
+    }
+    
+    func downloadImage(path: String, completion: @escaping (String?, Error?) -> ()) {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        let filePath = "file:\(documentsDirectory)/"+path
+        guard let fileURL = URL.init(string: filePath) else { return }
+        storageRef.child(path).write(toFile: fileURL, completion: { (url, error) in
+            if let error = error {
+                print("Error downloading:\(error)")
+                completion(nil, error)
+            } else if let imagePath = url?.path {
+                //self.imageView.image = UIImage.init(contentsOfFile: imagePath)
+                completion(imagePath, nil)
             }
-        }
-        
-        func downloadImage(path: String, completion: @escaping (String?, Error?) -> ()) {
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            let documentsDirectory = paths[0]
-            let filePath = "file:\(documentsDirectory)/"+path
-            guard let fileURL = URL.init(string: filePath) else { return }
-            storageRef.child(path).write(toFile: fileURL, completion: { (url, error) in
-                if let error = error {
-                    print("Error downloading:\(error)")
-                    completion(nil, error)
-                } else if let imagePath = url?.path {
-                    //self.imageView.image = UIImage.init(contentsOfFile: imagePath)
-                    completion(imagePath, nil)
-                }
-            })
-        }
-        
+        })
+    }
+    
 }

@@ -20,13 +20,13 @@ class User: NSObject {
   var isAnonymous: Bool
   var createdDate: String
   var actions: [Action]? //it will contain an array of acts' ids
-  var momentIds: [String]?
+//  var momentIds: [String]?
   var suggestedActs: [String]?
   var score: Int
     
   static var currentUser: User?
     
-    init(id: String, providerId: String, name: String, email: String, phone: String?, profilePhotoUrl: String?, isAnonymous: Bool, createdDate: String, actions: [Action]?, momentIds: [String]?, score: Int = 0) {
+    init(id: String, providerId: String, name: String, email: String, phone: String?, profilePhotoUrl: String?, isAnonymous: Bool, createdDate: String, actions: [Action]?, score: Int = 0) {
     self.id = id
     self.providerId = providerId
     self.name = name
@@ -35,7 +35,7 @@ class User: NSObject {
     self.profilePhotoUrl = profilePhotoUrl
     self.isAnonymous = isAnonymous
     self.createdDate = createdDate
-    self.momentIds = momentIds
+//    self.momentIds = momentIds
     self.actions = actions
     self.score = score
   }
@@ -54,9 +54,9 @@ class User: NSObject {
     if let actions = user["actions"].dictionary {
       self.actions = actions.map { Action(action: $0.value) }
     }
-    if let momentIds = user["momentIds"].dictionary {
-      self.momentIds = Array(momentIds.keys)
-    }
+//    if let momentIds = user["momentIds"].dictionary {
+//      self.momentIds = Array(momentIds.keys)
+//    }
 //    if let suggestedActs = user["suggestedActs"].array {
 //      suggestedActs = ideas.map { Act(id: String, title: <#String#>) }
 //    }
