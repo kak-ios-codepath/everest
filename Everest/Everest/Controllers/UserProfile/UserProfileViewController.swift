@@ -55,10 +55,14 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if user == nil {
+            user = User.currentUser
+        }
+        userId = user?.id
+        
 //        self.userProfileManager?.fetchAllActs()
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
             //TODO: go to user profile screen to show newly added actions.
-            self.user = User.currentUser
             self.loadViewForSelectedMode()
         })
         
@@ -73,10 +77,6 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         self.momentsTableView.rowHeight = UITableViewAutomaticDimension
 
 
-        //setup User related properties
-        if userId == "" || userId == nil {
-            userId = User.currentUser?.id
-        }
         nameLabel.text = user?.name
         dateLabel.text = "Joined on "+(user?.createdDate)!
         scoreLabel.text = "\(user?.score ?? 0)"
