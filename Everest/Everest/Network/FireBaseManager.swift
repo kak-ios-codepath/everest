@@ -311,6 +311,8 @@ class FireBaseManager {
             self.getUser(userID: user.uid, completion: { (user1, error) in
                 if user1 != nil {
                     //TODO: check if existing user record needs update
+                    //TODO: REMOVE THIS notification code after the onboarding flow is tested.
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NewUser"), object: nil)
                     completion(user1, nil)
                 } else {//user doesn't exist
                     let userInfo = user.providerData[0]
@@ -334,6 +336,7 @@ class FireBaseManager {
                     let currentUser = User(id: userInfo.uid, providerId: userInfo.providerID, name: name, email: email, phone: phone, profilePhotoUrl: photoUrl, isAnonymous: user.isAnonymous, createdDate: "\(Date())", actions: nil, momentIds: nil, score: 0)
                     
                     self.updateUser(user: currentUser)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NewUser"), object: nil)
                     completion(currentUser, nil)
                 }
             })

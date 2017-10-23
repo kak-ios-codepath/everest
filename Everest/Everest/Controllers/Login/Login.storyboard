@@ -222,6 +222,67 @@
             </objects>
             <point key="canvasLocation" x="917.60000000000002" y="169.56521739130437"/>
         </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="rOg-w0-CP1">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeViewController" id="eWp-mM-zNL" customClass="WelcomeViewController" customModule="Everest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p5Y-Za-PZQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="mm9-6M-ZeN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7gl-TX-uJN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.64668699470000002" blue="0.15147117090000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8H9-Rp-WuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1748" y="170"/>
+        </scene>
+        <!--Welcome Page View Controller-->
+        <scene sceneID="DQh-Gv-IHd">
+            <objects>
+                <pageViewController storyboardIdentifier="WelcomePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="9qa-Y2-WE4" customClass="WelcomePageViewController" customModule="Everest" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l9F-lE-n6n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2452" y="170"/>
+        </scene>
+        <!--Welcome Content View Controller-->
+        <scene sceneID="VMs-rc-H2v">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeContentViewController" id="qwy-Ij-rw3" customClass="WelcomeContentViewController" customModule="Everest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oAd-R1-i74"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cuo-ob-G1u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c0n-G6-3ci">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qg3-Zg-9dq">
+                                <frame key="frameInset" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nV-b2-To8">
+                                <frame key="frameInset" minX="166" minY="272" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Qg3-Zg-9dq" id="iPp-UP-O5t"/>
+                        <outlet property="titleLabel" destination="9nV-b2-To8" id="lfE-bh-LHo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xMY-2v-q9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3173.5999999999999" y="174.96251874062969"/>
+        </scene>
     </scenes>
     <resources>
         <image name="email" width="64" height="64"/>
