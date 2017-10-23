@@ -13,10 +13,6 @@ import MBProgressHUD
 
 class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
 {
-    
-    let FINISHING_MOMENT_REWARD = 10
-    
-    
     @IBOutlet weak var momentTitle: UITextField!
     @IBOutlet weak var momentDetails: UITextView!
     @IBOutlet weak var addPhotoLabel: UILabel!
@@ -38,6 +34,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
     var shareOnTwitter = false
     var picsUrl: [String]?
     var addedDetails = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,18 +46,14 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         
         momentTitle.text = MainManager.shared.availableActs[action.id]?.title
         self.momentImageView.isHidden = true
-        self.mapView.isHidden = true
         self.momentDetails.delegate = self
         self.momentTitle.delegate = self
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print("test")
+        
+        
     }
     
     @IBAction func onPhotoBtn(_ sender: UIButton) {
         self.momentImageView.isHidden = false
-        self.mapView.isHidden = true
         
         let vc = UIImagePickerController()
         vc.delegate = self
@@ -72,7 +65,6 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
     
     @IBAction func onMapBtn(_ sender: UIButton) {
         self.momentImageView.isHidden = true
-        self.mapView.isHidden = false
         
         let coordinate = CLLocation(latitude: momentCoordinate.latitude, longitude: momentCoordinate.longitude)
         geoLocation = ["lat": String(momentCoordinate.latitude), "lon": String(momentCoordinate.longitude)]
@@ -120,11 +112,11 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         details = momentDetails.text!
         
         
-        self.moment = Moment(title: title, details: details, actId: self.action.id, userId: FireBaseManager.UID, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
+        self.moment = Moment(title: title, details: details, actId: self.action.id, userId: (User.currentUser?.id)!, profilePhotoUrl: (User.currentUser?.profilePhotoUrl)!, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
         
         FireBaseManager.shared.updateMoment(actId: self.action.id, moment: self.moment, newMoment: true)
         //            FireBaseManager.shared.updateAction(action: self.action)
-        FireBaseManager.shared.updateActionStatus(id: self.action.id, status: ActionStatus.completed.rawValue)
+        FireBaseManager.shared.updateActionStatus(id: self.action.id, status: Constants.ActionStatus.completed.rawValue)
         let act = MainManager.shared.availableActs[self.action.id]
         FireBaseManager.shared.updateScore(incrementBy: (act?.score)!)
         

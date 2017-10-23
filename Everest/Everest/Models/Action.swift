@@ -9,14 +9,6 @@
 import Foundation
 import SwiftyJSON
 
-enum ActionStatus: String {
-    case created = "created"
-    case inProgress = "inprogress"
-    case completed = "completed"
-    case deleted = "deleted"
-    case expired = "expired"
-}
-
 class Action: NSObject {
     
     var id: String          //same id from acts

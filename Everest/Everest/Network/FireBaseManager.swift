@@ -18,7 +18,6 @@ class FireBaseManager {
     static var UID:String = ""
     let ref = Database.database().reference()
     let storageRef = Storage.storage().reference()
-    let LENGTH_OF_FETCHED_LIST: UInt = 20
     
     // MARK: - Authentication related functions
     func registerNewUserWithEmail(name: String, email: String, password: String, completion: @escaping (User?, NSError?) -> ()) {
@@ -136,7 +135,7 @@ class FireBaseManager {
         if let startAtMomentId = startAtMomentId {
             ref.child("moments")
                 .queryStarting(atValue: startAtMomentId)
-                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
                 .observe(.value, with: { (snapshotVec) -> Void in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
@@ -147,7 +146,7 @@ class FireBaseManager {
                 })
         } else {
             ref.child("moments")
-                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
                 .observe(.value, with: { (snapshotVec) -> Void in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
@@ -165,7 +164,7 @@ class FireBaseManager {
                 .queryStarting(atValue: startAtMomentId)
                 .queryOrdered(byChild: "actId")
                 .queryEqual(toValue: actId)
-                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
                 .observe(.value, with: { (snapshotVec) -> Void in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
@@ -178,7 +177,7 @@ class FireBaseManager {
             ref.child("moments")
                 .queryOrdered(byChild: "actId")
                 .queryEqual(toValue: actId)
-                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
                 .observe(.value, with: { (snapshotVec) -> Void in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
@@ -196,7 +195,7 @@ class FireBaseManager {
                 .queryStarting(atValue: startAtMomentId)
                 .queryOrdered(byChild: "actId")
                 .queryEqual(toValue: userId)
-                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
                 .observe(.value, with: { (snapshotVec) -> Void in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
@@ -209,7 +208,7 @@ class FireBaseManager {
             ref.child("moments")
                 .queryOrdered(byChild: "actId")
                 .queryEqual(toValue: userId)
-                .queryLimited(toFirst: LENGTH_OF_FETCHED_LIST)
+                .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
                 .observe(.value, with: { (snapshotVec) -> Void in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
@@ -246,6 +245,8 @@ class FireBaseManager {
         ref.child("moments/\(MomentId)/timestamp").setValue(moment.timestamp)
         ref.child("moments/\(MomentId)/actId").setValue(moment.actId)
         ref.child("moments/\(MomentId)/userId").setValue(moment.userId)
+        ref.child("moments/\(MomentId)/profilePhotoUrl").setValue(moment.profilePhotoUrl)
+        ref.child("moments/\(MomentId)/userName").setValue(moment.userName)
         if let picUrls = moment.picUrls {
             ref.child("moments/\(MomentId)/picUrls").setValue(picUrls)
         }
