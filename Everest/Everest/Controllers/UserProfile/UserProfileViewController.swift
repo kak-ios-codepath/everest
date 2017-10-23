@@ -30,7 +30,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     private var userProfileManager: UserProfileManager?
     var actions : [Action]?
-    var moments : [Moment]?
+//    var moments : [Moment]?
 
     //  MARK: -- Initialization codes
     required init?(coder aDecoder: NSCoder) {
@@ -38,7 +38,6 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         initialize()
         
     }
-    
     
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -50,7 +49,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     func initialize() -> Void {
         userProfileManager     = UserProfileManager.init()
         actions = [Action]()
-        moments = [Moment]()
+//        moments = [Moment]()
     }
     
     override func viewDidLoad() {
@@ -75,13 +74,13 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             userId = User.currentUser?.id
         }
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
-            //TODO: go to user profile screen to show newly added actions.
-            
-            self.user = User.currentUser
-            self.loadViewForSelectedMode()
-            
-        })
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+//            //TODO: go to user profile screen to show newly added actions.
+//            
+//            self.user = User.currentUser
+//            self.loadViewForSelectedMode()
+//            
+//        })
         
 
         if userId != User.currentUser?.id {
@@ -132,11 +131,11 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
 //        self.scoreLabel.text    = "\(self.user?.score ?? 0)"
 //        self.profileImageView.setImageWith(URL(string: (self.user?.profilePhotoUrl)!)!)
         
-        if ((self.user?.actions == nil || self.user?.actions?.count == 0) && (self.user?.momentIds == nil || self.user?.momentIds?.count == 0)) {
-            print("No Actions or Moments yet ");
+        if (self.user?.actions == nil || self.user?.actions?.count == 0) {
+            print("No Actions yet ");
             self.segmentedControl.isEnabled = false
             self.actionsTableView.isHidden = true
-            self.momentsTableView.isHidden = true
+//            self.momentsTableView.isHidden = true
             self.noActionAndMomentsLabel.isHidden = false
             return
         }else{
@@ -190,17 +189,17 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
 //            self.actionsTableView.register(nib, forCellReuseIdentifier: "MomentCell")
 //            self.actionsTableView.estimatedRowHeight = self.actionsTableView.rowHeight
 //            self.actionsTableView.rowHeight = UITableViewAutomaticDimension
-            self.userProfileManager?.fetchUserMomments(userId: (self.user?.id)!, completion: { (moments: [Moment]?, error: Error?) in
-                
-                if error != nil {
-                    // show alert
-                    return
-                }
-                self.moments = moments
-                DispatchQueue.main.async {
-                    self.momentsTableView.reloadData()
-                }
-            })
+//            self.userProfileManager?.fetchUserMomments(userId: (self.user?.id)!, completion: { (moments: [Moment]?, error: Error?) in
+//                
+//                if error != nil {
+//                    // show alert
+//                    return
+//                }
+//                self.moments = moments
+//                DispatchQueue.main.async {
+//                    self.momentsTableView.reloadData()
+//                }
+//            })
         }
     
     }
@@ -226,26 +225,26 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if self.currentListType == ListType.listTypeAccount {
+//        if self.currentListType == ListType.listTypeAccount {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCell", for: indexPath) as! ActionCell
             let id = self.actions?[indexPath.row].id
             cell.title.text = MainManager.shared.availableActs[id!]?.title
             cell.actionStatus.text = self.actions?[indexPath.row].status
             return cell
-        }
+//        }
     
-        let momentCell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
-        momentCell.moment = self.moments?[indexPath.row]
-        
-        return momentCell
+//        let momentCell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
+//        momentCell.moment = self.moments?[indexPath.row]
+//        
+//        return momentCell
     }
     
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.currentListType == ListType.listTypeAccount {
+//        if self.currentListType == ListType.listTypeAccount {
             return (self.actions?.count)!
-        }
-        return (self.moments?.count)!
+//        }
+//        return (self.moments?.count)!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -259,13 +258,13 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             self.performSegue(withIdentifier: "createMomentViewController", sender: cell)
         }
         
-        if self.currentListType == ListType.listTypeMoment {
-            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
-            momentsDetailVC.momentId = self.moments?[indexPath.row].id
-            momentsDetailVC.isUserMomentDetail = true
-            self.navigationController?.pushViewController(momentsDetailVC, animated: true)
-        }
+//        if self.currentListType == ListType.listTypeMoment {
+//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
+//            momentsDetailVC.momentId = self.moments?[indexPath.row].id
+//            momentsDetailVC.isUserMomentDetail = true
+//            self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+//        }
         
         
     }

@@ -66,34 +66,34 @@ class UserProfileManager: NSObject {
         }
     }
     
-    func fetchUserMomments(userId: String, completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) -> Void{
-        var userMoments = [Moment]()
-        FireBaseManager.shared.getUser(userID: userId) { (user:User?, error:Error?) in
-            if user != nil {
-                print(user!)
-            }
-            
-            if (user?.momentIds) != nil {
-                var momentsCount = user?.momentIds?.count
-                for momentId in (user?.momentIds)! {
-                    FireBaseManager.shared.getMoment(momentId: momentId, completion: { (moment : Moment?, error: Error?) in
-                        if (error == nil ){
-                            if let moment = moment {
-                                userMoments.append(moment)
-                            }
-                        }
-                        momentsCount = momentsCount! - 1
-                        if momentsCount == 0 {
-                            completion(userMoments, nil)
-                        }
-                    })
-                }
-            }
-            else {
-                completion(nil, NSError(domain: "com.kak.everest", code: 1001, userInfo: nil))
-            }
-        }
-    }
+//    func fetchUserMomments(userId: String, completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) -> Void{
+//        var userMoments = [Moment]()
+//        FireBaseManager.shared.getUser(userID: userId) { (user:User?, error:Error?) in
+//            if user != nil {
+//                print(user!)
+//            }
+//            
+//            if (user?.momentIds) != nil {
+//                var momentsCount = user?.momentIds?.count
+//                for momentId in (user?.momentIds)! {
+//                    FireBaseManager.shared.getMoment(momentId: momentId, completion: { (moment : Moment?, error: Error?) in
+//                        if (error == nil ){
+//                            if let moment = moment {
+//                                userMoments.append(moment)
+//                            }
+//                        }
+//                        momentsCount = momentsCount! - 1
+//                        if momentsCount == 0 {
+//                            completion(userMoments, nil)
+//                        }
+//                    })
+//                }
+//            }
+//            else {
+//                completion(nil, NSError(domain: "com.kak.everest", code: 1001, userInfo: nil))
+//            }
+//        }
+//    }
 
 
 }
