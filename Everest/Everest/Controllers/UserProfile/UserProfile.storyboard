@@ -117,6 +117,13 @@
                                     <outlet property="delegate" destination="x1b-PU-itZ" id="9d0-SI-YI0"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start creating good acts and create moments. " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mE0-pe-46Z">
+                                <rect key="frame" x="9" y="226" width="356" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.82745098039999998" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.50939924670000003" green="0.77993966449999996" blue="0.93180302579999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -132,6 +139,7 @@
                         <outlet property="dateLabel" destination="j5d-n3-mzR" id="gqd-hA-esQ"/>
                         <outlet property="momentsTableView" destination="xZb-1c-1fn" id="nEc-fS-YFp"/>
                         <outlet property="nameLabel" destination="K7u-31-aCR" id="bwf-iq-ue9"/>
+                        <outlet property="noActionAndMomentsLabel" destination="mE0-pe-46Z" id="F3R-Xl-flb"/>
                         <outlet property="profileImageView" destination="xcc-4W-YVB" id="Ya6-5D-YDn"/>
                         <outlet property="scoreLabel" destination="9XT-pP-5Kn" id="vw2-nd-VTB"/>
                         <outlet property="segmentedControl" destination="aVN-11-Fna" id="s8K-0X-5nE"/>
