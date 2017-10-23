@@ -127,7 +127,7 @@
                         <color key="backgroundColor" red="0.50939924670000003" green="0.77993966449999996" blue="0.93180302579999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="ago-b1-qbx">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="7D0-ac-XEE">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="7D0-ac-XEE">
                             <connections>
                                 <action selector="logoutClicked:" destination="x1b-PU-itZ" id="N4M-te-fdV"/>
                             </connections>
