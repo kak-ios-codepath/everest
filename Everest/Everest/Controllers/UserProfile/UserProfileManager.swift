@@ -50,7 +50,13 @@ class UserProfileManager: NSObject {
             if user != nil {
                 print(user!)
             }
-            completion(user?.actions, error)
+            
+            if (user?.actions) != nil {
+                completion(user?.actions, nil)
+            }
+            else {
+                completion(nil, NSError(domain: "com.kak.everest", code: 1001, userInfo: nil))
+            }
         }
     }
     
@@ -66,22 +72,25 @@ class UserProfileManager: NSObject {
             if user != nil {
                 print(user!)
             }
-            var momentsCount = user?.momentIds?.count
-            for momentId in (user?.momentIds)! {
-                FireBaseManager.shared.getMoment(momentId: momentId, completion: { (moment : Moment?, error: Error?) in
-                    if (error == nil ){
-                        if let moment = moment {
-                            userMoments.append(moment)
+            
+            if (user?.momentIds) != nil {
+                var momentsCount = user?.momentIds?.count
+                for momentId in (user?.momentIds)! {
+                    FireBaseManager.shared.getMoment(momentId: momentId, completion: { (moment : Moment?, error: Error?) in
+                        if (error == nil ){
+                            if let moment = moment {
+                                userMoments.append(moment)
+                            }
                         }
-                    }
-                    
-                    momentsCount = momentsCount! - 1
-                    if momentsCount == 0 {
-                        completion(userMoments, nil)
-                    }
-                })
-                
-
+                        momentsCount = momentsCount! - 1
+                        if momentsCount == 0 {
+                            completion(userMoments, nil)
+                        }
+                    })
+                }
+            }
+            else {
+                completion(nil, NSError(domain: "com.kak.everest", code: 1001, userInfo: nil))
             }
         }
     }

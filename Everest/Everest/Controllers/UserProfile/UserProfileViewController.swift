@@ -26,6 +26,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var actionsTableView: UITableView!
     @IBOutlet weak var momentsTableView: UITableView!
+    @IBOutlet weak var noActionAndMomentsLabel: UILabel!
     
     private var userProfileManager: UserProfileManager?
     var actions : [Action]?
@@ -57,7 +58,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
 //        self.userProfileManager?.fetchAllActs()
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
             //TODO: go to user profile screen to show newly added actions.
-            
+            self.user = User.currentUser
             self.loadViewForSelectedMode()
         })
         
@@ -77,14 +78,17 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             userId = User.currentUser?.id
         }
         
-        self.userProfileManager?.fetUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
-            self.user = user
-            self.nameLabel.text = self.user?.name
-            self.dateLabel.text = "Joined on "+(self.user?.createdDate)!
-            self.scoreLabel.text = "\(self.user?.score ?? 0)"
+        if userId != User.currentUser?.id {
+            self.userProfileManager?.fetUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
+                self.user = user
+                self.loadViewForSelectedMode()
 
+            })
+        }else {
+            self.user = User.currentUser
             self.loadViewForSelectedMode()
-        })
+        }
+        
 
     }
 
@@ -106,22 +110,48 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     func loadViewForSelectedMode(){
         
+        
+        self.nameLabel.text     = self.user?.name
+        self.dateLabel.text     = "Joined on "+(self.user?.createdDate)!
+        self.scoreLabel.text    = "\(self.user?.score ?? 0)"
+        self.profileImageView.setImageWith(URL(string: (self.user?.profilePhotoUrl)!)!)
+        
+        if ((self.user?.actions == nil || self.user?.actions?.count == 0) && (self.user?.momentIds == nil || self.user?.momentIds?.count == 0)) {
+            print("No Actions or Moments yet ");
+            self.segmentedControl.isEnabled = false
+            self.actionsTableView.isHidden = true
+            self.momentsTableView.isHidden = true
+            self.noActionAndMomentsLabel.isHidden = false
+            return
+        }else{
+            self.segmentedControl.isEnabled = true
+            self.noActionAndMomentsLabel.isHidden = true
+        }
+        
+ 
         if self.currentListType == .listTypeAccount {
             
 
             self.momentsTableView.isHidden = true
             self.actionsTableView.isHidden = false
             
-            self.userProfileManager?.fetchUserActions(userId: (self.user?.id)!, completion: { (actions: [Action]?, error:Error?) in
-                if error != nil {
-                    // show alert
-                    return
-                }
-                self.actions = actions
-                DispatchQueue.main.async {
-                    self.actionsTableView.reloadData()
-                }
-            })
+            if (self.user?.actions?.count)! > 0  {
+                self.actions = user?.actions
+                self.actionsTableView.reloadData()
+            }
+            else {
+                
+            }
+//            self.userProfileManager?.fetchUserActions(userId: (self.user?.id)!, completion: { (actions: [Action]?, error:Error?) in
+//                if error != nil {
+//                    // show alert
+//                    return
+//                }
+//                
+//                self.actions = actions
+//                DispatchQueue.main.async {
+//                }
+//            })
             
         }else {
             
