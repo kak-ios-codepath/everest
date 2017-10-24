@@ -8,16 +8,11 @@
 
 import UIKit
 
-enum ListType {
-    case listTypeAccount
-    case listTypeMoment
-}
-
 class UserProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var user: User?
     var userId : String?
-    var currentListType : ListType = .listTypeAccount
+    var currentListType : Constants.ListType = .listTypeAccount
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -105,10 +100,10 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
    
     @IBAction func segmentControlChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            self.currentListType = ListType.listTypeAccount
+            self.currentListType = Constants.ListType.listTypeAccount
         }
         else{
-            self.currentListType = ListType.listTypeMoment
+            self.currentListType = Constants.ListType.listTypeMoment
         }
         loadViewForSelectedMode()
     }
@@ -249,7 +244,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if self.currentListType == ListType.listTypeAccount {
+        if self.currentListType == Constants.ListType.listTypeAccount {
             /*let storyBoard = UIStoryboard.init(name: "UserProfile", bundle: nil)
             let actionDetailVC = storyBoard.instantiateViewController(withIdentifier: "ActionViewController") as! CreateMomentViewController
             actionDetailVC.actId = self.actions?[indexPath.row].id

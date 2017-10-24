@@ -13,7 +13,6 @@ import FacebookShare
 
 class LoginViewController: UIViewController, LoginButtonDelegate, EmailLoginDelegate {
 
-    
     @IBOutlet weak var fbLoginView: UIView!
     
     override func viewDidLoad() {
