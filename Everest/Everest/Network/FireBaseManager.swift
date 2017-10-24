@@ -39,7 +39,7 @@ class FireBaseManager {
             if error == nil {
                 if let uid = Auth.auth().currentUser?.uid {
                     FireBaseManager.UID = uid
-                    self.createUserFromFirebase(user: user!, completion: { (user1, error) in
+                    self.createUserFromFirebase(user: user!, firebaseUID: uid, completion: { (user1, error) in
                         completion(user1, error)
                     })
                 } else {
@@ -61,7 +61,7 @@ class FireBaseManager {
                     FireBaseManager.UID = uid
                     
                     //check if user exists on Firebase
-                    self.createUserFromFirebase(user: user!, completion: { (user1, error) in
+                    self.createUserFromFirebase(user: user!, firebaseUID: uid, completion: { (user1, error) in
                         completion(user1, error)
                     })
                 } else {
@@ -91,6 +91,7 @@ class FireBaseManager {
         if let phone = user.phone {
             ref.child("users/\(FireBaseManager.UID)/phone").setValue(phone)
         }
+        ref.child("users/\(FireBaseManager.UID)/providerUid").setValue(user.providerUid)
         ref.child("users/\(FireBaseManager.UID)/providerId").setValue(user.providerId)
         if let photoUrl = user.profilePhotoUrl {
             ref.child("users/\(FireBaseManager.UID)/profilePhotoUrl").setValue(photoUrl)
@@ -314,7 +315,7 @@ class FireBaseManager {
     }
     
     // MARK: - Utility functions
-    func createUserFromFirebase(user: Firebase.User, completion: @escaping (User?, Error?) -> ()){
+    func createUserFromFirebase(user: Firebase.User, firebaseUID: String, completion: @escaping (User?, Error?) -> ()){
         //check if user exists on Firebase
         self.getUser(userID: user.uid, completion: { (user1, error) in
             if user1 != nil {
@@ -339,7 +340,7 @@ class FireBaseManager {
                 if userInfo.photoURL != nil {
                     photoUrl = userInfo.photoURL!.absoluteString
                 }
-                let currentUser = User(id: userInfo.uid, providerId: userInfo.providerID, name: name, email: email, phone: phone, profilePhotoUrl: photoUrl, isAnonymous: user.isAnonymous, createdDate: "\(Date())", actions: nil, score: 0)
+                let currentUser = User(id: firebaseUID, providerUid: userInfo.uid, providerId: userInfo.providerID, name: name, email: email, phone: phone, profilePhotoUrl: photoUrl, isAnonymous: user.isAnonymous, createdDate: "\(Date())", actions: nil, score: 0)
                 
                 self.updateUser(user: currentUser)
                 completion(currentUser, nil)
