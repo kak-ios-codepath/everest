@@ -12,6 +12,7 @@ import SwiftyJSON
 class User: NSObject {
   
   var id: String
+  var providerUid: String
   var providerId: String = "password"
   var name: String
   var email: String
@@ -26,8 +27,9 @@ class User: NSObject {
     
   static var currentUser: User?
     
-    init(id: String, providerId: String, name: String, email: String, phone: String?, profilePhotoUrl: String?, isAnonymous: Bool, createdDate: String, actions: [Action]?, score: Int = 0) {
+    init(id: String, providerUid: String, providerId: String, name: String, email: String, phone: String?, profilePhotoUrl: String?, isAnonymous: Bool, createdDate: String, actions: [Action]?, score: Int = 0) {
     self.id = id
+    self.providerUid = providerUid
     self.providerId = providerId
     self.name = name
     self.email = email
@@ -48,9 +50,8 @@ class User: NSObject {
     self.profilePhotoUrl = user["profilePhotoUrl"].string
     self.isAnonymous = user["isAnonymous"].bool!
     self.createdDate = user["createdDate"].string!
-    if let providerId = user["providerId"].string {
-        self.providerId = providerId
-    }
+    self.providerUid = user["providerUid"].string!
+    self.providerId = user["providerId"].string!
     if let actions = user["actions"].dictionary {
       self.actions = actions.map { Action(action: $0.value) }
     }
