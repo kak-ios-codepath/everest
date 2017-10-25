@@ -207,7 +207,7 @@ class FireBaseManager {
                 })
         } else {
             ref.child("moments")
-                .queryOrdered(byChild: "actId")
+                .queryOrdered(byChild: "userId")
                 .queryEqual(toValue: userId)
                 .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
                 .observe(.value, with: { (snapshotVec) -> Void in

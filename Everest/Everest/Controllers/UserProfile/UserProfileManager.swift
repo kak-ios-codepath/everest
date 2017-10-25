@@ -26,111 +26,41 @@ class UserProfileManager: NSObject {
         allCategoryTitles = ["Empathy", "Surprise"]
         actionsAndMomentsDataSource = [[String : [Moment]]]()
         
-    }
-    
-    
-    func fetchAllActs() {
-        for title in allCategoryTitles! {
-            FireBaseManager.shared.fetchAvailableActs(category: title, completion: { (acts: [Act]?, error :Error?) in
-                if error != nil {
-                    
-                }
-                else {
-                    if let acts = acts {
-                        for act in acts {
-                            self.allActs?.append(act)
-                        }
-                    }
-                }
-            })
-        }
-        
-    }
-    
+    }    
     
     func fetchAllMomentsForTheUser(user: User?, completion: @escaping (_ completed : Bool, _ error : Error?)->()) {
         
         //TODO: we can revisit this logic
         
-//        FireBaseManager.shared.fetchMomentsForUser(startAtMomentId: nil, userId: (user?.id)!) { (moments:[Moment]?, error:Error?) in
-//            print("\(moments?.count)")
-//            completion(true,nil)
-//            return
-//        }
-        
-        
-
- /*       if (user?.actions?.count)! > 0 {
+        FireBaseManager.shared.fetchMomentsForUser(startAtMomentId: nil, userId: (user?.id)!) { (moments:[Moment]?, error:Error?) in
             
-//            let dispatchGroup = DispatchGroup()
-
-            for action in (user?.actions)! {
-//                dispatchGroup.enter()
-                var momentsOfAction = [Moment]()
-                print("act id \(action.id)")
-                if let momentIds = action.momentIds {
-                    
-//                    dispatchGroup.enter()
-
-                    for momentId in momentIds {
-                        let sem = DispatchSemaphore(value: 0)
-
-                        FireBaseManager.shared.getMoment(momentId: momentId, completion: { (moment : Moment?, error: Error?) in
-                            if moment != nil {
-                                print("\(moment?.title)")
-                                momentsOfAction.append(moment!)
-                            }
-                            //sem.signal()
-                            
-//                            dispatchGroup.leave()
-                        })
-                        
-                        //sem.wait()
-                    }
-                }
- //               self.actionsAndMomentsDataSource?.append([action.id : momentsOfAction])
+            if let userMoments = moments {
                 
-//                dispatchGroup.leave()
-
+                if let actions = user?.actions {
+                    for action in actions {
+                        var actionMoments = [Moment]()
+                        if let mIds = action.momentIds {
+                            for mid in mIds {
+                                if let momnts = userMoments.filter( { return $0.id == mid } ).first {
+                                    actionMoments.append(momnts)
+                                }
+                            }
+                        }
+                       self.actionsAndMomentsDataSource?.append([action.id : actionMoments])
+                    }
+                    
+                    completion(true, nil)
+                }
             }
-
-//            completion(true,nil)
-
-//            dispatchGroup.notify(queue: .main) {
-//                print("Action and its moments are complete 👍")
-//            }
-        }*/
-        
-        
-        
-        
-//        FireBaseManager.shared.fetchMomentsForUser(startAtMomentId: nil, userId: (user?.id)!) { (moments: [Moment]?, error: Error?) in
-//            if let userMoments = moments {
-//                if (user?.actions?.count)! > 0 {
-//                    var momentsOfAction = [Moment]()
-//                    for action in (user?.actions)! {
-//                        if let momentIds = action.momentIds {
-//                            for momentId in momentIds {
-//                                for moment in userMoments {
-//                                    if moment.id == momentId {
-//                                        momentsOfAction.append(moment)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                        
-//                        self.actionsAndMomentsDataSource?.append([action.id : momentsOfAction])
-//                    }
-//                    
-//                    completion(true,nil)
-//                }
-//
-//            }
-//            
-//        }
-//        
+        }
     }
     
+    
+    func fetMomentDetail(id:String,  completion: @escaping (_ moment: Moment?, _ error : Error?)->()) {
+        FireBaseManager.shared.getMoment(momentId: id) { (moment:Moment?, error:Error?) in
+            completion(moment,nil)
+        }
+    }
     
     func fetchUserActions(userId: String, completion: @escaping (_ actions: [Action]?, _ error : Error?)->()){
         FireBaseManager.shared.getUser(userID: userId) { (user:User?, error:Error?) in
@@ -153,16 +83,12 @@ class UserProfileManager: NSObject {
         }
     }
     
-//    func fetchUserMomments(userId: String, completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) -> Void{
+//    func fetchMommentsForAction(acttion: Action, completion: @escaping (_ moments: [Moment]?, _ error : Error?)->()) -> Void{
+//
 //        var userMoments = [Moment]()
-//        FireBaseManager.shared.getUser(userID: userId) { (user:User?, error:Error?) in
-//            if user != nil {
-//                print(user!)
-//            }
-//            
-//            if (user?.momentIds) != nil {
-//                var momentsCount = user?.momentIds?.count
-//                for momentId in (user?.momentIds)! {
+//            if (acttion.momentIds) != nil {
+//                var momentsCount = acttion.momentIds?.count
+//                for momentId in (acttion.momentIds)! {
 //                    FireBaseManager.shared.getMoment(momentId: momentId, completion: { (moment : Moment?, error: Error?) in
 //                        if (error == nil ){
 //                            if let moment = moment {
@@ -180,7 +106,7 @@ class UserProfileManager: NSObject {
 //                completion(nil, NSError(domain: "com.kak.everest", code: 1001, userInfo: nil))
 //            }
 //        }
-//    }
+    
 
 
 }

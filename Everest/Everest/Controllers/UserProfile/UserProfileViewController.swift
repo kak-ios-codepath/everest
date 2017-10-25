@@ -135,22 +135,36 @@ class UserProfileViewController: UIViewController{
     }
 }
 
-extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate {
+extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate, MomentCellDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
-//        if (self.moments?.count)!>0  {
-//            cell.momentCellDelegate = self
-//            cell.moment = self.moments?[indexPath.row]
-//        }
+        
+        if self.userProfileManager?.actionsAndMomentsDataSource != nil && (self.userProfileManager?.actionsAndMomentsDataSource?.count)! > 0 {
+            
+            if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[indexPath.section] {
+                let key = Array(dictionary.keys)
+                if let momentsArray = dictionary[key[0]] {
+                    
+                    let moment = momentsArray[indexPath.row]
+                    cell.momentCellDelegate = self
+                    cell.moment = moment
+                }
+            }
+        }
+
         return cell
     }
     
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if let momentsarray = self.user?.actions?[section].momentIds {
-            return momentsarray.count
+        if self.userProfileManager?.actionsAndMomentsDataSource != nil && (self.userProfileManager?.actionsAndMomentsDataSource?.count)! > 0 {
+            if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[section] {
+                let key = Array(dictionary.keys)
+                if let momentsArray = dictionary[key[0]] {
+                    return momentsArray.count
+                }
+            }
         }
         
         return 0
