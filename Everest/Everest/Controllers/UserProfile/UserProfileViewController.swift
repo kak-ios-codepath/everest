@@ -8,24 +8,19 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UserProfileViewController: UIViewController{
 
     var user: User?
     var userId : String?
     var currentListType : Constants.ListType = .listTypeAccount
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var actionsTableView: UITableView!
-    @IBOutlet weak var momentsTableView: UITableView!
-    @IBOutlet weak var noActionAndMomentsLabel: UILabel!
-    
-    private var userProfileManager: UserProfileManager?
+    @IBOutlet weak var nameLabel        : UILabel!
+    @IBOutlet weak var dateLabel        : UILabel!
+    @IBOutlet weak var scoreLabel       : UILabel!
+    @IBOutlet weak var profileImageView : UIImageView!
+    @IBOutlet weak var userActionTableView: UITableView!
+    fileprivate var userProfileManager      : UserProfileManager?
     var actions : [Action]?
-//    var moments : [Moment]?
 
     //  MARK: -- Initialization codes
     required init?(coder aDecoder: NSCoder) {
@@ -44,30 +39,21 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     func initialize() -> Void {
         userProfileManager     = UserProfileManager.init()
         actions = [Action]()
-//        moments = [Moment]()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: "ActionCell", bundle: nil)
-        self.actionsTableView.register(nib, forCellReuseIdentifier: "ActionCell")
-        self.actionsTableView.estimatedRowHeight = self.actionsTableView.rowHeight
-        self.actionsTableView.rowHeight = UITableViewAutomaticDimension
-        
-        let momentsNib = UINib(nibName: "MomentCell", bundle: nil)
-        self.momentsTableView.register(momentsNib, forCellReuseIdentifier: "MomentCell")
-        self.momentsTableView.estimatedRowHeight = self.momentsTableView.rowHeight
-        self.momentsTableView.rowHeight = UITableViewAutomaticDimension
+        let nib = UINib(nibName: "MomentCell", bundle: nil)
+        self.userActionTableView.register(nib, forCellReuseIdentifier: "MomentCell")
+        self.userActionTableView.estimatedRowHeight = self.userActionTableView.rowHeight
+        self.userActionTableView.rowHeight = UITableViewAutomaticDimension
 
-        
-//        if user == nil {
-//            user = User.currentUser
-//        }
-//        
         if userId == nil || userId == "" {
             userId = User.currentUser?.id
         }
+        
+        
         
 //        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
 //            //TODO: go to user profile screen to show newly added actions.
@@ -98,19 +84,19 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
    
-    @IBAction func segmentControlChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            self.currentListType = Constants.ListType.listTypeAccount
-        }
-        else{
-            self.currentListType = Constants.ListType.listTypeMoment
-        }
-        loadViewForSelectedMode()
-    }
+
     
     func loadViewForSelectedMode(){
         
+        self.userProfileManager?.fetchAllMomentsForTheUser(user: self.user, completion: { (completed : Bool, error: Error?) in
+            print("\(completed)")
+            if completed == true {
+                self.userActionTableView.reloadData()
+            }
+        })
         
+        self.userActionTableView.reloadData()
+
         nameLabel.text = user?.name
         dateLabel.text = "Joined on "+(user?.createdDate)!
         scoreLabel.text = "\(user?.score ?? 0)"
@@ -119,84 +105,6 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         } else {
             profileImageView.image = nil
         }
-        
-        
-//        self.nameLabel.text     = self.user?.name
-//        self.dateLabel.text     = "Joined on "+(self.user?.createdDate)!
-//        self.scoreLabel.text    = "\(self.user?.score ?? 0)"
-//        self.profileImageView.setImageWith(URL(string: (self.user?.profilePhotoUrl)!)!)
-        
-        if (self.user?.actions == nil || self.user?.actions?.count == 0) {
-            print("No Actions yet ");
-            self.segmentedControl.isEnabled = false
-            self.actionsTableView.isHidden = true
-//            self.momentsTableView.isHidden = true
-            self.noActionAndMomentsLabel.isHidden = false
-            return
-        }else{
-            self.segmentedControl.isEnabled = true
-            self.noActionAndMomentsLabel.isHidden = true
-        }
-        
- 
-        if self.currentListType == .listTypeAccount {
-            
-
-            self.momentsTableView.isHidden = true
-            self.actionsTableView.isHidden = false
-            
-            self.actionsTableView.dataSource = self
-            self.actionsTableView.delegate = self
-            
-            self.momentsTableView.dataSource = nil
-            self.momentsTableView.delegate = nil
-            
-            if (self.user?.actions?.count)! > 0  {
-                self.actions = user?.actions
-                self.actionsTableView.reloadData()
-            }
-            else {
-                
-            }
-//            self.userProfileManager?.fetchUserActions(userId: (self.user?.id)!, completion: { (actions: [Action]?, error:Error?) in
-//                if error != nil {
-//                    // show alert
-//                    return
-//                }
-//                
-//                self.actions = actions
-//                DispatchQueue.main.async {
-//                }
-//            })
-            
-        }else {
-            
-            self.momentsTableView.isHidden = false
-            self.actionsTableView.isHidden = true
-            
-            self.actionsTableView.dataSource = nil
-            self.actionsTableView.delegate = nil
-            
-            self.momentsTableView.dataSource = self
-            self.momentsTableView.delegate = self
-            
-//            let nib = UINib(nibName: "MomentCell", bundle: nil)
-//            self.actionsTableView.register(nib, forCellReuseIdentifier: "MomentCell")
-//            self.actionsTableView.estimatedRowHeight = self.actionsTableView.rowHeight
-//            self.actionsTableView.rowHeight = UITableViewAutomaticDimension
-//            self.userProfileManager?.fetchUserMomments(userId: (self.user?.id)!, completion: { (moments: [Moment]?, error: Error?) in
-//                
-//                if error != nil {
-//                    // show alert
-//                    return
-//                }
-//                self.moments = moments
-//                DispatchQueue.main.async {
-//                    self.momentsTableView.reloadData()
-//                }
-//            })
-        }
-    
     }
 
     
@@ -206,68 +114,63 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "createMomentViewController") {
             let cell = sender as! ActionCell
-            if let indexPath = self.actionsTableView.indexPath(for: cell) {
-                let vc = segue.destination as! CreateMomentViewController
-                vc.action = self.actions?[indexPath.row]
-                self.actionsTableView.deselectRow(at: indexPath, animated: true)
-            }
+//            if let indexPath = self.actionsTableView.indexPath(for: cell) {
+//                let vc = segue.destination as! CreateMomentViewController
+//                vc.action = self.actions?[indexPath.row]
+//                self.actionsTableView.deselectRow(at: indexPath, animated: true)
+//            }
         }
     }
     
     
     // MARK: - Actions tableview delegate and datasource methods
     
-    @available(iOS 2.0, *)
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        if self.currentListType == ListType.listTypeAccount {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCell", for: indexPath) as! ActionCell
-            let id = self.actions?[indexPath.row].id
-            cell.title.text = MainManager.shared.availableActs[id!]?.title
-            cell.actionStatus.text = self.actions?[indexPath.row].status
-            return cell
-//        }
-    
-//        let momentCell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
-//        momentCell.moment = self.moments?[indexPath.row]
-//        
-//        return momentCell
-    }
-    
-    @available(iOS 2.0, *)
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if self.currentListType == ListType.listTypeAccount {
-            return (self.actions?.count)!
-//        }
-//        return (self.moments?.count)!
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if self.currentListType == Constants.ListType.listTypeAccount {
-            /*let storyBoard = UIStoryboard.init(name: "UserProfile", bundle: nil)
-            let actionDetailVC = storyBoard.instantiateViewController(withIdentifier: "ActionViewController") as! CreateMomentViewController
-            actionDetailVC.actId = self.actions?[indexPath.row].id
-            self.navigationController?.pushViewController(actionDetailVC, animated: true)*/
-            let cell = tableView.cellForRow(at: indexPath)
-            self.performSegue(withIdentifier: "createMomentViewController", sender: cell)
-        }
-        
-//        if self.currentListType == ListType.listTypeMoment {
-//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//            let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
-//            momentsDetailVC.momentId = self.moments?[indexPath.row].id
-//            momentsDetailVC.isUserMomentDetail = true
-//            self.navigationController?.pushViewController(momentsDetailVC, animated: true)
-//        }
-        
-        
-    }
+
 
     @IBAction func logoutClicked(_ sender: Any) {
         LoginManager.shared.logoutUser { (error) in
             //TODO: Handle error
             self.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
+//        if (self.moments?.count)!>0  {
+//            cell.momentCellDelegate = self
+//            cell.moment = self.moments?[indexPath.row]
+//        }
+        return cell
+    }
+    
+    @available(iOS 2.0, *)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if let momentsarray = self.user?.actions?[section].momentIds {
+            return momentsarray.count
+        }
+        
+        return 0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if let useractions = self.user?.actions {
+            return useractions.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+
+        if let action = self.user?.actions?[section] {
+            let id = action.id
+            return MainManager.shared.availableActs[id]?.title
+        }
+        
+        return ""
     }
 }
