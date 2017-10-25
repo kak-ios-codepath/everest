@@ -16,7 +16,7 @@ class Moment: NSObject {
     var details: String
     var actId: String
     var userId: String
-    var profilePhotoUrl: String
+    var profilePhotoUrl: String?
     var userName: String
     var picUrls: [String]?
     var geoLocation: [String: String]?
@@ -24,7 +24,7 @@ class Moment: NSObject {
     var timestamp: String
     var likes: Int
     
-    init(title: String, details: String, actId: String, userId: String, profilePhotoUrl: String, userName: String, timestamp: String, picUrls: [String]?, geoLocation: [String: String]?, location: String?, likes: Int = 0) {
+    init(title: String, details: String, actId: String, userId: String, profilePhotoUrl: String?, userName: String, timestamp: String, picUrls: [String]?, geoLocation: [String: String]?, location: String?, likes: Int = 0) {
         self.id = "" //It will be overwritten by unique id from firebase
         self.title = title
         self.details = details
@@ -45,10 +45,10 @@ class Moment: NSObject {
         self.details = moment["details"].string!
         self.actId = moment["actId"].string!
         self.userId = moment["userId"].string!
-        self.profilePhotoUrl = moment["profilePhotoUrl"].string!
+        self.profilePhotoUrl = moment["profilePhotoUrl"].string
         self.userName = moment["userName"].string!
-        if let picUrls = moment["picUrls"].dictionary { //converting dict to array, neglecting the keys
-            self.picUrls = picUrls.map { $1.string! }
+        if let picUrls = moment["picUrls"].array { 
+            self.picUrls = picUrls.map { $0.string! }
         }
         if let geoLocation =  moment["geoLocation"].dictionary {
             self.geoLocation = ["lat": (geoLocation["lat"]?.string)!,
