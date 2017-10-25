@@ -110,8 +110,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         
         title = momentTitle.text!
         details = momentDetails.text!
-        
-        
+
         self.moment = Moment(title: title, details: details, actId: self.action.id, userId: (User.currentUser?.id)!, profilePhotoUrl: User.currentUser?.profilePhotoUrl, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
         
         FireBaseManager.shared.updateMoment(actId: self.action.id, moment: self.moment, newMoment: true)
@@ -138,8 +137,6 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
                     // Handle share results
                     print (result)
                 }
-                try! shareDialog.show()
-                //}*
             }
         }
         self.dismiss(animated: true, completion: nil)
