@@ -111,35 +111,36 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         title = momentTitle.text!
         details = momentDetails.text!
         
-        
-        self.moment = Moment(title: title, details: details, actId: self.action.id, userId: (User.currentUser?.id)!, profilePhotoUrl: (User.currentUser?.profilePhotoUrl)!, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
-        
-        FireBaseManager.shared.updateMoment(actId: self.action.id, moment: self.moment, newMoment: true)
-        //            FireBaseManager.shared.updateAction(action: self.action)
-        FireBaseManager.shared.updateActionStatus(id: self.action.id, status: Constants.ActionStatus.completed.rawValue)
-        let act = MainManager.shared.availableActs[self.action.id]
-        FireBaseManager.shared.updateScore(incrementBy: (act?.score)!)
-        
-        DispatchQueue.main.async {
-            if self.shareOnFB {
-                //if moment != nil {
-                var url:URL!
-                if self.picsUrl != nil {
-                    url = URL(string: (self.picsUrl?[0])!)
-                } else {
-                    url = URL(string: "https://firebasestorage.googleapis.com/v0/b/everest-f98ba.appspot.com/o/5IuIsoIeRhexy8BKHzzpfMyCy2K2%2F530229533534.jpg?alt=media&token=755f391f-3489-42b0-87a3-c93e061af76c")
+        DispatchQueue.global().async {
+            self.moment = Moment(title: title, details: details, actId: self.action.id, userId: (User.currentUser?.id)!, profilePhotoUrl: (User.currentUser?.profilePhotoUrl)!, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
+            
+            FireBaseManager.shared.updateMoment(actId: self.action.id, moment: self.moment, newMoment: true)
+            //            FireBaseManager.shared.updateAction(action: self.action)
+            FireBaseManager.shared.updateActionStatus(id: self.action.id, status: Constants.ActionStatus.completed.rawValue)
+            let act = MainManager.shared.availableActs[self.action.id]
+            FireBaseManager.shared.updateScore(incrementBy: (act?.score)!)
+            
+            DispatchQueue.main.async {
+                if self.shareOnFB {
+                    //if moment != nil {
+                    var url:URL!
+                    if self.picsUrl != nil {
+                        url = URL(string: (self.picsUrl?[0])!)
+                    } else {
+                        url = URL(string: "https://firebasestorage.googleapis.com/v0/b/everest-f98ba.appspot.com/o/5IuIsoIeRhexy8BKHzzpfMyCy2K2%2F530229533534.jpg?alt=media&token=755f391f-3489-42b0-87a3-c93e061af76c")
+                    }
+                    var content = LinkShareContent(url: url!)
+                    content.quote = "I did it!"
+                    let shareDialog = ShareDialog(content: content)
+                    shareDialog.mode = .native
+                    shareDialog.failsOnInvalidData = true
+                    shareDialog.completion = { result in
+                        // Handle share results
+                        print (result)
+                    }
+                    try! shareDialog.show()
+                    //}*
                 }
-                var content = LinkShareContent(url: url!)
-                content.quote = "I did it!"
-                let shareDialog = ShareDialog(content: content)
-                shareDialog.mode = .native
-                shareDialog.failsOnInvalidData = true
-                shareDialog.completion = { result in
-                    // Handle share results
-                    print (result)
-                }
-                try! shareDialog.show()
-                //}*
             }
         }
         self.dismiss(animated: true, completion: nil)
