@@ -156,6 +156,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         return cell
     }
     
+    
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.userProfileManager?.actionsAndMomentsDataSource != nil && (self.userProfileManager?.actionsAndMomentsDataSource?.count)! > 0 {
@@ -170,11 +171,31 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         return 0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        if self.userProfileManager?.actionsAndMomentsDataSource != nil && (self.userProfileManager?.actionsAndMomentsDataSource?.count)! > 0 {
+            if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[indexPath.section] {
+                let key = Array(dictionary.keys)
+                if let momentsArray = dictionary[key[0]] {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
+                    momentsDetailVC.momentId = momentsArray[indexPath.row].id
+                    self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+                }
+            }
+        }
+        
+        
+
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         if let useractions = self.user?.actions {
             return useractions.count
         }
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
