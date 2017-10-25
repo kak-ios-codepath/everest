@@ -18,6 +18,9 @@ class MomentDetailCell: UITableViewCell {
         didSet {
             self.momentTitleLabel.text = moment?.title
             self.momentDescriptionLabel.text = moment?.details
+            if moment?.actId != nil {
+                self.actTitle.text = MainManager.shared.availableActs[(moment?.actId)!]?.title
+            }
             if moment?.timestamp != nil {
                 let date = MomentDetailCell.formatter.date(from: (moment?.timestamp)!)
                 self.momentCreatedDateLabel.text = MomentDetailCell.friendlyDateformatter.string(from: date!)
@@ -41,11 +44,12 @@ class MomentDetailCell: UITableViewCell {
                         if (user?.profilePhotoUrl != nil) {
                             self.userProfileImaeView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
                         } else {
-                            self.userProfileImaeView.image = nil
+                            self.userProfileImaeView.image = UIImage(named: "Profile")
                         }
                     }
                 }
             }
+            self.cloneButton.isHidden = true
         }
     }
     @IBOutlet weak var userNameLabel: UILabel!
@@ -55,7 +59,8 @@ class MomentDetailCell: UITableViewCell {
     @IBOutlet weak var momentDescriptionLabel: UILabel!
     @IBOutlet weak var momentImageView: UIImageView!
     @IBOutlet weak var momentTitleLabel: UILabel!
-    
+    @IBOutlet weak var cloneButton: UIButton!
+    @IBOutlet weak var actTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

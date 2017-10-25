@@ -20,8 +20,7 @@ class MomentsViewController: UIViewController {
     var momentId : String?
     
     fileprivate var currentSelectedMoment : Moment?
-    
-    
+        
     //  MARK: -- Initialization codes
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -109,11 +108,13 @@ extension MomentsViewController: UITableViewDelegate, UITableViewDataSource {
         
         if (indexPath.section == 0) {
             cell.moment = self.currentSelectedMoment
+            cell.cloneButton.isHidden = false
         }
         else
         {
             if (self.suggestedMomentList?.count)!>0 {
                 cell.moment = self.suggestedMomentList?[indexPath.row]
+                cell.cloneButton.isHidden = true
             }
         }
         
