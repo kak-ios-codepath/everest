@@ -64,6 +64,25 @@ class UserProfileViewController: UIViewController{
 //        })
         
 
+        if userId != nil {
+            FireBaseManager.shared.fetchMomentsForUser (startAtMomentId: nil, userId: userId!, completion: { (moments: [Moment]?, error: Error?) in
+                if error != nil {
+                    print ("Error fetch moments for user")
+                } else {
+                    print ("Success moments for user")
+                }
+            })
+            
+            self.userProfileManager?.fetchUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
+                self.user = user
+                self.loadViewForSelectedMode()
+                
+            })
+        }else {
+            self.user = User.currentUser
+            self.loadViewForSelectedMode()
+        }
+        
         if userId != User.currentUser?.id {
             self.userProfileManager?.fetchUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
                 self.user = user

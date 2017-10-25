@@ -42,9 +42,6 @@ class MomentsViewController: UIViewController {
         suggestedMomentList = [Moment]()
     }
 
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +56,7 @@ class MomentsViewController: UIViewController {
                 return
             }
             self.currentSelectedMoment = moment
+            
             DispatchQueue.main.async {
                 self.momentDetailTableView.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
             }
@@ -108,7 +106,11 @@ extension MomentsViewController: UITableViewDelegate, UITableViewDataSource {
         
         if (indexPath.section == 0) {
             cell.moment = self.currentSelectedMoment
-            cell.cloneButton.isHidden = false
+            if isUserMomentDetail {
+                cell.cloneButton.isHidden = true
+            } else {
+                cell.cloneButton.isHidden = false
+            }
         }
         else
         {
