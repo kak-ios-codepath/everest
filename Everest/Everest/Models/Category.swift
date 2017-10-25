@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import AFNetworking
 
 class Category {
     var title: String!
@@ -17,5 +18,10 @@ class Category {
     init(categoryTitle: String, category: NSDictionary) {
         self.title = categoryTitle
         self.acts = category.flatMap { Act(id: $0 as! String, category: categoryTitle, title: $1 as! String, score: ACT_DEFAULT_SCORE) }
+        FireBaseManager.shared.fetchCategoryImageUrl(title: title) { (url, error) in
+            if error == nil {
+                self.imageUrl = url
+            }
+        }
     }
 }

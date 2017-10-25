@@ -284,8 +284,17 @@ class FireBaseManager {
                 }
             })
     }
+
+    func fetchCategoryImageUrl(title: String, completion: @escaping (String?, Error?) -> () ) {
+        ref.child("categoryImageUrl/\(title)").observeSingleEvent(of: .value , with: { (snapshot) in
+            if let title = snapshot.value as? String {
+                completion(title, nil)
+            } else {
+                completion(nil, "failed to get category Image's URL" as? Error)
+            }
+        })
+    }
     
-    // MARK: - Action Data Model related functions
     func fetchAvailableActs(category: String, completion: @escaping ([Act]?, Error?) -> ()) {
         ref.child("actsPicker/\(category)")
             .observe(.value, with: { (snapshotVec) -> Void in

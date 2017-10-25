@@ -80,7 +80,7 @@ extension AddActionViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCollectionCell", for: indexPath) as? CategoryCollectionCell else {return UICollectionViewCell()}
-        cell.categoryPhotoURL = photoUrls[indexPath.row]
+        cell.categoryPhotoURL = MainManager.shared.availableCategories[indexPath.row].imageUrl
         cell.categoryTitle = MainManager.shared.availableCategories[indexPath.row].title
         return cell
     }
