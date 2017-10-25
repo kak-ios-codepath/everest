@@ -110,7 +110,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moment" translatesAutoresizingMaskIntoConstraints="NO" id="Xel-mF-uQz">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xel-mF-uQz">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="165" id="ZrK-Xg-CAE"/>
                                                     </constraints>
@@ -289,7 +289,6 @@
     </scenes>
     <resources>
         <image name="Like" width="60" height="60"/>
-        <image name="Moment" width="608" height="300"/>
         <image name="Profile" width="90" height="90"/>
     </resources>
 </document>

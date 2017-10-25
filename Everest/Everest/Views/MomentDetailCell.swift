@@ -24,11 +24,25 @@ class MomentDetailCell: UITableViewCell {
             } else {
                 self.momentCreatedDateLabel.text = moment?.timestamp
             }
+            if let picUrls = moment?.picUrls {
+                if let url = URL(string: picUrls[0]) {
+                    self.momentImageView.setImageWith(url)
+                } else {
+                    self.momentImageView.image = UIImage(named: "Moment")
+                }
+            } else {
+                self.momentImageView.image = UIImage(named: "Moment")
+            }
+            
             if moment?.userId != nil {
                 FireBaseManager.shared.getUser(userID: (moment?.userId)!) { (user:User?, error:Error?) in
                     if user != nil {
                         self.userNameLabel.text = user?.name
-                        self.userProfileImaeView.setImageWith(URL(string: (user?.profilePhotoUrl)!)!)
+                        if (user?.profilePhotoUrl != nil) {
+                            self.userProfileImaeView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
+                        } else {
+                            self.userProfileImaeView.image = nil
+                        }
                     }
                 }
             }

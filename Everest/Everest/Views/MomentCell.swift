@@ -25,7 +25,15 @@ class MomentCell: UITableViewCell {
         didSet {
             self.momentTitleLabel.text = moment?.title
             self.momentDescription.text = moment?.details
-            
+            if let picUrls = moment?.picUrls {
+                if let url = URL(string: picUrls[0]) {
+                    self.momentImageVIew.setImageWith(url)
+                } else {
+                    self.momentImageVIew.image = UIImage(named: "Moment")
+                }
+            } else {
+                self.momentImageVIew.image = UIImage(named: "Moment")
+            }
         }
     }
     

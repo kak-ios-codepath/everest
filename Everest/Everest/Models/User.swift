@@ -22,7 +22,7 @@ class User: NSObject {
   var createdDate: String
   var actions: [Action]? //it will contain an array of acts' ids
 //  var momentIds: [String]?
-  var suggestedActs: [String]?
+//  var suggestedActs: [String]?
   var score: Int
     
   static var currentUser: User?

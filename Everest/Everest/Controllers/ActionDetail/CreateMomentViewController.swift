@@ -112,7 +112,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         details = momentDetails.text!
         
         
-        self.moment = Moment(title: title, details: details, actId: self.action.id, userId: (User.currentUser?.id)!, profilePhotoUrl: (User.currentUser?.profilePhotoUrl)!, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
+        self.moment = Moment(title: title, details: details, actId: self.action.id, userId: (User.currentUser?.id)!, profilePhotoUrl: User.currentUser?.profilePhotoUrl, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
         
         FireBaseManager.shared.updateMoment(actId: self.action.id, moment: self.moment, newMoment: true)
         //            FireBaseManager.shared.updateAction(action: self.action)

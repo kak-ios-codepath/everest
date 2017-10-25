@@ -246,7 +246,9 @@ class FireBaseManager {
         ref.child("moments/\(MomentId)/timestamp").setValue(moment.timestamp)
         ref.child("moments/\(MomentId)/actId").setValue(moment.actId)
         ref.child("moments/\(MomentId)/userId").setValue(moment.userId)
-        ref.child("moments/\(MomentId)/profilePhotoUrl").setValue(moment.profilePhotoUrl)
+        if let photoUrl = moment.profilePhotoUrl {
+            ref.child("moments/\(MomentId)/profilePhotoUrl").setValue(photoUrl)
+        }
         ref.child("moments/\(MomentId)/userName").setValue(moment.userName)
         if let picUrls = moment.picUrls {
             ref.child("moments/\(MomentId)/picUrls").setValue(picUrls)
