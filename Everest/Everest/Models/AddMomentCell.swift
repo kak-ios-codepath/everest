@@ -8,7 +8,7 @@
 
 import UIKit
 @objc protocol AddMomentCellDelegate {
-    @objc optional func addMomentCell(cell: AddMomentCell, addNewMomentToAction: String)
+    @objc optional func addMomentCell(cell: AddMomentCell, addNewMomentToAction: String?)
 }
 class AddMomentCell: UITableViewCell {
 
@@ -26,10 +26,10 @@ class AddMomentCell: UITableViewCell {
         }
     }
     @IBAction func addNewMomentToAct(_ sender: Any) {
-        
-        if self.addMomentCellDelegate != nil {
-            self.addMomentCellDelegate?.addMomentCell!(cell: self, addNewMomentToAction: self.selectedActId!)
-        }
+
+            if self.addMomentCellDelegate != nil {
+                self.addMomentCellDelegate?.addMomentCell!(cell: self, addNewMomentToAction: self.selectedActId)
+            }
         
         
     }
