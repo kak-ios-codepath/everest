@@ -132,7 +132,7 @@ class UserProfileViewController: UIViewController{
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "createMomentViewController") {
-//            let cell = sender as! ActionCell
+            let cell = sender as! ActionCell
 //            if let indexPath = self.actionsTableView.indexPath(for: cell) {
 //                let vc = segue.destination as! CreateMomentViewController
 //                vc.action = self.actions?[indexPath.row]
@@ -154,7 +154,7 @@ class UserProfileViewController: UIViewController{
     }
 }
 
-extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate, MomentCellDelegate, AddMomentCellDelegate {
+extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate, MomentCellDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
@@ -165,12 +165,6 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                 let key = Array(dictionary.keys)
                 if let momentsArray = dictionary[key[0]] {
                     
-                    if indexPath.row == momentsArray.count {
-                        let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
-                        addMomentCell.addMomentCellDelegate = self
-                        addMomentCell.selectedActId = key[0]
-                        return addMomentCell
-                    }
                     let moment = momentsArray[indexPath.row]
                     cell.momentCellDelegate = self
                     cell.moment = moment
@@ -188,13 +182,12 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[section] {
                 let key = Array(dictionary.keys)
                 if let momentsArray = dictionary[key[0]] {
-                    print("Moment array count \(momentsArray.count)")
-                    return momentsArray.count+1
+                    return momentsArray.count
                 }
             }
         }
         
-        return 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -211,6 +204,9 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                 }
             }
         }
+        
+        
+
     }
     
     
@@ -229,16 +225,6 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             return MainManager.shared.availableActs[id]?.title
         }
         
-        return "Add new action and start creating moments!!"
-    }
-    
-    
-    func addMomentCell(cell: AddMomentCell, addNewMomentToAction action: String) {
-        
-        let action = self.user?.actions?.filter( { return $0.id == action } ).first
-        let storyboard = UIStoryboard.init(name: "UserProfile", bundle: nil)
-        let addMomentVC = storyboard.instantiateViewController(withIdentifier: "CreateMomentViewController") as! CreateMomentViewController
-        addMomentVC.action = action
-        self.navigationController?.pushViewController(addMomentVC, animated: true)
+        return ""
     }
 }
