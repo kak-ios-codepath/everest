@@ -175,12 +175,12 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                     let moment = momentsArray[indexPath.row]
                     cell.momentCellDelegate = self
                     cell.moment = moment
+                    return cell
                 }
             }
         }
         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
         addMomentCell.addMomentCellDelegate = self
-//        addMomentCell.selectedActId = key[0]
         return addMomentCell
     }
     
@@ -239,6 +239,9 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     func addMomentCell(cell: AddMomentCell, addNewMomentToAction action: String?) {
         
         if action == nil {
+            let storyboard = UIStoryboard.init(name: "AddAction", bundle: nil)
+            let addActionVC = storyboard.instantiateViewController(withIdentifier: "AddActionViewController") as! AddActionViewController
+            self.navigationController?.pushViewController(addActionVC, animated: true)
             
         }else {
             let action = self.user?.actions?.filter( { return $0.id == action } ).first
