@@ -28,6 +28,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         notificationsTableView.delegate = self
         notificationsTableView.dataSource = self
+        notificationsTableView.estimatedRowHeight = 100
+        notificationsTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,13 +82,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: notificationsTableView.frame.width, height: 50))
-        headerView.contentView.backgroundColor = UIColor(colorLiteralRed: 0xd3/0xFF, green: 0x23/0xFF, blue: 0x23/0xFF, alpha: 0.5)
+        let headerView = UITableViewHeaderFooterView()
+        headerView.contentView.backgroundColor = UIColor.lightGray
+        
+        let switchView = UISwitch(frame: CGRect(x: notificationsTableView.frame.width-60, y: headerView.frame.midY, width: 0, height: 0))
+//        switchView.addTarget(self, action: #selector(), for: UIControlEvents.valueChanged)
+        
+        headerView.addSubview(switchView)
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "title"//actionNotifications[section].title
+        return "Notify Me About New Actions"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 }
