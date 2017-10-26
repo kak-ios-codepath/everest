@@ -50,6 +50,20 @@ class UserProfileManager: NSObject {
                     }
                     
                     completion(true, nil)
+                }else {
+                    completion(false, nil)
+                }
+                
+            }else {
+                if let actions = user?.actions {
+                    for action in actions {
+                        let actionMoments = [Moment]()
+                        self.actionsAndMomentsDataSource?.append([action.id : actionMoments])
+                    }
+                
+                completion(true, nil)
+                }else {
+                    completion(false, nil)
                 }
             }
         }

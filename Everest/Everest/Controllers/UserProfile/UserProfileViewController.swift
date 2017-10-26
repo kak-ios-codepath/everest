@@ -56,13 +56,13 @@ class UserProfileViewController: UIViewController{
         
         
         
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
-//            //TODO: go to user profile screen to show newly added actions.
-//            
-//            self.user = User.currentUser
-//            self.loadViewForSelectedMode()
-//            
-//        })
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+            //TODO: go to user profile screen to show newly added actions.
+            
+            self.user = User.currentUser
+            self.loadViewForSelectedMode()
+            
+        })
         
 
         if userId != nil {
@@ -110,9 +110,9 @@ class UserProfileViewController: UIViewController{
         
         self.userProfileManager?.fetchAllMomentsForTheUser(user: self.user, completion: { (completed : Bool, error: Error?) in
             print("\(completed)")
-            if completed == true {
+//            if completed == true {
                 self.userActionTableView.reloadData()
-            }
+//            }
         })
         
         self.userActionTableView.reloadData()
@@ -133,7 +133,7 @@ class UserProfileViewController: UIViewController{
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "createMomentViewController") {
-//            let cell = sender as! ActionCell
+            let cell = sender as! ActionCell
 //            if let indexPath = self.actionsTableView.indexPath(for: cell) {
 //                let vc = segue.destination as! CreateMomentViewController
 //                vc.action = self.actions?[indexPath.row]
@@ -165,22 +165,22 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[indexPath.section] {
                 let key = Array(dictionary.keys)
                 if let momentsArray = dictionary[key[0]] {
-                    
                     if indexPath.row == momentsArray.count {
                         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
                         addMomentCell.addMomentCellDelegate = self
                         addMomentCell.selectedActId = key[0]
                         return addMomentCell
                     }
+                    
                     let moment = momentsArray[indexPath.row]
                     cell.momentCellDelegate = self
                     cell.moment = moment
+                    return cell
                 }
             }
         }
         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
         addMomentCell.addMomentCellDelegate = self
-//        addMomentCell.selectedActId = key[0]
         return addMomentCell
     }
     
@@ -191,7 +191,6 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[section] {
                 let key = Array(dictionary.keys)
                 if let momentsArray = dictionary[key[0]] {
-                    print("Moment array count \(momentsArray.count)")
                     return momentsArray.count+1
                 }
             }
@@ -214,6 +213,9 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                 }
             }
         }
+        
+        
+
     }
     
     
@@ -239,15 +241,22 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     func addMomentCell(cell: AddMomentCell, addNewMomentToAction action: String?) {
         
         if action == nil {
+            let storyboard = UIStoryboard.init(name: "AddAction", bundle: nil)
+            let addActionVC = storyboard.instantiateViewController(withIdentifier: "AddActionViewController") as! AddActionViewController
+            
+            self.present(addActionVC, animated: true, completion: { 
+                
+            })
             
         }else {
             let action = self.user?.actions?.filter( { return $0.id == action } ).first
             let storyboard = UIStoryboard.init(name: "UserProfile", bundle: nil)
             let addMomentVC = storyboard.instantiateViewController(withIdentifier: "CreateMomentViewController") as! CreateMomentViewController
             addMomentVC.action = action
-            self.navigationController?.pushViewController(addMomentVC, animated: true)
+            self.present(addMomentVC, animated: true, completion: { 
+                
+            })
         }
         
-
     }
 }
