@@ -13,6 +13,7 @@ import MBProgressHUD
 
 class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
 {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var shareToFBLabel: UILabel!
     @IBOutlet weak var shareFBSwitch: UISwitch!
     @IBOutlet weak var actionTitle: UILabel!
@@ -61,6 +62,17 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
             shareToFBLabel.isHidden = true
         }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func mapViewTapped(gestureRecognizer: UIGestureRecognizer) {
@@ -253,6 +265,23 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
     func textViewDidEndEditing(_: UITextView) {
     }
     
+    func keyboardWillShow(notification:NSNotification){
+        
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        self.scrollView.contentInset = contentInset
+    }
+    
+    
+    func keyboardWillHide(notification:NSNotification){
+        
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        self.scrollView.contentInset = contentInset
+    }
 }
 
 
