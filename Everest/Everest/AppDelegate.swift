@@ -73,8 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        let actionNotifications = NSKeyedArchiver.archivedData(withRootObject: SettingsViewController.actionNotifications)
-        UserDefaults.standard.set(actionNotifications, forKey: "actionNotifications")
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -108,14 +106,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RemoteNotificationHandler"), object: nil, userInfo: notification.request.content.userInfo)
+        
+        let actDect = notification.request.content.userInfo
+        handelingRemoteNotification(actDect: actDect as NSDictionary)
     }
     
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RemoteNotificationHandler"), object: nil, userInfo: response.notification.request.content.userInfo)
+        let actDect = response.notification.request.content.userInfo
+        handelingRemoteNotification(actDect: actDect as NSDictionary)
+        
+    }
+    
+    func handelingRemoteNotification(actDect: NSDictionary) {
+        SettingsViewController.actionNotifications.append(Act(id: actDect["id"] as! String, category: actDect["category"] as! String, title: actDect["title"] as! String, score: Int(actDect["score"] as! String)!) )
+        
+        let actionNotifications = NSKeyedArchiver.archivedData(withRootObject: SettingsViewController.actionNotifications)
+        UserDefaults.standard.set(actionNotifications, forKey: "actionNotifications")
     }
     
 }

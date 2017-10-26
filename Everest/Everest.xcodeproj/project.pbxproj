@@ -34,8 +34,8 @@
 		CE1335261F9C21DB000D54C4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1335251F9C21DB000D54C4 /* Category.swift */; };
 		CE13352D1F9E8B84000D54C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13352C1F9E8B84000D54C4 /* Constants.swift */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
+		CE8881651FA180730096DD21 /* AddMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8881641FA180730096DD21 /* AddMomentCell.swift */; };
 		CEFD978D1FA12A72004FBDA5 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD978C1FA12A72004FBDA5 /* NotificationCell.swift */; };
-		D71841571FA1552D008B72DF /* AddMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71841561FA1552D008B72DF /* AddMomentCell.swift */; };
 		D71841591FA1690E008B72DF /* UIImageView+Rouded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71841581FA1690E008B72DF /* UIImageView+Rouded.swift */; };
 		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
 		D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0641F947FF900D25A5A /* AddActionViewController.swift */; };
@@ -92,8 +92,8 @@
 		CE1335251F9C21DB000D54C4 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CE13352C1F9E8B84000D54C4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		CE8881641FA180730096DD21 /* AddMomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMomentCell.swift; sourceTree = "<group>"; };
 		CEFD978C1FA12A72004FBDA5 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
-		D71841561FA1552D008B72DF /* AddMomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddMomentCell.swift; path = ../Models/AddMomentCell.swift; sourceTree = "<group>"; };
 		D71841581FA1690E008B72DF /* UIImageView+Rouded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Rouded.swift"; sourceTree = "<group>"; };
 		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
 		D724D0641F947FF900D25A5A /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +222,7 @@
 		06C2EA371F91D6EA003D0ADF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE8881641FA180730096DD21 /* AddMomentCell.swift */,
 				D724D0881F94806B00D25A5A /* ActionCell.swift */,
 				D724D0891F94806B00D25A5A /* ActionCell.xib */,
 				D724D08A1F94806B00D25A5A /* MomentCell.swift */,
@@ -517,6 +518,7 @@
 				06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */,
 				D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */,
 				CEFD978D1FA12A72004FBDA5 /* NotificationCell.swift in Sources */,
+				CE8881651FA180730096DD21 /* AddMomentCell.swift in Sources */,
 				06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */,
 				D724D07F1F947FF900D25A5A /* TimelineViewController.swift in Sources */,
 				D724D0791F947FF900D25A5A /* MomentsViewController.swift in Sources */,

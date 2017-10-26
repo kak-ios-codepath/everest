@@ -155,7 +155,7 @@ class UserProfileViewController: UIViewController{
     }
 }
 
-extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate, MomentCellDelegate {
+extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate, MomentCellDelegate, AddMomentCellDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell

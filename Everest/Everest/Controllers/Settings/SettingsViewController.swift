@@ -8,20 +8,12 @@
 
 import UIKit
 import SwiftyJSON
-import UserNotifications
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var notificationsTableView: UITableView!
     
-    let notificationCenter = UNUserNotificationCenter.current()
     static var actionNotifications: [Act] = []
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleingMessageNotification(_:)), name: NSNotification.Name(rawValue: "RemoteNotificationHandler"), object: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +26,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-        notificationCenter.getDeliveredNotifications() { notifications in
-            for notifcation in notifications {
-                
-            }
-            
-            //            self.notificationCenter.removeDeliveredNotifications(withIdentifiers: [])
-        }
+
         notificationsTableView.reloadData()
     }
     
@@ -55,14 +40,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             self.present(alertController, animated: true, completion:nil)
         })
         SettingsViewController.actionNotifications.remove(at: sender.tag)
+        
+        let actionNotifications = NSKeyedArchiver.archivedData(withRootObject: SettingsViewController.actionNotifications)
+        UserDefaults.standard.set(actionNotifications, forKey: "actionNotifications")
+        
         notificationsTableView.reloadData()
     }
-    
-    func handleingMessageNotification (_ notification: NSNotification) {
-        if let actDect = notification.userInfo {
-            SettingsViewController.actionNotifications.append(Act(id: actDect["id"] as! String, category: actDect["category"] as! String, title: actDect["title"] as! String, score: Int(actDect["score"] as! String)!) )
-        }
-    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as? NotificationCell else { return UITableViewCell() }
@@ -84,12 +68,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UITableViewHeaderFooterView()
         headerView.contentView.backgroundColor = UIColor.lightGray
-        
-        let switchView = UISwitch(frame: CGRect(x: notificationsTableView.frame.width-60, y: headerView.frame.midY, width: 0, height: 0))
-//        switchView.addTarget(self, action: #selector(), for: UIControlEvents.valueChanged)
-        
-        headerView.addSubview(switchView)
-        
+
         return headerView
     }
     

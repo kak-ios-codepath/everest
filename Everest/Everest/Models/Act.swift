@@ -12,7 +12,7 @@ import SwiftyJSON
 
 let ACT_DEFAULT_SCORE = 4;
 
-class Act: NSObject {
+class Act: NSObject, NSCoding {
     
     var id: String
     var category: String
@@ -44,9 +44,9 @@ class Act: NSObject {
         let id = decoder.decodeObject(forKey: "id") as! String
         let category = decoder.decodeObject(forKey: "category") as! String
         let title = decoder.decodeObject(forKey: "title") as! String
-        let score = decoder.decodeObject(forKey: "id") as! Int
+        let score = decoder.decodeInt32(forKey: "score")
         
-        self.init(id: id, category: category, title: title, score: score)
+        self.init(id: id, category: category, title: title, score: Int(score))
     }
 }
 
