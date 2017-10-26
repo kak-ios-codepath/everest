@@ -231,6 +231,22 @@ class FireBaseManager {
         }
     }
     
+    func createMoment(actId: String, moment: Moment, newMoment: Bool, incrementBy: Int, completion: @escaping (Error?) -> ()) {
+        self.updateMoment(actId: actId, moment: moment, newMoment: true)
+        self.updateActionStatus(id: actId, status: Constants.ActionStatus.completed.rawValue)
+        self.updateScore(incrementBy: incrementBy)
+        self.getUser(userID: (User.currentUser?.id)!) { (user, error) in
+            if user != nil {
+                User.currentUser = user
+                completion(nil)
+            } else {
+                completion(error)
+            }
+            
+        }
+
+    }
+    
     func updateMoment(actId: String, moment: Moment, newMoment: Bool) {
         var MomentId = ""
         if newMoment {

@@ -208,14 +208,21 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         let title = momentTitle.text!
         let details = momentDetails.text!
         self.moment = Moment(title: title, details: details, actId: self.action.id, userId: (User.currentUser?.id)!, profilePhotoUrl: User.currentUser?.profilePhotoUrl, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
+    
         
-        
-        FireBaseManager.shared.updateMoment(actId: self.action.id, moment: self.moment, newMoment: true)
+        let act = MainManager.shared.availableActs[self.action.id]
+        FireBaseManager.shared.createMoment(actId: self.action.id, moment: self.moment, newMoment: true, incrementBy: (act?.score)!) { (error) in
+            self.dismiss(animated: true, completion: {
+                MBProgressHUD.hide(for: self.view, animated: true)
+            })
+        }
+
+        /*FireBaseManager.shared.updateMoment(actId: self.action.id, moment: self.moment, newMoment: true)
         //FireBaseManager.shared.updateAction(action: self.action)
         FireBaseManager.shared.updateActionStatus(id: self.action.id, status: Constants.ActionStatus.completed.rawValue)
         let act = MainManager.shared.availableActs[self.action.id]
         FireBaseManager.shared.updateScore(incrementBy: (act?.score)!)
-        
+        */
         //DispatchQueue.main.async {
             if self.shareOnFB {
                 //if moment != nil {
@@ -237,13 +244,13 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
             }
         //}
         
-        FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!) { (user, error) in
+        /*FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!) { (user, error) in
             User.currentUser = user
            self.dismiss(animated: true, completion: {
                 MBProgressHUD.hide(for: self.view, animated: true)
             })
-        }
-        
+        }*/
+    
     }
     
     
