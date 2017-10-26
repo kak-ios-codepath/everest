@@ -34,6 +34,7 @@
 		CE1335261F9C21DB000D54C4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1335251F9C21DB000D54C4 /* Category.swift */; };
 		CE13352D1F9E8B84000D54C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13352C1F9E8B84000D54C4 /* Constants.swift */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
+		CEFD978D1FA12A72004FBDA5 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD978C1FA12A72004FBDA5 /* NotificationCell.swift */; };
 		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
 		D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0641F947FF900D25A5A /* AddActionViewController.swift */; };
 		D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0661F947FF900D25A5A /* MomentDetailManager.swift */; };
@@ -89,6 +90,7 @@
 		CE1335251F9C21DB000D54C4 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CE13352C1F9E8B84000D54C4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		CEFD978C1FA12A72004FBDA5 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
 		D724D0641F947FF900D25A5A /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		D724D0661F947FF900D25A5A /* MomentDetailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailManager.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */,
 				CE0908DF1F986F73004D1974 /* ActsCell.swift */,
 				D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */,
+				CEFD978C1FA12A72004FBDA5 /* NotificationCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				D724D08C1F94806B00D25A5A /* ActionCell.swift in Sources */,
 				06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */,
 				D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */,
+				CEFD978D1FA12A72004FBDA5 /* NotificationCell.swift in Sources */,
 				06C2EA471F91D81A003D0ADF /* InviteFriendsViewController.swift in Sources */,
 				D724D07F1F947FF900D25A5A /* TimelineViewController.swift in Sources */,
 				D724D0791F947FF900D25A5A /* MomentsViewController.swift in Sources */,
