@@ -56,13 +56,13 @@ class UserProfileViewController: UIViewController{
         
         
         
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
-//            //TODO: go to user profile screen to show newly added actions.
-//            
-//            self.user = User.currentUser
-//            self.loadViewForSelectedMode()
-//            
-//        })
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ActionCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+            //TODO: go to user profile screen to show newly added actions.
+            
+            self.user = User.currentUser
+            self.loadViewForSelectedMode()
+            
+        })
         
 
         if userId != nil {
@@ -110,9 +110,9 @@ class UserProfileViewController: UIViewController{
         
         self.userProfileManager?.fetchAllMomentsForTheUser(user: self.user, completion: { (completed : Bool, error: Error?) in
             print("\(completed)")
-            if completed == true {
+//            if completed == true {
                 self.userActionTableView.reloadData()
-            }
+//            }
         })
         
         self.userActionTableView.reloadData()
@@ -165,16 +165,22 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[indexPath.section] {
                 let key = Array(dictionary.keys)
                 if let momentsArray = dictionary[key[0]] {
+                    if indexPath.row == momentsArray.count {
+                        let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
+                        addMomentCell.addMomentCellDelegate = self
+                        addMomentCell.selectedActId = key[0]
+                        return addMomentCell
+                    }
                     
                     let moment = momentsArray[indexPath.row]
                     cell.momentCellDelegate = self
                     cell.moment = moment
+                    return cell
                 }
             }
         }
         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
         addMomentCell.addMomentCellDelegate = self
-//        addMomentCell.selectedActId = key[0]
         return addMomentCell
     }
     
@@ -185,12 +191,12 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[section] {
                 let key = Array(dictionary.keys)
                 if let momentsArray = dictionary[key[0]] {
-                    return momentsArray.count
+                    return momentsArray.count+1
                 }
             }
         }
         
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -235,6 +241,9 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     func addMomentCell(cell: AddMomentCell, addNewMomentToAction action: String?) {
         
         if action == nil {
+            let storyboard = UIStoryboard.init(name: "AddAction", bundle: nil)
+            let addActionVC = storyboard.instantiateViewController(withIdentifier: "AddActionViewController") as! AddActionViewController
+            self.navigationController?.pushViewController(addActionVC, animated: true)
             
         }else {
             let action = self.user?.actions?.filter( { return $0.id == action } ).first
