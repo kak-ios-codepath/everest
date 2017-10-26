@@ -49,21 +49,11 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
         self.timelineTableView.rowHeight = UITableViewAutomaticDimension
 
-//        self.timelineManager?.fetchUserDetails(completion: { (user:User?, error: Error?) in
-//            
-//        })
-        
-        self.timelineManager?.fetchPublicMomments(completion: { (moments:[Moment]?, error: Error?) in
-            if((error) != nil) {
-                
-                // show the alert
-                return
-            }
-            self.moments = moments
-            // Reload the timelineView
-            //self.reloadView()
-            self.timelineTableView.reloadData()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "MomentCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+            self.loadData()
         })
+        
+        self.loadData()
         
 //// -- TODO: Remove code after TESTING image uploads
 //        guard let image = UIImage(named: "password") else { return }
@@ -88,20 +78,24 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    func loadData() {
+        self.timelineManager?.fetchPublicMomments(completion: { (moments:[Moment]?, error: Error?) in
+            if((error) != nil) {
+                
+                // show the alert
+                return
+            }
+            self.moments = moments
+            self.timelineTableView.reloadData()
+        })
+    }
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    // MARK: --  Update view
-//    private func reloadView() -> Void {
-//        self.timelineTableView.reloadData()
-//    }
-    
-    
+        
     /*
     // MARK: - Navigation
 

@@ -185,7 +185,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
 
         //update image to storage
         MBProgressHUD.showAdded(to: self.view, animated: true)
-
+        self.publishButton.isUserInteractionEnabled = false
         if selectedImage != nil {
             if let imageData = UIImagePNGRepresentation(selectedImage) as Data? {
                 FireBaseManager.shared.uploadImage(data: imageData) { (folderAndFileName, imageUrl, error) in
@@ -193,7 +193,6 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
                         self.picsUrl = [imageUrl!]
                         self.momentImageView.setImageWith(URL(string: imageUrl!)!)
                     }
-                    //MBProgressHUD.hide(for: self.view, animated: true)
                     self.submitData()
                 }
             } else {
@@ -210,22 +209,10 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         self.moment = Moment(title: title, details: details, actId: self.action.id, userId: (User.currentUser?.id)!, profilePhotoUrl: User.currentUser?.profilePhotoUrl, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
     
         
-        let act = MainManager.shared.availableActs[self.action.id]
-        FireBaseManager.shared.createMoment(actId: self.action.id, moment: self.moment, newMoment: true, incrementBy: (act?.score)!) { (error) in
-            self.dismiss(animated: true, completion: {
-                MBProgressHUD.hide(for: self.view, animated: true)
-            })
-        }
-
-        /*FireBaseManager.shared.updateMoment(actId: self.action.id, moment: self.moment, newMoment: true)
-        //FireBaseManager.shared.updateAction(action: self.action)
-        FireBaseManager.shared.updateActionStatus(id: self.action.id, status: Constants.ActionStatus.completed.rawValue)
-        let act = MainManager.shared.availableActs[self.action.id]
-        FireBaseManager.shared.updateScore(incrementBy: (act?.score)!)
-        */
-        //DispatchQueue.main.async {
+        MainManager.shared.createMoment(actId: self.action.id, moment: self.moment, newMoment: true){_ in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            self.publishButton.isUserInteractionEnabled = true
             if self.shareOnFB {
-                //if moment != nil {
                 var url:URL!
                 if self.picsUrl != nil {
                     url = URL(string: (self.picsUrl?[0])!)
@@ -242,16 +229,9 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
                     print (result)
                 }
             }
-        //}
-        
-        /*FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!) { (user, error) in
-            User.currentUser = user
-           self.dismiss(animated: true, completion: {
-                MBProgressHUD.hide(for: self.view, animated: true)
-            })
-        }*/
-    
-    }
+            self.dismiss(animated: true, completion: nil)
+        }
+     }
     
     
     // MARK: - TextField Delegate

@@ -15,6 +15,7 @@ import GoogleSignIn
 class FireBaseManager {
     
     static let shared = FireBaseManager()
+    
     static var UID:String = ""
     let ref = Database.database().reference()
     let storageRef = Storage.storage().reference()
@@ -137,7 +138,15 @@ class FireBaseManager {
             ref.child("moments")
                 .queryStarting(atValue: startAtMomentId)
                 .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
-                .observe(.value, with: { (snapshotVec) -> Void in
+                /*.observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })*/
+                .observeSingleEvent(of: .value, with: { (snapshotVec) in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
                         completion(moments, nil)
@@ -145,10 +154,19 @@ class FireBaseManager {
                         completion(nil, "failed to get moments timeline" as? Error)
                     }
                 })
+
         } else {
             ref.child("moments")
                 .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
-                .observe(.value, with: { (snapshotVec) -> Void in
+                /*.observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })*/
+                .observeSingleEvent(of: .value, with: { (snapshotVec) in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
                         completion(moments, nil)
@@ -166,7 +184,7 @@ class FireBaseManager {
                 .queryOrdered(byChild: "actId")
                 .queryEqual(toValue: actId)
                 .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
-                .observe(.value, with: { (snapshotVec) -> Void in
+                .observeSingleEvent(of: .value, with: { (snapshotVec) in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
                         completion(moments, nil)
@@ -174,12 +192,20 @@ class FireBaseManager {
                         completion(nil, "failed to get moments timeline" as? Error)
                     }
                 })
+                /*.observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })*/
         } else {
             ref.child("moments")
                 .queryOrdered(byChild: "actId")
                 .queryEqual(toValue: actId)
                 .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
-                .observe(.value, with: { (snapshotVec) -> Void in
+                .observeSingleEvent(of: .value, with: { (snapshotVec) in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
                         completion(moments, nil)
@@ -187,6 +213,14 @@ class FireBaseManager {
                         completion(nil, "failed to get moments timeline" as? Error)
                     }
                 })
+                /*.observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })*/
         }
     }
     
@@ -197,7 +231,7 @@ class FireBaseManager {
                 .queryOrdered(byChild: "actId")
                 .queryEqual(toValue: userId)
                 .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
-                .observe(.value, with: { (snapshotVec) -> Void in
+                .observeSingleEvent(of: .value, with: { (snapshotVec) in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
                         completion(moments, nil)
@@ -205,12 +239,20 @@ class FireBaseManager {
                         completion(nil, "failed to get moments timeline" as? Error)
                     }
                 })
+                /*.observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })*/
         } else {
             ref.child("moments")
                 .queryOrdered(byChild: "userId")
                 .queryEqual(toValue: userId)
                 .queryLimited(toFirst: Constants.LENGTH_OF_FETCHED_LIST)
-                .observe(.value, with: { (snapshotVec) -> Void in
+                .observeSingleEvent(of: .value, with: { (snapshotVec) in
                     if let momentsDictionary = snapshotVec.value as? NSDictionary {
                         let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
                         completion(moments, nil)
@@ -218,6 +260,14 @@ class FireBaseManager {
                         completion(nil, "failed to get moments timeline" as? Error)
                     }
                 })
+                /*.observe(.value, with: { (snapshotVec) -> Void in
+                    if let momentsDictionary = snapshotVec.value as? NSDictionary {
+                        let moments = momentsDictionary.flatMap { Moment(moment: JSON($1)) }
+                        completion(moments, nil)
+                    } else {
+                        completion(nil, "failed to get moments timeline" as? Error)
+                    }
+                })*/
         }
     }
     
@@ -230,29 +280,13 @@ class FireBaseManager {
             print(error.localizedDescription)
         }
     }
-    
-    func createMoment(actId: String, moment: Moment, newMoment: Bool, incrementBy: Int, completion: @escaping (Error?) -> ()) {
-        self.updateMoment(actId: actId, moment: moment, newMoment: true)
-        self.updateActionStatus(id: actId, status: Constants.ActionStatus.completed.rawValue)
-        self.updateScore(incrementBy: incrementBy)
-        self.getUser(userID: (User.currentUser?.id)!) { (user, error) in
-            if user != nil {
-                User.currentUser = user
-                completion(nil)
-            } else {
-                completion(error)
-            }
-            
-        }
-
-    }
-    
+       
     func updateMoment(actId: String, moment: Moment, newMoment: Bool) {
         var MomentId = ""
         if newMoment {
             MomentId = ref.child("moments").childByAutoId().key
-            ref.child("users/\(FireBaseManager.UID)/actions/\(actId)/momentIds/\(MomentId)").setValue(true)
             ref.child("moments/\(MomentId)/id").setValue(MomentId)
+            ref.child("users/\(FireBaseManager.UID)/actions/\(actId)/momentIds/\(MomentId)").setValue(true)
         } else {
             MomentId = moment.id
         }
