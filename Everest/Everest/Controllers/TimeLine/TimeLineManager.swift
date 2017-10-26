@@ -16,13 +16,13 @@ class TimeLineManager: NSObject {
         moments = [Moment]()
     }
     
-    func fetchUserDetails(completion: @escaping (_ user: User?, _ error : Error?)->()){
-        FireBaseManager.shared.getUser(userID: "uQxn19H3VdgLPV16NxHqUn6zy7B3") { (user:User?, error:Error?) in
-            if user != nil {
-                print(user!)
-            }
-        }
-    }
+//    func fetchUserDetails(completion: @escaping (_ user: User?, _ error : Error?)->()){
+//        FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!) { (user:User?, error:Error?) in
+//            if user != nil {
+//                print(user!)
+//            }
+//        }
+//    }
     
 
     

@@ -49,9 +49,9 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
         self.timelineTableView.rowHeight = UITableViewAutomaticDimension
 
-        self.timelineManager?.fetchUserDetails(completion: { (user:User?, error: Error?) in
-            
-        })
+//        self.timelineManager?.fetchUserDetails(completion: { (user:User?, error: Error?) in
+//            
+//        })
         
         self.timelineManager?.fetchPublicMomments(completion: { (moments:[Moment]?, error: Error?) in
             if((error) != nil) {
@@ -61,7 +61,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             self.moments = moments
             // Reload the timelineView
-            self.reloadView()
+            //self.reloadView()
+            self.timelineTableView.reloadData()
         })
         
 //// -- TODO: Remove code after TESTING image uploads
@@ -96,9 +97,9 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     
 
     // MARK: --  Update view
-    private func reloadView() -> Void {
-        self.timelineTableView.reloadData()
-    }
+//    private func reloadView() -> Void {
+//        self.timelineTableView.reloadData()
+//    }
     
     
     /*
