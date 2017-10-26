@@ -13,6 +13,8 @@ import MBProgressHUD
 
 class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
 {
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var shareToFBLabel: UILabel!
     @IBOutlet weak var shareFBSwitch: UISwitch!
@@ -27,9 +29,10 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
     @IBOutlet weak var publishButton: UIButton!
     @IBOutlet weak var momentImageView: UIImageView!
     fileprivate var selectedImage: UIImage!
+    fileprivate var isEditMode: Bool = false
     
     var moment: Moment!
-    var action: Action!
+    var actionId: String!
     var momentCoordinate: CLLocationCoordinate2D!
     var geoLocation: [String : String]?
     var location: String?
@@ -41,13 +44,53 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //mapView.delegate = self
-        
-        self.actionTitle.text = MainManager.shared.availableActs[action.id]?.title
         self.momentDetails.delegate = self
         self.momentTitle.delegate = self
         
+        
+        if moment != nil { //edit mode
+            //ERROR should never happen
+            if moment.userId == User.currentUser?.id {
+                dismiss(animated: true, completion: nil)
+            }
+            
+            isEditMode = true
+            self.actionId = moment.actId
+            self.momentTitle.text = moment.title
+            self.momentDetails.text = moment.details
+            self.location = moment.location
+            if let geoLoc = moment.geoLocation {
+                self.geoLocation = geoLoc
+                if let lat = self.geoLocation?["lat"], let doubleLat = Double(lat) {
+                    if let lon = self.geoLocation?["lon"], let doubleLon = Double(lon) {
+                        self.momentCoordinate = CLLocationCoordinate2D(latitude: doubleLat, longitude: doubleLon)
+                        let region = MKCoordinateRegion(center: momentCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                        self.mapView.setRegion(region, animated: true)
+                        self.mapImageView.isHidden = true
+                        self.addAnnotationAtCoordinate(coordinates: ["lat": momentCoordinate.latitude, "lon": momentCoordinate.longitude], title: "")
+                    }
+                }
+            }
+            self.location = moment.location
+            if let pics = moment.picUrls {
+                self.momentImageView.setImageWith(URL(string: pics[0])!)
+                self.picsUrl = pics
+            }
+            self.publishButton.titleLabel?.text = "Save"
+            self.cancelButton.isHidden = true
+            self.navigationItem.title = "Edit a moment"
+        } else { //create mode
+            isEditMode = false
+            self.publishButton.titleLabel?.text = "Publish"
+            self.navigationItem.title = "Add a moment"
+        }
+        
+        self.actionTitle.text = MainManager.shared.availableActs[actionId]?.title
+        if let loc = self.location {
+            self.locationLabel.text = loc
+        } else {
+            self.locationLabel.text = ""
+        }
         self.mapView.isUserInteractionEnabled = true
         self.momentImageView.isUserInteractionEnabled = true
         var tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
@@ -90,6 +133,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive , handler: { (action:UIAlertAction!) in
                 self.momentCoordinate = nil
                 self.location = nil
+                self.locationLabel.text = ""
                 self.geoLocation = nil
                 self.mapImageView.isHidden = false
             })
@@ -109,12 +153,20 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
     func goToMapViewController() {
         let storyboard = UIStoryboard.init(name: "UserProfile", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        if self.momentCoordinate != nil {
+            vc.momentCoordinate = self.momentCoordinate
+        }
         vc.selectedMap = { (mapView: MKMapView, momentCoordinate: CLLocationCoordinate2D, location: String?) in
             self.momentCoordinate = momentCoordinate
             let region = MKCoordinateRegion(center: momentCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.mapView.setRegion(region, animated: true)
             self.mapImageView.isHidden = true
             self.location = location
+            if let loc = self.location {
+                self.locationLabel.text = loc
+            } else {
+                self.locationLabel.text = ""
+            }
             self.geoLocation = ["lat": String(momentCoordinate.latitude), "lon": String(momentCoordinate.longitude)]
             self.addAnnotationAtCoordinate(coordinates: ["lat": momentCoordinate.latitude, "lon": momentCoordinate.longitude], title: "")
         }
@@ -218,10 +270,10 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
     func submitData() {
         let title = momentTitle.text!
         let details = momentDetails.text!
-        self.moment = Moment(title: title, details: details, actId: self.action.id, userId: (User.currentUser?.id)!, profilePhotoUrl: User.currentUser?.profilePhotoUrl, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
+        self.moment = Moment(title: title, details: details, actId: self.actionId, userId: (User.currentUser?.id)!, profilePhotoUrl: User.currentUser?.profilePhotoUrl, userName: (User.currentUser?.name)!, timestamp: "\(Date())", picUrls: self.picsUrl, geoLocation: self.geoLocation, location: self.location)
     
         
-        MainManager.shared.createMoment(actId: self.action.id, moment: self.moment, newMoment: true){_ in
+        MainManager.shared.createMoment(actId: self.actionId, moment: self.moment, newMoment: isEditMode ? false : true){_ in
             MBProgressHUD.hide(for: self.view, animated: true)
             self.publishButton.isUserInteractionEnabled = true
             if self.shareOnFB {
@@ -241,7 +293,12 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
                     print (result)
                 }
             }
-            self.dismiss(animated: true, completion: nil)
+            if self.isEditMode {
+                _ = self.navigationController?.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+            
         }
      }
     

@@ -20,11 +20,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        
+        if momentCoordinate != nil { //update
+            self.setupPin()
+        } else { //new
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+        }
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
         mapView.addGestureRecognizer(tapGesture)
     }
@@ -62,8 +65,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-        
         momentCoordinate = CLLocationCoordinate2D(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
+        self.setupPin()
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func setupPin () {
         let region = MKCoordinateRegion(center: momentCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
         self.mapView.setRegion(region, animated: true)
@@ -72,7 +79,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.location = "\(city), \(country)"
             self.addAnnotationAtCoordinate(coordinates: ["lat": self.momentCoordinate.latitude, "lon": self.momentCoordinate.longitude], title: self.location)
         }
-        locationManager.stopUpdatingLocation()
     }
     
     func fetchCountryAndCity(location: CLLocation, completion: @escaping (String, String) -> ()) {

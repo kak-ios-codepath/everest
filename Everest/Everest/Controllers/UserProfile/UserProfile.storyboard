@@ -14,7 +14,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" id="eTy-cI-EdI"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B7K-Qy-w5l">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B7K-Qy-w5l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -185,7 +185,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Share to Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSE-7i-sed">
-                                        <rect key="frame" x="94" y="510" width="175" height="36"/>
+                                        <rect key="frame" x="94" y="515" width="175" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="175" id="sRa-K3-Fah"/>
                                         </constraints>
@@ -214,7 +214,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MSl-LS-Icv">
-                                        <rect key="frame" x="21" y="510" width="51" height="31"/>
+                                        <rect key="frame" x="21" y="517" width="51" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="49" id="BFv-Ho-1jl"/>
                                             <constraint firstAttribute="height" constant="31" id="xvr-2J-fD1"/>
@@ -241,6 +241,16 @@
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9D-6B-LL1">
+                                        <rect key="frame" x="154" y="486" width="206" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="206" id="mY6-jQ-Mno"/>
+                                            <constraint firstAttribute="height" constant="21" id="pbq-bf-eBz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="4Oc-o5-mlK" firstAttribute="top" secondItem="8aK-Yh-Yxx" secondAttribute="bottom" constant="8" id="2z9-0m-as1"/>
@@ -256,6 +266,7 @@
                                     <constraint firstAttribute="trailing" secondItem="T8u-yF-LTc" secondAttribute="trailing" constant="20" id="HB0-rw-Vi6"/>
                                     <constraint firstItem="jwL-8u-5u3" firstAttribute="centerX" secondItem="oNR-2D-Aj3" secondAttribute="centerX" id="Ksp-dE-HCU"/>
                                     <constraint firstItem="MSl-LS-Icv" firstAttribute="leading" secondItem="oNR-2D-Aj3" secondAttribute="leadingMargin" constant="13" id="OO4-i1-qUz"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y9D-6B-LL1" secondAttribute="trailing" constant="25" id="SCg-0f-dNT"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="sdl-AT-HOe" secondAttribute="trailing" constant="17" id="T6b-1Z-3uH"/>
                                     <constraint firstItem="4Oc-o5-mlK" firstAttribute="leading" secondItem="oNR-2D-Aj3" secondAttribute="leading" constant="20" id="VSG-zx-1oC"/>
                                     <constraint firstItem="ru7-E4-Eyo" firstAttribute="leading" secondItem="oNR-2D-Aj3" secondAttribute="leadingMargin" constant="13" id="WEK-Vx-ipa"/>
@@ -268,6 +279,7 @@
                                     <constraint firstAttribute="trailing" secondItem="l8d-Hl-Pa6" secondAttribute="trailing" constant="20" id="jch-JI-uwY"/>
                                     <constraint firstItem="KSE-7i-sed" firstAttribute="top" secondItem="LGX-EI-Luu" secondAttribute="bottom" constant="27" id="l0q-qG-L10"/>
                                     <constraint firstItem="l8d-Hl-Pa6" firstAttribute="top" secondItem="4Oc-o5-mlK" secondAttribute="bottom" constant="17" id="o7Z-Xr-yf3"/>
+                                    <constraint firstItem="Y9D-6B-LL1" firstAttribute="top" secondItem="Zbe-oW-lwS" secondAttribute="bottom" constant="3" id="oGF-oH-Knz"/>
                                     <constraint firstItem="jwL-8u-5u3" firstAttribute="top" secondItem="KSE-7i-sed" secondAttribute="bottom" constant="17" id="vPg-RM-DEe"/>
                                     <constraint firstAttribute="trailing" secondItem="4Oc-o5-mlK" secondAttribute="trailing" constant="21" id="wI6-Rb-OUg"/>
                                     <constraint firstAttribute="bottom" secondItem="jwL-8u-5u3" secondAttribute="bottom" constant="20" id="x17-Lf-RKG"/>
@@ -289,6 +301,8 @@
                     </view>
                     <connections>
                         <outlet property="actionTitle" destination="8aK-Yh-Yxx" id="pkI-5U-7dv"/>
+                        <outlet property="cancelButton" destination="T8u-yF-LTc" id="wnF-MP-C96"/>
+                        <outlet property="locationLabel" destination="Y9D-6B-LL1" id="BAn-db-BJa"/>
                         <outlet property="mapImageView" destination="Zbe-oW-lwS" id="lDR-OB-pis"/>
                         <outlet property="mapView" destination="sdl-AT-HOe" id="EDy-4f-qAc"/>
                         <outlet property="momentDetails" destination="l8d-Hl-Pa6" id="CjL-3n-3Cv"/>
@@ -307,7 +321,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4028" y="-9"/>
+            <point key="canvasLocation" x="4028" y="-9.4452773613193415"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="3p7-Dn-qXC">
@@ -321,7 +335,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9Ui-aQ-c1F">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9Ui-aQ-c1F">
                                 <frame key="frameInset" width="1000" height="1000"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ki3-Fb-s2w">
