@@ -243,14 +243,19 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         if action == nil {
             let storyboard = UIStoryboard.init(name: "AddAction", bundle: nil)
             let addActionVC = storyboard.instantiateViewController(withIdentifier: "AddActionViewController") as! AddActionViewController
-            self.navigationController?.pushViewController(addActionVC, animated: true)
+            
+            self.present(addActionVC, animated: true, completion: { 
+                
+            })
             
         }else {
             let action = self.user?.actions?.filter( { return $0.id == action } ).first
             let storyboard = UIStoryboard.init(name: "UserProfile", bundle: nil)
             let addMomentVC = storyboard.instantiateViewController(withIdentifier: "CreateMomentViewController") as! CreateMomentViewController
             addMomentVC.action = action
-            self.navigationController?.pushViewController(addMomentVC, animated: true)
+            self.present(addMomentVC, animated: true, completion: { 
+                
+            })
         }
         
     }
