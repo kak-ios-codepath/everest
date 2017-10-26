@@ -35,6 +35,7 @@
 		CE13352D1F9E8B84000D54C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13352C1F9E8B84000D54C4 /* Constants.swift */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
 		D71841571FA1552D008B72DF /* AddMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71841561FA1552D008B72DF /* AddMomentCell.swift */; };
+		D71841591FA1690E008B72DF /* UIImageView+Rouded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71841581FA1690E008B72DF /* UIImageView+Rouded.swift */; };
 		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
 		D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0641F947FF900D25A5A /* AddActionViewController.swift */; };
 		D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0661F947FF900D25A5A /* MomentDetailManager.swift */; };
@@ -91,6 +92,7 @@
 		CE13352C1F9E8B84000D54C4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D71841561FA1552D008B72DF /* AddMomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddMomentCell.swift; path = ../Models/AddMomentCell.swift; sourceTree = "<group>"; };
+		D71841581FA1690E008B72DF /* UIImageView+Rouded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Rouded.swift"; sourceTree = "<group>"; };
 		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
 		D724D0641F947FF900D25A5A /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		D724D0661F947FF900D25A5A /* MomentDetailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailManager.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */,
 				010539B61F9C838100E2D413 /* Dictionary+Extension.swift */,
 				D797E6741F9D3A310097B4CA /* Array+Extension.swift */,
+				D71841581FA1690E008B72DF /* UIImageView+Rouded.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				D724D07D1F947FF900D25A5A /* SettingsViewController.swift in Sources */,
 				D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */,
 				D797E6751F9D3A310097B4CA /* Array+Extension.swift in Sources */,
+				D71841591FA1690E008B72DF /* UIImageView+Rouded.swift in Sources */,
 				D724D07E1F947FF900D25A5A /* TimeLineManager.swift in Sources */,
 				D71841571FA1552D008B72DF /* AddMomentCell.swift in Sources */,
 				01B2AA271F980B7C00138959 /* LoginManager.swift in Sources */,
