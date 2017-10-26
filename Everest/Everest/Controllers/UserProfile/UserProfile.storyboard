@@ -68,7 +68,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="176" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-6h-Jfu">
                                 <rect key="frame" x="16" y="184" width="343" height="434"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -82,7 +81,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddMomentCell" rowHeight="69" id="cqI-6z-CJ8" customClass="AddMomentCell" customModule="Everest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="206" width="343" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -330,7 +328,7 @@
         <!--Add a moment-->
         <scene sceneID="Aw1-Ha-cKV">
             <objects>
-                <viewController title="Add a moment" id="JYW-Y5-kFX" customClass="CreateMomentViewController" customModule="Everest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateMomentViewController" title="Add a moment" id="JYW-Y5-kFX" customClass="CreateMomentViewController" customModule="Everest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FOk-a5-Mn6"/>
                         <viewControllerLayoutGuide type="bottom" id="EFu-Oq-3gw"/>
