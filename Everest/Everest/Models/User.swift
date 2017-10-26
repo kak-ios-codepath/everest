@@ -63,5 +63,9 @@ class User: NSObject {
 //    }
     self.score = user["score"].int!
   }
+    
+    func isFacebookUser() -> Bool {
+        return self.providerId == "facebook.com"
+    }
 }
 

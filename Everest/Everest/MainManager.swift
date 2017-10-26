@@ -40,15 +40,33 @@ class MainManager {
         let action = Action(id: id, createdAt: "\(Date())", status: Constants.ActionStatus.created.rawValue)
         FireBaseManager.shared.updateAction(action: action)
         FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!) { (user, error) in
-            User.currentUser = user
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ActionCreated"), object: nil)
-            if error == nil {
+            if user != nil {
+                User.currentUser = user
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ActionCreated"), object: nil)
                 completion(nil)
             } else {
                 completion(error! as NSError)
+            }            
+        }
+    }
+    
+    func createMoment(actId: String, moment: Moment, newMoment: Bool, completion: @escaping (Error?) -> ()) {
+        let act = MainManager.shared.availableActs[actId]
+        FireBaseManager.shared.updateMoment(actId: actId, moment: moment, newMoment: true)
+        FireBaseManager.shared.updateActionStatus(id: actId, status: Constants.ActionStatus.completed.rawValue)
+        FireBaseManager.shared.updateScore(incrementBy: (act?.score)!)
+        FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!) { (user, error) in
+            if user != nil {
+                User.currentUser = user
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MomentCreated"), object: nil)
+                completion(nil)
+            } else {
+                completion(error)
             }
             
         }
+        
     }
+    
 }
 

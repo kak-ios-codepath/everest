@@ -12,6 +12,7 @@
 		011C4B731F9AB1FD0070EDF3 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C4B721F9AB1FD0070EDF3 /* UserProfileViewController.swift */; };
 		01B2AA251F971F6F00138959 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2AA241F971F6F00138959 /* EmailLoginViewController.swift */; };
 		01B2AA271F980B7C00138959 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2AA261F980B7C00138959 /* LoginManager.swift */; };
+		063733F81FA185D000CA043C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063733F71FA185D000CA043C /* MapViewController.swift */; };
 		06A931711F95C60B00DFD1AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A9316F1F95C60B00DFD1AA /* LoginViewController.swift */; };
 		06A931721F95C60B00DFD1AA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A931701F95C60B00DFD1AA /* WelcomeViewController.swift */; };
 		06A931741F95C64100DFD1AA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06A931731F95C64100DFD1AA /* Login.storyboard */; };
@@ -65,6 +66,7 @@
 		011C4B721F9AB1FD0070EDF3 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		01B2AA241F971F6F00138959 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		01B2AA261F980B7C00138959 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		063733F71FA185D000CA043C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		06A9316F1F95C60B00DFD1AA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		06A931701F95C60B00DFD1AA /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		06A931731F95C64100DFD1AA /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */,
+				063733F71FA185D000CA043C /* MapViewController.swift */,
 			);
 			name = CreateMoment;
 			path = ActionDetail;
@@ -516,6 +519,7 @@
 				D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */,
 				D724D08C1F94806B00D25A5A /* ActionCell.swift in Sources */,
 				06C2EA551F91D936003D0ADF /* ActionView.swift in Sources */,
+				063733F81FA185D000CA043C /* MapViewController.swift in Sources */,
 				D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */,
 				CEFD978D1FA12A72004FBDA5 /* NotificationCell.swift in Sources */,
 				CE8881651FA180730096DD21 /* AddMomentCell.swift in Sources */,

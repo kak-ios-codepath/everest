@@ -62,5 +62,9 @@
 	<string>$(PRODUCT_NAME) camera use</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>$(PRODUCT_NAME) Location Access</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+    <key>NSCameraUsageDescription</key>
+    <string>Capture your beautiful moment</string>
 </dict>
 </plist>
