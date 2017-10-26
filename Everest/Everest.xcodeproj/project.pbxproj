@@ -34,6 +34,7 @@
 		CE1335261F9C21DB000D54C4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1335251F9C21DB000D54C4 /* Category.swift */; };
 		CE13352D1F9E8B84000D54C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13352C1F9E8B84000D54C4 /* Constants.swift */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
+		D71841571FA1552D008B72DF /* AddMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71841561FA1552D008B72DF /* AddMomentCell.swift */; };
 		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
 		D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0641F947FF900D25A5A /* AddActionViewController.swift */; };
 		D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0661F947FF900D25A5A /* MomentDetailManager.swift */; };
@@ -89,6 +90,7 @@
 		CE1335251F9C21DB000D54C4 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CE13352C1F9E8B84000D54C4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		D71841561FA1552D008B72DF /* AddMomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddMomentCell.swift; path = ../Models/AddMomentCell.swift; sourceTree = "<group>"; };
 		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
 		D724D0641F947FF900D25A5A /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		D724D0661F947FF900D25A5A /* MomentDetailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailManager.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				D724D08B1F94806B00D25A5A /* MomentCell.xib */,
 				06C2EA521F91D921003D0ADF /* UserProfileView.swift */,
 				06C2EA541F91D936003D0ADF /* ActionView.swift */,
+				D71841561FA1552D008B72DF /* AddMomentCell.swift */,
 				06C2EA561F91D944003D0ADF /* MomentView.swift */,
 				CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */,
 				CE0908DF1F986F73004D1974 /* ActsCell.swift */,
@@ -502,6 +505,7 @@
 				D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */,
 				D797E6751F9D3A310097B4CA /* Array+Extension.swift in Sources */,
 				D724D07E1F947FF900D25A5A /* TimeLineManager.swift in Sources */,
+				D71841571FA1552D008B72DF /* AddMomentCell.swift in Sources */,
 				01B2AA271F980B7C00138959 /* LoginManager.swift in Sources */,
 				D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */,
 				D724D08C1F94806B00D25A5A /* ActionCell.swift in Sources */,
