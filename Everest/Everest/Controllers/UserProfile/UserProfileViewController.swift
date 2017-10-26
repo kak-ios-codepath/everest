@@ -48,6 +48,7 @@ class UserProfileViewController: UIViewController{
         self.userActionTableView.register(nib, forCellReuseIdentifier: "MomentCell")
         self.userActionTableView.estimatedRowHeight = self.userActionTableView.rowHeight
         self.userActionTableView.rowHeight = UITableViewAutomaticDimension
+        self.profileImageView.setRounded()
 
         if userId == nil || userId == "" {
             userId = User.currentUser?.id
@@ -171,8 +172,10 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                 }
             }
         }
-
-        return cell
+        let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
+        addMomentCell.addMomentCellDelegate = self
+//        addMomentCell.selectedActId = key[0]
+        return addMomentCell
     }
     
     
@@ -225,6 +228,21 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             return MainManager.shared.availableActs[id]?.title
         }
         
-        return ""
+        return "Add new action and start creating moments!!"
+    }
+
+    
+    func addMomentCell(cell: AddMomentCell, addNewMomentToAction action: String?) {
+        
+        if action == nil {
+            
+        }else {
+            let action = self.user?.actions?.filter( { return $0.id == action } ).first
+            let storyboard = UIStoryboard.init(name: "UserProfile", bundle: nil)
+            let addMomentVC = storyboard.instantiateViewController(withIdentifier: "CreateMomentViewController") as! CreateMomentViewController
+            addMomentVC.action = action
+            self.navigationController?.pushViewController(addMomentVC, animated: true)
+        }
+        
     }
 }
