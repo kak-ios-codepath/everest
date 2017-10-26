@@ -26,11 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             self.switchToLoginController()
         })
         
+        //Configure Remote Notifications
         registerForPushNotifications()
         if let actionNotificationsData = UserDefaults.standard.object(forKey: "actionNotifications") as? NSData {
             let actionNotifications = NSKeyedUnarchiver.unarchiveObject(with: actionNotificationsData as Data) as? [Act]
             SettingsViewController.actionNotifications = actionNotifications!
         }
+        checkMissedNotifications()
         
         //Firebase setup
         FirebaseApp.configure()
@@ -112,11 +114,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-
+        
         let actDect = response.notification.request.content.userInfo
         handelingRemoteNotification(actDect: actDect as NSDictionary)
         
+    }
+    
+    func checkMissedNotifications() {
+        centerNotification.getDeliveredNotifications() {notifications in
+            for notification in notifications {
+                let actDect = notification.request.content.userInfo
+                self.handelingRemoteNotification(actDect: actDect as NSDictionary)
+                let notificationId = notification.request.identifier
+                self.centerNotification.removeDeliveredNotifications(withIdentifiers: [notificationId])
+            }
+        }
     }
     
     func handelingRemoteNotification(actDect: NSDictionary) {

@@ -40,10 +40,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             self.present(alertController, animated: true, completion:nil)
         })
         SettingsViewController.actionNotifications.remove(at: sender.tag)
-        
-        let actionNotifications = NSKeyedArchiver.archivedData(withRootObject: SettingsViewController.actionNotifications)
-        UserDefaults.standard.set(actionNotifications, forKey: "actionNotifications")
-        
+        saveActionNotifications()
         notificationsTableView.reloadData()
     }
 
@@ -61,15 +58,41 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return SettingsViewController.actionNotifications.count
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            SettingsViewController.actionNotifications.remove(at: indexPath.row)
+            saveActionNotifications()
+            notificationsTableView.reloadData()
+        }
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UITableViewHeaderFooterView()
+        let headerView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: notificationsTableView.frame.width, height: notificationsTableView.frame.height/5))
         headerView.contentView.backgroundColor = UIColor.lightGray
-
+        
+        let switchView = UISwitch(frame: CGRect(x: notificationsTableView.frame.width-60, y: 15, width: 0, height: 0))
+        switchView.isOn = true
+        switchView.addTarget(self, action: #selector(togglePushNotifications(_:)), for: UIControlEvents.valueChanged)
+        
+        headerView.addSubview(switchView)
         return headerView
+    }
+    
+    func togglePushNotifications(_ switchItem: UISwitch) {
+        if switchItem.isOn {
+            UIApplication.shared.registerForRemoteNotifications()
+        } else {
+            UIApplication.shared.unregisterForRemoteNotifications()
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -78,5 +101,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+    
+    func saveActionNotifications() {
+        let actionNotifications = NSKeyedArchiver.archivedData(withRootObject: SettingsViewController.actionNotifications)
+        UserDefaults.standard.set(actionNotifications, forKey: "actionNotifications")
     }
 }
