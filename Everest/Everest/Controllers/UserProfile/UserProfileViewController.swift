@@ -64,6 +64,13 @@ class UserProfileViewController: UIViewController{
             
         })
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "MomentCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+            //TODO: go to user profile screen to show newly added actions.
+            
+            self.user = User.currentUser
+            self.loadViewForSelectedMode()
+            
+        })
 
         if userId != nil {
             FireBaseManager.shared.fetchMomentsForUser (startAtMomentId: nil, userId: userId!, completion: { (moments: [Moment]?, error: Error?) in
@@ -175,12 +182,18 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[section] {
                 let key = Array(dictionary.keys)
                 if let momentsArray = dictionary[key[0]] {
-                    return momentsArray.count+1
+                    if self.user?.id == User.currentUser?.id {
+                        return momentsArray.count+1
+                    } else {
+                        return momentsArray.count
+                    }
                 }
             }
+        } else if self.user?.id == User.currentUser?.id { //allow adding moments for logged user
+            return 1
         }
         
-        return 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -197,17 +210,16 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                 }
             }
         }
-        
-        
-
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if let useractions = self.user?.actions {
             return useractions.count
+        } else if self.user?.id == User.currentUser?.id { //allow adding actions for logged user
+            return 1
         }
-        return 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -217,7 +229,6 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             let id = action.id
             return MainManager.shared.availableActs[id]?.title
         }
-        
         return "Add new action and start creating moments!!"
     }
 
