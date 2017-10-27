@@ -29,43 +29,61 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eBH-Hd-fTp">
-                        <rect key="frame" x="8" y="76" width="304" height="150"/>
+                        <rect key="frame" x="16" y="71" width="288" height="150"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="150" id="A0u-DD-bfW"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MomentTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujx-Zp-gaP">
-                        <rect key="frame" x="78" y="8" width="90" height="18"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MomentTitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujx-Zp-gaP">
+                        <rect key="frame" x="71" y="30" width="84" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ms-RP-33V">
-                        <rect key="frame" x="8" y="234" width="304" height="68.5"/>
+                        <rect key="frame" x="16" y="229" width="288" height="17.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="MUb-3f-mVc">
-                        <rect key="frame" x="8" y="8" width="60" height="60"/>
+                        <rect key="frame" x="16" y="16" width="45" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="Axz-4y-nL5"/>
-                            <constraint firstAttribute="width" constant="60" id="dwH-gd-ZwF"/>
+                            <constraint firstAttribute="height" constant="45" id="Axz-4y-nL5"/>
+                            <constraint firstAttribute="width" constant="45" id="dwH-gd-ZwF"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C8c-Mj-URw">
-                        <rect key="frame" x="8" y="310.5" width="49" height="25"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C8c-Mj-URw">
+                        <rect key="frame" x="16" y="254.5" width="49" height="81"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-zS-qed">
-                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                <rect key="frame" x="0.0" y="56" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="NHa-0o-bEP"/>
                                     <constraint firstAttribute="height" constant="25" id="hJK-2F-oG4"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB7-hp-XNB">
-                                <rect key="frame" x="33" y="0.0" width="16" height="25"/>
+                                <rect key="frame" x="33" y="64.5" width="16" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="F7P-cU-fB5">
+                        <rect key="frame" x="242" y="310" width="62" height="25"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc_pin" translatesAutoresizingMaskIntoConstraints="NO" id="WZH-I7-hvN">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="NZZ-Mh-8Py"/>
+                                    <constraint firstAttribute="width" constant="25" id="hbl-go-qRW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fM3-VE-bnW">
+                                <rect key="frame" x="30" y="9.5" width="32" height="15.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -74,23 +92,28 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="ujx-Zp-gaP" firstAttribute="top" secondItem="MUb-3f-mVc" secondAttribute="top" id="AVx-VW-J3N"/>
+                    <constraint firstItem="F7P-cU-fB5" firstAttribute="bottom" secondItem="C8c-Mj-URw" secondAttribute="bottom" id="9ia-9t-0jQ"/>
                     <constraint firstItem="C8c-Mj-URw" firstAttribute="leading" secondItem="3Ms-RP-33V" secondAttribute="leading" id="Aut-oE-prt"/>
                     <constraint firstItem="C8c-Mj-URw" firstAttribute="top" secondItem="3Ms-RP-33V" secondAttribute="bottom" constant="8" id="Bc6-WS-IIS"/>
-                    <constraint firstAttribute="trailing" secondItem="eBH-Hd-fTp" secondAttribute="trailing" constant="8" id="EAB-PH-Rgh"/>
+                    <constraint firstAttribute="trailing" secondItem="eBH-Hd-fTp" secondAttribute="trailing" constant="16" id="EAB-PH-Rgh"/>
                     <constraint firstItem="3Ms-RP-33V" firstAttribute="top" secondItem="eBH-Hd-fTp" secondAttribute="bottom" constant="8" id="FnI-dM-cdG"/>
-                    <constraint firstItem="eBH-Hd-fTp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ipv-66-EUo"/>
-                    <constraint firstItem="eBH-Hd-fTp" firstAttribute="top" secondItem="MUb-3f-mVc" secondAttribute="bottom" constant="8" id="K32-3P-9Nl"/>
-                    <constraint firstItem="eBH-Hd-fTp" firstAttribute="top" secondItem="MUb-3f-mVc" secondAttribute="bottom" constant="8" id="OcC-Ev-rbz"/>
-                    <constraint firstItem="MUb-3f-mVc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ale-4b-maA"/>
-                    <constraint firstItem="MUb-3f-mVc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="ih2-9f-yzo"/>
-                    <constraint firstAttribute="trailing" secondItem="3Ms-RP-33V" secondAttribute="trailing" constant="8" id="m0D-u9-Hgl"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ujx-Zp-gaP" secondAttribute="trailing" constant="16" id="GvB-nb-gg3"/>
+                    <constraint firstItem="eBH-Hd-fTp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ipv-66-EUo"/>
+                    <constraint firstItem="eBH-Hd-fTp" firstAttribute="top" secondItem="MUb-3f-mVc" secondAttribute="bottom" constant="10" id="K32-3P-9Nl"/>
+                    <constraint firstItem="eBH-Hd-fTp" firstAttribute="top" secondItem="MUb-3f-mVc" secondAttribute="bottom" constant="10" id="OcC-Ev-rbz"/>
+                    <constraint firstAttribute="trailing" secondItem="F7P-cU-fB5" secondAttribute="trailing" constant="16" id="Y1z-dK-pZZ"/>
+                    <constraint firstItem="MUb-3f-mVc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ale-4b-maA"/>
+                    <constraint firstItem="MUb-3f-mVc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="ih2-9f-yzo"/>
+                    <constraint firstAttribute="trailing" secondItem="3Ms-RP-33V" secondAttribute="trailing" constant="16" id="m0D-u9-Hgl"/>
+                    <constraint firstItem="ujx-Zp-gaP" firstAttribute="centerY" secondItem="MUb-3f-mVc" secondAttribute="centerY" id="prg-qZ-8z2"/>
                     <constraint firstAttribute="bottomMargin" secondItem="C8c-Mj-URw" secondAttribute="bottom" constant="16" id="rml-bG-gEY"/>
                     <constraint firstItem="ujx-Zp-gaP" firstAttribute="leading" secondItem="MUb-3f-mVc" secondAttribute="trailing" constant="10" id="uMo-8g-jcJ"/>
-                    <constraint firstItem="3Ms-RP-33V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="uvF-fT-YRr"/>
+                    <constraint firstItem="3Ms-RP-33V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="uvF-fT-YRr"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="locationLabel" destination="fM3-VE-bnW" id="PGS-On-7g6"/>
+                <outlet property="locationPinImageView" destination="WZH-I7-hvN" id="Fbp-HN-hFe"/>
                 <outlet property="momentDescription" destination="3Ms-RP-33V" id="yyY-iS-uiU"/>
                 <outlet property="momentImageVIew" destination="eBH-Hd-fTp" id="d4K-jn-ckn"/>
                 <outlet property="momentTitleLabel" destination="ujx-Zp-gaP" id="OaE-aW-c7r"/>
@@ -102,5 +125,6 @@
     <resources>
         <image name="Like" width="60" height="60"/>
         <image name="Profile" width="90" height="90"/>
+        <image name="loc_pin" width="30" height="30"/>
     </resources>
 </document>

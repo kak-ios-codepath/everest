@@ -8,18 +8,32 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 class TimeLineMapViewController: UIViewController, MKMapViewDelegate {
     var moments : [Moment]?
-    var annotations : [MKPointAnnotation] = []
+    var annotations : [MomentAnnotation] = []
     var navController : UINavigationController?
+    let locationManager  = UserLocationManager.sharedInstance
+
 
     @IBOutlet weak var timelineMapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.timelineMapView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onUserLocation), name: NSNotification.Name(rawValue: "didReceiveUserLocation"), object: nil)
+        locationManager.requestForUserLocation()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func onUserLocation() -> Void {
+        let locValue:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: locationManager.userLatitude!, longitude: locationManager.userLongitude!)
+        let region = MKCoordinateRegionMakeWithDistance(locValue, 2000, 2000)
+        self.timelineMapView.setRegion(region, animated: true)
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name(rawValue: "didReceiveUserLocation"), object: nil)
+        self.loadMapFor(moments: self.moments)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,14 +46,16 @@ class TimeLineMapViewController: UIViewController, MKMapViewDelegate {
         self.annotations = []
         self.moments = moments
         for moment in moments! {
-            let annotation = MKPointAnnotation()
-            if (((moment.geoLocation?["lat"]) != nil) && ((moment.geoLocation?["lon"]) != nil)) {
+            
+            let annotation = MomentAnnotation()
+             if (((moment.geoLocation?["lat"]) != nil) && ((moment.geoLocation?["lon"]) != nil)) {
                 let lat = Double((moment.geoLocation?["lat"])!)
                 let lon = Double((moment.geoLocation?["lon"])!)
                 
                 let coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
                 annotation.coordinate = coordinate
                 annotation.title = moment.title
+                annotation.momentId = moment.id
                 self.annotations.append(annotation)
             }
         }
@@ -57,13 +73,13 @@ class TimeLineMapViewController: UIViewController, MKMapViewDelegate {
     */
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if !(annotation is MKPointAnnotation) {
-            return nil
-        }
+//        if !(annotation is MKPointAnnotation) {
+//            return nil
+//        }
         
-        var view = mapView.dequeueReusableAnnotationView(withIdentifier: "pin") as? MKPinAnnotationView
+        var view = mapView.dequeueReusableAnnotationView(withIdentifier: "myAnnotationView")
         if view == nil {
-            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myAnnotationView")
             view!.canShowCallout = true
             view!.rightCalloutAccessoryView = UIButton.init(type: .detailDisclosure) as UIView
         }
@@ -73,10 +89,10 @@ class TimeLineMapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let index = (self.annotations as NSArray).index(of: view.annotation ?? 0)
         if index >= 0 {
-            //self.showDetailsForResult(self.results[index])
+            let momentAnnnotation = view.annotation as! MomentAnnotation
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
-            momentsDetailVC.momentId = self.moments?[index].id
+            momentsDetailVC.momentId = momentAnnnotation.momentId
             momentsDetailVC.isUserMomentDetail = false
             self.navController?.pushViewController(momentsDetailVC, animated: true)
             
@@ -88,3 +104,4 @@ class TimeLineMapViewController: UIViewController, MKMapViewDelegate {
 
 
 }
+

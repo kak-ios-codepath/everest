@@ -17,14 +17,22 @@ class MomentCell: UITableViewCell {
     @IBOutlet weak var momentTitleLabel: UILabel!
     @IBOutlet weak var momentImageVIew: UIImageView!
     @IBOutlet weak var userProfileImageView: UIImageView!
-    
+    @IBOutlet weak var locationPinImageView: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
     weak var momentCellDelegate : MomentCellDelegate?
 
     
     var moment: Moment? {
         didSet {
+            
             self.momentTitleLabel.text = moment?.title
             self.momentDescription.text = moment?.details
+//            if (moment?.location) != nil {
+                self.locationLabel.text = moment?.location
+//            }else {
+//               self.locationLabel.isHidden = true
+//                self.locationPinImageView.isHidden = true
+//            }
             if let picUrls = moment?.picUrls {
                 if let url = URL(string: picUrls[0]) {
                     self.momentImageVIew.setImageWith(url)
@@ -40,10 +48,11 @@ class MomentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        self.userProfileImageView.setRounded()
         self.userProfileImageView.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(userIconTapped))
         self.userProfileImageView.addGestureRecognizer(tapGestureRecognizer)
+        self.momentImageVIew.setRoundedCorner(radius: 5)
 
     }
 

@@ -99,7 +99,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             self.mapViewController?.view.removeFromSuperview()
             self.view.addSubview((self.mapViewController?.view)!)
             UIView.commitAnimations()
-            self.mapViewController?.loadMapFor(moments: self.moments)
+            self.mapViewController?.moments = self.moments
         }
         
         
@@ -115,6 +115,10 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
                 
                 // show the alert
                 return
+            }
+            
+            for moment in moments! {
+                print("\(moment.title)")
             }
             self.moments = moments
             self.timelineTableView.reloadData()
