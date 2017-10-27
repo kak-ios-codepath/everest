@@ -54,6 +54,8 @@
 		D724D08D1F94806B00D25A5A /* ActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724D0891F94806B00D25A5A /* ActionCell.xib */; };
 		D724D08E1F94806B00D25A5A /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D08A1F94806B00D25A5A /* MomentCell.swift */; };
 		D724D08F1F94806B00D25A5A /* MomentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D724D08B1F94806B00D25A5A /* MomentCell.xib */; };
+		D73957AE1FA1B1FD00387E16 /* TimeLineMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73957AC1FA1B1FD00387E16 /* TimeLineMapViewController.swift */; };
+		D73957AF1FA1B1FD00387E16 /* TimeLineMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73957AD1FA1B1FD00387E16 /* TimeLineMapViewController.xib */; };
 		D797E6731F9AED7A0097B4CA /* CreateMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */; };
 		D797E6751F9D3A310097B4CA /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6741F9D3A310097B4CA /* Array+Extension.swift */; };
 		D797E6771F9D3AAA0097B4CA /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */; };
@@ -113,6 +115,8 @@
 		D724D0891F94806B00D25A5A /* ActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCell.xib; sourceTree = "<group>"; };
 		D724D08A1F94806B00D25A5A /* MomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentCell.swift; sourceTree = "<group>"; };
 		D724D08B1F94806B00D25A5A /* MomentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MomentCell.xib; sourceTree = "<group>"; };
+		D73957AC1FA1B1FD00387E16 /* TimeLineMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineMapViewController.swift; sourceTree = "<group>"; };
+		D73957AD1FA1B1FD00387E16 /* TimeLineMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeLineMapViewController.xib; sourceTree = "<group>"; };
 		D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMomentViewController.swift; sourceTree = "<group>"; };
 		D797E6741F9D3A310097B4CA /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
@@ -291,6 +295,8 @@
 			children = (
 				D724D06F1F947FF900D25A5A /* TimeLineManager.swift */,
 				D724D0701F947FF900D25A5A /* TimelineViewController.swift */,
+				D73957AC1FA1B1FD00387E16 /* TimeLineMapViewController.swift */,
+				D73957AD1FA1B1FD00387E16 /* TimeLineMapViewController.xib */,
 			);
 			path = TimeLine;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
 				06C2EA591F946335003D0ADF /* GoogleService-Info.plist in Resources */,
 				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
+				D73957AF1FA1B1FD00387E16 /* TimeLineMapViewController.xib in Resources */,
 				D724D07C1F947FF900D25A5A /* Settings.storyboard in Resources */,
 				D724D08F1F94806B00D25A5A /* MomentCell.xib in Resources */,
 				D724D08D1F94806B00D25A5A /* ActionCell.xib in Resources */,
@@ -507,6 +514,7 @@
 				CE1335261F9C21DB000D54C4 /* Category.swift in Sources */,
 				D724D0861F94804500D25A5A /* FireBaseManager.swift in Sources */,
 				D724D0871F94804500D25A5A /* ServiceManager.swift in Sources */,
+				D73957AE1FA1B1FD00387E16 /* TimeLineMapViewController.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
 				010539B71F9C838100E2D413 /* Dictionary+Extension.swift in Sources */,
 				D797E6731F9AED7A0097B4CA /* CreateMomentViewController.swift in Sources */,

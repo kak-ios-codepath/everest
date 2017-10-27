@@ -48,6 +48,9 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         self.timelineTableView.register(nib, forCellReuseIdentifier: "MomentCell")
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
         self.timelineTableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.mapViewController = TimeLineMapViewController(nibName: "TimeLineMapViewController", bundle: nil)
+        self.mapViewController?.navController = self.navigationController
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "MomentCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
             self.loadData()
@@ -78,6 +81,34 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    @IBAction func showMapAction(_ sender: Any) {
+        if (isMapView) {
+            self.timelineTableView.frame = self.view.bounds; //grab the view of a separate VC
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationDuration(1.0)
+            UIView.setAnimationTransition(.flipFromLeft, for: (self.view)!, cache: true)
+            self.mapViewController?.view.removeFromSuperview()
+            self.view.addSubview(self.timelineTableView)
+            UIView.commitAnimations()
+            
+        } else {
+            self.mapViewController?.view.frame = self.view.bounds; //grab the view of a separate VC
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationDuration(1.0)
+            UIView.setAnimationTransition(.flipFromLeft, for: (self.view)!, cache: true)
+            self.mapViewController?.view.removeFromSuperview()
+            self.view.addSubview((self.mapViewController?.view)!)
+            UIView.commitAnimations()
+            self.mapViewController?.loadMapFor(moments: self.moments)
+        }
+        
+        
+        
+        
+        
+        self.isMapView = self.isMapView ? false : true
+    }
+
     func loadData() {
         self.timelineManager?.fetchPublicMomments(completion: { (moments:[Moment]?, error: Error?) in
             if((error) != nil) {
@@ -88,8 +119,11 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             self.moments = moments
             self.timelineTableView.reloadData()
         })
+
     }
     
+    var isMapView = false
+    var mapViewController : TimeLineMapViewController?
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
