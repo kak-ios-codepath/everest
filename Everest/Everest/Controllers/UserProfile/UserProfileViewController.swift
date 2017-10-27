@@ -128,24 +128,8 @@ class UserProfileViewController: UIViewController{
     }
 
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "createMomentViewController") {
-            let cell = sender as! ActionCell
-//            if let indexPath = self.actionsTableView.indexPath(for: cell) {
-//                let vc = segue.destination as! CreateMomentViewController
-//                vc.action = self.actions?[indexPath.row]
-//                self.actionsTableView.deselectRow(at: indexPath, animated: true)
-//            }
-        }
-    }
-    
     
     // MARK: - Actions tableview delegate and datasource methods
-    
-
 
     @IBAction func logoutClicked(_ sender: Any) {
         LoginManager.shared.logoutUser { (error) in
@@ -252,7 +236,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
             let action = self.user?.actions?.filter( { return $0.id == action } ).first
             let storyboard = UIStoryboard.init(name: "UserProfile", bundle: nil)
             let addMomentVC = storyboard.instantiateViewController(withIdentifier: "CreateMomentViewController") as! CreateMomentViewController
-            addMomentVC.action = action
+            addMomentVC.actionId = action?.id
             self.present(addMomentVC, animated: true, completion: { 
                 
             })

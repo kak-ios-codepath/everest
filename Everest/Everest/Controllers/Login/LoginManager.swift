@@ -17,7 +17,7 @@ class LoginManager {
     func initialize() {
         if let uid = Auth.auth().currentUser?.uid {
             print("User is logged in = \(uid)")
-            
+
             FireBaseManager.shared.getUser(userID: uid) { (user, error) in
                 if user != nil {
                     User.currentUser = user

@@ -123,6 +123,23 @@ extension MomentsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 0) {
+            if self.currentSelectedMoment?.userId == User.currentUser?.id {
+                //allow edit of moment
+                let storyboard = UIStoryboard.init(name: "UserProfile", bundle: nil)
+                let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "CreateMomentViewController") as! CreateMomentViewController
+                momentsDetailVC.moment = self.currentSelectedMoment
+                self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+            }
+        }
+        else
+        {
+            //DO nothing for suggesting moments?
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {

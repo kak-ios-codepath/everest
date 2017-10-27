@@ -52,20 +52,11 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         self.mapViewController = TimeLineMapViewController(nibName: "TimeLineMapViewController", bundle: nil)
         self.mapViewController?.navController = self.navigationController
 
-        self.timelineManager?.fetchUserDetails(completion: { (user:User?, error: Error?) in
-            
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "MomentCreated"), object: nil, queue: OperationQueue.main, using: {(Notification) -> () in
+            self.loadData()
         })
         
-        self.timelineManager?.fetchPublicMomments(completion: { (moments:[Moment]?, error: Error?) in
-            if((error) != nil) {
-                
-                // show the alert
-                return
-            }
-            self.moments = moments
-            // Reload the timelineView
-            self.reloadView()
-        })
+        self.loadData()
         
 //// -- TODO: Remove code after TESTING image uploads
 //        guard let image = UIImage(named: "password") else { return }
@@ -117,6 +108,19 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.isMapView = self.isMapView ? false : true
     }
+
+    func loadData() {
+        self.timelineManager?.fetchPublicMomments(completion: { (moments:[Moment]?, error: Error?) in
+            if((error) != nil) {
+                
+                // show the alert
+                return
+            }
+            self.moments = moments
+            self.timelineTableView.reloadData()
+        })
+
+    }
     
     var isMapView = false
     var mapViewController : TimeLineMapViewController?
@@ -125,14 +129,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    // MARK: --  Update view
-    private func reloadView() -> Void {
-        self.timelineTableView.reloadData()
-    }
-    
-    
+        
     /*
     // MARK: - Navigation
 
