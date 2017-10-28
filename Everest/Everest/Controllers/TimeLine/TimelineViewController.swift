@@ -16,8 +16,10 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     private var timelineManager: TimeLineManager?
     private var moments : [Moment]?
     
-    var isMapView = false
-    var mapViewController : TimeLineMapViewController?
+    private var isMapView = false
+    private var mapViewController : TimeLineMapViewController?
+    private let refreshControl = UIRefreshControl()
+
     
     //  MARK: -- Initialization codes
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +53,10 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
         self.timelineTableView.rowHeight = UITableViewAutomaticDimension
         
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        self.timelineTableView.insertSubview(refreshControl, at: 0)
+        
         self.mapViewController = TimeLineMapViewController(nibName: "TimeLineMapViewController", bundle: nil)
         self.mapViewController?.navController = self.navigationController
 
@@ -82,6 +88,11 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
     }
+    
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        loadData()
+    }
+    
     
     @IBAction func showMapAction(_ sender: Any) {
         if (isMapView) {
@@ -119,6 +130,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             self.moments = moments
             DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
                 self.timelineTableView.reloadData()
             }
         })

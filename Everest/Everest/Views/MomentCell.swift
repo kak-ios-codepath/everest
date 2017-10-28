@@ -62,6 +62,8 @@ class MomentCell: UITableViewCell {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(userIconTapped))
         self.userProfileImageView.addGestureRecognizer(tapGestureRecognizer)
         self.momentImageVIew.setRoundedCorner(radius: 5)
+        self.momentImageVIew.superview?.layer.cornerRadius = 10.00
+        
 
     }
 
