@@ -19,6 +19,7 @@ class MomentCell: UITableViewCell {
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var locationPinImageView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     weak var momentCellDelegate : MomentCellDelegate?
 
     
@@ -42,6 +43,13 @@ class MomentCell: UITableViewCell {
             } else {
                 self.momentImageVIew.image = UIImage(named: "Moment")
             }
+            //TODO: Images r not being set
+            /*if let profilePic = moment?.profilePhotoUrl {
+                self.userProfileImageView.setImageWith(URL(string: profilePic)!)
+            } else {
+                self.userProfileImageView.image = UIImage(named: "Profile")
+            }*/
+            self.categoryLabel.text = (MainManager.shared.availableActs[(moment?.actId)!]?.category)?.capitalized
         }
     }
     

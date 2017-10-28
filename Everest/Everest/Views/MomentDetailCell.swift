@@ -16,6 +16,9 @@ class MomentDetailCell: UITableViewCell {
     
     var moment : Moment? {
         didSet {
+            if moment == nil {
+                return
+            }
             self.momentTitleLabel.text = moment?.title
             self.momentDescriptionLabel.text = moment?.details
             if moment?.actId != nil {
@@ -50,8 +53,10 @@ class MomentDetailCell: UITableViewCell {
                 }
             }
             self.cloneButton.isHidden = true
+            self.categoryLabel.text = ((MainManager.shared.availableActs[(moment?.actId)!]?.category)?.capitalized)! + " action"
         }
     }
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileImaeView: UIImageView!
     @IBOutlet weak var momentCreatedDateLabel: UILabel!
