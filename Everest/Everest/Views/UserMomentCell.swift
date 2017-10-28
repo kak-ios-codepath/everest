@@ -44,6 +44,8 @@ class UserMomentCell: UITableViewCell {
     }
 
     
-    
+    override func prepareForReuse() {
+        self.momentImageView.image = nil
+    }
 
 }

@@ -72,6 +72,11 @@ class MomentCell: UITableViewCell {
     }
     
     
+    override func prepareForReuse() {
+        self.momentImageVIew.image = nil
+        self.userProfileImageView.image = nil
+    }
+    
     
     @objc private func userIconTapped(_ sender: UITapGestureRecognizer) -> Void {
         

@@ -131,7 +131,7 @@ class UserProfileViewController: UIViewController{
         if (user?.profilePhotoUrl != nil) {
             profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
         } else {
-            profileImageView.image = nil
+            profileImageView.image = UIImage(named: "Profile")
         }
     }
 
