@@ -33,7 +33,7 @@ class UserProfileManager: NSObject {
         //TODO: we can revisit this logic
         
         FireBaseManager.shared.fetchMomentsForUser(startAtMomentId: nil, userId: (user?.id)!) { (moments:[Moment]?, error:Error?) in
-            
+            self.actionsAndMomentsDataSource?.removeAll()
             if let userMoments = moments {
                 
                 if let actions = user?.actions {

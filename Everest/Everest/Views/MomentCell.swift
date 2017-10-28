@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 @objc protocol MomentCellDelegate {
     @objc optional func momentCell(cell: MomentCell, didTapOnUserIconForMoment: Moment)
 }
@@ -44,11 +45,11 @@ class MomentCell: UITableViewCell {
                 self.momentImageVIew.image = UIImage(named: "Moment")
             }
             //TODO: Images r not being set
-            /*if let profilePic = moment?.profilePhotoUrl {
+            if let profilePic = moment?.profilePhotoUrl {
                 self.userProfileImageView.setImageWith(URL(string: profilePic)!)
             } else {
                 self.userProfileImageView.image = UIImage(named: "Profile")
-            }*/
+            }
             self.categoryLabel.text = (MainManager.shared.availableActs[(moment?.actId)!]?.category)?.capitalized
         }
     }
@@ -70,6 +71,11 @@ class MomentCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    override func prepareForReuse() {
+        self.momentImageVIew.image = nil
+        self.userProfileImageView.image = nil
+    }
     
     
     @objc private func userIconTapped(_ sender: UITapGestureRecognizer) -> Void {

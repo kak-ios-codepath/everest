@@ -14,6 +14,7 @@ class AddMomentCell: UITableViewCell {
 
     weak var addMomentCellDelegate : AddMomentCellDelegate?
 
+    @IBOutlet weak var addMomentButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
