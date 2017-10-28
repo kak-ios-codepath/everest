@@ -104,6 +104,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addMomentButton" destination="zCi-59-0Wz" id="Mce-4H-EcM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

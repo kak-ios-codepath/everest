@@ -117,12 +117,9 @@ class UserProfileViewController: UIViewController{
         
         self.userProfileManager?.fetchAllMomentsForTheUser(user: self.user, completion: { (completed : Bool, error: Error?) in
             print("\(completed)")
-//            if completed == true {
-                self.userActionTableView.reloadData()
-//            }
+            self.userActionTableView.reloadData()
         })
         
-        self.userActionTableView.reloadData()
 
         nameLabel.text = user?.name
         dateLabel.text = "Joined on "+(user?.createdDate)!
@@ -160,6 +157,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
                         addMomentCell.addMomentCellDelegate = self
                         addMomentCell.selectedActId = key[0]
+                        addMomentCell.addMomentButton.setTitle("Add New Moment", for: .normal)
                         return addMomentCell
                     }
                     
@@ -172,6 +170,8 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         }
         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
         addMomentCell.addMomentCellDelegate = self
+        addMomentCell.selectedActId = ""
+        addMomentCell.addMomentButton.setTitle("Add New Action", for: .normal)
         return addMomentCell
     }
     
@@ -179,9 +179,9 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.userProfileManager?.actionsAndMomentsDataSource != nil && (self.userProfileManager?.actionsAndMomentsDataSource?.count)! > 0 {
-            if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[section] {
-                let key = Array(dictionary.keys)
-                if let momentsArray = dictionary[key[0]] {
+            if let dict = self.userProfileManager?.actionsAndMomentsDataSource?[section] {
+                let  key = Array(dict.keys)[0]
+                if let momentsArray = dict[key] {
                     if self.user?.id == User.currentUser?.id {
                         return momentsArray.count+1
                     } else {
@@ -235,7 +235,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     
     func addMomentCell(cell: AddMomentCell, addNewMomentToAction action: String?) {
         
-        if action == nil {
+        if action == "" {
             let storyboard = UIStoryboard.init(name: "AddAction", bundle: nil)
             let addActionVC = storyboard.instantiateViewController(withIdentifier: "AddActionViewController") as! AddActionViewController
             
