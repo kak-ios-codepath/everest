@@ -48,7 +48,7 @@ class MomentCell: UITableViewCell {
             if let profilePic = moment?.profilePhotoUrl {
                 self.userProfileImageView.setImageWith(URL(string: profilePic)!)
             } else {
-                //self.userProfileImageView.image = UIImage(named: "Profile")
+                self.userProfileImageView.image = UIImage(named: "Profile")
             }
             self.categoryLabel.text = (MainManager.shared.availableActs[(moment?.actId)!]?.category)?.capitalized
         }

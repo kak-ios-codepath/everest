@@ -59,6 +59,7 @@
 		D797E6731F9AED7A0097B4CA /* CreateMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */; };
 		D797E6751F9D3A310097B4CA /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6741F9D3A310097B4CA /* Array+Extension.swift */; };
 		D797E6771F9D3AAA0097B4CA /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */; };
+		D7A417D41FA468C300B5F7D2 /* UserMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A417D31FA468C300B5F7D2 /* UserMomentCell.swift */; };
 		D7B1F6571FA2C817001DAAE1 /* MomentAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B1F6561FA2C817001DAAE1 /* MomentAnnotation.swift */; };
 		D7B1F6591FA2D3D8001DAAE1 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B1F6581FA2D3D8001DAAE1 /* UserLocationManager.swift */; };
 		D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */; };
@@ -122,6 +123,7 @@
 		D797E6721F9AED7A0097B4CA /* CreateMomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMomentViewController.swift; sourceTree = "<group>"; };
 		D797E6741F9D3A310097B4CA /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		D7A417D31FA468C300B5F7D2 /* UserMomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMomentCell.swift; sourceTree = "<group>"; };
 		D7B1F6561FA2C817001DAAE1 /* MomentAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentAnnotation.swift; sourceTree = "<group>"; };
 		D7B1F6581FA2D3D8001DAAE1 /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailCell.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				D724D08A1F94806B00D25A5A /* MomentCell.swift */,
 				D724D08B1F94806B00D25A5A /* MomentCell.xib */,
 				06C2EA521F91D921003D0ADF /* UserProfileView.swift */,
+				D7A417D31FA468C300B5F7D2 /* UserMomentCell.swift */,
 				06C2EA541F91D936003D0ADF /* ActionView.swift */,
 				06C2EA561F91D944003D0ADF /* MomentView.swift */,
 				CE0908D91F982664004D1974 /* CategoryCollectionCell.swift */,
@@ -520,6 +523,7 @@
 				CE1335261F9C21DB000D54C4 /* Category.swift in Sources */,
 				D724D0861F94804500D25A5A /* FireBaseManager.swift in Sources */,
 				D724D0871F94804500D25A5A /* ServiceManager.swift in Sources */,
+				D7A417D41FA468C300B5F7D2 /* UserMomentCell.swift in Sources */,
 				D73957AE1FA1B1FD00387E16 /* TimeLineMapViewController.swift in Sources */,
 				06C2EA571F91D944003D0ADF /* MomentView.swift in Sources */,
 				010539B71F9C838100E2D413 /* Dictionary+Extension.swift in Sources */,

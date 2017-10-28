@@ -44,8 +44,7 @@ class UserProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: "MomentCell", bundle: nil)
-        self.userActionTableView.register(nib, forCellReuseIdentifier: "MomentCell")
+
         self.userActionTableView.estimatedRowHeight = self.userActionTableView.rowHeight
         self.userActionTableView.rowHeight = UITableViewAutomaticDimension
         self.profileImageView.setRounded()
@@ -151,7 +150,7 @@ class UserProfileViewController: UIViewController{
 extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate, MomentCellDelegate, AddMomentCellDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MomentCell", for: indexPath) as! MomentCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserMomentCell", for: indexPath) as! UserMomentCell
         
         if self.userProfileManager?.actionsAndMomentsDataSource != nil && (self.userProfileManager?.actionsAndMomentsDataSource?.count)! > 0 {
             
@@ -167,7 +166,6 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                     }
                     
                     let moment = momentsArray[indexPath.row]
-                    cell.momentCellDelegate = self
                     cell.moment = moment
                     return cell
                 }
