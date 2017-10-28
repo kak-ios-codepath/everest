@@ -70,6 +70,10 @@ class MomentsViewController: UIViewController {
                         }
                         
                         self.suggestedMomentList = moments
+                        if let selectedMoment = self.suggestedMomentList?.filter( { return $0.id == self.currentSelectedMoment?.id } ).first {
+                            let index = self.suggestedMomentList?.index(of: selectedMoment)
+                            self.suggestedMomentList?.remove(at: index!)
+                        }
                         DispatchQueue.main.async {
                             self.momentDetailTableView.reloadSections(IndexSet(integer: 1), with: UITableViewRowAnimation.automatic)
                         }

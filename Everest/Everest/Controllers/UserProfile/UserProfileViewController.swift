@@ -72,30 +72,32 @@ class UserProfileViewController: UIViewController{
             
         })
 
-        if userId != nil {
-            FireBaseManager.shared.fetchMomentsForUser (startAtMomentId: nil, userId: userId!, completion: { (moments: [Moment]?, error: Error?) in
-                if error != nil {
-                    print ("Error fetch moments for user")
-                } else {
-                    print ("Success moments for user")
-                }
-            })
-            
-            self.userProfileManager?.fetchUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
-                self.user = user
-                self.loadViewForSelectedMode()
-                
-            })
-        }else {
-            self.user = User.currentUser
-            self.loadViewForSelectedMode()
-        }
+//        if userId != nil {
+//            FireBaseManager.shared.fetchMomentsForUser (startAtMomentId: nil, userId: userId!, completion: { (moments: [Moment]?, error: Error?) in
+//                if error != nil {
+//                    print ("Error fetch moments for user")
+//                } else {
+//                    print ("Success moments for user")
+//                }
+//            })
+//            
+//            self.userProfileManager?.fetchUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
+//                self.user = user
+//                self.loadViewForSelectedMode()
+//                
+//            })
+//        }else {
+//            self.user = User.currentUser
+//            self.loadViewForSelectedMode()
+//        }
         
         if userId != User.currentUser?.id {
             self.userProfileManager?.fetchUserDetails(userId: self.userId!, completion: { (user: User?, error : Error?) in
-                self.user = user
-                self.loadViewForSelectedMode()
-
+                
+                if user != nil {
+                    self.user = user
+                    self.loadViewForSelectedMode()
+                }
             })
         }else {
             self.user = User.currentUser
@@ -117,7 +119,10 @@ class UserProfileViewController: UIViewController{
         
         self.userProfileManager?.fetchAllMomentsForTheUser(user: self.user, completion: { (completed : Bool, error: Error?) in
             print("\(completed)")
-            self.userActionTableView.reloadData()
+            DispatchQueue.main.async {
+                self.userActionTableView.reloadData()
+            }
+
         })
         
 

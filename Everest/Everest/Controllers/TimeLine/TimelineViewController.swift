@@ -16,6 +16,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     private var timelineManager: TimeLineManager?
     private var moments : [Moment]?
     
+    var isMapView = false
+    var mapViewController : TimeLineMapViewController?
     
     //  MARK: -- Initialization codes
     required init?(coder aDecoder: NSCoder) {
@@ -101,12 +103,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             UIView.commitAnimations()
             self.mapViewController?.moments = self.moments
         }
-        
-        
-        
-        
-        
-        self.isMapView = self.isMapView ? false : true
+         self.isMapView = self.isMapView ? false : true
     }
 
     func loadData() {
@@ -121,13 +118,13 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
                 print("\(moment.title)")
             }
             self.moments = moments
-            self.timelineTableView.reloadData()
+            DispatchQueue.main.async {
+                self.timelineTableView.reloadData()
+            }
         })
 
     }
-    
-    var isMapView = false
-    var mapViewController : TimeLineMapViewController?
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
