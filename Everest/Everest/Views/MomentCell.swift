@@ -22,8 +22,10 @@ class MomentCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     weak var momentCellDelegate : MomentCellDelegate?
-
+    private var isLiked : Bool?
+    @IBOutlet weak var momentLikeButton: UIButton!
     
+    @IBOutlet weak var momentLikesLabel: UILabel!
     var moment: Moment? {
         didSet {
             
@@ -50,6 +52,9 @@ class MomentCell: UITableViewCell {
             } else {
                 self.userProfileImageView.image = UIImage(named: "Profile")
             }
+            if let likesCount = moment?.likes {
+                self.momentLikesLabel.text = "\(likesCount)"
+            }
             self.categoryLabel.text = (MainManager.shared.availableActs[(moment?.actId)!]?.category)?.capitalized
         }
     }
@@ -63,7 +68,7 @@ class MomentCell: UITableViewCell {
         self.userProfileImageView.addGestureRecognizer(tapGestureRecognizer)
         self.momentImageVIew.setRoundedCorner(radius: 5)
         self.momentImageVIew.superview?.layer.cornerRadius = 10.00
-        
+        self.isLiked = false
 
     }
 
@@ -77,6 +82,36 @@ class MomentCell: UITableViewCell {
     override func prepareForReuse() {
         self.momentImageVIew.image = nil
         self.userProfileImageView.image = nil
+    }
+    @IBAction func likeButtonAction(_ sender: Any) {
+        var likeImage = UIImage.init(named: "Like")
+        if isLiked == false {
+            isLiked = true
+            FireBaseManager.shared.updateMomentLikes(momentId: (self.moment?.id)!, incrementBy: 1)
+            if let likesCount = Int(self.momentLikesLabel.text!) {
+                self.momentLikesLabel.text = "\((likesCount)+1)"
+
+            }
+
+        }else{
+            isLiked = false
+            likeImage = UIImage.init(named: "like_bw")
+            FireBaseManager.shared.updateMomentLikes(momentId: (self.moment?.id)!, incrementBy: -1)
+            if let likesCount = Int(self.momentLikesLabel.text!) {
+                self.momentLikesLabel.text = "\((likesCount)-1)"
+            }
+        }
+        
+        UIView.animate(withDuration: 0.6, animations: {
+            self.momentLikeButton.transform = CGAffineTransform.identity.scaledBy(x: 0.6, y: 0.6)
+        }, completion: { (finish) in
+            UIView.animate(withDuration: 0.6, animations: {
+                self.momentLikeButton.transform = CGAffineTransform.identity
+                self.momentLikeButton.setImage(likeImage, for: .normal)
+
+            })
+        })
+
     }
     
     
