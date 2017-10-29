@@ -84,7 +84,7 @@ class MomentCell: UITableViewCell {
         self.userProfileImageView.image = nil
     }
     @IBAction func likeButtonAction(_ sender: Any) {
-        var likeImage = UIImage.init(named: "Like")
+//        var likeImage = UIImage.init(named: "Like")
         if isLiked == false {
             isLiked = true
             FireBaseManager.shared.updateMomentLikes(momentId: (self.moment?.id)!, incrementBy: 1)
@@ -95,7 +95,7 @@ class MomentCell: UITableViewCell {
 
         }else{
             isLiked = false
-            likeImage = UIImage.init(named: "like_bw")
+//            likeImage = UIImage.init(named: "like_bw")
             FireBaseManager.shared.updateMomentLikes(momentId: (self.moment?.id)!, incrementBy: -1)
             if let likesCount = Int(self.momentLikesLabel.text!) {
                 self.momentLikesLabel.text = "\((likesCount)-1)"
@@ -107,7 +107,7 @@ class MomentCell: UITableViewCell {
         }, completion: { (finish) in
             UIView.animate(withDuration: 0.6, animations: {
                 self.momentLikeButton.transform = CGAffineTransform.identity
-                self.momentLikeButton.setImage(likeImage, for: .normal)
+//                self.momentLikeButton.setImage(likeImage, for: .normal)
 
             })
         })

@@ -146,7 +146,7 @@
                                                                 <constraint firstAttribute="height" constant="30" id="NIc-eG-Dhr"/>
                                                                 <constraint firstAttribute="width" constant="30" id="iA3-u8-EZ2"/>
                                                             </constraints>
-                                                            <state key="normal" image="like_bw"/>
+                                                            <state key="normal" image="Like"/>
                                                             <connections>
                                                                 <action selector="momentLikeAction:" destination="YvE-6o-i0d" eventType="touchUpInside" id="gyN-xI-wif"/>
                                                             </connections>
@@ -289,7 +289,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dpa-SN-Vjh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="MpF-jD-2Y8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="STg-fk-HO6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="STg-fk-HO6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -355,7 +355,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Like" width="60" height="60"/>
         <image name="Profile" width="90" height="90"/>
-        <image name="like_bw" width="60" height="60"/>
     </resources>
 </document>
