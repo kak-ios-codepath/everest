@@ -14,6 +14,7 @@
         <!--Add Action-->
         <scene sceneID="Lwl-TC-y4u">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YnX-rg-69I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Scb-hK-emJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Add Action" id="cTo-aS-ouC"/>
                     <toolbarItems/>
@@ -27,7 +28,6 @@
                         <segue destination="b2t-1u-2Wo" kind="relationship" relationship="rootViewController" id="DRD-KA-T7K"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YnX-rg-69I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3287" y="54"/>
         </scene>
