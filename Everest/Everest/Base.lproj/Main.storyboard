@@ -140,13 +140,17 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="w9d-Mb-CNV">
                                                     <rect key="frame" x="292" y="229.5" width="68" height="30"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" translatesAutoresizingMaskIntoConstraints="NO" id="u8K-t5-oeB">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFu-Ce-CHv">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="9lk-t3-DZ4"/>
-                                                                <constraint firstAttribute="width" constant="30" id="IFN-11-wX7"/>
+                                                                <constraint firstAttribute="height" constant="30" id="NIc-eG-Dhr"/>
+                                                                <constraint firstAttribute="width" constant="30" id="iA3-u8-EZ2"/>
                                                             </constraints>
-                                                        </imageView>
+                                                            <state key="normal" image="like_bw"/>
+                                                            <connections>
+                                                                <action selector="momentLikeAction:" destination="YvE-6o-i0d" eventType="touchUpInside" id="gyN-xI-wif"/>
+                                                            </connections>
+                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wou-fe-yAo">
                                                             <rect key="frame" x="38" y="0.0" width="30" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -249,6 +253,8 @@
                                             <outlet property="momentCreatedDateLabel" destination="4lr-PO-rsB" id="1m7-O0-4VD"/>
                                             <outlet property="momentDescriptionLabel" destination="dwg-Xl-cfE" id="Aaq-CS-bjD"/>
                                             <outlet property="momentImageView" destination="Xel-mF-uQz" id="1FO-FE-LhP"/>
+                                            <outlet property="momentLikeButton" destination="QFu-Ce-CHv" id="J5h-UU-BTW"/>
+                                            <outlet property="momentLikeLabel" destination="Wou-fe-yAo" id="yiz-bs-XxQ"/>
                                             <outlet property="momentTitleLabel" destination="zdk-iq-S0K" id="uXg-x2-YcA"/>
                                             <outlet property="userNameLabel" destination="fus-Ij-lde" id="iE2-z3-4Ww"/>
                                             <outlet property="userProfileImaeView" destination="hPU-Wi-l0H" id="68V-Su-b3T"/>
@@ -349,7 +355,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Like" width="60" height="60"/>
         <image name="Profile" width="90" height="90"/>
+        <image name="like_bw" width="60" height="60"/>
     </resources>
 </document>
