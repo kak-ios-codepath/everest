@@ -225,14 +225,54 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         return 0
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        
+//
+//        if let action = self.user?.actions?[section] {
+//            let id = action.id
+//            return MainManager.shared.availableActs[id]?.title
+//        }
+//        return "Add new action and start creating moments!!"
+//    }
+    
 
+    
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        //Need to create a label with the text we want in order to figure out height
+        let label: UILabel = createHeaderLabel(section)
+        let size = label.sizeThatFits(CGSize(width: view.frame.width, height: CGFloat.greatestFiniteMagnitude))
+        let padding: CGFloat = 20.0
+        return size.height + padding
+    }
+    
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UITableViewHeaderFooterView()
+        let label = createHeaderLabel(section)
+        label.autoresizingMask = [.flexibleHeight]
+        headerView.addSubview(label)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 16
+    }
+    
+    func createHeaderLabel(_ section: Int)->UILabel {
+        let widthPadding: CGFloat = 20.0
+        let label: UILabel = UILabel(frame: CGRect(x: widthPadding, y: 0, width: self.userActionTableView.frame.width - widthPadding, height: 0))
+        
         if let action = self.user?.actions?[section] {
-            let id = action.id
-            return MainManager.shared.availableActs[id]?.title
+        let id = action.id
+        label.text = MainManager.shared.availableActs[id]?.title
         }
-        return "Add new action and start creating moments!!"
+        else{
+            label.text = "Add new action and start creating moments!!"
+        }
+        label.numberOfLines = 0;
+        label.textAlignment = NSTextAlignment.left
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline) //use your own font here - this font is for accessibility
+        return label
     }
 
     
