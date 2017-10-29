@@ -11,7 +11,7 @@ import Foundation
 class Constants {
     
     static let FINISHING_MOMENT_REWARD = 10
-    static let LENGTH_OF_FETCHED_LIST: UInt = 20
+    static let LENGTH_OF_FETCHED_LIST: UInt = 50
     
     enum ListType {
         case listTypeAccount

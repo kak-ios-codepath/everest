@@ -125,10 +125,10 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
                 return
             }
             
-            for moment in moments! {
-                print("\(moment.title)")
-            }
-            self.moments = moments
+//            for moment in moments! {
+//                print("\(moment.title)")
+//            }
+            self.moments = moments?.sorted(by: { $0.timestamp > $1.timestamp })
             DispatchQueue.main.async {
                 self.refreshControl.endRefreshing()
                 self.timelineTableView.reloadData()

@@ -18,7 +18,7 @@ class AddActionViewController: UIViewController {
     private var originalItemSize = CGSize.zero
     private var originalCollectionViewSize = CGSize.zero
     
-    fileprivate let photoUrls = ["https://www.lipstiq.com/wp-content/uploads/2014/06/62.jpg", "https://www.lipstiq.com/wp-content/uploads/2014/06/62.jpg"]
+    fileprivate var currentUser:User!
     fileprivate var categoryIndex = 0
     
     override func viewDidLoad() {
@@ -97,19 +97,41 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "actsCell", for: indexPath) as? ActsCell else {return UITableViewCell()}
-        cell.actText = MainManager.shared.availableCategories[categoryIndex].acts[indexPath.row].title
+        let act = MainManager.shared.availableCategories[categoryIndex].acts[indexPath.row]
+        cell.actText = act.title
+        
+        if let actions = User.currentUser?.actions {
+            for action in actions {
+                if action.id == act.id {
+                    DispatchQueue.main.async {
+                        cell.accessoryType = .checkmark
+                    }
+                } else {
+                    cell.accessoryType = .none
+                }
+            }
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actsTableView.deselectRow(at: indexPath, animated: true)
         MainManager.shared.createNewAction(id: (MainManager.shared.availableCategories[categoryIndex].acts[indexPath.row].id), completion:{(error) in
-            let alertController = UIAlertController(title: "Added", message: "You can view this newly added action in your Profile view.",  preferredStyle: UIAlertControllerStyle.alert)
+            let alertController = UIAlertController(title: "Already Exists", message: "You are already subscribed to this act!",  preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
             })
             alertController.addAction(okAction)
-            // Present Alert
-            self.present(alertController, animated: true, completion:nil)
+            
+            let cell = tableView.cellForRow(at: indexPath) as! ActsCell
+            if cell.accessoryType == .checkmark {
+                self.present(alertController, animated: true, completion:nil)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+            FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!, completion: { (user, error) in
+                User.currentUser = user
+            })
         })
     }
     
