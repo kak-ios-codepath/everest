@@ -280,7 +280,12 @@ class FireBaseManager {
             print(error.localizedDescription)
         }
     }
-       
+    
+    func deleteMoment(actId: String, momentId: String) {
+        ref.child("moments/\(momentId)").setValue("")
+        ref.child("users/\(FireBaseManager.UID)/actions/\(actId)/momentIds/\(momentId)").setValue("")
+    }
+    
     func updateMoment(actId: String, moment: Moment, newMoment: Bool) {
         var MomentId = ""
         if newMoment {

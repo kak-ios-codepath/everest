@@ -23,10 +23,10 @@
         <scene sceneID="Pdo-Rq-PuL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h3i-yx-Oau" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="eTy-cI-EdI"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileTab" id="eTy-cI-EdI"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B7K-Qy-w5l">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B7K-Qy-w5l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -464,6 +464,7 @@
     <resources>
         <image name="Profile" width="90" height="90"/>
         <image name="addimage" width="100" height="100"/>
-        <image name="loc_pin" width="30" height="30"/>
+        <image name="map_pin" width="766" height="766"/>
+        <image name="profileTab" width="28" height="28"/>
     </resources>
 </document>

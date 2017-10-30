@@ -22,4 +22,5 @@ target 'Everest' do
   pod 'Firebase/Database'
   pod 'GoogleSignIn'
   pod 'LNICoverFlowLayout'
+  pod 'Announce'
 end

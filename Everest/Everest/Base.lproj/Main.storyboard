@@ -288,7 +288,7 @@
         <scene sceneID="CeP-8c-f65">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dpa-SN-Vjh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="MpF-jD-2Y8"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="MpF-jD-2Y8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="STg-fk-HO6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -361,5 +361,6 @@
     <resources>
         <image name="Like" width="60" height="60"/>
         <image name="Profile" width="90" height="90"/>
+        <image name="home" width="28" height="28"/>
     </resources>
 </document>
