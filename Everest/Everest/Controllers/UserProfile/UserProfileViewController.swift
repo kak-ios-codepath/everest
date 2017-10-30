@@ -161,7 +161,8 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
                         addMomentCell.addMomentCellDelegate = self
                         addMomentCell.selectedActId = key[0]
-                        addMomentCell.addMomentButton.setTitle("Add New Moment", for: .normal)
+                        addMomentCell.addNewDescriptionLabel.text = "Write about new moment for this act."
+                        addMomentCell.addMomentButton.setTitle("Add", for: .normal)
                         return addMomentCell
                     }
                     
@@ -174,7 +175,8 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
         addMomentCell.addMomentCellDelegate = self
         addMomentCell.selectedActId = ""
-        addMomentCell.addMomentButton.setTitle("Add New Action", for: .normal)
+        addMomentCell.addNewDescriptionLabel.text = "Start subscribing to new Act."
+        addMomentCell.addMomentButton.titleLabel?.text = "Subscribe"
         return addMomentCell
     }
     
@@ -225,14 +227,62 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         return 0
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        
+//
+//        if let action = self.user?.actions?[section] {
+//            let id = action.id
+//            return MainManager.shared.availableActs[id]?.title
+//        }
+//        return "Add new action and start creating moments!!"
+//    }
+    
 
+    
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
+        return 60
+    }
+    
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UITableViewHeaderFooterView()
+//        let label = createHeaderLabel(section)
+//        label.autoresizingMask = [.flexibleHeight]
+//        headerView.addSubview(label)
+//        return headerView
+        
+        let headerView = Bundle.main.loadNibNamed("ActionHeaderView", owner: self, options: nil)?.first as! ActionHeaderView
+        
         if let action = self.user?.actions?[section] {
-            let id = action.id
-            return MainManager.shared.availableActs[id]?.title
+            headerView.action = action
         }
-        return "Add new action and start creating moments!!"
+        else{
+            headerView.action = nil
+        }
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 16
+    }
+    
+    func createHeaderLabel(_ section: Int)->UILabel {
+        let widthPadding: CGFloat = 20.0
+        let label: UILabel = UILabel(frame: CGRect(x: widthPadding, y: 0, width: self.userActionTableView.frame.width - widthPadding, height: 0))
+        
+        if let action = self.user?.actions?[section] {
+        let id = action.id
+        label.text = MainManager.shared.availableActs[id]?.title
+        }
+        else{
+            label.text = "Add new action and start creating moments!!"
+        }
+        label.numberOfLines = 0;
+        label.textAlignment = NSTextAlignment.left
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline) //use your own font here - this font is for accessibility
+        return label
     }
 
     
