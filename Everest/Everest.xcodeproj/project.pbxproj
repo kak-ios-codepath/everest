@@ -35,7 +35,6 @@
 		CE1335261F9C21DB000D54C4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1335251F9C21DB000D54C4 /* Category.swift */; };
 		CE13352D1F9E8B84000D54C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13352C1F9E8B84000D54C4 /* Constants.swift */; };
 		CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F56071F92DE54004D2CF9 /* Action.swift */; };
-		CE69A3271FA56650008D3CD1 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69A3261FA56650008D3CD1 /* InfiniteScrollActivityView.swift */; };
 		CE8881651FA180730096DD21 /* AddMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8881641FA180730096DD21 /* AddMomentCell.swift */; };
 		CEFD978D1FA12A72004FBDA5 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD978C1FA12A72004FBDA5 /* NotificationCell.swift */; };
 		D71841591FA1690E008B72DF /* UIImageView+Rouded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71841581FA1690E008B72DF /* UIImageView+Rouded.swift */; };
@@ -61,6 +60,8 @@
 		D797E6751F9D3A310097B4CA /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6741F9D3A310097B4CA /* Array+Extension.swift */; };
 		D797E6771F9D3AAA0097B4CA /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */; };
 		D7A417D41FA468C300B5F7D2 /* UserMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A417D31FA468C300B5F7D2 /* UserMomentCell.swift */; };
+		D7A417DB1FA6986100B5F7D2 /* ActionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A417D91FA6986100B5F7D2 /* ActionHeaderView.swift */; };
+		D7A417DC1FA6986100B5F7D2 /* ActionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A417DA1FA6986100B5F7D2 /* ActionHeaderView.xib */; };
 		D7B1F6571FA2C817001DAAE1 /* MomentAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B1F6561FA2C817001DAAE1 /* MomentAnnotation.swift */; };
 		D7B1F6591FA2D3D8001DAAE1 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B1F6581FA2D3D8001DAAE1 /* UserLocationManager.swift */; };
 		D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */; };
@@ -100,7 +101,6 @@
 		CE1335251F9C21DB000D54C4 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CE13352C1F9E8B84000D54C4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE2F56071F92DE54004D2CF9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		CE69A3261FA56650008D3CD1 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteScrollActivityView.swift; path = "../../../../../codepath_ios/Twitter Client/Twitter Client/InfiniteScrollActivityView.swift"; sourceTree = "<group>"; };
 		CE8881641FA180730096DD21 /* AddMomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMomentCell.swift; sourceTree = "<group>"; };
 		CEFD978C1FA12A72004FBDA5 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		D71841581FA1690E008B72DF /* UIImageView+Rouded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Rouded.swift"; sourceTree = "<group>"; };
@@ -126,6 +126,8 @@
 		D797E6741F9D3A310097B4CA /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		D797E6761F9D3AAA0097B4CA /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		D7A417D31FA468C300B5F7D2 /* UserMomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMomentCell.swift; sourceTree = "<group>"; };
+		D7A417D91FA6986100B5F7D2 /* ActionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionHeaderView.swift; sourceTree = "<group>"; };
+		D7A417DA1FA6986100B5F7D2 /* ActionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionHeaderView.xib; sourceTree = "<group>"; };
 		D7B1F6561FA2C817001DAAE1 /* MomentAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentAnnotation.swift; sourceTree = "<group>"; };
 		D7B1F6581FA2D3D8001DAAE1 /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		D7B9C3D61F99D7E500E84B60 /* MomentDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailCell.swift; sourceTree = "<group>"; };
@@ -236,12 +238,13 @@
 		06C2EA371F91D6EA003D0ADF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE69A3261FA56650008D3CD1 /* InfiniteScrollActivityView.swift */,
 				CE8881641FA180730096DD21 /* AddMomentCell.swift */,
 				D724D0881F94806B00D25A5A /* ActionCell.swift */,
 				D724D0891F94806B00D25A5A /* ActionCell.xib */,
 				D724D08A1F94806B00D25A5A /* MomentCell.swift */,
 				D724D08B1F94806B00D25A5A /* MomentCell.xib */,
+				D7A417D91FA6986100B5F7D2 /* ActionHeaderView.swift */,
+				D7A417DA1FA6986100B5F7D2 /* ActionHeaderView.xib */,
 				06C2EA521F91D921003D0ADF /* UserProfileView.swift */,
 				D7A417D31FA468C300B5F7D2 /* UserMomentCell.swift */,
 				06C2EA541F91D936003D0ADF /* ActionView.swift */,
@@ -411,6 +414,7 @@
 				D724D0801F947FF900D25A5A /* UserProfile.storyboard in Resources */,
 				06C2EA2C1F91D589003D0ADF /* LaunchScreen.storyboard in Resources */,
 				06C2EA591F946335003D0ADF /* GoogleService-Info.plist in Resources */,
+				D7A417DC1FA6986100B5F7D2 /* ActionHeaderView.xib in Resources */,
 				06C2EA291F91D589003D0ADF /* Assets.xcassets in Resources */,
 				D73957AF1FA1B1FD00387E16 /* TimeLineMapViewController.xib in Resources */,
 				D724D07C1F947FF900D25A5A /* Settings.storyboard in Resources */,
@@ -520,7 +524,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE69A3271FA56650008D3CD1 /* InfiniteScrollActivityView.swift in Sources */,
 				06A931721F95C60B00DFD1AA /* WelcomeViewController.swift in Sources */,
 				011C4B731F9AB1FD0070EDF3 /* UserProfileViewController.swift in Sources */,
 				CE2F56081F92DE54004D2CF9 /* Action.swift in Sources */,
@@ -534,6 +537,7 @@
 				D797E6731F9AED7A0097B4CA /* CreateMomentViewController.swift in Sources */,
 				D724D07D1F947FF900D25A5A /* SettingsViewController.swift in Sources */,
 				D7B9C3D71F99D7E500E84B60 /* MomentDetailCell.swift in Sources */,
+				D7A417DB1FA6986100B5F7D2 /* ActionHeaderView.swift in Sources */,
 				D797E6751F9D3A310097B4CA /* Array+Extension.swift in Sources */,
 				D71841591FA1690E008B72DF /* UIImageView+Rouded.swift in Sources */,
 				D7B1F6571FA2C817001DAAE1 /* MomentAnnotation.swift in Sources */,
