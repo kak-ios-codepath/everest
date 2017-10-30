@@ -8,6 +8,7 @@
 
 import UIKit
 import LNICoverFlowLayout
+import Announce
 
 class AddActionViewController: UIViewController {
     
@@ -23,7 +24,7 @@ class AddActionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         categoriesCollectionView.delegate = self
         actsTableView.delegate = self
         actsTableView.estimatedRowHeight = 30
@@ -118,15 +119,14 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actsTableView.deselectRow(at: indexPath, animated: true)
         MainManager.shared.createNewAction(id: (MainManager.shared.availableCategories[categoryIndex].acts[indexPath.row].id), completion:{(error) in
-            let alertController = UIAlertController(title: "Already Exists", message: "You are already subscribed to this act!",  preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
-            })
-            alertController.addAction(okAction)
             
             let cell = tableView.cellForRow(at: indexPath) as! ActsCell
             if cell.accessoryType == .checkmark {
-                self.present(alertController, animated: true, completion:nil)
+                //Fire a quick message with a theme!
+                let message = Message(message: "A simple message", theme: .success)
+                announce(message, on: .view(aView), withMode: .timed(5.0))
             } else {
+
                 self.dismiss(animated: true, completion: nil)
             }
             FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!, completion: { (user, error) in
@@ -139,7 +139,7 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
         let velocity = scrollView.panGestureRecognizer.velocity(in: self.view)
         
         if abs(velocity.x) > abs(velocity.y) {
-
+            
             if velocity.x > 0 && categoryIndex > 0 {
                 categoryIndex -= 1
             } else if velocity.x < 0 && categoryIndex < MainManager.shared.availableCategories.count-1 {
