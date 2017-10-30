@@ -90,6 +90,11 @@ class MomentsViewController: UIViewController {
     }
     
 
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.83, green:0.14, blue:0.14, alpha:1.0)
+//        self.navigationController?.navigationBar.isTranslucent = false
+//    }
     /*
     // MARK: - Navigation
 

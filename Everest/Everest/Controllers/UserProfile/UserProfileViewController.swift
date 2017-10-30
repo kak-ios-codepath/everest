@@ -106,6 +106,15 @@ class UserProfileViewController: UIViewController{
 
     }
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.94, green:0.71, blue:0.25, alpha:1.0)
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -126,7 +135,10 @@ class UserProfileViewController: UIViewController{
         
 
         nameLabel.text = user?.name
-        dateLabel.text = "Joined on "+(user?.createdDate)!
+        let date = UserProfileViewController.dateFromString(dateString: (user?.createdDate)!)
+        let dateInString = UserProfileViewController.dateToString(createdDate: date as NSDate)
+        dateLabel.text = "Joined on "+dateInString
+
         scoreLabel.text = "\(user?.score ?? 0)"
         if (user?.profilePhotoUrl != nil) {
             profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
@@ -307,4 +319,26 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         }
         
     }
+    
+    class func dateToString(createdDate: NSDate) -> String {
+        
+        let formatter           = DateFormatter()
+        formatter.dateFormat    = "M/d/yy"
+        let dateInStr           = formatter.string(from: createdDate as Date)
+        return dateInStr
+        
+        
+    }
+    
+    class func dateFromString(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        // this is imporant - we set our input date format to match our input string
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        // voila!
+        let dateFromString = dateFormatter.date(from: dateString)
+        
+        return dateFromString!
+    }
+    
+
 }

@@ -89,6 +89,12 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.94, green:0.71, blue:0.25, alpha:1.0)
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    
     @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
         loadData()
     }
