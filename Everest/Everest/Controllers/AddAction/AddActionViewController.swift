@@ -123,10 +123,12 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.cellForRow(at: indexPath) as! ActsCell
             if cell.accessoryType == .checkmark {
                 //Fire a quick message with a theme!
-                let message = Message(message: "A simple message", theme: .success)
-                announce(message, on: .view(aView), withMode: .timed(5.0))
+                let message = Message(message: "You are already subscribed to this act", theme: .warning)
+                announce(message, on: .view(cell), withMode: .timed(3.0))
             } else {
-
+                cell.accessoryType = .checkmark
+                let message = Message(message: "You are now successfully subscribed to this act", theme: .success)
+                announce(message, on: .view(cell), withMode: .timed(3.0))
                 self.dismiss(animated: true, completion: nil)
             }
             FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!, completion: { (user, error) in
