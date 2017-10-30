@@ -106,6 +106,15 @@ class UserProfileViewController: UIViewController{
 
     }
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.94, green:0.71, blue:0.25, alpha:1.0)
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -126,7 +135,10 @@ class UserProfileViewController: UIViewController{
         
 
         nameLabel.text = user?.name
-        dateLabel.text = "Joined on "+(user?.createdDate)!
+        let date = UserProfileViewController.dateFromString(dateString: (user?.createdDate)!)
+        let dateInString = UserProfileViewController.dateToString(createdDate: date as NSDate)
+        dateLabel.text = "Joined on "+dateInString
+
         scoreLabel.text = "\(user?.score ?? 0)"
         if (user?.profilePhotoUrl != nil) {
             profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
@@ -176,7 +188,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         addMomentCell.addMomentCellDelegate = self
         addMomentCell.selectedActId = ""
         addMomentCell.addNewDescriptionLabel.text = "Start subscribing to new Act."
-        addMomentCell.addMomentButton.titleLabel?.text = "Subscribe"
+        addMomentCell.addMomentButton.titleLabel?.text = "Add"
         return addMomentCell
     }
     
@@ -202,16 +214,19 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
         if self.userProfileManager?.actionsAndMomentsDataSource != nil && (self.userProfileManager?.actionsAndMomentsDataSource?.count)! > 0 {
             if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[indexPath.section] {
                 let key = Array(dictionary.keys)
                 if let momentsArray = dictionary[key[0]] {
-                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                    let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
-                    momentsDetailVC.momentId = momentsArray[indexPath.row].id
-                    self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+                    if momentsArray.count > 0  {
+                        if indexPath.row == momentsArray.count {
+                            return
+                        }
+                        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                        let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
+                        momentsDetailVC.momentId = momentsArray[indexPath.row].id
+                        self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+                    }
                 }
             }
         }
@@ -289,7 +304,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     func addMomentCell(cell: AddMomentCell, addNewMomentToAction action: String?) {
         
         if action == "" {
-            let storyboard = UIStoryboard.init(name: "AddAction", bundle: nil)
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let addActionVC = storyboard.instantiateViewController(withIdentifier: "AddActionViewController") as! AddActionViewController
             
             self.present(addActionVC, animated: true, completion: { 
@@ -307,4 +322,26 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         }
         
     }
+    
+    class func dateToString(createdDate: NSDate) -> String {
+        
+        let formatter           = DateFormatter()
+        formatter.dateFormat    = "M/d/yy"
+        let dateInStr           = formatter.string(from: createdDate as Date)
+        return dateInStr
+        
+        
+    }
+    
+    class func dateFromString(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        // this is imporant - we set our input date format to match our input string
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        // voila!
+        let dateFromString = dateFormatter.date(from: dateString)
+        
+        return dateFromString!
+    }
+    
+
 }

@@ -66,7 +66,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
                         self.momentCoordinate = CLLocationCoordinate2D(latitude: doubleLat, longitude: doubleLon)
                         let region = MKCoordinateRegion(center: momentCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                         self.mapView.setRegion(region, animated: true)
-                        self.mapImageView.isHidden = true
+//                        self.mapImageView.isHidden = true
                         self.addAnnotationAtCoordinate(coordinates: ["lat": momentCoordinate.latitude, "lon": momentCoordinate.longitude], title: "")
                     }
                 }
@@ -74,6 +74,8 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
             self.location = moment.location
             if let pics = moment.picUrls {
                 self.momentImageView.setImageWith(URL(string: pics[0])!)
+                self.momentImageView.clipsToBounds = true
+                self.momentImageView.contentMode = .scaleAspectFill
                 self.picsUrl = pics
             }
             self.publishButton.titleLabel?.text = "Save"
@@ -96,7 +98,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         var tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
         self.mapView.addGestureRecognizer(tapGesture1)
         tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
-        self.mapImageView.addGestureRecognizer(tapGesture1)
+        //self.mapImageView.addGestureRecognizer(tapGesture1)
         let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(momentImageViewTapped))
         self.momentImageView.addGestureRecognizer(tapGesture2)
         
@@ -135,7 +137,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
                 self.location = nil
                 self.locationLabel.text = ""
                 self.geoLocation = nil
-                self.mapImageView.isHidden = false
+//                self.mapImageView.isHidden = false
             })
             alertController.addAction(deleteAction)
             self.present(alertController, animated: true, completion:nil)
@@ -160,7 +162,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
             self.momentCoordinate = momentCoordinate
             let region = MKCoordinateRegion(center: momentCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.mapView.setRegion(region, animated: true)
-            self.mapImageView.isHidden = true
+//            self.mapImageView.isHidden = true
             self.location = location
             if let loc = self.location {
                 self.locationLabel.text = loc
@@ -214,7 +216,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
             })
             alertController.addAction(noAction)
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive , handler: { (action:UIAlertAction!) in
-                self.momentImageView.image = UIImage(named: "addimage")
+                self.momentImageView.image = UIImage(named: "addImage")
                 self.selectedImage = nil
             })
             alertController.addAction(deleteAction)
@@ -256,6 +258,8 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
                     if imageUrl != nil {
                         self.picsUrl = [imageUrl!]
                         self.momentImageView.setImageWith(URL(string: imageUrl!)!)
+                        self.momentImageView.clipsToBounds = true
+                        self.momentImageView.contentMode = .scaleAspectFill
                     }
                     self.submitData()
                 }
@@ -283,15 +287,15 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
                 } else {
                     url = URL(string: "https://firebasestorage.googleapis.com/v0/b/everest-f98ba.appspot.com/o/5IuIsoIeRhexy8BKHzzpfMyCy2K2%2F530229533534.jpg?alt=media&token=755f391f-3489-42b0-87a3-c93e061af76c")
                 }
-                var content = LinkShareContent(url: url!)
-                content.quote = "I did it!"
-                let shareDialog = ShareDialog(content: content)
-                shareDialog.mode = .native
-                shareDialog.failsOnInvalidData = true
-                shareDialog.completion = { result in
-                    // Handle share results
-                    print (result)
-                }
+//                var content = LinkShareContent.init(url: url)
+//                content.quote = "I did it!"
+//                let shareDialog = ShareDialog(content: content)
+//                shareDialog.mode = .native
+//                shareDialog.failsOnInvalidData = true
+//                shareDialog.completion = { result in
+//                    // Handle share results
+//                    print (result)
+//                }
             }
             if self.isEditMode {
                 _ = self.navigationController?.popViewController(animated: true)
@@ -352,7 +356,10 @@ extension CreateMomentViewController: UIImagePickerControllerDelegate, UINavigat
         guard let reducedSizeImage = originalImage?.resized(withPercentage: 0.3) else {return}
         selectedImage = reducedSizeImage
         self.momentImageView.alpha = 0
+        self.momentImageView.clipsToBounds = true
         self.momentImageView.image = selectedImage
+        self.momentImageView.contentMode = .scaleAspectFill
+        self.momentImageView.setRoundedCorner(radius: 5)
         UIView.animate(withDuration: 0.3, animations: {
             self.momentImageView.alpha = 1
         })

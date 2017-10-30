@@ -142,7 +142,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fm5-kp-aNd" firstAttribute="top" secondItem="Gp3-1w-ZIA" secondAttribute="bottom" id="EvX-Ac-n7e"/>
                             <constraint firstItem="Lru-uE-Ic1" firstAttribute="top" secondItem="Fm5-kp-aNd" secondAttribute="bottom" id="TD6-rL-tml"/>
