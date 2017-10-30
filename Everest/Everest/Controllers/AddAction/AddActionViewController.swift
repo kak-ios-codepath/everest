@@ -15,17 +15,22 @@ class AddActionViewController: UIViewController {
     @IBOutlet weak fileprivate var categoriesCollectionView: UICollectionView!
     @IBOutlet weak fileprivate var coverFlowLayout: LNICoverFlowLayout!
     @IBOutlet weak fileprivate var actsTableView: UITableView!
+    @IBOutlet weak var categoryPicsHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var categoryCollectionTopConstraint: NSLayoutConstraint!
     private var originalItemSize = CGSize.zero
     private var originalCollectionViewSize = CGSize.zero
     
     fileprivate var currentUser:User!
     fileprivate var categoryIndex = 0
+    fileprivate var categoryPicsExpanded = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         categoriesCollectionView.delegate = self
+        categoryPicsHeight.constant = self.view.frame.height
+        
         actsTableView.delegate = self
         actsTableView.estimatedRowHeight = 30
         actsTableView.rowHeight = UITableViewAutomaticDimension
@@ -84,6 +89,25 @@ extension AddActionViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.categoryPhotoURL = MainManager.shared.availableCategories[indexPath.row].imageUrl
         cell.categoryTitle = MainManager.shared.availableCategories[indexPath.row].title
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if categoryPicsExpanded {
+            categoryPicsHeight.constant = 50
+            categoryCollectionTopConstraint.constant = 50
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+                self.categoryPicsExpanded = false
+            })
+            
+        } else {
+            categoryPicsHeight.constant = self.view.frame.height
+            categoryCollectionTopConstraint.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+                self.categoryPicsExpanded = true
+            })
+        }
     }
 }
 

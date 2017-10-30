@@ -79,7 +79,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let headerView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: notificationsTableView.frame.width, height: notificationsTableView.frame.height/5))
         headerView.contentView.backgroundColor = UIColor.lightGray
         
-        let switchView = UISwitch(frame: CGRect(x: notificationsTableView.frame.width-60, y: 15, width: 0, height: 0))
+        let switchView = UISwitch(frame: CGRect(x: notificationsTableView.frame.width-60, y: 10, width: 0, height: 0))
         switchView.isOn = true
         switchView.addTarget(self, action: #selector(togglePushNotifications(_:)), for: UIControlEvents.valueChanged)
         

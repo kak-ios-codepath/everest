@@ -10,14 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings-->
+        <!--Notifications-->
         <scene sceneID="kpR-dQ-INu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0yk-pU-ltN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="cL8-Lo-kyD"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notification" id="cL8-Lo-kyD"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lIY-xe-Ahm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lIY-xe-Ahm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -107,4 +107,7 @@
             <point key="canvasLocation" x="7415.1999999999998" y="-109.29535232383809"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="notification" width="28" height="28"/>
+    </resources>
 </document>
