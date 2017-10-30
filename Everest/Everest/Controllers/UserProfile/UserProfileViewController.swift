@@ -188,7 +188,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         addMomentCell.addMomentCellDelegate = self
         addMomentCell.selectedActId = ""
         addMomentCell.addNewDescriptionLabel.text = "Start subscribing to new Act."
-        addMomentCell.addMomentButton.titleLabel?.text = "Subscribe"
+        addMomentCell.addMomentButton.titleLabel?.text = "Add"
         return addMomentCell
     }
     
@@ -214,16 +214,19 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
         if self.userProfileManager?.actionsAndMomentsDataSource != nil && (self.userProfileManager?.actionsAndMomentsDataSource?.count)! > 0 {
             if let dictionary = self.userProfileManager?.actionsAndMomentsDataSource?[indexPath.section] {
                 let key = Array(dictionary.keys)
                 if let momentsArray = dictionary[key[0]] {
-                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                    let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
-                    momentsDetailVC.momentId = momentsArray[indexPath.row].id
-                    self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+                    if momentsArray.count > 0  {
+                        if indexPath.row == momentsArray.count {
+                            return
+                        }
+                        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                        let momentsDetailVC = storyboard.instantiateViewController(withIdentifier: "MomentsViewController") as! MomentsViewController
+                        momentsDetailVC.momentId = momentsArray[indexPath.row].id
+                        self.navigationController?.pushViewController(momentsDetailVC, animated: true)
+                    }
                 }
             }
         }
@@ -301,7 +304,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     func addMomentCell(cell: AddMomentCell, addNewMomentToAction action: String?) {
         
         if action == "" {
-            let storyboard = UIStoryboard.init(name: "AddAction", bundle: nil)
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let addActionVC = storyboard.instantiateViewController(withIdentifier: "AddActionViewController") as! AddActionViewController
             
             self.present(addActionVC, animated: true, completion: { 

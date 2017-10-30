@@ -93,8 +93,9 @@ class MomentDetailCell: UITableViewCell {
         if isLiked == false {
             isLiked = true
             FireBaseManager.shared.updateMomentLikes(momentId: (self.moment?.id)!, incrementBy: 1)
-            if let likesCount = Int(self.momentLikeLabel.text!) {
+            if let likesCount = self.moment?.likes {
                 self.momentLikeLabel.text = "\((likesCount)+1)"
+                self.moment?.likes = (self.moment?.likes)! + 1
                 
             }
             
@@ -102,8 +103,10 @@ class MomentDetailCell: UITableViewCell {
             isLiked = false
 //            likeImage = UIImage.init(named: "like_bw")
             FireBaseManager.shared.updateMomentLikes(momentId: (self.moment?.id)!, incrementBy: -1)
-            if let likesCount = Int(self.momentLikeLabel.text!) {
+            if let likesCount = self.moment?.likes {
                 self.momentLikeLabel.text = "\((likesCount)-1)"
+                self.moment?.likes = (self.moment?.likes)! + 1
+
             }
         }
         UIView.animate(withDuration: 0.6, animations: {
