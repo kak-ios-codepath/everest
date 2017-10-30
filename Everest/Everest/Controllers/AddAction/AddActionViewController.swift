@@ -8,23 +8,29 @@
 
 import UIKit
 import LNICoverFlowLayout
+import Announce
 
 class AddActionViewController: UIViewController {
     
     @IBOutlet weak fileprivate var categoriesCollectionView: UICollectionView!
     @IBOutlet weak fileprivate var coverFlowLayout: LNICoverFlowLayout!
     @IBOutlet weak fileprivate var actsTableView: UITableView!
+    @IBOutlet weak var categoryPicsHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var categoryCollectionTopConstraint: NSLayoutConstraint!
     private var originalItemSize = CGSize.zero
     private var originalCollectionViewSize = CGSize.zero
     
     fileprivate var currentUser:User!
     fileprivate var categoryIndex = 0
+    fileprivate var categoryPicsExpanded = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         categoriesCollectionView.delegate = self
+        categoryPicsHeight.constant = self.view.frame.height
+        
         actsTableView.delegate = self
         actsTableView.estimatedRowHeight = 30
         actsTableView.rowHeight = UITableViewAutomaticDimension
@@ -84,6 +90,25 @@ extension AddActionViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.categoryTitle = MainManager.shared.availableCategories[indexPath.row].title
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if categoryPicsExpanded {
+            categoryPicsHeight.constant = 50
+            categoryCollectionTopConstraint.constant = 50
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+                self.categoryPicsExpanded = false
+            })
+            
+        } else {
+            categoryPicsHeight.constant = self.view.frame.height
+            categoryCollectionTopConstraint.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+                self.categoryPicsExpanded = true
+            })
+        }
+    }
 }
 
 
@@ -118,15 +143,16 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         actsTableView.deselectRow(at: indexPath, animated: true)
         MainManager.shared.createNewAction(id: (MainManager.shared.availableCategories[categoryIndex].acts[indexPath.row].id), completion:{(error) in
-            let alertController = UIAlertController(title: "Already Exists", message: "You are already subscribed to this act!",  preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
-            })
-            alertController.addAction(okAction)
             
             let cell = tableView.cellForRow(at: indexPath) as! ActsCell
             if cell.accessoryType == .checkmark {
-                self.present(alertController, animated: true, completion:nil)
+                //Fire a quick message with a theme!
+                let message = Message(message: "You are already subscribed to this act", theme: .warning)
+                announce(message, on: .view(cell), withMode: .timed(3.0))
             } else {
+                cell.accessoryType = .checkmark
+                let message = Message(message: "You are now successfully subscribed to this act", theme: .success)
+                announce(message, on: .view(cell), withMode: .timed(3.0))
                 self.dismiss(animated: true, completion: nil)
             }
             FireBaseManager.shared.getUser(userID: (User.currentUser?.id)!, completion: { (user, error) in
@@ -139,7 +165,7 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
         let velocity = scrollView.panGestureRecognizer.velocity(in: self.view)
         
         if abs(velocity.x) > abs(velocity.y) {
-
+            
             if velocity.x > 0 && categoryIndex > 0 {
                 categoryIndex -= 1
             } else if velocity.x < 0 && categoryIndex < MainManager.shared.availableCategories.count-1 {
