@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Announce
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -32,16 +33,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func onAddBtn(_ sender: UIButton) {
         MainManager.shared.createNewAction(id: SettingsViewController.actionNotifications[sender.tag].id, completion:{(error) in
-            let alertController = UIAlertController(title: "Added", message: "You can view this newly added action in your Profile view.",  preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
-            })
-            alertController.addAction(okAction)
-            // Present Alert
-            self.present(alertController, animated: true, completion:nil)
+            let message = Message(message: "You are now successfully subscribed to this new act", theme: .success)
+            announce(message, on: .view(self.notificationsTableView), withMode: .timed(3.0))
+            SettingsViewController.actionNotifications.remove(at: sender.tag)
+            self.saveActionNotifications()
+            self.notificationsTableView.reloadData()
         })
-        SettingsViewController.actionNotifications.remove(at: sender.tag)
-        saveActionNotifications()
-        notificationsTableView.reloadData()
     }
 
     
