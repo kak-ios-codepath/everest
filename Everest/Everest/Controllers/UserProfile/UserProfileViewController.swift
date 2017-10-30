@@ -161,7 +161,8 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
                         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
                         addMomentCell.addMomentCellDelegate = self
                         addMomentCell.selectedActId = key[0]
-                        addMomentCell.addMomentButton.setTitle("Add New Moment", for: .normal)
+                        addMomentCell.addNewDescriptionLabel.text = "Write about new moment for this act."
+                        addMomentCell.addMomentButton.setTitle("Add", for: .normal)
                         return addMomentCell
                     }
                     
@@ -174,7 +175,8 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
         addMomentCell.addMomentCellDelegate = self
         addMomentCell.selectedActId = ""
-        addMomentCell.addMomentButton.setTitle("Add New Action", for: .normal)
+        addMomentCell.addNewDescriptionLabel.text = "Start subscribing to new Act."
+        addMomentCell.addMomentButton.titleLabel?.text = "Subscribe"
         return addMomentCell
     }
     
@@ -238,18 +240,26 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
 
     
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //Need to create a label with the text we want in order to figure out height
-        let label: UILabel = createHeaderLabel(section)
-        let size = label.sizeThatFits(CGSize(width: view.frame.width, height: CGFloat.greatestFiniteMagnitude))
-        let padding: CGFloat = 20.0
-        return size.height + padding
+
+        return 60
     }
     
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UITableViewHeaderFooterView()
-        let label = createHeaderLabel(section)
-        label.autoresizingMask = [.flexibleHeight]
-        headerView.addSubview(label)
+//        let headerView = UITableViewHeaderFooterView()
+//        let label = createHeaderLabel(section)
+//        label.autoresizingMask = [.flexibleHeight]
+//        headerView.addSubview(label)
+//        return headerView
+        
+        let headerView = Bundle.main.loadNibNamed("ActionHeaderView", owner: self, options: nil)?.first as! ActionHeaderView
+        
+        if let action = self.user?.actions?[section] {
+            headerView.action = action
+        }
+        else{
+            headerView.action = nil
+        }
+        
         return headerView
     }
     
