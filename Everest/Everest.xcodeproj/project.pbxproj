@@ -38,7 +38,6 @@
 		CE8881651FA180730096DD21 /* AddMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8881641FA180730096DD21 /* AddMomentCell.swift */; };
 		CEFD978D1FA12A72004FBDA5 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD978C1FA12A72004FBDA5 /* NotificationCell.swift */; };
 		D71841591FA1690E008B72DF /* UIImageView+Rouded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71841581FA1690E008B72DF /* UIImageView+Rouded.swift */; };
-		D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D724D0631F947FF900D25A5A /* AddAction.storyboard */; };
 		D724D0771F947FF900D25A5A /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0641F947FF900D25A5A /* AddActionViewController.swift */; };
 		D724D0781F947FF900D25A5A /* MomentDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0661F947FF900D25A5A /* MomentDetailManager.swift */; };
 		D724D0791F947FF900D25A5A /* MomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724D0671F947FF900D25A5A /* MomentsViewController.swift */; };
@@ -104,7 +103,6 @@
 		CE8881641FA180730096DD21 /* AddMomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMomentCell.swift; sourceTree = "<group>"; };
 		CEFD978C1FA12A72004FBDA5 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		D71841581FA1690E008B72DF /* UIImageView+Rouded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Rouded.swift"; sourceTree = "<group>"; };
-		D724D0631F947FF900D25A5A /* AddAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAction.storyboard; sourceTree = "<group>"; };
 		D724D0641F947FF900D25A5A /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		D724D0661F947FF900D25A5A /* MomentDetailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDetailManager.swift; sourceTree = "<group>"; };
 		D724D0671F947FF900D25A5A /* MomentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsViewController.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 		D724D0621F947FF900D25A5A /* AddAction */ = {
 			isa = PBXGroup;
 			children = (
-				D724D0631F947FF900D25A5A /* AddAction.storyboard */,
 				D724D0641F947FF900D25A5A /* AddActionViewController.swift */,
 			);
 			path = AddAction;
@@ -420,7 +417,6 @@
 				D724D07C1F947FF900D25A5A /* Settings.storyboard in Resources */,
 				D724D08F1F94806B00D25A5A /* MomentCell.xib in Resources */,
 				D724D08D1F94806B00D25A5A /* ActionCell.xib in Resources */,
-				D724D0761F947FF900D25A5A /* AddAction.storyboard in Resources */,
 				06A931741F95C64100DFD1AA /* Login.storyboard in Resources */,
 				06C2EA271F91D589003D0ADF /* Main.storyboard in Resources */,
 			);

@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Announce
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -32,16 +33,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func onAddBtn(_ sender: UIButton) {
         MainManager.shared.createNewAction(id: SettingsViewController.actionNotifications[sender.tag].id, completion:{(error) in
-            let alertController = UIAlertController(title: "Added", message: "You can view this newly added action in your Profile view.",  preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
-            })
-            alertController.addAction(okAction)
-            // Present Alert
-            self.present(alertController, animated: true, completion:nil)
+            let message = Message(message: "You are now successfully subscribed to this act", theme: .warning)
+            announce(message, on: .view(self.notificationsTableView), withMode: .timed(3.0))
+            SettingsViewController.actionNotifications.remove(at: sender.tag)
+            self.saveActionNotifications()
+            self.notificationsTableView.reloadData()
         })
-        SettingsViewController.actionNotifications.remove(at: sender.tag)
-        saveActionNotifications()
-        notificationsTableView.reloadData()
     }
 
     
@@ -77,9 +74,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: notificationsTableView.frame.width, height: notificationsTableView.frame.height/5))
-        headerView.contentView.backgroundColor = UIColor.lightGray
+        headerView.contentView.backgroundColor = UIColor.groupTableViewBackground
         
         let switchView = UISwitch(frame: CGRect(x: notificationsTableView.frame.width-60, y: 10, width: 0, height: 0))
+        switchView.onTintColor = UIColor(red: 0xF0/0xFF, green: 0xB4/0xFF, blue: 0x41/0xFF, alpha: 1)
         switchView.isOn = true
         switchView.addTarget(self, action: #selector(togglePushNotifications(_:)), for: UIControlEvents.valueChanged)
         

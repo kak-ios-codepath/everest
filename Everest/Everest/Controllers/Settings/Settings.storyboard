@@ -20,6 +20,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lIY-xe-Ahm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.94117647059999998" green="0.70588235290000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -42,9 +43,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fTM-s0-PCA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="61" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fTM-s0-PCA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.94117647059999998" green="0.70588235290000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationCell" rowHeight="61" id="wkX-uV-pHC" customClass="NotificationCell" customModule="Everest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="61"/>
@@ -60,18 +62,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvU-99-kUX">
-                                                    <rect key="frame" x="307" y="5.5" width="50" height="50"/>
+                                                    <rect key="frame" x="307" y="18" width="50" height="25"/>
+                                                    <color key="backgroundColor" red="0.94117647059999998" green="0.70588235290000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="h61-nH-ifd"/>
-                                                        <constraint firstAttribute="height" constant="50" id="nId-hd-WE8"/>
+                                                        <constraint firstAttribute="height" constant="25" id="nId-hd-WE8"/>
                                                     </constraints>
-                                                    <state key="normal" title="Add"/>
+                                                    <state key="normal" title="Add">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="onAddBtn:" destination="bF2-f3-Y7j" eventType="touchUpInside" id="Kbd-EC-5gf"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.79607843140000001" green="0.92156862750000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="dvU-99-kUX" firstAttribute="centerY" secondItem="o9z-RW-mwN" secondAttribute="centerY" id="46q-vs-FFV"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="UvK-8q-s5z" secondAttribute="bottom" constant="5" id="ADW-vi-W4k"/>
@@ -97,7 +102,7 @@
                             <constraint firstAttribute="trailing" secondItem="fTM-s0-PCA" secondAttribute="trailing" id="Zvi-Kj-GeG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="d2o-D8-hWh"/>
+                    <navigationItem key="navigationItem" title="Notifications" id="d2o-D8-hWh"/>
                     <connections>
                         <outlet property="notificationsTableView" destination="fTM-s0-PCA" id="GbP-Ca-ViE"/>
                     </connections>
