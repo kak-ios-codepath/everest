@@ -109,7 +109,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             self.mapViewController?.view.removeFromSuperview()
             self.view.addSubview(self.timelineTableView)
             UIView.commitAnimations()
-            
+            self.navigationItem.rightBarButtonItem?.title = "Map"
         } else {
             self.mapViewController?.view.frame = self.view.bounds; //grab the view of a separate VC
             UIView.beginAnimations(nil, context: nil)
@@ -119,6 +119,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             self.view.addSubview((self.mapViewController?.view)!)
             UIView.commitAnimations()
             self.mapViewController?.moments = self.moments
+            self.navigationItem.rightBarButtonItem?.title = "List"
         }
          self.isMapView = self.isMapView ? false : true
     }
