@@ -55,6 +55,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
             }
             
             isEditMode = true
+            addedDetails = true
             self.actionId = moment.actId
             self.momentTitle.text = moment.title
             self.momentDetails.text = moment.details
@@ -285,22 +286,33 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
                 if self.picsUrl != nil {
                     url = URL(string: (self.picsUrl?[0])!)
                 } else {
-                    url = URL(string: "https://firebasestorage.googleapis.com/v0/b/everest-f98ba.appspot.com/o/5IuIsoIeRhexy8BKHzzpfMyCy2K2%2F530229533534.jpg?alt=media&token=755f391f-3489-42b0-87a3-c93e061af76c")
+                    let category = MainManager.shared.availableActs[self.actionId]?.category
+                    let categoryObj = MainManager.shared.availableCategories.filter( { return $0.title == category } ).first
+                    if let imageUrl = categoryObj?.imageUrl {
+                        url = URL(string: imageUrl)
+                    }
                 }
-//                var content = LinkShareContent.init(url: url)
-//                content.quote = "I did it!"
-//                let shareDialog = ShareDialog(content: content)
-//                shareDialog.mode = .native
-//                shareDialog.failsOnInvalidData = true
-//                shareDialog.completion = { result in
-//                    // Handle share results
-//                    print (result)
-//                }
-            }
-            if self.isEditMode {
-                _ = self.navigationController?.popViewController(animated: true)
+                var content = LinkShareContent.init(url: url, title: title, description: details)
+                content.quote = "I did it!"
+                let shareDialog = ShareDialog(content: content)
+                shareDialog.mode = .native
+                shareDialog.failsOnInvalidData = true
+                shareDialog.completion = { result in
+                    // Handle share results
+                    print (result)
+                    if self.isEditMode {
+                        _ = self.navigationController?.popViewController(animated: true)
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+                try! shareDialog.show()
             } else {
-                self.dismiss(animated: true, completion: nil)
+                if self.isEditMode {
+                    _ = self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
             
         }
