@@ -138,6 +138,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let actionNotifications = NSKeyedArchiver.archivedData(withRootObject: SettingsViewController.actionNotifications)
         UserDefaults.standard.set(actionNotifications, forKey: "actionNotifications")
+        
+
     }
     
 }

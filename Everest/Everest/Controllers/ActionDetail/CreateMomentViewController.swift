@@ -109,10 +109,10 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(momentImageViewTapped))
         self.momentImageView.addGestureRecognizer(tapGesture2)
         
-        if User.currentUser?.isFacebookUser() == false {
-            shareFBSwitch.isHidden = true
-            shareToFBLabel.isHidden = true
-        }
+//        if User.currentUser?.isFacebookUser() == false {
+//            shareFBSwitch.isHidden = true
+//            shareToFBLabel.isHidden = true
+//        }
         
     }
     
@@ -232,7 +232,10 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
     }
     
     @IBAction func shareFBAction(_ sender: UISwitch) {
-        self.shareOnFB = sender.isOn
+        if User.currentUser?.isFacebookUser() == true {
+            self.shareOnFB = sender.isOn
+        }
+    
     }
     
     @IBAction func handleTapGesture(_ sender: AnyObject) {

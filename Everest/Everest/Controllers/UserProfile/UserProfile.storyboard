@@ -26,7 +26,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="profileTab" id="eTy-cI-EdI"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B7K-Qy-w5l">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B7K-Qy-w5l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -260,20 +260,20 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sdl-AT-HOe">
-                                        <rect key="frame" x="10" y="406.5" width="355" height="139.5"/>
+                                        <rect key="frame" x="10" y="413" width="355" height="146"/>
                                     </mapView>
                                     <imageView clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="LGX-EI-Luu">
-                                        <rect key="frame" x="10" y="257" width="355" height="139.5"/>
+                                        <rect key="frame" x="10" y="257" width="355" height="146"/>
                                         <color key="backgroundColor" red="0.85330078124999997" green="0.85330078124999997" blue="0.85330078124999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share to Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSE-7i-sed">
-                                        <rect key="frame" x="79" y="556" width="105.5" height="31"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <rect key="frame" x="79" y="571" width="98" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MSl-LS-Icv">
-                                        <rect key="frame" x="20" y="556" width="51" height="31"/>
+                                        <rect key="frame" x="20" y="571" width="51" height="31"/>
                                         <color key="onTintColor" red="0.94117647059999998" green="0.70588235290000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="shareFBAction:" destination="JYW-Y5-kFX" eventType="valueChanged" id="an8-Lr-FkR"/>
@@ -304,8 +304,8 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9D-6B-LL1">
-                                        <rect key="frame" x="324.5" y="556" width="30.5" height="15"/>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                        <rect key="frame" x="326.5" y="564" width="28.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -317,8 +317,8 @@
                                     <constraint firstAttribute="trailing" secondItem="sdl-AT-HOe" secondAttribute="trailing" constant="10" id="9kZ-j1-iBo"/>
                                     <constraint firstAttribute="trailing" secondItem="4Oc-o5-mlK" secondAttribute="trailing" constant="10" id="AH5-pH-vvO"/>
                                     <constraint firstItem="KSE-7i-sed" firstAttribute="height" secondItem="MSl-LS-Icv" secondAttribute="height" id="CTS-Yr-kXn"/>
-                                    <constraint firstItem="Y9D-6B-LL1" firstAttribute="top" secondItem="KSE-7i-sed" secondAttribute="top" id="Cta-83-2li"/>
-                                    <constraint firstItem="MSl-LS-Icv" firstAttribute="top" secondItem="sdl-AT-HOe" secondAttribute="bottom" constant="10" id="Kmd-QL-16M"/>
+                                    <constraint firstItem="MSl-LS-Icv" firstAttribute="top" secondItem="sdl-AT-HOe" secondAttribute="bottom" constant="12" id="Kmd-QL-16M"/>
+                                    <constraint firstItem="Y9D-6B-LL1" firstAttribute="top" secondItem="sdl-AT-HOe" secondAttribute="bottom" constant="5" id="RfB-KO-Gqs"/>
                                     <constraint firstItem="sdl-AT-HOe" firstAttribute="leading" secondItem="mSD-qp-hgM" secondAttribute="leading" constant="10" id="Rvh-4z-hUy"/>
                                     <constraint firstAttribute="bottom" secondItem="jwL-8u-5u3" secondAttribute="bottom" constant="20" id="SHt-22-bNg"/>
                                     <constraint firstItem="LGX-EI-Luu" firstAttribute="height" secondItem="sdl-AT-HOe" secondAttribute="height" id="SSX-Bs-etv"/>
@@ -335,7 +335,7 @@
                                     <constraint firstItem="MSl-LS-Icv" firstAttribute="leading" secondItem="mSD-qp-hgM" secondAttribute="leading" constant="20" id="o16-hY-b1A"/>
                                     <constraint firstItem="LGX-EI-Luu" firstAttribute="top" secondItem="l8d-Hl-Pa6" secondAttribute="bottom" constant="10" id="oi9-DM-xCq"/>
                                     <constraint firstItem="LGX-EI-Luu" firstAttribute="leading" secondItem="mSD-qp-hgM" secondAttribute="leading" constant="10" id="pnU-Cs-M47"/>
-                                    <constraint firstItem="jwL-8u-5u3" firstAttribute="top" secondItem="MSl-LS-Icv" secondAttribute="bottom" constant="20" id="rVu-PP-5Im"/>
+                                    <constraint firstItem="jwL-8u-5u3" firstAttribute="top" secondItem="MSl-LS-Icv" secondAttribute="bottom" constant="5" id="rVu-PP-5Im"/>
                                     <constraint firstItem="T8u-yF-LTc" firstAttribute="top" secondItem="mSD-qp-hgM" secondAttribute="top" constant="20" id="trc-j5-9Tp"/>
                                     <constraint firstAttribute="trailing" secondItem="Y9D-6B-LL1" secondAttribute="trailing" constant="20" id="vIl-cx-BYM"/>
                                     <constraint firstItem="jwL-8u-5u3" firstAttribute="leading" secondItem="mSD-qp-hgM" secondAttribute="leading" constant="20" id="xq9-u0-6Ll"/>

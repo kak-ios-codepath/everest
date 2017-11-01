@@ -425,7 +425,7 @@ class FireBaseManager {
     
     func uploadImage(data: Data, completion: @escaping (String, String?, Error?) -> ()) {
         let imagePath = Auth.auth().currentUser!.uid +
-        "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+        "/\(Int64(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         self.storageRef.child(imagePath).putData(data, metadata: metadata) { (metadata, error) in
