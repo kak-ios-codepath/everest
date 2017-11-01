@@ -45,6 +45,7 @@ class MomentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Details"
         // Do any additional setup after loading the view.
         self.momentDetailTableView.estimatedRowHeight = 100
         self.momentDetailTableView.rowHeight = UITableViewAutomaticDimension
