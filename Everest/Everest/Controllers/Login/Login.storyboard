@@ -78,7 +78,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3e-Kf-cER">
-                                <rect key="frame" x="31" y="60" width="313" height="60"/>
+                                <rect key="frame" x="16" y="60" width="343" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="jrg-ej-uqx">
                                         <rect key="frame" x="0.0" y="15" width="32" height="32"/>
@@ -88,7 +88,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nLs-7N-Anb">
-                                        <rect key="frame" x="36" y="15" width="269" height="30"/>
+                                        <rect key="frame" x="36" y="15" width="299" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -189,13 +189,13 @@
                         <constraints>
                             <constraint firstItem="wBW-u7-60a" firstAttribute="centerX" secondItem="4D1-v6-crJ" secondAttribute="centerX" id="3G7-bt-bxR"/>
                             <constraint firstItem="au3-mP-MYy" firstAttribute="top" secondItem="ZTH-cU-KEP" secondAttribute="bottom" constant="2" id="6Gl-g9-EQm"/>
-                            <constraint firstItem="i3e-Kf-cER" firstAttribute="leading" secondItem="4D1-v6-crJ" secondAttribute="leadingMargin" constant="15" id="9B0-Nc-0vt"/>
+                            <constraint firstItem="i3e-Kf-cER" firstAttribute="leading" secondItem="4D1-v6-crJ" secondAttribute="leadingMargin" id="9B0-Nc-0vt"/>
                             <constraint firstItem="sZb-NR-h2i" firstAttribute="centerX" secondItem="4D1-v6-crJ" secondAttribute="centerX" id="BFZ-Ee-rvS"/>
                             <constraint firstItem="sZb-NR-h2i" firstAttribute="top" secondItem="wBW-u7-60a" secondAttribute="bottom" constant="2" id="GS8-hs-Qyx"/>
                             <constraint firstItem="wBW-u7-60a" firstAttribute="centerX" secondItem="4D1-v6-crJ" secondAttribute="centerX" id="I9y-L9-uAp"/>
                             <constraint firstItem="ZTH-cU-KEP" firstAttribute="centerX" secondItem="4D1-v6-crJ" secondAttribute="centerX" id="JdU-4i-o3Z"/>
                             <constraint firstItem="au3-mP-MYy" firstAttribute="centerX" secondItem="4D1-v6-crJ" secondAttribute="centerX" id="L8Y-Us-peJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="i3e-Kf-cER" secondAttribute="trailing" constant="15" id="MUM-AT-neJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="i3e-Kf-cER" secondAttribute="trailing" id="MUM-AT-neJ"/>
                             <constraint firstItem="wBW-u7-60a" firstAttribute="top" secondItem="au3-mP-MYy" secondAttribute="bottom" constant="8" id="MWK-Qw-fHj"/>
                             <constraint firstItem="bJQ-W3-UAp" firstAttribute="top" secondItem="4D1-v6-crJ" secondAttribute="top" constant="20" id="PRs-Nc-7Cc"/>
                             <constraint firstItem="ZTH-cU-KEP" firstAttribute="top" secondItem="YdG-Ai-2LG" secondAttribute="bottom" constant="46" id="R2l-4H-ocO"/>
