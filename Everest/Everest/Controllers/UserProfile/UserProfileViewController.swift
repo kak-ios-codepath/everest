@@ -137,13 +137,15 @@ class UserProfileViewController: UIViewController{
         nameLabel.text = user?.name
         let date = UserProfileViewController.dateFromString(dateString: (user?.createdDate)!)
         let dateInString = UserProfileViewController.dateToString(createdDate: date as NSDate)
-        dateLabel.text = "Joined on "+dateInString
+        dateLabel.text = "Joined on: "+dateInString
 
-        scoreLabel.text = "\(user?.score ?? 0)"
+        scoreLabel.text = "Aura score: \(user?.score ?? 0)"
         if (user?.profilePhotoUrl != nil) {
             profileImageView.setImageWith(URL(string: (user?.profilePhotoUrl!)!)!)
+            profileImageView.setNeedsDisplay()
         } else {
             profileImageView.image = UIImage(named: "Profile")
+            profileImageView.setNeedsDisplay()
         }
     }
 
@@ -187,7 +189,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         let addMomentCell = tableView.dequeueReusableCell(withIdentifier: "AddMomentCell", for: indexPath) as! AddMomentCell
         addMomentCell.addMomentCellDelegate = self
         addMomentCell.selectedActId = ""
-        addMomentCell.addNewDescriptionLabel.text = "Start subscribing to new Act."
+        addMomentCell.addNewDescriptionLabel.text = "Subscribe to a new act."
         addMomentCell.addMomentButton.titleLabel?.text = "Add"
         return addMomentCell
     }
@@ -291,7 +293,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
         label.text = MainManager.shared.availableActs[id]?.title
         }
         else{
-            label.text = "Add new action and start creating moments!!"
+            label.text = "No subscribed actions."
         }
         label.numberOfLines = 0;
         label.textAlignment = NSTextAlignment.left

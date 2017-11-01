@@ -50,7 +50,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
 
         let nib = UINib(nibName: "MomentCell", bundle: nil)
         self.timelineTableView.register(nib, forCellReuseIdentifier: "MomentCell")
-        self.timelineTableView.estimatedRowHeight = self.timelineTableView.rowHeight
+        self.timelineTableView.estimatedRowHeight = 100//self.timelineTableView.rowHeight
         self.timelineTableView.rowHeight = UITableViewAutomaticDimension
         
         refreshControl.backgroundColor = UIColor.clear

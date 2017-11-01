@@ -20,6 +20,7 @@ class MomentCell: UITableViewCell {
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var locationPinImageView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     weak var momentCellDelegate : MomentCellDelegate?
     private var isLiked : Bool?
@@ -55,20 +56,27 @@ class MomentCell: UITableViewCell {
             if let likesCount = moment?.likes {
                 self.momentLikesLabel.text = "\(likesCount)"
             }
-            self.categoryLabel.text = (MainManager.shared.availableActs[(moment?.actId)!]?.category)?.capitalized
+            
+            self.userNameLabel.text = self.moment?.userName
+            //self.categoryLabel.text = (MainManager.shared.availableActs[(moment?.actId)!]?.category)?.capitalized
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.userProfileImageView.setRounded()
         self.userProfileImageView.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(userIconTapped))
         self.userProfileImageView.addGestureRecognizer(tapGestureRecognizer)
-        self.momentImageVIew.setRoundedCorner(radius: 5)
-        self.momentImageVIew.superview?.layer.cornerRadius = 10.00
         self.isLiked = false
+
+    }
+    
+    override func draw(_ rect: CGRect) {
+        self.momentImageVIew.setRoundedCorner(radius: 5)
+        self.userProfileImageView.setRounded()
+        self.userProfileImageView.superview?.layer.cornerRadius = 10.00
+
 
     }
 

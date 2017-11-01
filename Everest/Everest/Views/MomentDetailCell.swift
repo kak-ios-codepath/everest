@@ -17,6 +17,7 @@ class MomentDetailCell: UITableViewCell {
     
     @IBOutlet weak var momentLikeLabel: UILabel!
     
+    @IBOutlet weak var momentLocationLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileImaeView: UIImageView!
@@ -71,6 +72,8 @@ class MomentDetailCell: UITableViewCell {
             }
             self.cloneButton.isHidden = true
             self.categoryLabel.text = ((MainManager.shared.availableActs[(moment?.actId)!]?.category)?.capitalized)! + " action"
+            
+            self.momentLocationLabel.text = self.moment?.location
         }
     }
 
@@ -81,6 +84,12 @@ class MomentDetailCell: UITableViewCell {
         MomentDetailCell.formatter.dateFormat = MomentDetailCell.dateFormat
         MomentDetailCell.friendlyDateformatter.dateFormat = MomentDetailCell.friendlyDateFormat
         self.isLiked = false
+    }
+    
+    override func draw(_ rect: CGRect) {
+        self.userProfileImaeView.setRounded()
+        self.momentImageView.setRoundedCorner(radius: 5)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
