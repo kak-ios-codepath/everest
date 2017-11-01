@@ -197,8 +197,8 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate,
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.userProfileManager?.actionsAndMomentsDataSource != nil && (self.userProfileManager?.actionsAndMomentsDataSource?.count)! > 0 {
             if let dict = self.userProfileManager?.actionsAndMomentsDataSource?[section] {
-                let  key = Array(dict.keys)[0]
-                if let momentsArray = dict[key] {
+                let  key = dict.keys.first
+                if let momentsArray = dict[key!] {
                     if self.user?.id == User.currentUser?.id {
                         return momentsArray.count+1
                     } else {
