@@ -15,19 +15,20 @@ frontend -
 - [X] User can sign in using Facebook OAuth login flow or email.
 - [X] Setup backend and design data models.
 - [X] User's timeline feed with public moments by other users.
-- [] Picking a new act screen by selecting a category.
+- [X] Picking a new act screen by selecting a category.
 - [X] Setup fucnationality in backed to send notifications for users.
-- [] Setup Firebase cloud storage and connect it with the project
-- [] Profile screen, that shows the details of the user, his new and finished acts, and moments. Also his current Score/level.
-- [] User can create a moment with ability to add description, pic, location. And sharing it on Facebook and twitter.
-- [] Send a notification of the act of the day/week.
-- [] User can invite their FB friends or other friends via text message by selecting contacts from their addressbook to do certain acts.
-- [] The user will increase his score by finishing more acts or by recieving likes on his moments.
-- [] Settings page where user can control configure their notifications and other general settings.
+- [X] Setup Firebase cloud storage and connect it with the project
+- [X] Profile screen, that shows the details of the user, his new and finished acts, and moments. Also his current Score/level.
+- [X] User can create a moment with ability to add description, pic, location. And sharing it on Facebook.
+- [X] Send a notification of the act of the day/week.
+- [X] The user will increase his score by finishing more acts.
+- [X] Settings page where user can control configure their notifications and other general settings.
+- [X] Show a map view of moments captured nearby.
 
-The following **optional** features are implemented:
+The following **future enhancements** will be implemented:
+- [] User can invite their FB friends or other friends via text message by selecting contacts from their addressbook to do certain acts.
 - [] User can add comments below any moment
-- [] User can see the general progress of his freinds (not only moments) on the timeline
+- [] User can see the general progress of his friends (not only moments) on the timeline
 - [] A view that allows user to suggest some acts
 - [] User can notify local users about possible local acts
 - [] Add badges for users based on their performance
