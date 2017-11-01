@@ -21,12 +21,12 @@ frontend -
 - [X] Profile screen, that shows the details of the user, his new and finished acts, and moments. Also his current Score/level.
 - [X] User can create a moment with ability to add description, pic, location. And sharing it on Facebook.
 - [X] Send a notification of the act of the day/week.
-- [] User can invite their FB friends or other friends via text message by selecting contacts from their addressbook to do certain acts.
 - [X] The user will increase his score by finishing more acts.
 - [X] Settings page where user can control configure their notifications and other general settings.
 - [X] Show a map view of moments captured nearby.
 
 The following **future enhancements** will be implemented:
+- [] User can invite their FB friends or other friends via text message by selecting contacts from their addressbook to do certain acts.
 - [] User can add comments below any moment
 - [] User can see the general progress of his friends (not only moments) on the timeline
 - [] A view that allows user to suggest some acts
