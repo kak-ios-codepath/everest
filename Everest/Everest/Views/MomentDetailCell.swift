@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Announce
 
 class MomentDetailCell: UITableViewCell {
     static let formatter = DateFormatter()
@@ -122,12 +123,8 @@ class MomentDetailCell: UITableViewCell {
     }
     @IBAction func cloneAction(_ sender: AnyObject) {
         MainManager.shared.createNewAction(id: (moment?.actId)!, completion:{(error) in
-            let alertController = UIAlertController(title: "Added", message: "You can view this newly added action in your Profile view.",  preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction!) in
-            })
-            alertController.addAction(okAction)
-            // Present Alert
-            UIApplication.shared.delegate?.window??.rootViewController?.present(alertController, animated: true, completion: nil)
+            let message = Message(message: "You are now successfully subscribed to this act", theme: .warning)
+            announce(message, on: .view(self.contentView), withMode: .timed(3.0))
         })
     }
 

@@ -15,17 +15,17 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
 {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
+//    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var shareToFBLabel: UILabel!
     @IBOutlet weak var shareFBSwitch: UISwitch!
-    @IBOutlet weak var actionTitle: UILabel!
+//    @IBOutlet weak var actionTitle: UILabel!
     @IBOutlet weak var momentTitle: UITextField!
     @IBOutlet weak var momentDetails: UITextView!
-    @IBOutlet weak var addPhotoLabel: UILabel!
-    @IBOutlet weak var photoBtn: UIButton!
+//    @IBOutlet weak var addPhotoLabel: UILabel!
+//    @IBOutlet weak var photoBtn: UIButton!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var mapImageView: UIImageView!
-    @IBOutlet weak var mapBtn: UIButton!
+//    @IBOutlet weak var mapImageView: UIImageView!
+//    @IBOutlet weak var mapBtn: UIButton!
     @IBOutlet weak var publishButton: UIButton!
     @IBOutlet weak var momentImageView: UIImageView!
     fileprivate var selectedImage: UIImage!
@@ -44,6 +44,12 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        momentTitle.layer.cornerRadius = 10
+        momentTitle.layer.masksToBounds = true
+        momentDetails.layer.cornerRadius = 10
+        momentDetails.layer.masksToBounds = true
+        
         self.momentDetails.delegate = self
         self.momentTitle.delegate = self
         
@@ -88,7 +94,7 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
             self.navigationItem.title = "Add a moment"
         }
         
-        self.actionTitle.text = MainManager.shared.availableActs[actionId]?.title
+//        self.actionTitle.text = MainManager.shared.availableActs[actionId]?.title
         if let loc = self.location {
             self.locationLabel.text = loc
         } else {
@@ -344,16 +350,16 @@ class CreateMomentViewController: UIViewController, UITextViewDelegate, UITextFi
         var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        var contentInset:UIEdgeInsets = self.scrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height
-        self.scrollView.contentInset = contentInset
+//        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+//        contentInset.bottom = keyboardFrame.size.height
+//        self.scrollView.contentInset = contentInset
     }
     
     
     func keyboardWillHide(notification:NSNotification){
         
-        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-        self.scrollView.contentInset = contentInset
+//        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+//        self.scrollView.contentInset = contentInset
     }
 }
 

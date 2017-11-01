@@ -10,13 +10,13 @@ import UIKit
 import MapKit
 import CoreLocation
 class TimeLineMapViewController: UIViewController, MKMapViewDelegate {
+    @IBOutlet weak var timelineMapView: MKMapView!
+    
     var moments : [Moment]?
     var annotations : [MomentAnnotation] = []
     var navController : UINavigationController?
     let locationManager  = UserLocationManager.sharedInstance
-
-
-    @IBOutlet weak var timelineMapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +25,10 @@ class TimeLineMapViewController: UIViewController, MKMapViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(onUserLocation), name: NSNotification.Name(rawValue: "didReceiveUserLocation"), object: nil)
         locationManager.requestForUserLocation()
 
-        // Do any additional setup after loading the view.
+        let location = CLLocation(latitude: 37.5, longitude: -122	)
+        let spanView = MKCoordinateSpanMake(3, 3)
+        let region = MKCoordinateRegionMake(location.coordinate, spanView)
+        timelineMapView.setRegion(region, animated: true)
     }
     
     func onUserLocation() -> Void {
@@ -95,9 +98,6 @@ class TimeLineMapViewController: UIViewController, MKMapViewDelegate {
             momentsDetailVC.momentId = momentAnnnotation.momentId
             momentsDetailVC.isUserMomentDetail = false
             self.navController?.pushViewController(momentsDetailVC, animated: true)
-            
-            
-            
         }
     }
     

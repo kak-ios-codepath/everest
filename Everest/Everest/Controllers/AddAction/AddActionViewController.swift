@@ -94,7 +94,7 @@ extension AddActionViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if categoryPicsExpanded {
             categoryPicsHeight.constant = 50
-            categoryCollectionTopConstraint.constant = 50
+            categoryCollectionTopConstraint.constant = 20
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
                 self.categoryPicsExpanded = false
@@ -151,7 +151,7 @@ extension AddActionViewController: UITableViewDelegate, UITableViewDataSource {
                 announce(message, on: .view(cell), withMode: .timed(3.0))
             } else {
                 cell.accessoryType = .checkmark
-                let message = Message(message: "You are now successfully subscribed to this act", theme: .success)
+                let message = Message(message: "You are now successfully subscribed to this act", theme: .warning)
                 announce(message, on: .view(cell), withMode: .timed(3.0))
                 self.dismiss(animated: true, completion: nil)
             }
