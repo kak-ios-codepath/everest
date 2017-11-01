@@ -74,6 +74,14 @@ class MomentDetailCell: UITableViewCell {
             self.categoryLabel.text = ((MainManager.shared.availableActs[(moment?.actId)!]?.category)?.capitalized)! + " action"
             
             self.momentLocationLabel.text = self.moment?.location
+            
+            if let likes = self.moment?.likes {
+                if likes > 0 {
+                    self.momentLikeLabel.text = "\(likes)"
+                }
+                
+            }
+
         }
     }
 
@@ -104,18 +112,18 @@ class MomentDetailCell: UITableViewCell {
             isLiked = true
             FireBaseManager.shared.updateMomentLikes(momentId: (self.moment?.id)!, incrementBy: 1)
             if let likesCount = self.moment?.likes {
-                self.momentLikeLabel.text = "\((likesCount)+1)"
-                self.moment?.likes = (self.moment?.likes)! + 1
-                
+                self.moment?.likes = likesCount+1
             }
             
         }else{
             isLiked = false
 //            likeImage = UIImage.init(named: "like_bw")
-            FireBaseManager.shared.updateMomentLikes(momentId: (self.moment?.id)!, incrementBy: -1)
             if let likesCount = self.moment?.likes {
-                self.momentLikeLabel.text = "\((likesCount)-1)"
-                self.moment?.likes = (self.moment?.likes)! + 1
+                if likesCount>1 {
+                    self.moment?.likes = likesCount-1
+                    FireBaseManager.shared.updateMomentLikes(momentId: (self.moment?.id)!, incrementBy: -1)
+
+                }
 
             }
         }
@@ -125,6 +133,10 @@ class MomentDetailCell: UITableViewCell {
             UIView.animate(withDuration: 0.6, animations: {
                 self.momentLikeButton.transform = CGAffineTransform.identity
 //                self.momentLikeButton.setImage(likeImage, for: .normal)
+                if let likes = self.moment?.likes {
+                    self.momentLikeLabel.text = "\(likes)"
+
+                }
                 
             })
         })
